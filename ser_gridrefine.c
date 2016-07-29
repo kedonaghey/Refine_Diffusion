@@ -106,41 +106,44 @@ void InjectFinePoints(double* toparray, double* rightarray, double** mat, int nr
 
 /****    Interface Points *****/
 //for bound points use regular matrix
-
+//finished
 double Compute_CornerTimeStep(double** mat1_refine, double** mat1, int i, int j, int m, int n, double dt, double dx, double dy)
 {
-  double mat1_corner;
+  //double mat1_corner;
   double mat2_corner;
   double wxy = 0;
   double k = .02, diff = 0;
   wxy = k * dt/(dx*dx);
 
-  mat2_corner = /*prev point*/mat1_corner + wxy * (16/15) * (/*prev point*/-4*mat1_corner+ .5 * /*bound*/mat1[i][j-1]\
-  + /*coarse*/mat1[i+1][j] + .5 * /*coarse*/mat1[i-1][j] +/*bound*/ mat1[i][j+1] +/*mesh*/ mat1_refine[m+1][n-1]);
+  mat2_corner = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+ .5 * /*bound lwr*/mat1[i+1][j]\
+  + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-1] +/*mesh*/ mat1_refine[m+1][n-1]);
 
  return mat2_corner;
 }
 
 //need to add in different
 
-void Compute_InterfaceRightTimeStep(double* rightarray, double** mat1_refine, double** mat1, int nrows, int ncols, int i, int m, double dt, double dx, double dy, int crs)
+void Compute_InterfaceRightTimeStep(double* rightarray, double** mat1_refine, double** mat1, int nrows, int ncols, int ccs, int m, double dt, double dx, double dy, int crs, int refcols)
 {
-  int j, n = 1, t = 0;
+  int j = ccs-1, n = refcols-1, t = 0, i;
   double wxy = 0;
   double k = .02, diff = 0;
   wxy = k * dt/(dx*dx);
+  m = 2;
 
   //actually probably dont need
   //if (i,j-1) from corner or (i-1,j) from corner - substitute in corner
   //else do the following
   //do one for loop hardcode i,m stays same
-    for (j = nrows-2; j > nrows-crs; j--)
+    for (i = nrows-2; i > nrows-crs; i--)
     {
       rightarray[t] =/*previous interface point*/ mat1[i][j] + /*previous interface point*/ mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
-      (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i+1][j]  + /*coarse*/ .5 * mat1[i][j+1]\
-      +/*coarse*/ .5 * mat1[i][j-1] +/*refine*/ .5 * mat1_refine[m+1][n+1] +/*refine*/ mat1_refine[m+1][n] +/*refine*/ .5 * mat1_refine[m+1][n-1]);//changed one n to - dif\
+      (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+1][j]\
+      +/*coarse*/ .5 * mat1[i-1][j] +/*refine*/ .5 * mat1_refine[m-1][n-1] +/*refine*/ mat1_refine[m][n-1] +/*refine*/ .5 * mat1_refine[m+1][n-1]);//changed one n to - dif\
       ferent from the book
-      n+=2;
+      //should be -=2??
+      m+=2;
+      //iterates through right array
       t++;
     }
 
@@ -148,25 +151,27 @@ void Compute_InterfaceRightTimeStep(double* rightarray, double** mat1_refine, do
 }
 
 
-void Compute_InterfaceTopTimeStep(double* toparray, double** mat1_refine, double** mat1, int nrows, int ncols, int j, int n,double dt, double dx, double dy, int ccs)
+void Compute_InterfaceTopTimeStep(double* toparray, double** mat1_refine, double** mat1, int nrows, int ncols, int crs, int n,double dt, double dx, double dy, int ccs)
 {
-  int i, m = 1, t = 0;
+  int i = nrows - crs;
+  int m = 0, t = 0, j;
   double wxy = 0;
   double k = .02, diff = 0;
   wxy = k * dt/(dx*dx);
-
+  n = 2;
 
   //actually probably dont need
   //if (i,j-1) from corner or (i-1,j) from corner - substitute in corner
   //else do the following
   //do one for loop hardcode j,n stays same
   //after declare m/n += 2 ??
-  for (i = 1; i < ccs; i++)
+  for (j = 1; j < ccs; j++)
   {
       toparray[t] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
-      (-/*prev interface point*/ 4*mat1_refine[i][j] +/*coarse*/ mat1[i][j+1]  +/*coarse*/ .5 * mat1_refine[i+1][j]\
-      +/*coarse*/ .5 * mat1_refine[i-1][j] +/*refine*/ .5 * mat1_refine[m+1][n-1] +/*refine*/ mat1_refine[m][n-1] +/*refine*/ .5 * mat1_refine[m-1][n-1]);
-      m+=2;
+      (-/*prev interface point*/ 4*mat1_refine[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1_refine[i][j+1]\
+      +/*coarse*/ .5 * mat1_refine[i][j-1] +/*refine*/ .5 * mat1_refine[m+1][n-1] +/*refine*/ mat1_refine[m+1][n] +/*refine*/ .5 * mat1_refine[m+1][n+1]);
+      n+=2;
+      //iterates through top array
       t++;
   }
 
@@ -350,8 +355,8 @@ int main(int argc, char *argv[])
       Compute_TimeStep(mat1, mat2, nrows, ncols, &converge, dt, dx, dy);
       Compute_FineTimeStep(mat1_refine, mat2_refine, refrows, refcols, &converge, dt, dx, dy);
       //Compute Interfaces
-      Compute_InterfaceRightTimeStep(rightarray, mat1_refine, mat1, nrows, ncols, ci, fi, dt, dx, dy, crs);
-      Compute_InterfaceTopTimeStep(toparray, mat1_refine, mat1, nrows, ncols, cj, fj, dt, dx, dy, ccs);
+      Compute_InterfaceRightTimeStep(rightarray, mat1_refine, mat1, nrows, ncols, ccs, fi, dt, dx, dy, crs, refcols);
+      Compute_InterfaceTopTimeStep(toparray, mat1_refine, mat1, nrows, ncols, crs, fj, dt, dx, dy, ccs);
       double corner = Compute_CornerTimeStep(mat1_refine, mat1, ci, cj, fi, fj, dt, dx, dy);
       InjectCoarsePoints(toparray, rightarray, mat2, nrows, ncols, crs, ccs, 100/*corner*/);
       InjectFinePoints(toparray, rightarray, mat2_refine, refrows, refcols, 100/*corner*/);
@@ -370,7 +375,13 @@ int main(int argc, char *argv[])
   }
   end = clock();
 
-  mat1[0][0] = 123456;
+  mat1[nrows-crs][1] = 123456;
+  mat1[nrows-crs-1][1] = 999999;
+  mat1[nrows-crs][2] = 888888;
+  //mat1[1][refcols-2] = 999999;
+  //mat1[2][refcols-2] = 999999;
+  //mat1[3][refcols-2] = 999999;
+
   Printgrid(mat1_refine,refrows,refcols);
   printf("\n");
   Printgrid(mat1,nrows,ncols);
