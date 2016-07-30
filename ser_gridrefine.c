@@ -81,24 +81,30 @@ void InjectCoarsePoints(double* toparray, double* rightarray, double** mat, int 
   int test[3] = {1,2,3};
   //top
   for (i = 1; i < ccs; i++)
-      mat[nrows-crs][i] = test[i-1];//toparray[i-1];//0
+      mat[nrows-crs][i] = toparray[i-1];//toparray[i-1];//0
   //right
   for(i = nrows-2; i > nrows - crs; i--)
-      mat[i][ccs - 1] = test[i-crs-1];//rightarray[i-crs-1];//100
+      mat[i][ccs - 1] = rightarray[i-crs-1];//rightarray[i-crs-1];//100
   //corner
   mat[nrows-crs][ccs-1] = corner;
 }
 
 void InjectFinePoints(double* toparray, double* rightarray, double** mat, int nrows, int ncols, double corner)
 {
-  int i, j;
-  int test[7] = {1,2,3,4,5,6,7};
+  int i, j=0, n = 0;
+  int test[3] = {1,2,3};
   //top
-  for (i = 1; i < ncols - 1; i++)
-      mat[0][i] = test[i-1];//toparray[i-1];//0
+  for (i = 2; i < ncols - 1; i+=2)
+  {
+      mat[0][i] = toparray[j];//toparray[i-1];//0
+      j++;
+  }
   //right
-  for(i = 1; i < nrows - 1; i++)
-      mat[i][ncols - 1] = test[i-1];//rightarray[i-1];//100
+  for(i = 2; i < nrows - 1; i+=2)
+  {
+      mat[i][ncols - 1] = rightarray[n];//rightarray[i-1];//100
+      n++;
+  }
   //corner
   //double check
   mat[0][ncols-1] = corner;
@@ -174,7 +180,6 @@ void Compute_InterfaceTopTimeStep(double* toparray, double** mat1_refine, double
       //iterates through top array
       t++;
   }
-
 
 }
 
@@ -358,8 +363,8 @@ int main(int argc, char *argv[])
       Compute_InterfaceRightTimeStep(rightarray, mat1_refine, mat1, nrows, ncols, ccs, fi, dt, dx, dy, crs, refcols);
       Compute_InterfaceTopTimeStep(toparray, mat1_refine, mat1, nrows, ncols, crs, fj, dt, dx, dy, ccs);
       double corner = Compute_CornerTimeStep(mat1_refine, mat1, ci, cj, fi, fj, dt, dx, dy);
-      InjectCoarsePoints(toparray, rightarray, mat2, nrows, ncols, crs, ccs, 100/*corner*/);
-      InjectFinePoints(toparray, rightarray, mat2_refine, refrows, refcols, 100/*corner*/);
+      InjectCoarsePoints(toparray, rightarray, mat2, nrows, ncols, crs, ccs, corner);
+      InjectFinePoints(toparray, rightarray, mat2_refine, refrows, refcols, corner);
       Update(mat1, mat2, nrows, ncols);
       Update(mat1_refine, mat2_refine, refrows, refcols);
       //if (iter%100 == 0)
@@ -375,13 +380,12 @@ int main(int argc, char *argv[])
   }
   end = clock();
 
-  mat1[nrows-crs][1] = 123456;
-  mat1[nrows-crs-1][1] = 999999;
-  mat1[nrows-crs][2] = 888888;
+  //mat1[nrows-crs][1] = 123456;
+  //mat1[nrows-crs-1][1] = 999999;
+  //mat1[nrows-crs][2] = 888888;
   //mat1[1][refcols-2] = 999999;
   //mat1[2][refcols-2] = 999999;
   //mat1[3][refcols-2] = 999999;
-
   Printgrid(mat1_refine,refrows,refcols);
   printf("\n");
   Printgrid(mat1,nrows,ncols);
