@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <unistd.h>
 #include <mpi.h>
 
 int rank, size;
@@ -37,7 +38,7 @@ void initGrid(double** mat)
 
 void printGrid(double** mat, int nrows, int ncols)
 {  
-  int i, j, k, l;
+  int i, j, k;
 
   for(k=0; k<size; k++) {
     if(rank==k) {
@@ -70,14 +71,16 @@ void printGrid(double** mat, int nrows, int ncols)
 
 }
 
-  
-void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double* converge, double dt, double dx, double dy, double* all_local_converge)
+void computeTimestep(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncols, double* converge, double dt, double dx, double dy, double* all_local_converge)
 {
-  int i, j, m;
+  int i, j;
   double wx = 0, wy = 0;
   //diffusitivity coefficient - can equal .002
   double k = 1;
-  double d1 = 0.0, d2 = 0.0, d3 = 0.0, d4 = 0.0, d5 = 0.0;
+  double d5 = 0.0;
+
+  double **mat1 = *mat1_ptr;
+  double **mat2 = *mat2_ptr;
 
   //weight in x direction
   wx = k * (dt/(dx*dx));
@@ -135,18 +138,13 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
 
   //solving edges
   if (rank/P != 0)
-  {
+    {
     //not in top blocks
     i = 1;
     for(j = startcol; j < endcol; j++)
-    {
-      mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-  /*     if ( d1 < fabs(mat2[i][j] - mat1[i][j])) */
-  /*     { */
-  /*       d1 = fabs(mat1[i][j] - mat2[i][j]); */
-  /* //      printf("d5= %f\n", d5); */
-  /*     }  */
-    }
+      {
+	mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
+      }
   }
 
   if (rank/P != Q - 1)
@@ -156,11 +154,6 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
     for(j = startcol; j < endcol; j++)
     {
       mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-      if ( d2 < fabs(mat2[i][j] - mat1[i][j]))
-      {
-        d2 = fabs(mat1[i][j] - mat2[i][j]);
-  //      printf("d5= %f\n", d5);
-      }
     }
   }
 
@@ -171,11 +164,6 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
     for(i = startrow; i < endrow; i++)
     {
       mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-      if ( d3 < fabs(mat2[i][j] - mat1[i][j]))
-      {
-        d3 = fabs(mat1[i][j] - mat2[i][j]);
-  //      printf("d5= %f\n", d5);
-      }
     }
   }
 
@@ -186,36 +174,22 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
     for(i = startrow; i < endrow; i++)
     {
       mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-      if ( d4 < fabs(mat2[i][j] - mat1[i][j]))
-      {
-        d4 = fabs(mat1[i][j] - mat2[i][j]);
-  //      printf("d5= %f\n", d5);
-      }
     }
   }
 
   //halo exchange
   // Send rows up and down
   MPI_Irecv(mat2[0],      cols, MPI_DOUBLE, u, 0, MPI_COMM_WORLD, &req[0]);
-  MPI_Irecv(mat2[rows-1], cols, MPI_DOUBLE, d, 0, MPI_COMM_WORLD, &req[1]);
+  MPI_Irecv(mat2[rows-1], cols, MPI_DOUBLE, d, 1, MPI_COMM_WORLD, &req[1]);
   MPI_Isend(mat2[rows-2], cols, MPI_DOUBLE, d, 0, MPI_COMM_WORLD, &req[2]);
-  MPI_Isend(mat2[1],      cols, MPI_DOUBLE, u, 0, MPI_COMM_WORLD, &req[3]);
+  MPI_Isend(mat2[1],      cols, MPI_DOUBLE, u, 1, MPI_COMM_WORLD, &req[3]);
   // Send columns left and right
-/*
-  MPI_Irecv(&mat2[0][1],      1, MPI_CLM, l, 0, MPI_COMM_WORLD, &req[4]); 
-  MPI_Irecv(&mat2[0][cols-2], 1, MPI_CLM, r, 0, MPI_COMM_WORLD, &req[5]); 
-  MPI_Isend(&mat2[1][1],      1, MPI_CLM, l, 0, MPI_COMM_WORLD, &req[6]); 
-  MPI_Isend(&mat2[1][cols-3], 1, MPI_CLM, r, 0, MPI_COMM_WORLD, &req[7]); 
-*/
-  MPI_Irecv(&mat2[1][cols-1], 1, MPI_CLM, l, 0, MPI_COMM_WORLD, &req[4]); 
-  MPI_Irecv(&mat2[1][0],      1, MPI_CLM, r, 0, MPI_COMM_WORLD, &req[5]); 
-  MPI_Isend(&mat2[1][1],      1, MPI_CLM, l, 0, MPI_COMM_WORLD, &req[6]); 
-  MPI_Isend(&mat2[1][cols-2], 1, MPI_CLM, r, 0, MPI_COMM_WORLD, &req[7]); 
+  MPI_Irecv(&mat2[1][cols-1], 1, MPI_CLM, r, 2, MPI_COMM_WORLD, &req[4]); 
+  MPI_Irecv(&mat2[1][0],      1, MPI_CLM, l, 3, MPI_COMM_WORLD, &req[5]); 
+  MPI_Isend(&mat2[1][1],      1, MPI_CLM, l, 2, MPI_COMM_WORLD, &req[6]); 
+  MPI_Isend(&mat2[1][cols-2], 1, MPI_CLM, r, 3, MPI_COMM_WORLD, &req[7]); 
 
 
-  printGrid(mat2, rows, cols);
-  usleep(200);
-  printf("\n");
   // perform interior calculations while send/recvs are executing
   for(i = startrow; i < endrow; i++)
   {
@@ -240,11 +214,8 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
 	}
     }
 
-
-  //*converge = (d5);  
-
-  
-  MPI_Allgather(&d5,1,MPI_DOUBLE,all_local_converge,1,MPI_DOUBLE,MPI_COMM_WORLD);
+  // all processes need to know the convergence value
+  MPI_Allgather(&d5, 1, MPI_DOUBLE, all_local_converge, 1, MPI_DOUBLE, MPI_COMM_WORLD);
 
   *converge = all_local_converge[0];
 
@@ -254,56 +225,23 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
       *converge = all_local_converge[i];
   }
 
-  //if(!rank)
-  //printf("%lf\n", d1 + d2 + d3 + d4);
-  /******************
-need to find max value of d5 across all of the processes, this is your "converge" value
-do this by making an array all_local_converge[num_processes] and an MPI_Allgather to get all of the d5 values in the array
-then find the max value in the array, set converge to be equal to this value
-then all of the processes will exit at the same time and there shouldn't be a deadlock anymore
 
-MPI_Allgather(
-    &d5
-    1,
-    MPI_DOUBLE
-    all_local_converge,
-    1,
-    MPI_DOUBLE
-MPI_COMM_WORLD);
-
- ********************/
-
- //if (rank == 0){
- for(i = 0; i < rows ; i++)
-  {
-    for(j = 0; j < cols ; j++)
-    {
-      mat1[i][j] = mat2[i][j];
-    }
-  }
-
-  printGrid(mat1,nrows,ncols);
-
-  /* double **tmp; */
-
-  /* //swap mat1 = mat2 */
-  /* tmp = mat1; */
-  /* mat1 = mat2; */
-  /* mat2 = tmp; */
-
+  //swap mat1 = mat2
+  double** tmp = *mat1_ptr;
+  *mat1_ptr = *mat2_ptr;
+  *mat2_ptr = tmp; 
 }
 
 
 int main(int argc, char *argv[])
 {
-  int i, j;
+  int i;
   double **mat1, **mat2;
   //size of grid
   int nrows = 12, ncols = 12;
   double dx = 0, dy= 0, dt, time;
   double converge = 0, epsilon;
-  int iter, max_iter = 10;
-  int u, d, l, r;
+  int iter, max_iter = 1000;
   clock_t start, end;
 
   P = 2;
@@ -326,16 +264,10 @@ int main(int argc, char *argv[])
 
   epsilon = .001;
   dt = .001;
-  //dt = 5;
 
-  /* mat1 = calloc(rows, sizeof(double *)); */
-  /* for (i = 0; i < rows; i++) */
-  /*   mat1[i] = calloc(cols, sizeof(double)); */
-	
-  /* mat2 = calloc(rows, sizeof(double *)); */
-  /* for (i = 0; i < rows; i++) */
-  /*   mat2[i] = calloc(cols, sizeof(double)); */
-
+  // allocate matrices in 1d array with 2d access
+  mat1 = calloc(rows, sizeof(double *)); 
+  mat2 = calloc(rows, sizeof(double *));
   double *mat1_1d = calloc(rows*cols, sizeof(double));
   for(i=0; i<rows; i++) {
     mat1[i] = &(mat1_1d[i*cols]);
@@ -350,31 +282,29 @@ int main(int argc, char *argv[])
   initGrid(mat2);
   time = 0;
 
-  //printGrid(mat1, rows, cols);
+ start = clock();
+ for(iter = 0; iter<max_iter; iter++)
+ {
+   time += dt;
+   computeTimestep(&mat1, &mat2, nrows, ncols, &converge, dt, dx, dy, all_local_converge);
+   
+   if (converge < epsilon)
+     break;
+   
+     if(!rank)  
+       printf("iter %d: %lf\n",iter, converge);  
+ }
 
-  start = clock();
-  for(iter = 0; iter<max_iter; iter++)
-  {
-    time += dt;
-    computeTimestep(mat1, mat2, nrows, ncols, &converge, dt, dx, dy, all_local_converge);
-    
-    if (converge < epsilon)
-      break;
-    
-      if(!rank)  
-        printf("\n\niter %d: %lf\n\n",iter, converge);  
-  }
+ MPI_Barrier(MPI_COMM_WORLD);
 
-  //  printf("Process %d finished!\n", rank);
+ end = clock();
+   if (rank == 0)  
+   {  
+     printf("num of iterations: %d, with change of %lf\n", iter, converge);  
+     printf("Total time: %f seconds\n", (((double) end) - start)/CLOCKS_PER_SEC);  
+   }  
 
-  MPI_Barrier(MPI_COMM_WORLD);
-
-  end = clock();
-/*    if (rank == 0)  
-    {  
-      printf("num of iterations: %d, with change of %lf\n", iter, converge);  
-      printf("Total time: %f seconds\n", (((double) end) - start)/CLOCKS_PER_SEC);  
-    }  
-*/
   MPI_Finalize();
+
+  return 0;
 }
