@@ -180,8 +180,23 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, 
   {
     for (j = 1; j < ncols -1; j++)
     {
+      if (i == 1 && j%2 == 1)
+      {
+      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1]\
+      + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j]\
+      + mat1_refine[i][j+1]);
+      }
+      if (j == ncols-2 && i%2 == 1)
+      {
       mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]\
-      + mat1_refine[i+1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i-1][j]);
+      + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
+      + mat1_refine[i-1][j]);
+      }
+      else
+      {
+      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
+      -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+      }
     }
   }
 
@@ -322,7 +337,7 @@ int main(int argc, char *argv[])
   //end = clock();
   //for(i = 0; i < szofmesh -1; i++)
   //printf("mat1 %lf\n", mat1[nrows-crs][3-1]);
-  printf("fine %lf\n", mat1_refine[1][6]);
+  printf("fine %lf\n", mat1_refine[1][refcols-2]);
 
   printGrid(mat1_refine,refrows,refcols);
   printf("\n");
