@@ -226,7 +226,7 @@ void computeTimestep(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncol
       *converge = all_local_converge[i];
   }
 
-
+  printGrid(mat2, nrows, ncols);
   //swap mat1 = mat2
   double** tmp = *mat1_ptr;
   *mat1_ptr = *mat2_ptr;
@@ -299,7 +299,7 @@ int main(int argc, char *argv[])
   dy = 1 /(double)(ncols - 1);
 
   epsilon = .001;
-  dt = .001;
+  dt = .00001;
 
   // allocate matrices in 1d array with 2d access
   mat1 = calloc(rows, sizeof(double *)); 

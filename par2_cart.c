@@ -5,6 +5,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <mpi.h>
+#include <getopt.h>
 
 int rank, size, cRank;
 MPI_Comm MPI_COMM_CART;
@@ -95,8 +96,11 @@ void computeTimestep(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncol
   // wx + wy must be less than .5
   if ( wx + wy > .5)
   {
+    if (!rank)
+    {
     printf("Does not reach requirements for stability\n");
     exit(1);
+    }
   }
 
   //MPI
@@ -218,7 +222,7 @@ void computeTimestep(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncol
       *converge = all_local_converge[i];
   }
 
-
+  //printGrid(mat2, nrows, ncols);
   //swap mat1 = mat2
   double** tmp = *mat1_ptr;
   *mat1_ptr = *mat2_ptr;
@@ -228,7 +232,7 @@ void computeTimestep(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncol
 
 int main(int argc, char *argv[])
 {
-  int i;
+  int i, c = 0;
   double **mat1, **mat2;
   //size of grid
   int nrows = 12, ncols = 12;
@@ -236,24 +240,58 @@ int main(int argc, char *argv[])
   double converge = 0, epsilon;
   int iter, max_iter = 1000;
   clock_t start, end;
+  
+  //MPI Init
+  MPI_Init(&argc, &argv);
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   P = 2;
   Q = 2;
 
+  while ((c = getopt (argc, argv, "p:q:r:i:")) != -1)
+  {
+    switch(c)
+    {
+      case 'p':
+	P = ncols = atoi(optarg); break;
+      case 'q':
+	Q = atoi(optarg); break;
+      case 'r':
+	nrows = ncols = atoi(optarg); break;
+      case 'i':
+	max_iter = atoi(optarg); break;
+      default:
+ 	fprintf(stderr, "Invalid option\n");
+	return -1;
+    }
+  }
+
+  if(size != P*Q)
+  {
+    if (!rank)
+	printf("P*Q must run with %d MPI tasks\n", P*Q);
+    MPI_Finalize();
+    exit(0);
+  }
+
+  if(nrows%P != 0 || nrows%Q != 0)
+  {
+    if (!rank)
+      printf("P %d and Q %d must divide evenly into %d \n", P, Q, nrows);
+    MPI_Finalize();
+    exit(0);
+  }
   rows = 2 + nrows/Q;
   cols = 2 + ncols/P;
 
-  //MPI
-  MPI_Init(&argc, &argv);
-  MPI_Comm_size(MPI_COMM_WORLD, &size);
-  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   MPI_Type_vector(rows-2, 1, cols, MPI_DOUBLE, &MPI_CLM); 
   MPI_Type_commit(&MPI_CLM);
 
   //Create cart
   int prds[] = {0,0};
-  int dims[] = {P,Q};
+  int dims[] = {Q,P};
   MPI_Cart_create(MPI_COMM_WORLD, 2, dims, prds, 1, &MPI_COMM_CART);
   MPI_Comm_rank(MPI_COMM_CART, &cRank);
   MPI_Cart_coords(MPI_COMM_CART, cRank, 2, crds);
@@ -267,7 +305,7 @@ int main(int argc, char *argv[])
   dy = 1 /(double)(ncols - 1);
 
   epsilon = .001;
-  dt = .001;
+  dt = .00001;
 
   // allocate matrices in 1d array with 2d access
   mat1 = calloc(rows, sizeof(double *)); 
