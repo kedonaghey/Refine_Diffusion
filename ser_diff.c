@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
   int i, c;
   double **mat1, **mat2;
   //size of grid
-  int nrows = 12, ncols = 12;
+  int nrows = 16, ncols = 16;
   double dx = 0, dy= 0, dt, time;
   double converge = 0, epsilon;
   int iter, max_iter = 10;
@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
   dy = 1 /(double)(ncols - 1);
 
   epsilon = .001;
-  dt = .001;
+  dt = .00001;
   //dt = 5;
   mat1 = calloc(nrows, sizeof(double *));
   for (i = 0; i < nrows; i++)

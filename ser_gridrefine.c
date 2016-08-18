@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include <getopt.h>
 
 void initFineGrid(double** mat, int nrows, int ncols)
 {
@@ -78,7 +79,7 @@ void printGridToFile(double** mat, int nrows, int ncols, FILE *fp)
 void injectCoarsePoints(double* toparray, double* rightarray, double** mat, int nrows, int ncols, int crs, int ccs, double corner)
 {
   int i, j = 0;
-  int test[] = {1,2,3};
+  //int test[] = {1,2,3};
   //top
   for (i = 1; i < ccs; i++)
       mat[nrows-crs][i] = toparray[i-1];//toparray[i-1];//0
@@ -97,7 +98,7 @@ void injectFinePoints(double* toparray, double* rightarray, double** mat, int nr
 {
   int i, j = 0, n = 0;
   //top
-  int test[] = {1,2,3};
+  //int test[] = {1,2,3};
   for (i = 2; i < ncols - 1; i+=2)
   {
       mat[0][i] = toparray[j];//toparray[i-1];//0
@@ -226,15 +227,12 @@ void update(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncols)
 int main(int argc, char *argv[])
 {
 
-  int i;
+  int i, c;
   double **mat1, **mat2;
   double **mat1_refine, **mat2_refine;
   //size of grid
   int nrows = 10, ncols = 10;
   //2x2 for mesh in a 4x4 array
-  int szofmesh = .4*nrows;
-  int refrows = szofmesh * 2 + 1;
-  int refcols = szofmesh * 2 + 1;
   double dx = 0, dy= 0, dt, time;
   double converge = 0;
   int iter, max_iter = 190;
@@ -243,6 +241,24 @@ int main(int argc, char *argv[])
   char output_file[80] = "k.txt";
   FILE *fp;
 
+  while ((c = getopt (argc, argv, "r:i:")) != -1)
+  {
+    switch(c)
+    {
+      case 'r':
+	nrows = ncols = atoi(optarg); break;
+      case 'i':
+	max_iter = atoi(optarg); break;
+      default:
+ 	fprintf(stderr, "Invalid option\n");
+	return -1;
+    }
+  }
+
+  int szofmesh = .4*nrows;
+
+  int refrows = szofmesh * 2 + 1;
+  int refcols = szofmesh * 2 + 1;
   //width of space steps in x and y direction
   dx = 1 /(double)(nrows - 1);
   dy = 1 /(double)(ncols - 1);
