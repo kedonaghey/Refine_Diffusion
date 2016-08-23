@@ -97,7 +97,7 @@ void printGrid(double** mat, int nrows, int ncols)
       /* printf("%f\n ", mat[5][cols-2]); */
       for (i = 0; i < nrows; i++) {
         for (j = 0; j < ncols; j++) {
-          printf("%f ", mat[i][j]);
+          printf("%lf ", mat[i][j]);
         }
         printf("\n");
       }
@@ -217,16 +217,17 @@ void sendTopInterfacePoints(double** mat, double* buffer, int par_rows, int par_
 /****    Interface Points *****/
 //for bound points use regular matrix
 //finished
-double computeCornerTimestep(double* buffer, double** mat1, double** mat2, int i, int j, int m, int n, double wxy, int par_cols)
+double computeCornerTimestep(double* buffer, double** mat1, double** mat2, int i, int j, int m, int n, double wxy, int par_ref_cols)
 {
   //double mat1_corner;
   double mat2_corner;
-  i = 1, j = par_cols - 2;
+  i = 1, j = par_ref_cols - 2;
   m = 1;
   mat2[i][j] = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+
 		.5 * /*bound lwr*/mat1[i+2][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-2]
 	        +/*mesh*/ mat1[i+1][j-1]);
   //return mat2_corner;
+
 }
 
 //need to add in different
@@ -474,7 +475,7 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref
 }
 
 
-void computeTimestep(double** mat1, double** mat2, int par_rows, int par_cols, double* converge, double wx, double wy, int crse_rows_cutoff, int crse_cols_cutoff)
+void computeTimestep(double* bfr_top_refine_pts, double* bfr_right_refine_pts, double** mat1, double** mat2, int par_rows, int par_cols, double* converge, double wx, double wy, int crse_rows_cutoff, int crse_cols_cutoff)
 {
   int i, j;
   MPI_Status stat[8]; 
@@ -575,7 +576,9 @@ if (rank == 3){
   for( i = 1; i < par_rows - 2; i++)
   mat2[i][1] = mat1[i][1] + wx * (mat1[i+1][1] - 2*mat1[i][1] + mat1[i-1][1]) + wy * (mat1[i][1+1] - 2 * mat1[i][1] + mat1[i][1-1]);
 }
+
   MPI_Waitall(8,req, stat);
+
  /* 
   for(i = 2; i < par_rows - 1; i++)
   {
@@ -818,9 +821,9 @@ int main(int argc, char *argv[])
       if(in_refine)
       {
 	 injectFinePoints(bfr_top_interface_pts, bfr_right_interface_pts, mat1, par_ref_rows, par_cols, par_ref_cols);
-	 computeInterfaceRightTimestep(bfr_right_refine_pts, mat1, mat2, par_ref_rows, ncols, crse_cols_cutoff, wxy, dx, crse_rows_cutoff, refcols);
 	 computeInterfaceTopTimestep(bfr_top_refine_pts, mat1, mat2, par_rows, par_ref_cols, crse_rows_cutoff, wxy, dx, crse_cols_cutoff);
-	 computeCornerTimestep(bfr_right_refine_pts, mat1, mat2, ci_crnr, cj_crnr, fi_crnr, fj_crnr, wxy, par_cols);
+	 computeInterfaceRightTimestep(bfr_right_refine_pts, mat1, mat2, par_ref_rows, ncols, crse_cols_cutoff, wxy, dx, crse_rows_cutoff, refcols);
+	 computeCornerTimestep(bfr_right_refine_pts, mat1, mat2, ci_crnr, cj_crnr, fi_crnr, fj_crnr, wxy, par_ref_cols);
       }
 
       if(in_refine || rank == 3)
@@ -835,7 +838,7 @@ int main(int argc, char *argv[])
 
       if(!in_refine){
 
-	computeTimestep(mat1, mat2, par_rows, par_cols, &converge, wx, wy, crse_rows_cutoff, crse_cols_cutoff);
+	computeTimestep(bfr_top_refine_pts, bfr_right_refine_pts, mat1, mat2, par_rows, par_cols, &converge, wx, wy, crse_rows_cutoff, crse_cols_cutoff);
       }
       else
       {
