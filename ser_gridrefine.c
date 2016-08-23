@@ -8,30 +8,30 @@
 void initFineGrid(double** mat, int nrows, int ncols)
 {
   int i;
-  int top = 20;
-  int left = 50;
+  int left = 20;
+  int bottom = 40;
   //bottom and top rows initial conditions
   for ( i = 0; i < nrows; i+=2)
     {
-      mat[i][0] = top;
+      mat[i][0] = left;
     }
   for (i = 1; i < nrows; i+=2)
     {
-      mat[i][0] = top/2;
+      mat[i][0] = left/2;
     }
   //left and right rows initial conditions
   for ( i = 0; i < ncols; i+=2)
     {
-      mat[nrows-1][i] = left;//100
+      mat[nrows-1][i] = bottom;//100
     }
   for (i=1; i < ncols; i+=2)
     {
-      mat[nrows-1][i] = left/2;
+      mat[nrows-1][i] = bottom/2;
     }
 
 }
 
-void initGrid(double** mat, int nrows, int ncols, int crse_rows_cutoff, int crse_clm_cutoff)
+void initGrid(double** mat, int nrows, int ncols, int crse_rows_cutoff, int crse_clms_cutoff)
 {
   int i;
   //bottom and top rows initial conditions
@@ -42,12 +42,12 @@ void initGrid(double** mat, int nrows, int ncols, int crse_rows_cutoff, int crse
   for (i = 0; i <nrows; i++)
       mat[i][ncols - 1] = 30;//100
   //left and right rows initial conditions
-  for ( i = crse_clm_cutoff -1; i < ncols; i++)
+  for ( i = crse_clms_cutoff -1; i < ncols; i++)
     {
-      mat[nrows - 1][i] = 50;//0
+      mat[nrows - 1][i] = 40;//0
     }
   for ( i = 0; i < ncols; i++)
-      mat[0][i] = 40;//100
+      mat[0][i] = 50;//100
 
 }
 
@@ -56,7 +56,7 @@ void printGrid(double** mat, int nrows, int ncols)
   int i, j;
     for (i = 0; i < nrows; i++) {
         for (j = 0; j < ncols; j++) {
-            printf("%f ", mat[i][j]);
+            printf("%lf ", mat[i][j]);
         }
         printf("\n");
     }
@@ -76,22 +76,22 @@ void printGridToFile(double** mat, int nrows, int ncols, FILE *fp)
 
 }
 
-void injectCoarsePoints(double* toparray, double* rightarray, double** mat, int nrows, int ncols, int crse_rows_cutoff, int crse_clm_cutoff, double corner)
+void injectCoarsePoints(double* toparray, double* rightarray, double** mat, int nrows, int ncols, int crse_rows_cutoff, int crse_clms_cutoff, double corner)
 {
   int i, j = 0;
   //int test[] = {1,2,3};
   //top
-  for (i = 1; i < crse_clm_cutoff; i++)
+  for (i = 1; i < crse_clms_cutoff; i++)
       mat[nrows-crse_rows_cutoff][i] = toparray[i-1];//toparray[i-1];//0
   //right
   for(i = nrows-2; i > nrows - crse_rows_cutoff; i--)
   {
-      //mat[i][crse_clm_cutoff - 1] = test[i-crse_rows_cutoff-1];//rightarray[i-crs-1];//100
-      mat[i][crse_clm_cutoff - 1] = rightarray[j];
+      //mat[i][crse_clms_cutoff - 1] = test[i-crse_rows_cutoff-1];//rightarray[i-crs-1];//100
+      mat[i][crse_clms_cutoff - 1] = rightarray[j];
       j++;
   }
   //corner
-  mat[nrows-crse_rows_cutoff][crse_clm_cutoff-1] = corner;
+  mat[nrows-crse_rows_cutoff][crse_clms_cutoff-1] = corner;
 }
 
 void injectFinePoints(double* toparray, double* rightarray, double** mat, int nrows, int ncols, double corner)
@@ -133,41 +133,50 @@ double computeCornerTimestep(double** mat1_refine, double** mat1, int i, int j, 
 
 //need to add in different
 
-void computeInterfaceRightTimestep(double* rightarray, double** mat1_refine, double** mat1, int nrows, int ncols, int crse_clm_cutoff, int m, double wxy, double dx, int crse_rows_cutoff, int refcols)
+void computeInterfaceRightTimestep(double* rightarray, double** mat1_refine, double** mat1, int nrows, int ncols, int crse_clms_cutoff, int m, double wxy, double dx, int crse_rows_cutoff, int refcols, int refrows)
 {
-  int j = crse_clm_cutoff-1, n = refcols-1, t = 0, i;
-  m = 2;
+  int j = crse_clms_cutoff-1, n = refcols-1, t = 0, i;
+  m = refrows - 3;
 
-    for (i = nrows-2; i > nrows-crse_rows_cutoff; i--)
+    for (i = nrows-2; i > nrows-crse_rows_cutoff ; i--)
     {
       rightarray[t] =/*previous interface point*/ mat1[i][j] + /*previous interface point*/ mat1[i][j] * wxy * (dx/2) + wxy *\
       (4/3) * (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+1][j]\
       +/*coarse*/ .5 * mat1[i-1][j] +/*refine*/ .5 * mat1_refine[m-1][n-1] +/*refine*/ mat1_refine[m][n-1] +/*refine*/ .5\
       * mat1_refine[m+1][n-1]);//changed one n to - different from the book
-      m+=2;
+      m-=2;
       //iterates through right array
       t++;
     }
+
+    for(i=0; i<4; i++)
+      printf("%lf\n", rightarray[i]);
+    printf("\n");
 
 
 }
 
 
-void computeInterfaceTopTimestep(double* toparray, double** mat1_refine, double** mat1, int nrows, int ncols, int crse_rows_cutoff, int n, double wxy, double dx, int crse_clm_cutoff)
+void computeInterfaceTopTimestep(double** mat2, double* toparray, double** mat1_refine, double** mat1, int nrows, int ncols, int crse_rows_cutoff, int n, double wxy, double dx, int crse_clms_cutoff)
 {
   int i = nrows - crse_rows_cutoff;
   int m = 0, t = 0, j;
   n = 2;
 
-  for (j = 1; j < crse_clm_cutoff; j++)
+
+  for (j = 1; j < crse_clms_cutoff-1 ; j++)
   {
       toparray[t] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
-      (-/*prev interface point*/ 4*mat1_refine[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1_refine[i][j+1]\
-      +/*coarse*/ .5 * mat1_refine[i][j-1] +/*refine*/ .5 * mat1_refine[m+1][n-1] +/*refine*/ mat1_refine[m+1][n] +/*refine*/ .5 * mat1_refine[m+1][n+1]);
+      (-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1_refine[i][j+1]\
+      +/*coarse*/ .5 * mat1[i][j-1] +/*refine*/ .5 * mat1_refine[m+1][n-1] +/*refine*/ mat1_refine[m+1][n] 
+      +/*refine*/ .5 * mat1_refine[m+1][n+1]);
       n+=2;
       //iterates through top array
       t++;
   }
+
+//  printf("%lf\n", toparray[1]);
+//  printf("%lf\n", toparray[2]);
 
 }
 
@@ -204,7 +213,7 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, 
 }
 
 
-void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double* converge, double wx, double wy, int crse_rows_cutoff, int crse_clm_cutoff)
+void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double* converge, double wx, double wy, int crse_rows_cutoff, int crse_clms_cutoff)
 {
   int i, j;
  
@@ -214,6 +223,7 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
     {
       mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
 }}
+
 }
 
 void update(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncols)
@@ -221,7 +231,6 @@ void update(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncols)
   double **tmp = *mat1_ptr;
   *mat1_ptr = *mat2_ptr;
   *mat2_ptr = tmp;
-
 }
 
 int main(int argc, char *argv[])
@@ -257,8 +266,8 @@ int main(int argc, char *argv[])
 
   int szofmesh = .5*nrows;
 
-  int refrows = szofmesh * 2 + 1;
-  int refcols = szofmesh * 2 + 1;
+  int refrows = szofmesh * 2 - 1;
+  int refcols = szofmesh * 2 - 1;
   //width of space steps in x and y direction
   dx = 1 /(double)(nrows - 1);
   dy = 1 /(double)(ncols - 1);
@@ -274,10 +283,10 @@ int main(int argc, char *argv[])
   for (i = 0; i < nrows; i++)
     mat2[i] = calloc(ncols, sizeof(double));
 
-  int crse_rows_cutoff = refrows/2 + 1;
-  int crse_clm_cutoff = refcols/2 + 1;
-  initGrid(mat1, nrows, ncols, crse_rows_cutoff, crse_clm_cutoff);
-  initGrid(mat2, nrows, ncols, crse_rows_cutoff, crse_clm_cutoff);
+  int crse_rows_cutoff = ceil(refrows/2.0) + 0;
+  int crse_clms_cutoff = ceil(refcols/2.0) + 0;
+  initGrid(mat1, nrows, ncols, crse_rows_cutoff, crse_clms_cutoff);
+  initGrid(mat2, nrows, ncols, crse_rows_cutoff, crse_clms_cutoff);
 
   mat1_refine = calloc(refrows, sizeof(double *));
   for (i = 0; i < refrows; i++)
@@ -302,7 +311,7 @@ int main(int argc, char *argv[])
   //Corner Points
   //coarse
   int ci_crnr = nrows - crse_rows_cutoff;
-  int cj_crnr = crse_clm_cutoff - 1;
+  int cj_crnr = crse_clms_cutoff - 1;
   //fine
   int fi_crnr = 0;
   int fj_crnr = refcols - 1;
@@ -337,18 +346,17 @@ int main(int argc, char *argv[])
   for(iter = 0; iter < max_iter; iter++)
   {
       time = time + dt;
-      computeTimestep(mat1, mat2, nrows, ncols, &converge, wx, wy, crse_rows_cutoff, crse_clm_cutoff);
+      computeTimestep(mat1, mat2, nrows, ncols, &converge, wx, wy, crse_rows_cutoff, crse_clms_cutoff);
       computeFineTimestep(mat1_refine, mat2_refine, refrows, refcols, &converge, wxy, sxy);
       //Compute Interfaces
-      computeInterfaceRightTimestep(rightarray, mat1_refine, mat1, nrows, ncols, crse_clm_cutoff, fi_crnr, wxy, dx, crse_rows_cutoff, refcols);
-      computeInterfaceTopTimestep(toparray, mat1_refine, mat1, nrows, ncols, crse_rows_cutoff, fj_crnr, wxy, dx, crse_clm_cutoff);
+      computeInterfaceRightTimestep(rightarray, mat1_refine, mat1, nrows, ncols, crse_clms_cutoff, fi_crnr, wxy, dx, crse_rows_cutoff, refcols, refrows);
+      computeInterfaceTopTimestep(mat2, toparray, mat1_refine, mat1, nrows, ncols, crse_rows_cutoff, fj_crnr, wxy, dx, crse_clms_cutoff);
       double corner = computeCornerTimestep(mat1_refine, mat1, ci_crnr, cj_crnr, fi_crnr, fj_crnr, wxy);
-      injectCoarsePoints(toparray, rightarray, mat2, nrows, ncols, crse_rows_cutoff, crse_clm_cutoff, corner);
+      injectCoarsePoints(toparray, rightarray, mat2, nrows, ncols, crse_rows_cutoff, crse_clms_cutoff, corner);
       injectFinePoints(toparray, rightarray, mat2_refine, refrows, refcols, corner);
       update(&mat1, &mat2, nrows, ncols);
       update(&mat1_refine, &mat2_refine, refrows, refcols);
       //if (iter%100 == 0)
-      iter++;
     }
   //end = clock();
   //for(i = 0; i < szofmesh -1; i++)
