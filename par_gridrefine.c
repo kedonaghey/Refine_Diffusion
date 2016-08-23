@@ -150,6 +150,16 @@ void injectFinePoints(double* topbuffer, double* rightbuffer, double** mat, int 
       mat[i][par_ref_cols - 1] = rightbuffer[n];
       n++;
     }
+
+  for(i=2; i<par_ref_cols-2; i+=2)
+    {
+      mat[1][i] = 0.5*(mat[1][i-1] + mat[1][i+1]);
+    }
+
+  for(i=2; i<par_ref_rows-2; i+=2)
+    {
+      mat[i][par_ref_cols-2] = 0.5*(mat[i-1][par_ref_cols-2] + mat[i+1][par_ref_cols-2]);
+    }
   //corner
   //double check
 }
@@ -207,13 +217,14 @@ void sendTopInterfacePoints(double** mat, double* buffer, int par_rows, int par_
 /****    Interface Points *****/
 //for bound points use regular matrix
 //finished
-double computeCornerTimestep(double* buffer, double** mat1, double** mat2, int i, int j, int m, int n, double wxy)
+double computeCornerTimestep(double* buffer, double** mat1, double** mat2, int i, int j, int m, int n, double wxy, int par_cols)
 {
   //double mat1_corner;
   double mat2_corner;
+  i = 1, j = par_cols - 2;
   m = 1;
   mat2[i][j] = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+
-		.5 * /*bound lwr*/mat1[i+1][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-1]
+		.5 * /*bound lwr*/mat1[i+2][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-2]
 	        +/*mesh*/ mat1[i+1][j-1]);
   //return mat2_corner;
 }
@@ -225,7 +236,7 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
   int j = par_ref_rows - 2, n = refcols-1, t = 0, i;
   int m = 1;
 
-  for (i = 3; i < par_ref_rows - 2; i+=2)
+  for (i = 3; i < par_ref_rows - 3; i+=2)
     {
       mat2[i][j] =/*previous interface point*/ mat1[i][j] + /*previous interface point*/ mat1[i][j] * wxy * (dx/2) + wxy *
 	(4/3) * (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+2][j]
@@ -244,7 +255,7 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
   int m = 0, t = 0, j, b = 0;
   int n = 2;
 
-  for (j = 3; j < par_ref_cols - 2; j++)
+  for (j = 3; j < par_ref_cols - 3; j+=2)
     {
       mat2[i][j] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
 	(-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1[i][j+2]\
@@ -798,15 +809,6 @@ int main(int argc, char *argv[])
     {
       time = time + dt;
 
-      if(!in_refine){
-
-	computeTimestep(mat1, mat2, par_rows, par_cols, &converge, wx, wy, crse_rows_cutoff, crse_cols_cutoff);
-      }
-      else
-      {
-	    computeFineTimestep(mat1, mat2, refrows, refcols, &converge, wxy, sxy);
-      }
-
       if(in_refine || rank == 3)
         sendRightInterfacePoints(mat1, bfr_right_interface_pts, par_rows, par_cols);
 
@@ -816,9 +818,9 @@ int main(int argc, char *argv[])
       if(in_refine)
       {
 	 injectFinePoints(bfr_top_interface_pts, bfr_right_interface_pts, mat1, par_ref_rows, par_cols, par_ref_cols);
-       computeInterfaceRightTimestep(bfr_right_refine_pts, mat1, mat2, par_ref_rows, ncols, crse_cols_cutoff, wxy, dx, crse_rows_cutoff, refcols);
-computeInterfaceTopTimestep(bfr_top_refine_pts, mat1, mat2, par_rows, par_ref_cols, crse_rows_cutoff, wxy, dx, crse_cols_cutoff);
-//computeCornerTimestep(bfr_right_refine_pts, mat1, mat2, ci_crnr, cj_crnr, fi_crnr, fj_crnr, wxy);
+	 computeInterfaceRightTimestep(bfr_right_refine_pts, mat1, mat2, par_ref_rows, ncols, crse_cols_cutoff, wxy, dx, crse_rows_cutoff, refcols);
+	 computeInterfaceTopTimestep(bfr_top_refine_pts, mat1, mat2, par_rows, par_ref_cols, crse_rows_cutoff, wxy, dx, crse_cols_cutoff);
+	 computeCornerTimestep(bfr_right_refine_pts, mat1, mat2, ci_crnr, cj_crnr, fi_crnr, fj_crnr, wxy, par_cols);
       }
 
       if(in_refine || rank == 3)
@@ -830,9 +832,18 @@ computeInterfaceTopTimestep(bfr_top_refine_pts, mat1, mat2, par_rows, par_ref_co
       if (rank == 3 || rank == 0)
         injectCoarsePoints(bfr_top_refine_pts, bfr_right_refine_pts, mat1, par_rows, par_cols, crse_rows_cutoff, crse_cols_cutoff);
 
-/*
+
+      if(!in_refine){
+
+	computeTimestep(mat1, mat2, par_rows, par_cols, &converge, wx, wy, crse_rows_cutoff, crse_cols_cutoff);
+      }
+      else
+      {
+	    computeFineTimestep(mat1, mat2, refrows, refcols, &converge, wxy, sxy);
+      }
+
 	update(&mat1, &mat2);
-*/
+
 
 
 //recvRefinePoints
@@ -848,10 +859,10 @@ computeInterfaceTopTimestep(bfr_top_refine_pts, mat1, mat2, par_rows, par_ref_co
     }
 
   if(!in_refine)
-    printGrid(mat2, par_rows, par_cols);
+    printGrid(mat1, par_rows, par_cols);
   else
   {
-    printGrid(mat2, par_ref_rows, par_ref_cols);
+    printGrid(mat1, par_ref_rows, par_ref_cols);
   }
 
   if (rank == 3)
