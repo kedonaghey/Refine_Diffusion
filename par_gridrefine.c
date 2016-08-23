@@ -4,6 +4,7 @@
 #include <math.h>
 #include <time.h>
 #include <getopt.h>
+#include <mpi.h>
 
 int rank, size, cRank, cRank2;
 MPI_Comm MPI_COMM_CART;
@@ -11,201 +12,304 @@ MPI_Comm MPI_COMM_CART2;
 int P, Q, R, S;
 int crds[2];
 int rcrds[2];
-int par_rows, par_clms;
-int par_rrows, par_rclms;
 MPI_Datatype MPI_CLM;
-MPI_Datatype MPI_ROW;
+MPI_Datatype MPI_CLM_FINE;
 
 void initFineGrid(double** mat, int nrows, int ncols)
 {
   int i;
-  int top = 20;
-  int left = 50;
-  //bottom and top rows initial conditions
-  if(rcrds[1] == R-1)
-  {
-  for ( i = 0; i < nrows; i+=2)
+  int bottom = 40;
+  int left = 20;
+  // left rows initial conditions
+  if(rcrds[1] == 0)
     {
-      mat[i][0] = top;
+      for ( i = 1; i < nrows - 1; i+=2)
+	{
+	  mat[i][1] = left;
+	}
+      for (i = 2; i < nrows - 1; i+=2)
+	{
+	  mat[i][1] = left/2;
+	}
     }
-  for (i = 1; i < nrows; i+=2)
+
+  // bottom rows initial conditions
+  if(rcrds[0] == S-1)
     {
-      mat[i][0] = top/2;
-    }
-  }
-  //left and right rows initial conditions
-  if(rcrds[0] == 0)
-  {
-  for ( i = 0; i < ncols; i+=2)
-    {
-      mat[nrows-1][i] = left;//100
-    }
-  for (i=1; i < ncols; i+=2)
-    {
-      mat[nrows-1][i] = left/2;
-    }
-  } 
+      for ( i = 1; i < ncols - 1; i+=2)
+	{
+	  mat[nrows-2][i] = bottom;//100
+	}
+      for (i = 2; i < ncols - 1; i+=2)
+	{
+	  mat[nrows-2][i] = bottom/2;
+	}
+    } 
 }
 
-void initGrid(double** mat, int nrows, int ncols, int crs, int ccs)
+void initGrid(double** mat, int nrows, int ncols, int crse_rows_cutoff, int crse_cols_cutoff)
 {
   int i;
-  //bottom and top rows initial conditions
-  if(crds[1] == 0)
-  {
-  for ( i = 0; i < nrows - crs +1; i++)
-    {
-      mat[i][0] = 20;//0
-    }
-  }
-  else if(crds[1] == P - 1)
-  {
-  for (i = 0; i <nrows; i++)
-    { 
-      mat[i][ncols - 1] = 30;//100
-    }
-  }
-
+  if (rank!= 2){
   //left and right rows initial conditions
-  if(crds[0] == 0)
-  {
-  for ( i = ccs -1; i < ncols; i++)
+  if(crds[1] == 0)
     {
-      mat[nrows - 1][i] = 50;//0
+      //  for ( i = 1; i < nrows - crse_rows_cutoff +1; i++)
+      for ( i = 1; i < nrows - 1; i++)
+	{
+	  mat[i][1] = 20;//0
+	}
     }
-  }
-  else if(crds[0] == Q-1)
-  {
-  for ( i = 0; i < ncols; i++)
+  else if(crds[1] == P - 1)
     {
-      mat[0][i] = 40;//100
+      for (i = 1; i <nrows - 1; i++)
+	{ 
+	  mat[i][ncols - 2] = 30;//100
+	}
     }
-  }
 
+  //bottom and top rows initial conditions
+  if(crds[0] == 0)
+    {
+      for ( i = 1; i < ncols - 1; i++)
+	{
+	  mat[1][i] = 50;//0
+	}
+    }
+  else if(crds[0] == Q-1)
+    {
+      for ( i = 1; i < ncols - 1; i++)
+	{
+	  mat[nrows-2][i] = 40;//100
+	}
+    }
+}
 }
 
 void printGrid(double** mat, int nrows, int ncols)
 {
-  int i, j;
-    for (i = 0; i < nrows; i++) {
+  int i, j, k;
+
+  for(k=0; k<size; k++) {
+    if(rank==k) {
+      printf("\nRank %d:\n", rank);
+      /* printf("%f\n ", mat[1][1]); */
+      /* printf("%f\n ", mat[5][cols-2]); */
+      for (i = 0; i < nrows; i++) {
         for (j = 0; j < ncols; j++) {
-            printf("%f ", mat[i][j]);
+          printf("%f ", mat[i][j]);
         }
         printf("\n");
+      }
     }
-
-
-}
-void printGridToFile(double** mat, int nrows, int ncols, FILE *fp)
-{
-  int i, j;
-    for (i = 0; i < nrows; i++) {
-        for (j = 0; j < ncols; j++) {
-            fprintf(fp, "%f ", mat[i][j]);
-        }
-        fprintf(fp, "\n");
-    }
+    usleep(200);
+  }
 
 
 }
 
-void injectCoarsePoints(double* toparray, double* rightarray, double** mat, int nrows, int ncols, int crs, int ccs, double corner)
+void injectCoarsePoints(double* toparray, double* rightarray, double** mat, int par_rows, int par_cols, int crse_rows_cutoff, int crse_cols_cutoff)
 {
-  int i, j = 0;
+  int i, j = 0, n = 1;
   //int test[] = {1,2,3};
   //top
-  for (i = 1; i < ccs; i++)
-      mat[nrows-crs][i] = toparray[i-1];//toparray[i-1];//0
-  //right
-  for(i = nrows-2; i > nrows - crs; i--)
+  if (rank == 0){
+  for (i = 1; i < par_cols - 1; i++)
   {
-      //mat[i][ccs - 1] = test[i-crs-1];//rightarray[i-crs-1];//100
-      mat[i][ccs - 1] = rightarray[j];
-      j++;
+    mat[par_rows - 1][i] = toparray[j];
+    j+=2;//toparray[i-1];//0
+  }
+  }
+  //right
+  if (rank == 3){
+  for(i = 1; i < par_rows - 1; i++)
+    {
+      //mat[i][crse_cols_cutoff - 1] = test[i-crse_rows_cutoff-1];//rightarray[i-crs-1];//100
+      mat[i][0] = rightarray[j];
+      j+=2;
+    }
   }
   //corner
-  mat[nrows-crs][ccs-1] = corner;
+  //mat[nrows-crse_rows_cutoff][crse_cols_cutoff-1] = corner;
 }
 
-void injectFinePoints(double* toparray, double* rightarray, double** mat, int nrows, int ncols, double corner)
+void injectFinePoints(double* topbuffer, double* rightbuffer, double** mat, int par_ref_rows, int par_cols, int par_ref_cols)
 {
   int i, j = 0, n = 0;
-  //top
+  
   //int test[] = {1,2,3};
-  for (i = 2; i < ncols - 1; i+=2)
-  {
-      mat[0][i] = toparray[j];//toparray[i-1];//0
+  for (i = 1; i < par_ref_cols - 1; i+=2)
+    {
+      mat[0][i] = topbuffer[j];//toparray[i-1];//0
       j++;
-  }
+    }
   //right
-  for(i = nrows - 3; i > 0; i-=2)
-  {
+  for(i = 1; i < par_ref_rows - 1; i+=2)
+    {
       //mat[i][ncols - 1] = rightarray[n];//rightarray[i-1];//100
-      mat[i][ncols - 1] = rightarray[n];
+      mat[i][par_ref_cols - 1] = rightbuffer[n];
       n++;
-  }
+    }
   //corner
   //double check
-  mat[0][ncols-1] = corner;
 }
 
+
+void sendRightInterfacePoints(double** mat, double* buffer, int par_rows, int par_cols)
+{
+  MPI_Status stat[2]; 
+  MPI_Request req[2];
+  MPI_Datatype MPI_CLM_BFR;
+  MPI_Type_vector(par_rows - 2, 1, par_cols, MPI_DOUBLE, &MPI_CLM_BFR);
+  MPI_Type_commit(&MPI_CLM_BFR);
+
+  if(rank==3)
+  MPI_Send(&mat[1][1], 1, MPI_CLM_BFR, 4, 0, MPI_COMM_WORLD);
+
+  if(rank==4)
+  MPI_Recv(&buffer[0], par_rows-2, MPI_DOUBLE, 3, 0, MPI_COMM_WORLD, &stat[1]);
+
+  printf("%d in refine\n", rank);
+
+  //MPI_Waitall(2, req, stat);
+}
+
+void sendTopInterfacePoints(double** mat, double* buffer, int par_rows, int par_ref_cols)
+{
+  MPI_Status stat[2]; 
+  MPI_Request req[2];
+/*MPI_Datatype MPI_CLM_BFR;
+  MPI_Type_vector(par_ref_rows-2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_BFR);
+  MPI_Type_commit(&MPI_CLM_BFR);
+
+
+  if(rank==4)
+  MPI_Send(mat[2], par_ref_cols , MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
+
+  if(rank==0)
+  MPI_Recv(&buffer[0], par_ref_cols, MPI_DOUBLE, 4, 0, MPI_COMM_WORLD, &stat[1]);
+
+  printf("%d in refine\n", rank);
+*/
+  MPI_Datatype MPI_ROW_BFR;
+  MPI_Type_vector(par_rows - 2, 1, 1, MPI_DOUBLE, &MPI_ROW_BFR);
+  MPI_Type_commit(&MPI_ROW_BFR);
+
+
+  if(rank==0)
+  MPI_Send(&mat[par_rows - 2][1], 1, MPI_ROW_BFR, 4, 0, MPI_COMM_WORLD);
+
+  if(rank==4)
+  MPI_Recv(&buffer[0], 1, MPI_ROW_BFR, 0, 0, MPI_COMM_WORLD, &stat[1]);
+
+  //MPI_Waitall(2, req, stat);
+}
 /****    Interface Points *****/
 //for bound points use regular matrix
 //finished
-double computeCornerTimestep(double** mat1_refine, double** mat1, int i, int j, int m, int n, double wxy)
+double computeCornerTimestep(double* buffer, double** mat1, double** mat2, int i, int j, int m, int n, double wxy)
 {
   //double mat1_corner;
   double mat2_corner;
-
-  mat2_corner = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+\
-  .5 * /*bound lwr*/mat1[i+1][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-1]\
-  +/*mesh*/ mat1_refine[m+1][n-1]);
-
- return mat2_corner;
+  m = 1;
+  mat2[i][j] = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+
+		.5 * /*bound lwr*/mat1[i+1][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-1]
+	        +/*mesh*/ mat1[i+1][j-1]);
+  //return mat2_corner;
 }
 
 //need to add in different
 
-void computeInterfaceRightTimestep(double* rightarray, double** mat1_refine, double** mat1, int nrows, int ncols, int ccs, int m, double wxy, double dx, int crs, int refcols)
+void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2, int par_ref_rows, int ncols, int crse_cols_cutoff, double wxy, double dx, int crse_rows_cutoff, int refcols)
 {
-  int j = ccs-1, n = refcols-1, t = 0, i;
-  m = 2;
+  int j = par_ref_rows - 2, n = refcols-1, t = 0, i;
+  int m = 1;
 
-    for (i = nrows-2; i > nrows-crs; i--)
+  for (i = 3; i < par_ref_rows - 2; i+=2)
     {
-      rightarray[t] =/*previous interface point*/ mat1[i][j] + /*previous interface point*/ mat1[i][j] * wxy * (dx/2) + wxy *\
-      (4/3) * (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+1][j]\
-      +/*coarse*/ .5 * mat1[i-1][j] +/*refine*/ .5 * mat1_refine[m-1][n-1] +/*refine*/ mat1_refine[m][n-1] +/*refine*/ .5\
-      * mat1_refine[m+1][n-1]);//changed one n to - different from the book
+      mat2[i][j] =/*previous interface point*/ mat1[i][j] + /*previous interface point*/ mat1[i][j] * wxy * (dx/2) + wxy *
+	(4/3) * (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+2][j]
+		 +/*coarse*/ .5 * mat1[i-2][j] +/*refine*/ .5 * mat1[i-1][j-1] +/*refine*/ mat1[i][j-1] +/*refine*/ .5
+		 * mat1[i+1][j-1]);
       m+=2;
       //iterates through right array
       t++;
     }
-
-
 }
 
 
-void computeInterfaceTopTimestep(double* toparray, double** mat1_refine, double** mat1, int nrows, int ncols, int crs, int n, double wxy, double dx, int ccs)
+void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, int par_rows, int par_ref_cols, int crse_rows_cutoff, double wxy, double dx, int crse_cols_cutoff)
 {
-  int i = nrows - crs;
-  int m = 0, t = 0, j;
-  n = 2;
+  int i = 1;
+  int m = 0, t = 0, j, b = 0;
+  int n = 2;
 
-  for (j = 1; j < ccs; j++)
-  {
-      toparray[t] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
-      (-/*prev interface point*/ 4*mat1_refine[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1_refine[i][j+1]\
-      +/*coarse*/ .5 * mat1_refine[i][j-1] +/*refine*/ .5 * mat1_refine[m+1][n-1] +/*refine*/ mat1_refine[m+1][n] +/*refine*/ .5 * mat1_refine[m+1][n+1]);
+  for (j = 3; j < par_ref_cols - 2; j++)
+    {
+      mat2[i][j] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
+	(-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1[i][j+2]\
+	 +/*coarse*/ .5 * mat1[i][j-2] +/*refine*/ .5 * mat1[i+1][j-1] +/*refine*/ mat1[i+1][j] +/*refine*/ .5 * mat1[i+1][j+1]);
       n+=2;
       //iterates through top array
       t++;
-  }
+    }
+  for(i = 0; i < 5; i++)
+    printf("buffer %lf\n", buffer[i]);
 
 }
 
 
-void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, int ncols, double* converge, double wxy, double sxy)
+void sendRightRefinePoints(double** mat, double* buffer, int par_ref_rows, int par_ref_cols)
+{
+  MPI_Status stat[2]; 
+  MPI_Request req[2];
+  MPI_Datatype MPI_CLM_BFR;
+  MPI_Type_vector(par_ref_rows - 2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_BFR);
+  MPI_Type_commit(&MPI_CLM_BFR);
+
+  if(rank==4)
+  MPI_Send(&mat[1][par_ref_cols - 2], 1, MPI_CLM_BFR, 3, 0, MPI_COMM_WORLD);
+
+  if(rank==3)
+  MPI_Recv(&buffer[0], par_ref_rows-2, MPI_DOUBLE, 4, 0, MPI_COMM_WORLD, &stat[1]);
+
+  printf("%d in refine\n", rank);
+
+  //MPI_Waitall(2, req, stat);
+}
+
+void sendTopRefinePoints(double** mat, double* buffer, int par_ref_rows, int par_ref_cols)
+{
+  MPI_Status stat[2]; 
+  MPI_Request req[2];
+/*MPI_Datatype MPI_CLM_BFR;
+  MPI_Type_vector(par_ref_rows-2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_BFR);
+  MPI_Type_commit(&MPI_CLM_BFR);
+
+
+  if(rank==4)
+  MPI_Send(mat[2], par_ref_cols , MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
+
+  if(rank==0)
+  MPI_Recv(&buffer[0], par_ref_cols, MPI_DOUBLE, 4, 0, MPI_COMM_WORLD, &stat[1]);
+
+  printf("%d in refine\n", rank);
+*/
+  MPI_Datatype MPI_ROW_BFR;
+  MPI_Type_vector(par_ref_cols - 2, 1, 1, MPI_DOUBLE, &MPI_ROW_BFR);
+  MPI_Type_commit(&MPI_ROW_BFR);
+
+
+  if(rank==4)
+  MPI_Send(&mat[1][1], 1, MPI_ROW_BFR, 0, 0, MPI_COMM_WORLD);
+
+  if(rank==0)
+  MPI_Recv(&buffer[0], 1, MPI_ROW_BFR, 4, 0, MPI_COMM_WORLD, &stat[1]);
+
+  //MPI_Waitall(2, req, stat);
+}
+
+void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref_rows, int par_ref_cols, double* converge, double wxy, double sxy)
 {
 
   int i,j;
@@ -213,127 +317,153 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, 
   MPI_Request req2[8];
   int u, d, l, r;
   int startrow, startcol, endrow, endcol;
-
-  MPI_Cart_shift(MPI_COMM_CART, 0, 1, &u, &d);
-  MPI_Cart_shift(MPI_COMM_CART, 1, 1, &l, &r);
+/*
+  MPI_Cart_shift(MPI_COMM_CART2, 0, 1, &u, &d);
+  MPI_Cart_shift(MPI_COMM_CART2, 1, 1, &l, &r);
 
   startcol = 1;
-  endcol = par_rcols - 1;
+  endcol = par_ref_cols - 1;
   startrow = 1;
-  endrow = par_rrows - 1;
+  endrow = par_ref_rows - 1;
 
   if (rcrds[1] == 0)
     startcol = 2;
-  else if (rcrds[1] == P - 1)
-    endcol = par_rcols -2;
+  else if (rcrds[1] == S - 1)
+    endcol = par_ref_cols -2;
 
   if (rcrds[0] == 0)
     startrow = 2;
-  else if (rcrds[0] == Q - 1)
-    endrow = par_rrows -2;
+  else if (rcrds[0] == R - 1)
+    endrow = par_ref_rows -2;
 
   //solve edges
   if (rcrds[0] != 0)
-  {
-  //not in top blocks
-  i = 1;
-    for (j = startcol; j < endcol; j++)
     {
-      if (j%2 == 1)
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1]\
-      + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j]\
-      + mat1_refine[i][j+1]);
-      }
-      else
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
-      -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
-      }
+      //not in top blocks
+      i = 1;
+      for (j = startcol; j < endcol; j++)
+	{
+	  if (j%2 == 1)
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1]
+	     + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j]																	 + mat1_refine[i][j+1]);
+	    }
+	  else
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
+	     -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+	    }
+	}
     }
-  }
       
-  if (rcrds[0] != Q-1)
-  {
-  //not in bottom blocks
-  i = par_rows - 2;
-  for (j = 1; j < ncols - 1; j++)
+  if (rcrds[0] != R-1)
     {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
-      -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+      //not in bottom blocks
+      i = par_ref_rows - 2;
+      for (j = startcol; j < endcol; j++)
+	{
+	  mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
+    -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+	}
     }
-  }
 
   if (rcrds[1] != 0)
-  {
-  j = 1;
-  for (i = startrow; i < endrow; i++)
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
-      -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
-      }
-  }
-
-
-  if (rcrds[1] != 0)
-  {
-  j = par_cols - 2;
-  for (i = startrow; i < endrow; i++)
-  {
-      if (i%2 == 1)
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]\
-      + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
-      + mat1_refine[i-1][j]);
-      }
-      else
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
-      -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
-      }
+    {
+      j = 1;
+      for (i = startrow; i < endrow; i++)
+	{
+	  mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
+     -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+	}
     }
-  }
+
+
+  if (rcrds[1] != S-1)
+    {
+      j = par_ref_cols - 2;
+      for (i = startrow; i < endrow; i++)
+	{
+	  if (i%2 == 1)
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]
+	  + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]
+	  + mat1_refine[i-1][j]);
+	    }
+	  else
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
+	   -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+	    }
+	}
+    }
 
   //halo exchange
   // Send rows up and down
-  MPI_Irecv(mat2[0],      par_rcols, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &req2[0]);
-  MPI_Irecv(mat2[par_rows-1], par_rcols, MPI_DOUBLE, d, 1, MPI_COMM_CART2, &req2[1]);
-  MPI_Isend(mat2[par_rows-2], par_rcols, MPI_DOUBLE, d, 0, MPI_COMM_CART2, &req2[2]);
-  MPI_Isend(mat2[1],      par_rcols, MPI_DOUBLE, u, 1, MPI_COMM_CART2, &req2[3]);
+  MPI_Irecv(mat2_refine[0],              par_ref_cols, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &req2[0]);
+  MPI_Irecv(mat2_refine[par_ref_rows-1], par_ref_cols, MPI_DOUBLE, d, 1, MPI_COMM_CART2, &req2[1]);
+  MPI_Isend(mat2_refine[par_ref_rows-2], par_ref_cols, MPI_DOUBLE, d, 0, MPI_COMM_CART2, &req2[2]);
+  MPI_Isend(mat2_refine[1],              par_ref_cols, MPI_DOUBLE, u, 1, MPI_COMM_CART2, &req2[3]);
   // Send columns left and right
-  MPI_Irecv(&mat2[1][par_rcols-1], 1, MPI_CLM, r, 2, MPI_COMM_CART2, &req2[4]);
-  MPI_Irecv(&mat2[1][0],      1, MPI_CLM, l, 3, MPI_COMM_CART2, &req2[5]);
-  MPI_Isend(&mat2[1][1],      1, MPI_CLM, l, 2, MPI_COMM_CART2, &req2[6]);
-  MPI_Isend(&mat2[1][par_rcols-2], 1, MPI_CLM, r, 3, MPI_COMM_CART2, &req2[7]);
+  MPI_Irecv(&mat2_refine[1][par_ref_cols-1], 1, MPI_CLM, r, 2, MPI_COMM_CART2, &req2[4]);
+  MPI_Irecv(&mat2_refine[1][0],              1, MPI_CLM, l, 3, MPI_COMM_CART2, &req2[5]);
+  MPI_Isend(&mat2_refine[1][1],              1, MPI_CLM, l, 2, MPI_COMM_CART2, &req2[6]);
+  MPI_Isend(&mat2_refine[1][par_ref_cols-2], 1, MPI_CLM, r, 3, MPI_COMM_CART2, &req2[7]);
 
   for (i = startrow; i < endrow; i++)
-  {
-    for (j = startrow; j < endrow; j++)
     {
-      if (i == 1 && j%2 == 1)
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1]\
-      + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j]\
-      + mat1_refine[i][j+1]);
-      }
-      if (j == ncols-2 && i%2 == 1)
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]\
-      + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
-      + mat1_refine[i-1][j]);
-      }
-      else
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
-      -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
-      }
+      for (j = startcol; j < endcol; j++)
+	{
+	  if (i == 2 && j%2 == 0)
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1]
+	      + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j]
+	      + mat1_refine[i][j+1]);
+	    }
+	  if (j == par_ref_cols-3 && i%2 == 0)
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]
+	      + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
+	      + mat1_refine[i-1][j]);
+	    }
+	  else
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
+	     -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+	    }
+	}
     }
-  }
 
+  MPI_Waitall(8, req2, stat2);
+*/
+
+  for (i = 2; i < par_ref_rows; i++)
+      {
+      for (j = 2; j < par_ref_cols; j++)
+	{
+
+/*	  if (i == 2 && j%2 == 0)
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1]
+	      + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j]
+	      + mat1_refine[i][j+1]);
+	    }
+	  if (j == par_ref_cols-3 && i%2 == 0)
+	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]
+	      + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
+	      + mat1_refine[i-1][j]);
+	    }
+	  else
+*/	    {
+	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
+	      -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+	    }
+	}
+    }
 }
 
 
-void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double* converge, double wx, double wy, int crs, int ccs)
+void computeTimestep(double** mat1, double** mat2, int par_rows, int par_cols, double* converge, double wx, double wy, int crse_rows_cutoff, int crse_cols_cutoff)
 {
   int i, j;
   MPI_Status stat[8]; 
@@ -341,9 +471,15 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
   int u, d, l, r;
   int startrow, startcol, endrow, endcol;
 
+
   MPI_Cart_shift(MPI_COMM_CART, 0, 1, &u, &d);
   MPI_Cart_shift(MPI_COMM_CART, 1, 1, &l, &r);
 
+
+if(d==2) d = MPI_PROC_NULL;
+if(u==0) u = MPI_PROC_NULL;
+if(l==2) l = MPI_PROC_NULL;
+if(r==3) r = MPI_PROC_NULL;
   startcol = 1;
   endcol = par_cols - 1;
   startrow = 1;
@@ -358,72 +494,98 @@ void computeTimestep(double** mat1, double** mat2, int nrows, int ncols, double*
     startrow = 2;
   else if (crds[0] == Q - 1)
     endrow = par_rows -2;
-
+ 
   //solve edges
   if (crds[0] != 0)
-  {
-  //not in top blocks
-  i = 1;
-    for (j = startcol; j < endcol; j++)
     {
-      mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-}}
+      //not in top blocks
+      i = 1;
+      for (j = startcol; j < endcol; j++)
+	{
+	  mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
+	}
+    }
 
   if (crds[0] != Q-1)
-  {
-  //not in bottom blocks
-  i = par_rows - 2;
-  for (j = 1; j < ncols - 1; j++)
     {
-      mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-}}
+      //not in bottom blocks
+      i = par_rows - 2;
+      for (j = startcol; j < endcol; j++)
+	{
+	  mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
+	}
+    }
 
   if (crds[1] != 0)
-  {
-  j = 1;
-  for (i = startrow; i < endrow; i++)
-  {
-      mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-}}
+    {
+      j = 1;
+      for (i = startrow; i < endrow; i++)
+	{
+	  mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
+	}
+    }
 
-  if (crds[1] != 0)
-  {
-  j = par_cols - 2;
-  for (i = startrow; i < endrow; i++)
-  {
-      mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-}}
-
+  if (crds[1] != P-1)
+    {
+      j = par_cols - 2;
+      for (i = startrow; i < endrow; i++)
+	{
+	  mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
+	}
+    }
+  
   //halo exchange
   // Send rows up and down
-  MPI_Irecv(mat2[0],      cols, MPI_DOUBLE, u, 0, MPI_COMM_CART, &req[0]);
-  MPI_Irecv(mat2[par_rows-1], cols, MPI_DOUBLE, d, 1, MPI_COMM_CART, &req[1]);
-  MPI_Isend(mat2[par_rows-2], cols, MPI_DOUBLE, d, 0, MPI_COMM_CART, &req[2]);
-  MPI_Isend(mat2[1],      cols, MPI_DOUBLE, u, 1, MPI_COMM_CART, &req[3]);
+  MPI_Irecv(mat2[0],      	par_cols, MPI_DOUBLE, u, 0, MPI_COMM_CART, &req[0]);
+  MPI_Irecv(mat2[par_rows-1], 	par_cols, MPI_DOUBLE, d, 1, MPI_COMM_CART, &req[1]);
+  MPI_Isend(mat2[par_rows-2], 	par_cols, MPI_DOUBLE, d, 0, MPI_COMM_CART, &req[2]);
+  MPI_Isend(mat2[1],      	par_cols, MPI_DOUBLE, u, 1, MPI_COMM_CART, &req[3]);
   // Send columns left and right
-  MPI_Irecv(&mat2[1][par_cols-1], 1, MPI_CLM, r, 2, MPI_COMM_CART, &req[4]);
-  MPI_Irecv(&mat2[1][0],      1, MPI_CLM, l, 3, MPI_COMM_CART, &req[5]);
-  MPI_Isend(&mat2[1][1],      1, MPI_CLM, l, 2, MPI_COMM_CART, &req[6]);
-  MPI_Isend(&mat2[1][par_cols-2], 1, MPI_CLM, r, 3, MPI_COMM_CART, &req[7]);
+  MPI_Irecv(&mat2[1][par_cols-1],	 1, MPI_CLM, r, 2, MPI_COMM_CART, &req[4]);
+  MPI_Irecv(&mat2[1][0],      		 1, MPI_CLM, l, 3, MPI_COMM_CART, &req[5]);
+  MPI_Isend(&mat2[1][1],      		 1, MPI_CLM, l, 2, MPI_COMM_CART, &req[6]);
+  MPI_Isend(&mat2[1][par_cols-2],	 1, MPI_CLM, r, 3, MPI_COMM_CART, &req[7]);
 
-
+if(rank != 2){
   for (i = startrow; i < endrow; i++)
   {
-    for (j = startcol; j < endcol; j++)
-    {
-      mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-}}
-
-  MPI_Waitall(8,req, stat);
-
+  for (j = startcol; j < endcol; j++)
+  {
+  mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
+  }}
 }
 
-void update(double*** mat1_ptr, double*** mat2_ptr, int nrows, int ncols)
+if (rank == 0) 
+{
+for(j = 2; j < par_cols; j++)
+  mat2[par_rows-2][j] = mat1[par_rows-2][j] + wx * (mat1[par_rows-2+1][j] - 2*mat1[par_rows-2][j] + mat1[par_rows-2-1][j]) + wy * (mat1[par_rows -2][j+1] - 2 * mat1[par_rows-2][j] + mat1[par_rows-2][j-1]);
+}
+if (rank == 3){
+  for( i = 1; i < par_rows - 2; i++)
+  mat2[i][1] = mat1[i][1] + wx * (mat1[i+1][1] - 2*mat1[i][1] + mat1[i-1][1]) + wy * (mat1[i][1+1] - 2 * mat1[i][1] + mat1[i][1-1]);
+}
+  MPI_Waitall(8,req, stat);
+ /* 
+  for(i = 2; i < par_rows - 1; i++)
+  {
+     if (rank == 0)
+        mat1[par_rows - 2][i] = 10;
+  }  
+
+
+  for(i = 1; i < par_rows - 2; i++)
+  {
+     if (rank == 3)
+        mat1[i][1] = 5;
+  }
+*/
+}
+
+void update(double*** mat1_ptr, double*** mat2_ptr)
 {
   double **tmp = *mat1_ptr;
   *mat1_ptr = *mat2_ptr;
   *mat2_ptr = tmp;
-
 }
 
 int main(int argc, char *argv[])
@@ -431,7 +593,7 @@ int main(int argc, char *argv[])
 
   int i, c;
   double **mat1, **mat2;
-  double **mat1_refine, **mat2_refine;
+  //  double **mat1_refine, **mat2_refine;
   //size of grid
   int nrows = 10, ncols = 10;
   //2x2 for mesh in a 4x4 array
@@ -451,107 +613,159 @@ int main(int argc, char *argv[])
   P = 2;
   Q = 2;
 
-  R = 2;
-  S = 2;
-
+  R = 1;
+  S = 1;
 
   while ((c = getopt (argc, argv, "r:i:")) != -1)
-  {
-    switch(c)
     {
-      case 'r':
-	nrows = ncols = atoi(optarg); break;
-      case 'i':
-	max_iter = atoi(optarg); break;
-      default:
- 	fprintf(stderr, "Invalid option\n");
-	return -1;
+      switch(c)
+	{
+	case 'r':
+	  nrows = ncols = atoi(optarg); break;
+	case 'i':
+	  max_iter = atoi(optarg); break;
+	default:
+	  fprintf(stderr, "Invalid option\n");
+	  return -1;
+	}
     }
-  }
 
-  //parallel rows & clms coarse grid
+  //parallel rows & cols coarse grid
   int par_rows = 2 + nrows/Q;
-  int par_clms = 2 + ncols/P;
+  int par_cols = 2 + ncols/P;
 
-  int szofmesh = .4*nrows;
+  int szofmesh = .5*nrows;
 
   //size of fine grid
-  int refrows = szofmesh * 2 + 1;
-  int refcols = szofmesh * 2 + 1;
+  int refrows = szofmesh * 2 - 1;
+  int refcols = szofmesh * 2 - 1;
 
-  //parallel refined rows & clms
-  int par_rrows = 2 + refrows/R;
-  int par_rcols = 2 + refcols/S;
+  //parallel refined rows & cols
+  int par_ref_rows = 2 + refrows/R;
+  int par_ref_cols = 2 + refcols/S;
 
 
-  MPI_Type_vector(par_rrows - 2, 1, par_rcols * 2, MPI_DOUBLE, &MPI_CLM);
+  //  MPI_Type_vector(par_crows - 2, 1, par_cols * 2, MPI_DOUBLE, &MPI_CLM);
+  //  MPI_Type_commit(&MPI_ROW);
+
+  MPI_Group coarse_grid_group;
+  MPI_Group fine_grid_group;
+  MPI_Group group_world;
+
+  MPI_Comm coarse_grid_comm;
+  MPI_Comm fine_grid_comm;
+
+  int coarse_grid_ranks[] = {0,1,2,3};
+  int fine_grid_ranks[] = {4};
+
+  MPI_Comm_group(MPI_COMM_WORLD, &group_world);
+
+  MPI_Group_incl(group_world, 4, coarse_grid_ranks, &coarse_grid_group); 
+  MPI_Comm_create(MPI_COMM_WORLD, coarse_grid_group, &coarse_grid_comm);
+
+  MPI_Group_incl(group_world, 1, fine_grid_ranks, &fine_grid_group);
+  MPI_Comm_create(MPI_COMM_WORLD, fine_grid_group, &fine_grid_comm);
+
+  int in_refine = !(rank < P*Q);
+
+
+  MPI_Type_vector(par_rows - 2, 1, par_cols, MPI_DOUBLE, &MPI_CLM);
   MPI_Type_commit(&MPI_CLM);
+  MPI_Type_vector(par_ref_rows - 2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_FINE);
+  MPI_Type_commit(&MPI_CLM_FINE);
 
-//  MPI_Type_vector(par_crows - 2, 1, par_cols * 2, MPI_DOUBLE, &MPI_CLM);
-//  MPI_Type_commit(&MPI_ROW);
+  if(!in_refine) {
+    int prds[] = {0,0};
+    int dims[] = {Q,P};
+    MPI_Cart_create(coarse_grid_comm, 2, dims, prds, 1, &MPI_COMM_CART);
+    MPI_Comm_rank(MPI_COMM_CART, &cRank);
+    MPI_Cart_coords(MPI_COMM_CART, cRank, 2, crds);
+  } else {
+    //Create cart
+    int rprds[] = {0,0};
+    int rdims[] = {R,S};
+    MPI_Cart_create(fine_grid_comm, 2, rdims, rprds, 1, &MPI_COMM_CART2);
+    MPI_Comm_rank(MPI_COMM_CART2, &cRank2);
+    MPI_Cart_coords(MPI_COMM_CART2, cRank2, 2, rcrds);
+  }
 
-  //Create cart
-  int prds[] = {0,0};
-  int dims[] = {Q,P};
-  MPI_Cart_create(MPI_COMM_WORLD, 2, dims, prds, 1, &MPI_COMM_CART);
-  MPI_Comm_rank(MPI_COMM_CART, &cRank);
-  MPI_Cart_coords(MPI_COMM_CART, cRank, 2, crds);
-
-  //Create cart
-  int rprds[] = {0,0};
-  int rdims[] = {R,S};
-  MPI_Cart_create(MPI_COMM_WORLD, 2, rdims, rprds, 1, &MPI_COMM_CART2);
-  MPI_Comm_rank(MPI_COMM_CART2, &cRank2);
-  MPI_Cart_coords(MPI_COMM_CART2, cRank2, 2, rcrds);
-
-
+  
   //width of space steps in x and y direction
   dx = 1 /(double)(nrows - 1);
   dy = 1 /(double)(ncols - 1);
 
   dt = .001;
   //dt = 5;
-  mat1 = calloc(nrows, sizeof(double *));
-  for (i = 0; i < nrows; i++)
-    mat1[i] = calloc(ncols, sizeof(double));
+  int crse_rows_cutoff = refrows/2 + 1;
+  int crse_cols_cutoff = refcols/2 + 1;
+
+  if(!in_refine)
+    {
+      mat1 = calloc(par_rows, sizeof(double *));
+      mat2 = calloc(par_rows, sizeof(double *));
+
+      double *mat1_1d = calloc(par_rows*par_cols, sizeof(double));
+      for (i = 0; i < par_rows; i++)
+	{
+	  mat1[i] = &(mat1_1d[i * par_cols]);
+	}
 	
+      double *mat2_1d = calloc(par_rows*par_cols, sizeof(double));
+      for (i = 0; i < par_rows; i++)
+	{
+	  mat2[i] = &(mat2_1d[i * par_cols]);
+	}
+      initGrid(mat1, par_rows, par_cols, crse_rows_cutoff, crse_cols_cutoff);
+      initGrid(mat2, par_rows, par_cols, crse_rows_cutoff, crse_cols_cutoff);
+      //printGrid(mat1, par_rows, par_cols);
+    }
+  else
+    {
+      mat1 = calloc(par_ref_rows, sizeof(double *));
+      mat2 = calloc(par_ref_rows, sizeof(double *));
 
-  mat2 = calloc(nrows, sizeof(double *));
-  for (i = 0; i < nrows; i++)
-    mat2[i] = calloc(ncols, sizeof(double));
-
-  int crs = refrows/2 + 1;
-  int ccs = refcols/2 + 1;
-  initGrid(mat1, nrows, ncols, crs, ccs);
-  initGrid(mat2, nrows, ncols, crs, ccs);
-
-  mat1_refine = calloc(refrows, sizeof(double *));
-  for (i = 0; i < refrows; i++)
-    mat1_refine[i] = calloc(refcols, sizeof(double));
+      double *mat1_1d = calloc(par_ref_rows*par_ref_cols, sizeof(double));
+      for (i = 0; i < par_ref_rows; i++)
+	{
+	  mat1[i] = &(mat1_1d[i * par_ref_cols]);
+	}
 	
-
-  mat2_refine = calloc(refrows, sizeof(double *));
-  for (i = 0; i < refrows; i++)
-    mat2_refine[i] = calloc(refcols, sizeof(double));
-
-  initFineGrid(mat1_refine, refrows, refcols);
-  initFineGrid(mat2_refine, refrows, refcols); 
+      double *mat2_1d = calloc(par_ref_rows*par_ref_cols, sizeof(double));
+      for (i = 0; i < par_ref_rows; i++)
+	{
+	  mat2[i] = &(mat2_1d[i * par_ref_cols]);
+	}
+      initFineGrid(mat1, par_ref_rows, par_ref_cols);
+      initFineGrid(mat2, par_ref_rows, par_ref_cols); 
+      //printGrid(mat1, par_ref_rows, par_ref_cols);
+    }
 
   //arrays to store interfaces
   double *toparray, *rightarray;
   int szarray = szofmesh - 1;
-  toparray = calloc(szarray, sizeof(double));
-  rightarray = calloc(szarray, sizeof(double));
+  printf("size%d\n", szarray);
+  toparray = calloc(par_ref_cols - 2, sizeof(double));
+  rightarray = calloc(par_ref_rows - 2, sizeof(double));
+
+  //buffers to send data
+  double *bfr_right_refine_pts, *bfr_top_refine_pts;
+  bfr_right_refine_pts = calloc(par_ref_rows - 2, sizeof(double));
+  bfr_top_refine_pts = calloc(par_ref_cols - 2, sizeof(double));
+
+  double *bfr_right_interface_pts, *bfr_top_interface_pts;
+  bfr_right_interface_pts = calloc(par_rows - 2, sizeof(double));
+  bfr_top_interface_pts = calloc(par_cols - 2, sizeof(double));
+
 
   time = 0;
 
   //Corner Points
   //coarse
-  int ci = nrows - crs;
-  int cj = ccs - 1;
+  int ci_crnr = nrows - crse_rows_cutoff;
+  int cj_crnr = crse_cols_cutoff - 1;
   //fine
-  int fi = 0;
-  int fj = refcols - 1;
+  int fi_crnr = 0;
+  int fj_crnr = refcols - 1;
 
   //weights
   double wx = 0, wy = 0;
@@ -567,52 +781,115 @@ int main(int argc, char *argv[])
   //stability
   // wx + wy must be less than .5
   if ( wx + wy > .5)
-  {
-    printf("Does not reach requirements for stability\n");
-    printf("wx = %lf, wy = %lf\n", wx, wy);
-    exit(1);
-  }
+    {
+      printf("Does not reach requirements for stability\n");
+      printf("wx = %lf, wy = %lf\n", wx, wy);
+      exit(1);
+    }
 
   double wxy = k * dt/(dx*dx);
   int refinement = 2;
   double sxy = (double)dx/refinement;
   
   //printGrid(mat1,nrows,ncols);
-  fp = fopen ( output_file, "w" );
+  //fp = fopen ( output_file, "w" );
   //start = clock();
   for(iter = 0; iter < max_iter; iter++)
-  {
+    {
       time = time + dt;
-      computeTimestep(mat1, mat2, nrows, ncols, &converge, wx, wy, crs, ccs);
-      computeFineTimestep(mat1_refine, mat2_refine, refrows, refcols, &converge, wxy, sxy);
-      //Compute Interfaces
-      computeInterfaceRightTimestep(rightarray, mat1_refine, mat1, nrows, ncols, ccs, fi, wxy, dx, crs, refcols);
-      computeInterfaceTopTimestep(toparray, mat1_refine, mat1, nrows, ncols, crs, fj, wxy, dx, ccs);
-      double corner = computeCornerTimestep(mat1_refine, mat1, ci, cj, fi, fj, wxy);
-      injectCoarsePoints(toparray, rightarray, mat2, nrows, ncols, crs, ccs, corner);
-      injectFinePoints(toparray, rightarray, mat2_refine, refrows, refcols, corner);
-      update(&mat1, &mat2, nrows, ncols);
-      update(&mat1_refine, &mat2_refine, refrows, refcols);
+
+      if(!in_refine){
+
+	computeTimestep(mat1, mat2, par_rows, par_cols, &converge, wx, wy, crse_rows_cutoff, crse_cols_cutoff);
+      }
+      else
+      {
+	    computeFineTimestep(mat1, mat2, refrows, refcols, &converge, wxy, sxy);
+      }
+
+      if(in_refine || rank == 3)
+        sendRightInterfacePoints(mat1, bfr_right_interface_pts, par_rows, par_cols);
+
+      if(in_refine || rank == 0)
+        sendTopInterfacePoints(mat1, bfr_top_interface_pts, par_rows, par_ref_cols);
+
+      if(in_refine)
+      {
+	 injectFinePoints(bfr_top_interface_pts, bfr_right_interface_pts, mat1, par_ref_rows, par_cols, par_ref_cols);
+       computeInterfaceRightTimestep(bfr_right_refine_pts, mat1, mat2, par_ref_rows, ncols, crse_cols_cutoff, wxy, dx, crse_rows_cutoff, refcols);
+computeInterfaceTopTimestep(bfr_top_refine_pts, mat1, mat2, par_rows, par_ref_cols, crse_rows_cutoff, wxy, dx, crse_cols_cutoff);
+//computeCornerTimestep(bfr_right_refine_pts, mat1, mat2, ci_crnr, cj_crnr, fi_crnr, fj_crnr, wxy);
+      }
+
+      if(in_refine || rank == 3)
+	sendRightRefinePoints(mat1, bfr_right_refine_pts, par_ref_rows, par_ref_cols);
+
+      if(in_refine || rank == 0)
+	sendTopRefinePoints(mat1, bfr_top_refine_pts, par_ref_rows, par_ref_cols);
+
+      if (rank == 3 || rank == 0)
+        injectCoarsePoints(bfr_top_refine_pts, bfr_right_refine_pts, mat1, par_rows, par_cols, crse_rows_cutoff, crse_cols_cutoff);
+
+/*
+	update(&mat1, &mat2);
+*/
+
+
+//recvRefinePoints
+	    //Compute Interfaces
+/*	    computeInterfaceRightTimestep(rightarray, mat1_refine, mat1, nrows, ncols, crse_cols_cutoff, fi_crnr, wxy, dx, crse_rows_cutoff, refcols);
+	    computeInterfaceTopTimestep(toparray, mat1_refine, mat1, nrows, ncols, crse_rows_cutoff, fj_crnr, wxy, dx, crse_cols_cutoff);
+	    double corner = computeCornerTimestep(mat1_refine, mat1, ci_crnr, cj_crnr, fi_crnr, fj_crnr, wxy);
+	    injectFinePoints(toparray, rightarray, mat2_refine, refrows, refcols, corner);
+      */
+
+      //      update(&mat1_refine, &mat2_refine, refrows, refcols);
       //if (iter%100 == 0)
-      iter++;
     }
+
+  if(!in_refine)
+    printGrid(mat2, par_rows, par_cols);
+  else
+  {
+    printGrid(mat2, par_ref_rows, par_ref_cols);
+  }
+
+  if (rank == 3)
+    {
+      for(i = 0; i < par_ref_cols - 1; i++)
+	printf("right: %lf\n", bfr_right_refine_pts[i]);
+    }
+
+  if (rank == 0)
+    {
+      for(i = 0; i < par_ref_rows -2; i++)
+	printf("top: %lf\n", bfr_top_refine_pts[i]);
+    }
+
+  if (in_refine)
+  {
+    for(i = 0; i < par_rows -2; i++)
+      printf("right interface: %lf\n", bfr_right_interface_pts[i]);
+    for(i = 0; i < par_cols -2; i++)
+      printf("top interface: %lf\n", bfr_top_interface_pts[i]);
+  }
+
   //end = clock();
   //for(i = 0; i < szofmesh -1; i++)
-  //printf("mat1 %lf\n", mat1[nrows-crs][3-1]);
-  printf("fine %lf\n", mat1_refine[1][refcols-2]);
+  //printf("mat1 %lf\n", mat1[nrows-crse_rows_cutoff][3-1]);
 
-  printGrid(mat1_refine,refrows,refcols);
-  printf("\n");
-  printGrid(mat1,nrows,ncols);
+  //printf("\n");
+  //printGrid(mat1,nrows,ncols);
   //fprintf ( fp, "%d\n", nrows );
   //fprintf ( fp, "%d\n", ncols );
 
-  printGridToFile(mat1, nrows, ncols, fp);
+
   //fprintf(fp, "num of iterations: %d, with change of %lf %d\n", iter, converge, prnt);
   //fprintf(fp, "Total time: %f seconds\n", (((double) end ) - start)/CLOCKS_PER_SEC);
+  //fclose(fp);
+  //printf("num of iterations: %d\n", iter);
 
-  fclose(fp);
-  printf("num of iterations: %d\n", iter);
+  MPI_Finalize();
 
   return 0;
 }
