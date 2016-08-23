@@ -68,7 +68,7 @@ void printGridToFile(double** mat, int nrows, int ncols, FILE *fp)
   int i, j;
     for (i = 0; i < nrows; i++) {
         for (j = 0; j < ncols; j++) {
-            fprintf(fp, "%f ", mat[i][j]);
+            fprintf(fp, "%8f ", mat[i][j]);
         }
         fprintf(fp, "\n");
     }
@@ -157,14 +157,14 @@ void computeInterfaceRightTimestep(double* rightarray, double** mat1_refine, dou
 }
 
 
-void computeInterfaceTopTimestep(double** mat2, double* toparray, double** mat1_refine, double** mat1, int nrows, int ncols, int crse_rows_cutoff, int n, double wxy, double dx, int crse_clms_cutoff)
+void computeInterfaceTopTimestep(double* toparray, double** mat1_refine, double** mat1, int nrows, int ncols, int crse_rows_cutoff, int n, double wxy, double dx, int crse_clms_cutoff)
 {
   int i = nrows - crse_rows_cutoff;
   int m = 0, t = 0, j;
   n = 2;
 
 
-  for (j = 1; j < crse_clms_cutoff-1 ; j++)
+  for (j = 1; j < crse_clms_cutoff-1; j++)
   {
       toparray[t] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
       (-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1_refine[i][j+1]\
@@ -196,7 +196,7 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, 
       + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j]\
       + mat1_refine[i][j+1]);
       }
-      if (j == ncols-2 && i%2 == 1)
+      else if (j == ncols-2 && i%2 == 1)
       {
       mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]\
       + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
@@ -350,7 +350,7 @@ int main(int argc, char *argv[])
       computeFineTimestep(mat1_refine, mat2_refine, refrows, refcols, &converge, wxy, sxy);
       //Compute Interfaces
       computeInterfaceRightTimestep(rightarray, mat1_refine, mat1, nrows, ncols, crse_clms_cutoff, fi_crnr, wxy, dx, crse_rows_cutoff, refcols, refrows);
-      computeInterfaceTopTimestep(mat2, toparray, mat1_refine, mat1, nrows, ncols, crse_rows_cutoff, fj_crnr, wxy, dx, crse_clms_cutoff);
+      computeInterfaceTopTimestep(toparray, mat1_refine, mat1, nrows, ncols, crse_rows_cutoff, fj_crnr, wxy, dx, crse_clms_cutoff);
       double corner = computeCornerTimestep(mat1_refine, mat1, ci_crnr, cj_crnr, fi_crnr, fj_crnr, wxy);
       injectCoarsePoints(toparray, rightarray, mat2, nrows, ncols, crse_rows_cutoff, crse_clms_cutoff, corner);
       injectFinePoints(toparray, rightarray, mat2_refine, refrows, refcols, corner);
