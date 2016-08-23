@@ -97,7 +97,7 @@ void printGrid(double** mat, int nrows, int ncols)
       /* printf("%f\n ", mat[5][cols-2]); */
       for (i = 0; i < nrows; i++) {
         for (j = 0; j < ncols; j++) {
-          printf("%lf ", mat[i][j]);
+          printf("%.15lf ", mat[i][j]);
         }
         printf("\n");
       }
@@ -217,18 +217,23 @@ void sendTopInterfacePoints(double** mat, double* buffer, int par_rows, int par_
 /****    Interface Points *****/
 //for bound points use regular matrix
 //finished
-double computeCornerTimestep(double* buffer, double** mat1, double** mat2, int i, int j, int m, int n, double wxy, int par_ref_cols)
+void computeCornerTimestep(double* buffer, double** mat1, double** mat2, int i, int j, int m, int n, double wxy, int par_ref_cols)
 {
-  //double mat1_corner;
-  double mat2_corner;
+  //double mat1_corner double mat2_corner;
   i = 1, j = par_ref_cols - 2;
   m = 1;
+
   mat2[i][j] = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+
 		.5 * /*bound lwr*/mat1[i+2][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-2]
 	        +/*mesh*/ mat1[i+1][j-1]);
-  //return mat2_corner;
+
+
+       printf("mat[i][j] %.15lf\n mat1[i+2][j] %.15lf\n mat1[i][j+1] %.15lf\n mat1[i-1][j] %.15lf\n mat1[i][j-2] %.15lf\n mat1[i+1][j-1] %.15lf\n ", mat1[i][j], mat1[i+2][j], mat1[i][j+1], mat1[i-1][j], mat1[i][j-2], mat1[i+1][j-1]);
+       printf("updated value: %.15lf\n", mat2[i][j]);
+
 
 }
+
 
 //need to add in different
 
@@ -253,21 +258,22 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
 void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, int par_rows, int par_ref_cols, int crse_rows_cutoff, double wxy, double dx, int crse_cols_cutoff)
 {
   int i = 1;
-  int m = 0, t = 0, j, b = 0;
+  int j, b = 0;
   int n = 2;
 
   for (j = 3; j < par_ref_cols - 3; j+=2)
     {
-      mat2[i][j] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
-	(-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1[i][j+2]\
+      printf("wxy %lf, dx/2 %lf\n", wxy, dx/2);
+      mat2[i][j] = /*previous interface point*/ mat1[i][j] + /*prev interface point*/ mat1[i][j] * wxy * (dx/2) + wxy * (4/3) *
+	(-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1[i][j+2]
 	 +/*coarse*/ .5 * mat1[i][j-2] +/*refine*/ .5 * mat1[i+1][j-1] +/*refine*/ mat1[i+1][j] +/*refine*/ .5 * mat1[i+1][j+1]);
-      n+=2;
-      //iterates through top array
-      t++;
+//       printf("i = %d j = %d\n", i, j);
+//       printf("mat[i][j] %.15lf\n mat1[i-1][j] %.15lf\n mat1[i][j+2] %.15lf\n mat1[i][j-2] %.15lf\n mat1[i+1][j-1] %.15lf\n mat1[i+1][j] %.15lf\n mat[i+1][j+1] %.15lf\n", mat1[i][j], mat1[i-1][j], mat1[i][j+2], mat1[i][j-2], mat1[i+1][j-1], mat1[i+1][j], mat1[i+1][j+1]);
+//       printf("updated value: %.15lf\n", mat2[i][j]);
     }
+
   for(i = 0; i < 5; i++)
     printf("buffer %lf\n", buffer[i]);
-
 }
 
 
@@ -294,19 +300,6 @@ void sendTopRefinePoints(double** mat, double* buffer, int par_ref_rows, int par
 {
   MPI_Status stat[2]; 
   MPI_Request req[2];
-/*MPI_Datatype MPI_CLM_BFR;
-  MPI_Type_vector(par_ref_rows-2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_BFR);
-  MPI_Type_commit(&MPI_CLM_BFR);
-
-
-  if(rank==4)
-  MPI_Send(mat[2], par_ref_cols , MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
-
-  if(rank==0)
-  MPI_Recv(&buffer[0], par_ref_cols, MPI_DOUBLE, 4, 0, MPI_COMM_WORLD, &stat[1]);
-
-  printf("%d in refine\n", rank);
-*/
   MPI_Datatype MPI_ROW_BFR;
   MPI_Type_vector(par_ref_cols - 2, 1, 1, MPI_DOUBLE, &MPI_ROW_BFR);
   MPI_Type_commit(&MPI_ROW_BFR);
