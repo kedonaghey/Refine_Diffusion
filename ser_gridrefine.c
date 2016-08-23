@@ -56,7 +56,7 @@ void printGrid(double** mat, int nrows, int ncols)
   int i, j;
     for (i = 0; i < nrows; i++) {
         for (j = 0; j < ncols; j++) {
-            printf("%lf ", mat[i][j]);
+            printf("%.15lf ", mat[i][j]);
         }
         printf("\n");
     }
@@ -124,10 +124,11 @@ double computeCornerTimestep(double** mat1_refine, double** mat1, int i, int j, 
   //double mat1_corner;
   double mat2_corner;
 
-  mat2_corner = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+\
-  .5 * /*bound lwr*/mat1[i+1][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-1]\
+  mat2_corner = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+
+  .5 * /*bound lwr*/mat1[i+1][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-1]
   +/*mesh*/ mat1_refine[m+1][n-1]);
-
+  printf("mat[i][j] %.15lf\n mat1[i+1][j] %.15lf\n mat1[i][j+1] %.15lf\n mat1[i-1][j] %.15lf\n mat1[i][j-1] %.15lf\n mat1refine[i+1][j] %.15lf\n", mat1[i][j], mat1[i+1][j], mat1[i][j+1], mat1[i-1][j], mat1[i][j-1], mat1_refine[m+1][n-1]);
+printf("updated value: %.15lf\n", mat2_corner);
  return mat2_corner;
 }
 
@@ -166,10 +167,14 @@ void computeInterfaceTopTimestep(double* toparray, double** mat1_refine, double*
 
   for (j = 1; j < crse_clms_cutoff-1; j++)
   {
-      toparray[t] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) * \
-      (-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1_refine[i][j+1]\
+      printf("wxy %lf, dx/2 %lf\n", wxy, dx/2);
+      toparray[t] = /*previous interface point*/mat1[i][j] + /*prev interface point*/mat1[i][j] * wxy * (dx/2) + wxy * (4/3) *
+      (-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1[i][j+1]
       +/*coarse*/ .5 * mat1[i][j-1] +/*refine*/ .5 * mat1_refine[m+1][n-1] +/*refine*/ mat1_refine[m+1][n] 
       +/*refine*/ .5 * mat1_refine[m+1][n+1]);
+//      printf("i = %d, j = %d, m = %d n = %d\n", i, j, m , n);
+//      printf("mat[i][j] %.15lf\n mat1[i-1][j] %.15lf\n mat1[i][j+1] %.15lf\n mat1[i][j-1] %.15lf\n mat1[i+1][j-1] %.15lf\n mat1[i+1][j] %.15lf\n mat[i+1][j+1] %.15lf\n", mat1[i][j], mat1[i-1][j], mat1[i][j+1], mat1[i][j-1], mat1_refine[m+1][n-1], mat1_refine[m+1][n], mat1_refine[m+1][n+1]);
+//      printf("updated value: %.15lf\n", toparray[t]);
       n+=2;
       //iterates through top array
       t++;
@@ -190,23 +195,30 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, 
   {
     for (j = 1; j < ncols -1; j++)
     {
-      if (i == 1 && j%2 == 1)
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1]\
-      + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j]\
-      + mat1_refine[i][j+1]);
-      }
+      if (i==1 && j == ncols-2)
+	{
+         mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1] \
+	 + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * ( .5 * (mat1_refine[i+1][j+1] 
+         + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+	 
+	}
+      else if (i == 1 && j%2 == 1)
+	{
+	  mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1] \
+	 + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j] \
+	 + mat1_refine[i][j+1]);
+	} 
       else if (j == ncols-2 && i%2 == 1)
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]\
-      + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
-      + mat1_refine[i-1][j]);
-      }
+	{
+         mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1] 
+         + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
+         + mat1_refine[i-1][j]);
+	}
       else
-      {
-      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
-      -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
-      }
+	{
+         mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
+         -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+	}
     }
   }
 
