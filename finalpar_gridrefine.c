@@ -184,7 +184,7 @@ void sendRightPoints(double** mat, double* buffer, int par_rows, int par_cols)
   }
 
   if(rcrds[0] == P-1) {
-    MPI_Recv(&buffer[0], 0.5*(par_rows-2), MPI_DOUBLE, coarse_ranks[(Q/2)*P + (P/2)*(rcrds[0]/2)], 0, MPI_COMM_WORLD, &stat[1]);
+    MPI_Recv(buffer, 0.5*(par_rows-2), MPI_DOUBLE, coarse_ranks[(Q/2)*P + (P/2)*(rcrds[0]/2)], 0, MPI_COMM_WORLD, &stat[1]);
   }
 
   //MPI_Waitall(2, req, stat);
@@ -267,11 +267,19 @@ void sendRightInterfacePoints(double** mat, double* buffer, int par_ref_rows, in
   MPI_Type_vector(par_ref_rows - 2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_BFR);
   MPI_Type_commit(&MPI_CLM_BFR);
 
-  if(rank==4)
-  MPI_Send(&mat[1][par_ref_cols - 2], 1, MPI_CLM_BFR, 3, 0, MPI_COMM_WORLD);
+  if(rcrds[0] == P-1) 
+  {
+    if (    )
+      MPI_Send(&mat[1][par_ref_cols - 2], 1, MPI_CLM_BFR, 3, 0, MPI_COMM_WORLD);
+    else
+      MPI_Send(&mat[1][par_ref_cols - 2], 1, MPI_CLM_BFR, 3, 0, MPI_COMM_WORLD);
 
-  if(rank==3)
+  }
+
+  if(crds[0] == P/2 && crds[1] >= Q/2) 
+  {
   MPI_Recv(&buffer[0], par_ref_rows-2, MPI_DOUBLE, 4, 0, MPI_COMM_WORLD, &stat[1]);
+  }
 
 }
 
@@ -283,13 +291,22 @@ void sendTopInterfacePoints(double** mat, double* buffer, int par_ref_rows, int 
   MPI_Type_commit(&MPI_ROW_BFR);
 
 
-  if(rank==4)
-  MPI_Send(&mat[1][1], 1, MPI_ROW_BFR, 0, 0, MPI_COMM_WORLD);
+  if(rcrds[1] == 0)
+  {
+    if (    )
+      MPI_Send(&mat[1][1], 1, MPI_ROW_BFR, coarse_ranks[ P*((Q/2) -1) + rcrds[0]/2], 0, MPI_COMM_WORLD);
+    else
+      MPI_Send(&mat[1][0], 1, MPI_ROW_BFR, coarse_ranks[ P*((Q/2) -1) + rcrds[0]/2], 0, MPI_COMM_WORLD);
+  }
 
-  if(rank==0)
-  MPI_Recv(&buffer[0], 1, MPI_ROW_BFR, 4, 0, MPI_COMM_WORLD, &stat[1]);
-
-  //MPI_Waitall(2, req, stat);
+  if(crds[1] == Q/2 -1 && crds[0] < P/2) 
+  {
+    int first_target = refine_ranks[crds[0]*2];
+    int second_target = refine_rank[(crds[0]*2)+1];
+    
+    MPI_Recv(&buffer[0], 1, MPI_ROW_BFR, first_target, 0, MPI_COMM_WORLD, &stat[1]);
+    MPI_Recv(&buffer[0], 1, MPI_ROW_BFR, second_target, 0, MPI_COMM_WORLD, &stat[2]);
+  }
 }
 
 void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref_rows, int par_ref_cols, double* converge, double wxy, double sxy)
