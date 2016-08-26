@@ -9,7 +9,7 @@
 int rank, size, cRank, cRank2;
 MPI_Comm MPI_COMM_CART;
 MPI_Comm MPI_COMM_CART2;
-int P, Q, R, S;
+int P, Q;
 int crds[2];
 int rcrds[2];
 int *coarse_ranks;
@@ -36,7 +36,7 @@ void initFineGrid(double** mat, int nrows, int ncols)
     }
 
   // bottom rows initial conditions
-  if(rcrds[0] == S-1)
+  if(rcrds[0] == P-1)
     {
       for ( i = 1; i < ncols - 1; i+=2)
 	{
@@ -175,12 +175,12 @@ void sendRightPoints(double** mat, double* buffer, int par_rows, int par_cols)
 
   if(crds[0] == P/2 && crds[1] >= Q/2) {
 
-    int first_target  = refine_ranks[(   Q/2) *P*(crds[1]-(0.5*Q)+1)];
-    int second_target = refine_ranks[(1+(Q/2))*P*(crds[1]-(0.5*Q)+1)];
+    int first_target  = refine_ranks[(   Q/2) *P*(crds[1]-(Q/2)+1)];
+    int second_target = refine_ranks[(1+(Q/2))*P*(crds[1]-(Q/2)+1)];
 
     MPI_Send(&mat[1][1], 1, MPI_CLM_BFR, first_target, 0, MPI_COMM_WORLD);
 
-    MPI_Send(&mat[1][0.5*par_rows], 1, MPI_CLM_BFR, second_target, 0, MPI_COMM_WORLD);
+    MPI_Send(&mat[1][par_rows/2], 1, MPI_CLM_BFR, second_target, 0, MPI_COMM_WORLD);
   }
 
   if(rcrds[0] == P-1) {
@@ -200,12 +200,12 @@ void sendTopPoints(double** mat, double* buffer, int par_rows, int par_ref_cols)
   if(crds[1] == Q/2 -1 && crds[0] < P/2) {
 
     int first_target = refine_ranks[crds[0]*2];
-    int second_target = refine_rank[(crds[0]*2)+1];
+    int second_target = refine_ranks[(crds[0]*2)+1];
     // send first half
     MPI_Send(&mat[par_rows - 2][1], 1, MPI_ROW_BFR, first_target, 0, MPI_COMM_WORLD);
     
     // send second half
-    MPI_Send(&mat[par_rows - 2][0.5*par_rows], 1, MPI_ROW_BFR, second_target, 0, MPI_COMM_WORLD);
+    MPI_Send(&mat[par_rows - 2][par_rows/2], 1, MPI_ROW_BFR, second_target, 0, MPI_COMM_WORLD);
   }
 
   if(rcrds[1] == 0) {
@@ -266,7 +266,7 @@ void sendRightInterfacePoints(double** mat, double* buffer, int par_ref_rows, in
   MPI_Datatype MPI_CLM_BFR;
   MPI_Type_vector(par_ref_rows - 2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_BFR);
   MPI_Type_commit(&MPI_CLM_BFR);
-
+/*
   if(rcrds[0] == P-1) 
   {
     if (    )
@@ -275,7 +275,7 @@ void sendRightInterfacePoints(double** mat, double* buffer, int par_ref_rows, in
       MPI_Send(&mat[1][par_ref_cols - 2], 1, MPI_CLM_BFR, 3, 0, MPI_COMM_WORLD);
 
   }
-
+*/
   if(crds[0] == P/2 && crds[1] >= Q/2) 
   {
   MPI_Recv(&buffer[0], par_ref_rows-2, MPI_DOUBLE, 4, 0, MPI_COMM_WORLD, &stat[1]);
@@ -290,7 +290,7 @@ void sendTopInterfacePoints(double** mat, double* buffer, int par_ref_rows, int 
   MPI_Type_vector(par_ref_cols - 2, 1, 1, MPI_DOUBLE, &MPI_ROW_BFR);
   MPI_Type_commit(&MPI_ROW_BFR);
 
-
+/*
   if(rcrds[1] == 0)
   {
     if (    )
@@ -298,11 +298,11 @@ void sendTopInterfacePoints(double** mat, double* buffer, int par_ref_rows, int 
     else
       MPI_Send(&mat[1][0], 1, MPI_ROW_BFR, coarse_ranks[ P*((Q/2) -1) + rcrds[0]/2], 0, MPI_COMM_WORLD);
   }
-
+*/
   if(crds[1] == Q/2 -1 && crds[0] < P/2) 
   {
     int first_target = refine_ranks[crds[0]*2];
-    int second_target = refine_rank[(crds[0]*2)+1];
+    int second_target = refine_ranks[(crds[0]*2)+1];
     
     MPI_Recv(&buffer[0], 1, MPI_ROW_BFR, first_target, 0, MPI_COMM_WORLD, &stat[1]);
     MPI_Recv(&buffer[0], 1, MPI_ROW_BFR, second_target, 0, MPI_COMM_WORLD, &stat[2]);
@@ -428,10 +428,10 @@ void computeTimestep(double* bfr_top_refine_pts, double* bfr_right_refine_pts, d
   MPI_Cart_shift(MPI_COMM_CART, 1, 1, &l, &r);
 
 
-if(d==2) d = MPI_PROC_NULL;
-if(u==0) u = MPI_PROC_NULL;
-if(l==2) l = MPI_PROC_NULL;
-if(r==3) r = MPI_PROC_NULL;
+  /* if(d==2) d = MPI_PROC_NULL; */
+  /* if(u==0) u = MPI_PROC_NULL; */
+  /* if(l==2) l = MPI_PROC_NULL; */
+  /* if(r==3) r = MPI_PROC_NULL; */
   startcol = 1;
   endcol = par_cols - 1;
   startrow = 1;
@@ -499,25 +499,25 @@ if(r==3) r = MPI_PROC_NULL;
   MPI_Isend(&mat2[1][1],      		 1, MPI_CLM, l, 2, MPI_COMM_CART, &req[6]);
   MPI_Isend(&mat2[1][par_cols-2],	 1, MPI_CLM, r, 3, MPI_COMM_CART, &req[7]);
 
-if(rank != 2){
-  for (i = startrow; i < endrow; i++)
-  {
-  for (j = startcol; j < endcol; j++)
-  {
-  mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
-  }}
-}
+  if(rank != 2){
+    for (i = startrow; i < endrow; i++)
+      {
+	for (j = startcol; j < endcol; j++)
+	  {
+	    mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
+	  }}
+  }
 
-if (rank == 0) 
-{
-for(j = 2; j < par_cols - 1; j++){
-  mat2[par_rows-2][j] = mat1[par_rows-2][j] + wx * (mat1[par_rows-2+1][j] - 2*mat1[par_rows-2][j] + mat1[par_rows-2-1][j]) + wy * (mat1[par_rows -2][j+1] - 2 * mat1[par_rows-2][j] + mat1[par_rows-2][j-1]);
-}}
+  if (rank == 0) 
+    {
+      for(j = 2; j < par_cols - 1; j++){
+	mat2[par_rows-2][j] = mat1[par_rows-2][j] + wx * (mat1[par_rows-2+1][j] - 2*mat1[par_rows-2][j] + mat1[par_rows-2-1][j]) + wy * (mat1[par_rows -2][j+1] - 2 * mat1[par_rows-2][j] + mat1[par_rows-2][j-1]);
+      }}
 
-if (rank == 3){
-  for( i = 1; i < par_rows - 2; i++)
-  mat2[i][1] = mat1[i][1] + wx * (mat1[i+1][1] - 2*mat1[i][1] + mat1[i-1][1]) + wy * (mat1[i][1+1] - 2 * mat1[i][1] + mat1[i][1-1]);
-}
+  if (rank == 3){
+    for( i = 1; i < par_rows - 2; i++)
+      mat2[i][1] = mat1[i][1] + wx * (mat1[i+1][1] - 2*mat1[i][1] + mat1[i-1][1]) + wy * (mat1[i][1+1] - 2 * mat1[i][1] + mat1[i][1-1]);
+  }
 
   MPI_Waitall(8,req, stat);
 
@@ -554,8 +554,8 @@ int main(int argc, char *argv[])
   P = 2;
   Q = 2;
 
-  R = 1;
-  S = 1;
+  /* R = 1; */
+  /* S = 1; */
 
   while ((c = getopt (argc, argv, "r:i:")) != -1)
     {
@@ -595,66 +595,88 @@ int main(int argc, char *argv[])
       refine_ranks[refine_index++] = i;
     }
 
+  if(!rank) {
+    printf("Coarse:\n");
+    for(i=0; i<0.75*P*Q; i++)
+      printf("%d\n", coarse_ranks[i]);
 
-/*   //parallel rows & cols coarse grid */
-/*   int par_rows = 2 + nrows/Q; */
-/*   int par_cols = 2 + ncols/P; */
+    printf("Refine:\n");
+    for(i=0; i<P*Q; i++)
+      printf("%d\n", refine_ranks[i]);
+  }
 
-/*   int szofmesh = .5*nrows; */
+    //parallel rows & cols coarse grid
+  int par_rows = 2 + nrows/Q;
+  int par_cols = 2 + ncols/P;
 
-/*   //size of fine grid */
-/*   int refrows = szofmesh * 2 - 1; */
-/*   int refcols = szofmesh * 2 - 1; */
+  int szofmesh = .5*nrows;
 
-/*   //parallel refined rows & cols */
-/*   int par_ref_rows = 2 + refrows/R; */
-/*   int par_ref_cols = 2 + refcols/S; */
+  //size of fine grid
+  int refrows = szofmesh * 2 - 1;
+  int refcols = szofmesh * 2 - 1;
 
-
-/*   //  MPI_Type_vector(par_crows - 2, 1, par_cols * 2, MPI_DOUBLE, &MPI_CLM); */
-/*   //  MPI_Type_commit(&MPI_ROW); */
-
-/*   MPI_Group coarse_grid_group; */
-/*   MPI_Group fine_grid_group; */
-/*   MPI_Group group_world; */
-
-/*   MPI_Comm coarse_grid_comm; */
-/*   MPI_Comm fine_grid_comm; */
-
-/*   int coarse_grid_ranks[] = {0,1,2,3}; */
-/*   int fine_grid_ranks[] = {4}; */
-
-/*   MPI_Comm_group(MPI_COMM_WORLD, &group_world); */
-
-/*   MPI_Group_incl(group_world, 4, coarse_grid_ranks, &coarse_grid_group);  */
-/*   MPI_Comm_create(MPI_COMM_WORLD, coarse_grid_group, &coarse_grid_comm); */
-
-/*   MPI_Group_incl(group_world, 1, fine_grid_ranks, &fine_grid_group); */
-/*   MPI_Comm_create(MPI_COMM_WORLD, fine_grid_group, &fine_grid_comm); */
-
-/*   int in_refine = !(rank < P*Q); */
+  //parallel refined rows & cols
+  int par_ref_rows = 2 + refrows/Q;
+  int par_ref_cols = 2 + refcols/P;
 
 
-/*   MPI_Type_vector(par_rows - 2, 1, par_cols, MPI_DOUBLE, &MPI_CLM); */
-/*   MPI_Type_commit(&MPI_CLM); */
-/*   MPI_Type_vector(par_ref_rows - 2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_FINE); */
-/*   MPI_Type_commit(&MPI_CLM_FINE); */
+  //  MPI_Type_vector(par_crows - 2, 1, par_cols * 2, MPI_DOUBLE, &MPI_CLM);
+  //  MPI_Type_commit(&MPI_ROW);
 
-/*   if(!in_refine) { */
-/*     int prds[] = {0,0}; */
-/*     int dims[] = {Q,P}; */
-/*     MPI_Cart_create(coarse_grid_comm, 2, dims, prds, 1, &MPI_COMM_CART); */
-/*     MPI_Comm_rank(MPI_COMM_CART, &cRank); */
-/*     MPI_Cart_coords(MPI_COMM_CART, cRank, 2, crds); */
-/*   } else { */
-/*     //Create cart */
-/*     int rprds[] = {0,0}; */
-/*     int rdims[] = {R,S}; */
-/*     MPI_Cart_create(fine_grid_comm, 2, rdims, rprds, 1, &MPI_COMM_CART2); */
-/*     MPI_Comm_rank(MPI_COMM_CART2, &cRank2); */
-/*     MPI_Cart_coords(MPI_COMM_CART2, cRank2, 2, rcrds); */
-/*   } */
+  MPI_Group coarse_group;
+  MPI_Group refine_group;
+  MPI_Group world_group;
 
+  MPI_Comm coarse_comm;
+  MPI_Comm refine_comm;
+
+  MPI_Comm_group(MPI_COMM_WORLD, &world_group);
+
+  MPI_Group_incl(world_group, 4, coarse_ranks, &coarse_group);
+  MPI_Comm_create(MPI_COMM_WORLD, coarse_group, &coarse_comm);
+
+  MPI_Group_incl(world_group, 1, refine_ranks, &refine_group);
+  MPI_Comm_create(MPI_COMM_WORLD, refine_group, &refine_comm);
+
+  int in_refine = !(rank < P*Q);
+
+  MPI_Type_vector(par_rows - 2, 1, par_cols, MPI_DOUBLE, &MPI_CLM);
+  MPI_Type_commit(&MPI_CLM);
+  MPI_Type_vector(par_ref_rows - 2, 1, par_ref_cols, MPI_DOUBLE, &MPI_CLM_FINE);
+  MPI_Type_commit(&MPI_CLM_FINE);
+
+  if(!in_refine) {
+    int prds[] = {0,0};
+    int dims[] = {Q,P};
+    MPI_Cart_create(coarse_comm, 2, dims, prds, 0, &MPI_COMM_CART);
+    MPI_Comm_rank(MPI_COMM_CART, &cRank);
+    MPI_Cart_coords(MPI_COMM_CART, cRank, 2, crds);
+  } else {
+    //Create refine cart
+    int rprds[] = {0,0};
+    int rdims[] = {Q,P};
+    MPI_Cart_create(refine_comm, 2, rdims, rprds, 0, &MPI_COMM_CART2);
+    MPI_Comm_rank(MPI_COMM_CART2, &cRank2);
+    MPI_Cart_coords(MPI_COMM_CART2, cRank2, 2, rcrds);
+  }
+
+  if(!in_refine) {
+    rcrds[0]=-1;
+    rcrds[1]=-1;
+  } else {
+    crds[0]=-1;
+    crds[1]=-1;
+  }
+ 
+  if(in_refine) {
+    for(i=0; i<Q; i++) {
+      for(j=0; j<P; j++) {
+	if(rcrds[0] == j && rcrds[1] == i) {
+	  printf("%d\n", rank);
+	}
+      }
+    }
+  }
   
 /*   //width of space steps in x and y direction */
 /*   dx = 1 /(double)(nrows - 1); */
