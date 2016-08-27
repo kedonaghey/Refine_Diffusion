@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
   //2x2 for mesh in a 4x4 array
   double dx = 0, dy= 0, dt, time;
-  int iter, max_iter = 190;
+  int iter, max_iter = 100;
 
   //MPI Init
   MPI_Init(&argc, &argv);
@@ -48,8 +48,8 @@ int main(int argc, char *argv[])
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   //dimensions of ranks on coarse/fine grid
-  P = 2;
   Q = 2;
+  P = 2;
 
   while ((c = getopt (argc, argv, "r:i:")) != -1)
     {
@@ -67,6 +67,8 @@ int main(int argc, char *argv[])
 
 
   // find out where all the raks are going to go - needed for interface comms
+
+  int *initial_coarse_ranks = calloc(P*Q, sizeof(int));	  
   coarse_ranks = calloc(P*Q, sizeof(int));
   refine_ranks = calloc(P*Q, sizeof(int));
 
@@ -76,6 +78,8 @@ int main(int argc, char *argv[])
     {
     for(j=0; j<P; j++)
       {
+	initial_coarse_ranks[i*P + j] = i*P + j;
+
   	if(i >= Q/2 && j < P/2) {
   	  refine_ranks[refine_index++] = i*P + j;
 	} else {
@@ -103,8 +107,6 @@ int main(int argc, char *argv[])
   int par_rows = 2 + nrows/Q;
   int par_cols = 2 + ncols/P;
 
-
-
   //size of fine grid
   int szofmesh = .5*nrows;
   int refrows = szofmesh * 2 - 1;
@@ -113,9 +115,6 @@ int main(int argc, char *argv[])
   //parallel refined rows & cols
   int par_ref_rows = 2 + refrows/Q;
   int par_ref_cols = 2 + refcols/P;
-
-  //  MPI_Type_vector(par_crows - 2, 1, par_cols * 2, MPI_DOUBLE, &MPI_CLM);
-  //  MPI_Type_commit(&MPI_ROW);
 
   MPI_Group coarse_group;
   MPI_Group refine_group;
@@ -126,7 +125,7 @@ int main(int argc, char *argv[])
 
   MPI_Comm_group(MPI_COMM_WORLD, &world_group);
 
-  MPI_Group_incl(world_group, 4, coarse_ranks, &coarse_group);
+  MPI_Group_incl(world_group, 4, initial_coarse_ranks, &coarse_group);
   MPI_Comm_create(MPI_COMM_WORLD, coarse_group, &coarse_comm);
 
   MPI_Group_incl(world_group, 1, refine_ranks, &refine_group);
@@ -145,7 +144,25 @@ int main(int argc, char *argv[])
     MPI_Cart_create(coarse_comm, 2, dims, prds, 0, &MPI_COMM_CART);
     MPI_Comm_rank(MPI_COMM_CART, &cRank);
     MPI_Cart_coords(MPI_COMM_CART, cRank, 2, crds);
-  } else {
+  } 
+
+  for(i=0; i<Q; i++)
+    {
+    for(j=0; j<P; j++)
+      {
+  	if(i >= Q/2 && j < P/2) 
+        {
+          in_refine = i*P + j;
+	} 
+        else 
+        {
+  	  coarse_ranks[coarse_index++] = i*P + j;
+	}
+      }
+    }
+ 
+  if (in_refine)
+  {
     //Create refine cart
     int rprds[] = {0,0};
     int rdims[] = {Q,P};
@@ -153,6 +170,10 @@ int main(int argc, char *argv[])
     MPI_Comm_rank(MPI_COMM_CART2, &cRank2);
     MPI_Cart_coords(MPI_COMM_CART2, cRank2, 2, rcrds);
   }
+
+
+  for(i = Q * P; i < size; i++)
+    in_refine; 
 
   if(!in_refine) {
     rcrds[0]=-1;

@@ -246,16 +246,20 @@ void computeTimestep(double* bfr_top_refine_pts, double* bfr_right_refine_pts, d
 	    mat2[i][j] = mat1[i][j] + wx * (mat1[i+1][j] - 2*mat1[i][j] + mat1[i-1][j]) + wy * (mat1[i][j+1] - 2 * mat1[i][j] + mat1[i][j-1]);
 	  }}
   }
-
   //ranks in bottom row must calculate from halo row
-  if (rank == 0) 
+  //if (rank == 0) 
+  if(crds[1] == Q/2 -1 && crds[0] < P/2)
     {
-      for(j = 2; j < par_cols - 1; j++){
+      for(j = 2; j < par_cols - 1; j++)
+      {
 	mat2[par_rows-2][j] = mat1[par_rows-2][j] + wx * (mat1[par_rows-2+1][j] - 2*mat1[par_rows-2][j] + mat1[par_rows-2-1][j]) + wy * (mat1[par_rows -2][j+1] - 2 * mat1[par_rows-2][j] + mat1[par_rows-2][j-1]);
-      }}
+      }
+    }
 
   //ranks in right row must calculate using halo row
-  if (rank == 3){
+  //if (rank == 3){
+  if(crds[0] == P/2 && crds[1] >= Q/2)
+  {
     for( i = 1; i < par_rows - 2; i++)
       mat2[i][1] = mat1[i][1] + wx * (mat1[i+1][1] - 2*mat1[i][1] + mat1[i-1][1]) + wy * (mat1[i][1+1] - 2 * mat1[i][1] + mat1[i][1-1]);
   }
