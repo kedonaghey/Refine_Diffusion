@@ -1,0 +1,20 @@
+CC=mpicc
+CFLAGS=-g -Og -Wall
+LFLAGS=-lm
+
+EXECS=par_refine 
+OBJS = par_gridrefine.o interface_comms.o grid_utils.o compute_timestep.o 
+
+all: ${EXECS}
+
+par_gridrefine.c: interface_comms.h grid_utils.h compute_timestep.h
+interface_comms.c: interface_comms.h
+grid_utils.c: grid_utils.h
+compute_timestep.c: compute_timestep.h
+
+par_refine: ${OBJS}
+	mpicc ${LFLAGS} -o par_refine par_gridrefine.c
+
+clean:
+	${RM} ${OBJS} ${EXECS}
+
