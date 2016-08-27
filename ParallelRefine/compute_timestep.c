@@ -1,6 +1,7 @@
 
 #include "compute_timestep.h"
 #include <mpi.h>
+#include <math.h>
 
 extern int P, Q, rank, size;
 extern int crds[2], rcrds[2];
@@ -24,13 +25,76 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
 {
   int j = par_ref_rows - 2, i;
 
-  for (i = 3; i < par_ref_rows - 3; i+=2)
+  int u,d;
+  double upval=0.0, downval=0.0;
+
+  MPI_Status stat;
+  MPI_Cart_shift(MPI_COMM_CART2, 1, 1, &u, &d);
+
+  int start = 1;
+
+  if(rcrds[1] == Q/2)
+    start = 3;
+  else if(par_ref_rows%2 == 1 && rcrds[1]%2 == 1)
+    start = 2;
+
+  // send/recv interface values
+
+  // if cols even
+  // recv one value from down
+  // send one value to up
+
+  // if cols odd
+      // if coord even
+      // send/recv to both up and down
+      
+      // if coord odd
+      // do nothing
+  
+
+  if(par_ref_rows%2 == 0)
+    {
+      upval = mat1[0][j];
+      MPI_Sendrecv(&mat1[2][j], 1, MPI_DOUBLE, u, 0, &downval, 1, MPI_DOUBLE, d, 0, MPI_COMM_CART2, &stat);
+    }
+  else
+    {
+      if(rcrds[0]%2 == 0)
+	{
+	  MPI_Sendrecv(&mat1[2][j],              1, MPI_DOUBLE, u, 0, &downval, 1, MPI_DOUBLE, d, 0, MPI_COMM_CART2, &stat);
+	  MPI_Sendrecv(&mat1[par_ref_rows-3][j], 1, MPI_DOUBLE, d, 0, &upval,   1, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &stat);
+	}
+      else
+	{
+	  upval =   mat1[0][j];
+	  downval = mat1[par_ref_rows-1][j];
+	}
+    }
+
+  // calculate first interface point
+
+      mat2[start][j] =/*previous interface point*/ mat1[start][j] + /*previous interface point*/ mat1[start][j] * wxy * (dx/2) + wxy *
+	(4/3) * (/*previous interface point*/- 4*mat1[start][j] + /*coarse*/mat1[start][j+1]  + /*coarse*/ .5 * mat1[start+2][j]
+		 +/*coarse*/ .5 * upval +/*refine*/ .5 * mat1[start-1][j-1] +/*refine*/ mat1[start][j-1] +/*refine*/ .5
+		 * mat1[start+1][j-1]);
+
+
+  for (i = start+2; i < par_ref_rows - 2; i+=2)
     {
       mat2[i][j] =/*previous interface point*/ mat1[i][j] + /*previous interface point*/ mat1[i][j] * wxy * (dx/2) + wxy *
 	(4/3) * (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+2][j]
 		 +/*coarse*/ .5 * mat1[i-2][j] +/*refine*/ .5 * mat1[i-1][j-1] +/*refine*/ mat1[i][j-1] +/*refine*/ .5
 		 * mat1[i+1][j-1]);
     }
+
+  // dont update extremal interface value - its a constant boundary
+  if( rcrds[1] != Q-1 ) {
+      mat2[par_ref_rows-2][j] =/*previous interface point*/ mat1[par_ref_rows-2][j] + /*previous interface point*/ mat1[par_ref_rows-2][j]
+      * wxy * (dx/2) + wxy * (4/3) * (/*previous interface point*/- 4*mat1[par_ref_rows-2][j] + /*coarse*/mat1[par_ref_rows-2][j+1]  
+      + /*coarse*/ .5 * downval +/*coarse*/ .5 * mat1[par_ref_rows-4][j] +/*refine*/ .5 * mat1[par_ref_rows-3][j-1] 
+      +/*refine*/ mat1[par_ref_rows-2][j-1] +/*refine*/ .5 * mat1[par_ref_rows-1][j-1]);
+  }
+
 }
 
 
@@ -38,14 +102,76 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
 {
   int i = 1;
   int j;
+  int l,r;
+  double leftval, rightval;
 
-  for (j = 3; j < par_ref_cols - 3; j+=2)
+  MPI_Status stat;
+  MPI_Cart_shift(MPI_COMM_CART2, 1, 1, &l, &r);
+
+  int start = 2;
+
+  if(rcrds[0] == 0)
+    start = 4;
+  else if(par_ref_cols%2 == 1 && rcrds[0]%2 == 1)
+    start = 1;
+
+  // send/recv interface values
+
+  // if cols even
+  // recv one value from the right
+  // send one value to the left
+
+  // if cols odd
+      // if coord odd
+      // send/recv to both left and right
+      
+      // if coord even
+      // do nothing
+  
+
+  if(par_ref_cols%2 == 0)
     {
-      mat2[i][j] = /*previous interface point*/ mat1[i][j] + /*prev interface point*/ mat1[i][j] * wxy * (dx/2) + wxy * (4/3) *
+      leftval = mat1[i][0];
+      MPI_Sendrecv(&mat1[1][2], 1, MPI_DOUBLE, l, 0, &rightval, 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2, &stat);
+    }
+  else
+    {
+      if(rcrds[0]%2 == 1)
+	{
+	  MPI_Sendrecv(&mat1[1][2],              1, MPI_DOUBLE, l, 0, &rightval, 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2, &stat);
+	  MPI_Sendrecv(&mat1[1][par_ref_cols-3], 1, MPI_DOUBLE, r, 0, &leftval,  1, MPI_DOUBLE, l, 0, MPI_COMM_CART2, &stat);
+	}
+      else
+	{
+	  leftval = mat1[i][0];
+	  rightval = mat1[i][par_ref_cols-1];
+	}
+    }
+
+  // calculate first interface point
+
+  mat2[i][start] = /*previous interface point*/ mat1[i][start] + /*prev interface point*/ mat1[i][start] * wxy * (dx/2) + wxy * (4/3) *
+    (-/*prev interface point*/ 4*mat1[i][start] +/*coarse*/ mat1[i-1][start]  +/*coarse*/ .5 * mat1[i][start+2]
+     +/*coarse*/ .5 * leftval +/*refine*/ .5 * mat1[i+1][start-1] +/*refine*/ mat1[i+1][start] +/*refine*/ .5 * mat1[i+1][start+1]);
+
+
+  // calculate intermediary interface points
+  for (j = start+2; j < par_ref_cols - 2; j+=2)
+    {
+        mat2[i][j] = /*previous interface point*/ mat1[i][j] + /*prev interface point*/ mat1[i][j] * wxy * (dx/2) + wxy * (4/3) *
 	(-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1[i][j+2]
 	 +/*coarse*/ .5 * mat1[i][j-2] +/*refine*/ .5 * mat1[i+1][j-1] +/*refine*/ mat1[i+1][j] +/*refine*/ .5 * mat1[i+1][j+1]);
     }
 
+  // if we're not at the corner
+
+  if(rcrds[0] != P-1) {
+    // calcuate last interface point
+    mat2[i][par_ref_cols-2] = /*previous interface point*/ mat1[i][par_ref_cols-2] + /*prev interface point*/ mat1[i][par_ref_cols-2] 
+    * wxy * (dx/2) + wxy * (4/3) * (-/*prev interface point*/ 4*mat1[i][par_ref_cols-2] +/*coarse*/ mat1[i-1][par_ref_cols-2]  
+    +/*coarse*/ .5 * rightval +/*coarse*/ .5 * mat1[i][par_ref_cols-4] +/*refine*/ .5 * mat1[i+1][par_ref_cols-3] 
+    +/*refine*/ mat1[i+1][par_ref_cols-2] +/*refine*/ .5 * mat1[i+1][par_ref_cols-1]);
+  }
 }
 
 void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref_rows, int par_ref_cols, double wxy, double sxy)

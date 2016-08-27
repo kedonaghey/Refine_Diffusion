@@ -13,7 +13,7 @@ grid_utils.c: grid_utils.h
 compute_timestep.c: compute_timestep.h
 
 par_refine: ${OBJS}
-	mpicc ${LFLAGS} -o par_refine ${OBJS}
+	mpicc ${OBJS} ${LFLAGS} -o par_refine 
 
 clean:
 	${RM} ${OBJS} ${EXECS}

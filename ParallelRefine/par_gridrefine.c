@@ -108,13 +108,13 @@ int main(int argc, char *argv[])
   int par_cols = 2 + ncols/P;
 
   //size of fine grid
-  int szofmesh = .5*nrows;
-  int refrows = szofmesh * 2 - 1;
-  int refcols = szofmesh * 2 - 1;
+  double szofmesh = .5; // fraction of mesh to be refined
+  int refrows = (szofmesh*nrows) * 2 - 1;
+  int refcols = (szofmesh*ncols) * 2 - 1;
 
   //parallel refined rows & cols
-  int par_ref_rows = 2 + refrows/Q;
-  int par_ref_cols = 2 + refcols/P;
+  int par_ref_rows = 2 + (int)ceil(refrows/(double)Q);
+  int par_ref_cols = 2 + (int)ceil(refcols/(double)P);
 
   MPI_Group coarse_group;
   MPI_Group refine_group;
@@ -146,20 +146,10 @@ int main(int argc, char *argv[])
     MPI_Cart_coords(MPI_COMM_CART, cRank, 2, crds);
   } 
 
-  for(i=0; i<Q; i++)
-    {
-    for(j=0; j<P; j++)
-      {
-  	if(i >= Q/2 && j < P/2) 
-        {
-          in_refine = i*P + j;
-	} 
-        else 
-        {
-  	  coarse_ranks[coarse_index++] = i*P + j;
-	}
-      }
-    }
+  for(i=0; i<P*Q; i++) {
+    if( rank == refine_ranks[i] )
+      in_refine = 1;
+  }
  
   if (in_refine)
   {
@@ -171,9 +161,6 @@ int main(int argc, char *argv[])
     MPI_Cart_coords(MPI_COMM_CART2, cRank2, 2, rcrds);
   }
 
-
-  for(i = Q * P; i < size; i++)
-    in_refine; 
 
   if(!in_refine) {
     rcrds[0]=-1;
@@ -242,7 +229,7 @@ int main(int argc, char *argv[])
   //buffers to send data
   double *bfr_right_refine_pts, *bfr_top_refine_pts;
   bfr_right_refine_pts = calloc(par_ref_rows - 2, sizeof(double));
-  bfr_top_refine_pts = calloc(par_ref_cols - 2, sizeof(double));
+  bfr_top_refine_pts   = calloc(par_ref_cols - 2, sizeof(double));
 
   double *bfr_right_interface_pts, *bfr_top_interface_pts;
   bfr_right_interface_pts = calloc(par_rows - 2, sizeof(double));
@@ -283,7 +270,7 @@ int main(int argc, char *argv[])
         sendRightPoints(mat1, bfr_right_interface_pts, par_rows, par_cols);
 
       if(in_refine || rank == 0)
-        sendTopPoints(mat1, bfr_top_interface_pts, par_rows, par_ref_cols);
+        sendTopPoints(mat1, bfr_top_interface_pts, par_rows, par_cols);
 
       if(in_refine)
       {
