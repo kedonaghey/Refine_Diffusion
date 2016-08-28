@@ -12,31 +12,65 @@ void initFineGrid(double** mat, int nrows, int ncols)
   int bottom = 40;
   int left = 20;
   // left rows initial conditions
-  if(rcrds[1] == 0)
+  if(rcrds[1] == 0 ) 
     {
-      for ( i = 1; i < nrows - 1; i+=2)
+      if(rcrds[0]%2 == 0 || nrows%2 == 0)
 	{
-	  mat[i][1] = left;
+	  for ( i = 1; i < nrows - 1; i+=2)
+	    {
+	      mat[i][2] = left;
+	    }
+	  for (i = 2; i < nrows - 1; i+=2)
+	    {
+	      mat[i][2] = left/2;
+	    }
 	}
-      for (i = 2; i < nrows - 1; i+=2)
+      else 
 	{
-	  mat[i][1] = left/2;
+	  for ( i = 1; i < nrows - 1; i+=2)
+	    {
+	      mat[i][2] = left/2;
+	    }
+	  for (i = 2; i < nrows - 1; i+=2)
+	    {
+	      mat[i][2] = left;
+	    }
 	}
     }
 
   // bottom rows initial conditions
   if(rcrds[0] == P-1)
     {
-      for ( i = 1; i < ncols - 1; i+=2)
+      if(rcrds[1]%2 == 1 || ncols%2 == 0) {
+	for ( i = 1; i < ncols - 1; i+=2)
+	  {
+	    mat[nrows-3][i] = bottom;
+	  }
+	for (i = 2; i < ncols - 1; i+=2)
+	  {
+	    mat[nrows-3][i] = bottom/2;
+	  }
+      }
+      else
 	{
-	  mat[nrows-2][i] = bottom;
-	}
-      for (i = 2; i < ncols - 1; i+=2)
-	{
-	  mat[nrows-2][i] = bottom/2;
+	  for ( i = 1; i < ncols - 1; i+=2)
+	    {
+	      mat[nrows-3][i] = bottom/2;
+	    }
+	  for (i = 2; i < ncols - 1; i+=2)
+	    {
+	      mat[nrows-3][i] = bottom;
+	    }
 	}
     } 
+
+  // bottom-left corner is a special case - erase extra values that were put in
+  if(rcrds[0]==Q-1 && rcrds[1]==0) {
+    mat[nrows-3][1] = 0.0;
+    mat[nrows-2][2] = 0.0;
+  }
 }
+
 
 void initGrid(double** mat, int nrows, int ncols)
 {
@@ -73,7 +107,8 @@ void initGrid(double** mat, int nrows, int ncols)
 	  mat[nrows-2][i] = 40;
 	}
     }
-}
+
+  }
 }
 
 void printGrid(double** mat, int nrows, int ncols)

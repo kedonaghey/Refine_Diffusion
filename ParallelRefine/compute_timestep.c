@@ -2,8 +2,9 @@
 #include "compute_timestep.h"
 #include <mpi.h>
 #include <math.h>
+#include <stdio.h>
 
-extern int P, Q, rank, size;
+extern int P, Q, rank, size, cart_rank_refine;
 extern int crds[2], rcrds[2];
 extern MPI_Comm MPI_COMM_CART, MPI_COMM_CART2;
 extern MPI_Datatype MPI_CLM, MPI_CLM_FINE;
@@ -16,10 +17,7 @@ void computeCornerTimestep(double* buffer, double** mat1, double** mat2, double 
   mat2[i][j] = /*prev pointmat1_corner*/mat1[i][j] + wxy * (16/15) * (/*prev point*/-4* mat1[i][j]/*mat1_corner*/+
 		.5 * /*bound lwr*/mat1[i+2][j] + /*coarse*/mat1[i][j+1] + /*bound*/ mat1[i-1][j] + .5 * /*coarse*/mat1[i][j-2]
 	        +/*mesh*/ mat1[i+1][j-1]);
-
 }
-
-
 
 void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2, int par_ref_rows, int ncols, double wxy, double dx, int refcols)
 {
@@ -46,28 +44,31 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
 
   // if cols odd
       // if coord even
-      // send/recv to both up and down
+      // recv from both up and down
       
       // if coord odd
-      // do nothing
+      // send to both up and down
   
 
   if(par_ref_rows%2 == 0)
     {
-      upval = mat1[0][j];
-      MPI_Sendrecv(&mat1[2][j], 1, MPI_DOUBLE, u, 0, &downval, 1, MPI_DOUBLE, d, 0, MPI_COMM_CART2, &stat);
+      downval = mat1[par_ref_rows-1][j];
+      MPI_Sendrecv(&mat1[par_ref_rows-3][j], 1, MPI_DOUBLE, d, 0, &upval, 1, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &stat);
     }
   else
     {
       if(rcrds[0]%2 == 0)
 	{
-	  MPI_Sendrecv(&mat1[2][j],              1, MPI_DOUBLE, u, 0, &downval, 1, MPI_DOUBLE, d, 0, MPI_COMM_CART2, &stat);
-	  MPI_Sendrecv(&mat1[par_ref_rows-3][j], 1, MPI_DOUBLE, d, 0, &upval,   1, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &stat);
+	  MPI_Recv(&upval,   1, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &stat);
+	  MPI_Recv(&downval, 1, MPI_DOUBLE, d, 0, MPI_COMM_CART2, &stat);
 	}
       else
 	{
 	  upval =   mat1[0][j];
 	  downval = mat1[par_ref_rows-1][j];
+
+	  MPI_Recv(&mat1[par_ref_rows-3][j],  1, MPI_DOUBLE, d, 0, MPI_COMM_CART2, &stat);
+	  MPI_Recv(&mat1[2][j],               1, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &stat);
 	}
     }
 
@@ -88,7 +89,7 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
     }
 
   // dont update extremal interface value - its a constant boundary
-  if( rcrds[1] != Q-1 ) {
+  if( rcrds[1] != Q-1 && (par_ref_rows-start)%2 == 0) {
       mat2[par_ref_rows-2][j] =/*previous interface point*/ mat1[par_ref_rows-2][j] + /*previous interface point*/ mat1[par_ref_rows-2][j]
       * wxy * (dx/2) + wxy * (4/3) * (/*previous interface point*/- 4*mat1[par_ref_rows-2][j] + /*coarse*/mat1[par_ref_rows-2][j+1]  
       + /*coarse*/ .5 * downval +/*coarse*/ .5 * mat1[par_ref_rows-4][j] +/*refine*/ .5 * mat1[par_ref_rows-3][j-1] 
@@ -105,14 +106,16 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
   int l,r;
   double leftval, rightval;
 
-  MPI_Status stat;
+  MPI_Status stat[2];
   MPI_Cart_shift(MPI_COMM_CART2, 1, 1, &l, &r);
+
+  printf("%d <- %d -> %d\n", l, cart_rank_refine, r);
 
   int start = 2;
 
-  if(rcrds[0] == 0)
+  if(rcrds[1] == 0)
     start = 4;
-  else if(par_ref_cols%2 == 1 && rcrds[0]%2 == 1)
+  else if(par_ref_cols%2 == 1 && rcrds[1]%2 == 1)
     start = 1;
 
   // send/recv interface values
@@ -123,28 +126,31 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
 
   // if cols odd
       // if coord odd
-      // send/recv to both left and right
+      // recv from both left and right
       
       // if coord even
-      // do nothing
+      // send to both left and right
   
-
-  if(par_ref_cols%2 == 0)
-    {
-      leftval = mat1[i][0];
-      MPI_Sendrecv(&mat1[1][2], 1, MPI_DOUBLE, l, 0, &rightval, 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2, &stat);
-    }
-  else
-    {
-      if(rcrds[0]%2 == 1)
+  if(rcrds[0] == 0 ) {
+    if(par_ref_cols%2 == 0)
+      {
+	leftval = mat1[i][start-2];
+	MPI_Sendrecv(&mat1[i][2], 1, MPI_DOUBLE, l, 0, &rightval, 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2, &stat[0]);
+      }
+    else
+      {
+	if(rcrds[1]%2 == 1)
+	  {
+	    MPI_Recv(&leftval,  1, MPI_DOUBLE, l, 0, MPI_COMM_CART2, &stat[0]);
+	    MPI_Recv(&rightval, 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2, &stat[1]);
+	  }
+	else
 	{
-	  MPI_Sendrecv(&mat1[1][2],              1, MPI_DOUBLE, l, 0, &rightval, 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2, &stat);
-	  MPI_Sendrecv(&mat1[1][par_ref_cols-3], 1, MPI_DOUBLE, r, 0, &leftval,  1, MPI_DOUBLE, l, 0, MPI_COMM_CART2, &stat);
-	}
-      else
-	{
-	  leftval = mat1[i][0];
+	  leftval = mat1[i][start-2];
 	  rightval = mat1[i][par_ref_cols-1];
+
+	  MPI_Send(&mat1[i][par_ref_cols-3], 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2);
+	  MPI_Send(&mat1[i][2],              1, MPI_DOUBLE, l, 0, MPI_COMM_CART2);
 	}
     }
 
@@ -165,13 +171,17 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
 
   // if we're not at the corner
 
-  if(rcrds[0] != P-1) {
+  if(rcrds[1] != P-1 && (par_ref_cols-start)%2 == 0 ) {
     // calcuate last interface point
-    mat2[i][par_ref_cols-2] = /*previous interface point*/ mat1[i][par_ref_cols-2] + /*prev interface point*/ mat1[i][par_ref_cols-2] 
-    * wxy * (dx/2) + wxy * (4/3) * (-/*prev interface point*/ 4*mat1[i][par_ref_cols-2] +/*coarse*/ mat1[i-1][par_ref_cols-2]  
-    +/*coarse*/ .5 * rightval +/*coarse*/ .5 * mat1[i][par_ref_cols-4] +/*refine*/ .5 * mat1[i+1][par_ref_cols-3] 
+    mat2[i][par_ref_cols-2] = /*previous interface point*/ mat1[i][par_ref_cols-2] + /*prev interface point*/ mat1[i][par_ref_cols-2]
+    * wxy * (dx/2) + wxy * (4/3) * (-/*prev interface point*/ 4*mat1[i][par_ref_cols-2] +/*coarse*/ mat1[i-1][par_ref_cols-2]
+    +/*coarse*/ .5 * rightval +/*coarse*/ .5 * mat1[i][par_ref_cols-4] +/*refine*/ .5 * mat1[i+1][par_ref_cols-3]
     +/*refine*/ mat1[i+1][par_ref_cols-2] +/*refine*/ .5 * mat1[i+1][par_ref_cols-1]);
   }
+
+  }
+
+  printf("Rank %d done\n", rank);
 }
 
 void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref_rows, int par_ref_cols, double wxy, double sxy)
