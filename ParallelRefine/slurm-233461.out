@@ -1,0 +1,450 @@
+[lonsdale-n004:29949] *** Process received signal ***
+[lonsdale-n004:29949] Signal: Segmentation fault (11)
+[lonsdale-n004:29949] Signal code: Address not mapped (1)
+[lonsdale-n004:29949] Failing at address: 0xe0000001d
+[lonsdale-n004:29948] *** Process received signal ***
+[lonsdale-n004:29948] Signal: Segmentation fault (11)
+[lonsdale-n004:29948] Signal code: Address not mapped (1)
+[lonsdale-n004:29948] Failing at address: 0xe0000001d
+[lonsdale-n004:29950] *** Process received signal ***
+[lonsdale-n004:29950] Signal: Segmentation fault (11)
+[lonsdale-n004:29950] Signal code: Address not mapped (1)
+[lonsdale-n004:29950] Failing at address: 0xe0000001d
+[lonsdale-n004:29951] *** Process received signal ***
+[lonsdale-n004:29951] Signal: Segmentation fault (11)
+[lonsdale-n004:29951] Signal code: Address not mapped (1)
+[lonsdale-n004:29951] Failing at address: 0xe0000001d
+[lonsdale-n004:29949] [ 0] /lib64/libpthread.so.0[0x364e20f7e0]
+[lonsdale-n004:29949] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b962ab09f08]
+[lonsdale-n004:29949] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b962ab0ac49]
+[lonsdale-n004:29949] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b962a541527]
+[lonsdale-n004:29949] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b962a541f82]
+[lonsdale-n004:29949] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b962a567841]
+[lonsdale-n004:29949] [ 6] par_refine[0x4013f6]
+[lonsdale-n004:29949] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x364da1ed5d]
+[lonsdale-n004:29949] [ 8] par_refine[0x400fa9]
+[lonsdale-n004:29949] *** End of error message ***
+[lonsdale-n004:29948] [ 0] /lib64/libpthread.so.0[0x364e20f7e0]
+[lonsdale-n004:29948] [ 1] [lonsdale-n004:29950] [ 0] /lib64/libpthread.so.0[0x364e20f7e0]
+[lonsdale-n004:29950] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b5f37733f08]
+[lonsdale-n004:29950] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b3f37b47f08]
+[lonsdale-n004:29948] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b3f37b48c49]
+[lonsdale-n004:29948] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b5f37734c49]
+[lonsdale-n004:29950] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b5f3716b527]
+[lonsdale-n004:29950] [ 4] [lonsdale-n004:29951] [ 0] /lib64/libpthread.so.0[0x364e20f7e0]
+[lonsdale-n004:29951] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b2c4af65f08]
+[lonsdale-n004:29951] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b2c4af66c49]
+[lonsdale-n004:29951] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b2c4a99d527]
+[lonsdale-n004:29951] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b2c4a99df82]
+[lonsdale-n004:29951] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b3f3757f527]
+[lonsdale-n004:29948] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b3f3757ff82]
+[lonsdale-n004:29948] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b3f375a5841]
+[lonsdale-n004:29948] [ 6] par_refine[0x4013f6]
+[lonsdale-n004:29948] [ 7] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b2c4a9c3841]
+[lonsdale-n004:29951] [ 6] par_refine[0x4013f6]
+[lonsdale-n004:29951] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x364da1ed5d]
+[lonsdale-n004:29951] [ 8] par_refine[0x400fa9]
+[lonsdale-n004:29951] *** End of error message ***
+[lonsdale-n002:25135] *** Process received signal ***
+[lonsdale-n002:25135] Signal: Segmentation fault (11)
+[lonsdale-n002:25135] Signal code: Address not mapped (1)
+[lonsdale-n002:25135] Failing at address: 0xe0000001d
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b5f3716bf82]
+[lonsdale-n004:29950] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b5f37191841]
+[lonsdale-n004:29950] [ 6] par_refine[0x4013f6]
+[lonsdale-n004:29950] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x364da1ed5d]
+[lonsdale-n004:29950] [ 8] par_refine[0x400fa9]
+[lonsdale-n004:29950] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xfd)[0x364da1ed5d]
+[lonsdale-n004:29948] [ 8] par_refine[0x400fa9]
+[lonsdale-n004:29948] *** End of error message ***
+[lonsdale-n002:25128] *** Process received signal ***
+[lonsdale-n002:25128] Signal: Segmentation fault (11)
+[lonsdale-n002:25128] Signal code: Address not mapped (1)
+[lonsdale-n002:25128] Failing at address: 0xe0000001d
+[lonsdale-n002:25129] *** Process received signal ***
+[lonsdale-n002:25129] Signal: Segmentation fault (11)
+[lonsdale-n002:25129] Signal code: Address not mapped (1)
+[lonsdale-n002:25129] Failing at address: 0xe0000001d
+[lonsdale-n003:10758] *** Process received signal ***
+[lonsdale-n003:10758] Signal: Segmentation fault (11)
+[lonsdale-n003:10758] Signal code: Address not mapped (1)
+[lonsdale-n003:10758] Failing at address: 0xe0000001d
+[lonsdale-n002:25131] *** Process received signal ***
+[lonsdale-n003:10760] *** Process received signal ***
+[lonsdale-n003:10760] Signal: Segmentation fault (11)
+[lonsdale-n003:10760] Signal code: Address not mapped (1)
+[lonsdale-n003:10760] Failing at address: 0xe0000001d
+[lonsdale-n002:25131] Signal: Segmentation fault (11)
+[lonsdale-n002:25131] Signal code: Address not mapped (1)
+[lonsdale-n002:25131] Failing at address: 0xe0000001d
+[lonsdale-n001:00672] *** Process received signal ***
+[lonsdale-n001:00672] Signal: Segmentation fault (11)
+[lonsdale-n001:00672] Signal code: Address not mapped (1)
+[lonsdale-n001:00672] Failing at address: 0xe0000001d
+[lonsdale-n002:25132] *** Process received signal ***
+[lonsdale-n002:25132] Signal: Segmentation fault (11)
+[lonsdale-n002:25132] Signal code: Address not mapped (1)
+[lonsdale-n002:25132] Failing at address: 0xe0000001d
+[lonsdale-n001:00673] *** Process received signal ***
+[lonsdale-n001:00673] Signal: Segmentation fault (11)
+[lonsdale-n001:00673] Signal code: Address not mapped (1)
+[lonsdale-n001:00673] Failing at address: 0xe0000001d
+[lonsdale-n002:25130] *** Process received signal ***
+[lonsdale-n002:25130] Signal: Segmentation fault (11)
+[lonsdale-n002:25130] Signal code: Address not mapped (1)
+[lonsdale-n002:25130] Failing at address: 0xe0000001d
+[lonsdale-n001:00672] [ 0] /lib64/libpthread.so.0[0x3564e0f7e0]
+[lonsdale-n001:00672] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b140b10ff08]
+[lonsdale-n001:00672] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b140b110c49]
+[lonsdale-n001:00672] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b140ab47527]
+[lonsdale-n001:00672] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b140ab47f82]
+[lonsdale-n001:00672] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b140ab6d841]
+[lonsdale-n001:00672] [ 6] par_refine[0x4013f6]
+[lonsdale-n001:00672] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x356461ed5d]
+[lonsdale-n001:00672] [ 8] par_refine[0x400fa9]
+[lonsdale-n001:00672] *** End of error message ***
+[lonsdale-n001:00676] *** Process received signal ***
+[lonsdale-n001:00676] Signal: Segmentation fault (11)
+[lonsdale-n001:00676] Signal code: Address not mapped (1)
+[lonsdale-n001:00676] Failing at address: 0xe0000001d
+[lonsdale-n001:00676] [ 0] /lib64/libpthread.so.0[0x3564e0f7e0]
+[lonsdale-n001:00676] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2aaac446df08]
+[lonsdale-n001:00676] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2aaac446ec49]
+[lonsdale-n001:00676] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2aaac3ea5527]
+[lonsdale-n001:00676] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2aaac3ea5f82]
+[lonsdale-n001:00676] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2aaac3ecb841]
+[lonsdale-n001:00676] [ 6] par_refine[0x4013f6]
+[lonsdale-n001:00676] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x356461ed5d]
+[lonsdale-n001:00676] [ 8] par_refine[0x400fa9]
+[lonsdale-n001:00676] *** End of error message ***
+[lonsdale-n001:00673] [ 0] /lib64/libpthread.so.0[0x3564e0f7e0]
+[lonsdale-n001:00673] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b7c61b9df08]
+[lonsdale-n001:00673] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b7c61b9ec49]
+[lonsdale-n001:00673] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b7c615d5527]
+[lonsdale-n001:00673] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b7c615d5f82]
+[lonsdale-n001:00673] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b7c615fb841]
+[lonsdale-n001:00673] [ 6] par_refine[0x4013f6]
+[lonsdale-n001:00673] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x356461ed5d]
+[lonsdale-n001:00673] [ 8] par_refine[0x400fa9]
+[lonsdale-n001:00673] *** End of error message ***
+[lonsdale-n001:00668] *** Process received signal ***
+[lonsdale-n001:00668] Signal: Segmentation fault (11)
+[lonsdale-n001:00668] Signal code: Address not mapped (1)
+[lonsdale-n001:00668] Failing at address: 0xe0000001d
+[lonsdale-n001:00668] [ 0] /lib64/libpthread.so.0[0x3564e0f7e0]
+[lonsdale-n001:00668] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2acad0226f08]
+[lonsdale-n001:00668] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2acad0227c49]
+[lonsdale-n001:00668] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2acacfc5e527]
+[lonsdale-n001:00668] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2acacfc5ef82]
+[lonsdale-n001:00668] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2acacfc84841]
+[lonsdale-n001:00668] [ 6] par_refine[0x4013f6]
+[lonsdale-n001:00668] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x356461ed5d]
+[lonsdale-n001:00668] [ 8] par_refine[0x400fa9]
+[lonsdale-n001:00668] *** End of error message ***
+[lonsdale-n001:00669] *** Process received signal ***
+[lonsdale-n001:00669] Signal: Segmentation fault (11)
+[lonsdale-n001:00669] Signal code: Address not mapped (1)
+[lonsdale-n001:00669] Failing at address: 0xe0000001d
+[lonsdale-n001:00669] [ 0] /lib64/libpthread.so.0[0x3564e0f7e0]
+[lonsdale-n001:00669] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b3c7af8af08]
+[lonsdale-n001:00669] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b3c7af8bc49]
+[lonsdale-n001:00669] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b3c7a9c2527]
+[lonsdale-n001:00669] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b3c7a9c2f82]
+[lonsdale-n001:00669] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b3c7a9e8841]
+[lonsdale-n001:00669] [ 6] par_refine[0x4013f6]
+[lonsdale-n001:00669] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x356461ed5d]
+[lonsdale-n001:00669] [ 8] par_refine[0x400fa9]
+[lonsdale-n001:00669] *** End of error message ***
+[lonsdale-n001:00670] *** Process received signal ***
+[lonsdale-n001:00670] Signal: Segmentation fault (11)
+[lonsdale-n001:00670] Signal code: Address not mapped (1)
+[lonsdale-n001:00670] Failing at address: 0xe0000001d
+[lonsdale-n001:00670] [ 0] /lib64/libpthread.so.0[0x3564e0f7e0]
+[lonsdale-n001:00670] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b72ebef6f08]
+[lonsdale-n001:00670] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b72ebef7c49]
+[lonsdale-n001:00670] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b72eb92e527]
+[lonsdale-n001:00670] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b72eb92ef82]
+[lonsdale-n001:00670] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b72eb954841]
+[lonsdale-n001:00670] [ 6] par_refine[0x4013f6]
+[lonsdale-n001:00670] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x356461ed5d]
+[lonsdale-n001:00670] [ 8] par_refine[0x400fa9]
+[lonsdale-n001:00670] *** End of error message ***
+[lonsdale-n002:25133] *** Process received signal ***
+[lonsdale-n002:25133] Signal: Segmentation fault (11)
+[lonsdale-n002:25133] Signal code: Address not mapped (1)
+[lonsdale-n002:25133] Failing at address: 0xe0000001d
+[lonsdale-n003:10757] *** Process received signal ***
+[lonsdale-n003:10757] Signal: Segmentation fault (11)
+[lonsdale-n003:10757] Signal code: Address not mapped (1)
+[lonsdale-n003:10757] Failing at address: 0xe0000001d
+[lonsdale-n002:25134] *** Process received signal ***
+[lonsdale-n002:25134] Signal: Segmentation fault (11)
+[lonsdale-n002:25134] Signal code: Address not mapped (1)
+[lonsdale-n002:25134] Failing at address: 0xe0000001d
+[lonsdale-n003:10762] *** Process received signal ***
+[lonsdale-n003:10762] Signal: Segmentation fault (11)
+[lonsdale-n003:10762] Signal code: Address not mapped (1)
+[lonsdale-n003:10762] Failing at address: 0xe0000001d
+[lonsdale-n002:25135] [ 0] /lib64/libpthread.so.0[0x331c00f7e0]
+[lonsdale-n002:25135] [ 1] [lonsdale-n003:10756] *** Process received signal ***
+[lonsdale-n003:10756] Signal: Segmentation fault (11)
+[lonsdale-n003:10756] Signal code: Address not mapped (1)
+[lonsdale-n003:10756] Failing at address: 0xe0000001d
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2aee0b6eef08]
+[lonsdale-n002:25135] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2aee0b6efc49]
+[lonsdale-n002:25135] [ 3] [lonsdale-n003:10763] *** Process received signal ***
+[lonsdale-n003:10763] Signal: Segmentation fault (11)
+[lonsdale-n003:10763] Signal code: Address not mapped (1)
+[lonsdale-n003:10763] Failing at address: 0xe0000001d
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2aee0b126527]
+[lonsdale-n002:25135] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2aee0b126f82]
+[lonsdale-n002:25135] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2aee0b14c841]
+[lonsdale-n002:25135] [ 6] par_refine[0x4013f6]
+[lonsdale-n002:25135] [ 7] [lonsdale-n003:10758] [ 0] /lib64/libpthread.so.0[0x3c4980f7e0]
+[lonsdale-n003:10758] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2ac00624ef08]
+[lonsdale-n003:10758] [ 2] /lib64/libc.so.6(__libc_start_main+0xfd)[0x331b81ed5d]
+[lonsdale-n002:25135] [ 8] par_refine[0x400fa9]
+[lonsdale-n002:25135] *** End of error message ***
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2ac00624fc49]
+[lonsdale-n003:10758] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2ac005c86527]
+[lonsdale-n003:10758] [ 4] [lonsdale-n002:25128] [ 0] /lib64/libpthread.so.0[0x331c00f7e0]
+[lonsdale-n002:25128] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2ac005c86f82]
+[lonsdale-n003:10758] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2ac005cac841]
+[lonsdale-n003:10758] [ 6] par_refine[0x4013f6]
+[lonsdale-n003:10758] [ 7] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b716eafef08]
+[lonsdale-n002:25128] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b716eaffc49]
+[lonsdale-n002:25128] [ 3] /lib64/libc.so.6(__libc_start_main+0xfd)[0x3c4901ed5d]
+[lonsdale-n003:10758] [ 8] par_refine[0x400fa9]
+[lonsdale-n003:10758] *** End of error message ***
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b716e536527]
+[lonsdale-n002:25128] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b716e536f82]
+[lonsdale-n002:25128] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b716e55c841]
+[lonsdale-n002:25128] [ 6] par_refine[0x4013f6]
+[lonsdale-n002:25128] [ 7] [lonsdale-n003:10760] [ 0] /lib64/libc.so.6(__libc_start_main+0xfd)[0x331b81ed5d]
+[lonsdale-n002:25128] [ 8] par_refine[0x400fa9]
+[lonsdale-n002:25128] *** End of error message ***
+/lib64/libpthread.so.0[0x3c4980f7e0]
+[lonsdale-n003:10760] [ 1] [lonsdale-n002:25129] [ 0] /lib64/libpthread.so.0[0x331c00f7e0]
+[lonsdale-n002:25129] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b76dd224f08]
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b5352845f08]
+[lonsdale-n003:10760] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b5352846c49]
+[lonsdale-n003:10760] [ 3] [lonsdale-n002:25129] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b76dd225c49]
+[lonsdale-n002:25129] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b76dcc5c527]
+[lonsdale-n002:25129] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b76dcc5cf82]
+[lonsdale-n002:25129] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b76dcc82841]
+[lonsdale-n002:25129] [ 6] par_refine[0x4013f6]
+[lonsdale-n002:25129] [ 7] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b535227d527]
+[lonsdale-n003:10760] [ 4] /lib64/libc.so.6(__libc_start_main+0xfd)[0x331b81ed5d]
+[lonsdale-n002:25129] [ 8] par_refine[0x400fa9]
+[lonsdale-n002:25129] *** End of error message ***
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b535227df82]
+[lonsdale-n003:10760] [ 5] [lonsdale-n002:25131] [ 0] /lib64/libpthread.so.0[0x331c00f7e0]
+[lonsdale-n002:25131] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b53522a3841]
+[lonsdale-n003:10760] [ 6] par_refine[0x4013f6]
+[lonsdale-n003:10760] [ 7] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b00e230df08]
+[lonsdale-n002:25131] [ 2] /lib64/libc.so.6(__libc_start_main+0xfd)[0x3c4901ed5d]
+[lonsdale-n003:10760] [ 8] par_refine[0x400fa9]
+[lonsdale-n003:10760] *** End of error message ***
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b00e230ec49]
+[lonsdale-n002:25131] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b00e1d45527]
+[lonsdale-n002:25131] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b00e1d45f82]
+[lonsdale-n002:25131] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b00e1d6b841]
+[lonsdale-n002:25131] [ 6] par_refine[0x4013f6]
+[lonsdale-n002:25131] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x331b81ed5d]
+[lonsdale-n002:25131] [ 8] par_refine[0x400fa9]
+[lonsdale-n002:25131] *** End of error message ***
+[lonsdale-n003:10757] [ 0] /lib64/libpthread.so.0[0x3c4980f7e0]
+[lonsdale-n003:10757] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b9e58443f08]
+[lonsdale-n003:10757] [ 2] [lonsdale-n002:25132] [ 0] /lib64/libpthread.so.0[0x331c00f7e0]
+[lonsdale-n002:25132] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b2128f5ff08]
+[lonsdale-n002:25132] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b2128f60c49]
+[lonsdale-n002:25132] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b2128997527]
+[lonsdale-n002:25132] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b2128997f82]
+[lonsdale-n002:25132] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b9e58444c49]
+[lonsdale-n003:10757] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b9e57e7b527]
+[lonsdale-n003:10757] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b9e57e7bf82]
+[lonsdale-n003:10757] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b9e57ea1841]
+[lonsdale-n003:10757] [ 6] par_refine[0x4013f6]
+[lonsdale-n003:10757] [ 7] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b21289bd841]
+[lonsdale-n002:25132] [ 6] par_refine[0x4013f6]
+[lonsdale-n002:25132] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x331b81ed5d]
+[lonsdale-n002:25132] [ 8] par_refine[0x400fa9]
+[lonsdale-n002:25132] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xfd)[0x3c4901ed5d]
+[lonsdale-n003:10757] [ 8] par_refine[0x400fa9]
+[lonsdale-n003:10757] *** End of error message ***
+[lonsdale-n002:25130] [ 0] /lib64/libpthread.so.0[0x331c00f7e0]
+[lonsdale-n002:25130] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2aef28886f08]
+[lonsdale-n002:25130] [ 2] [lonsdale-n003:10756] [ 0] /lib64/libpthread.so.0[0x3c4980f7e0]
+[lonsdale-n003:10756] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2aef28887c49]
+[lonsdale-n002:25130] [ 3] [lonsdale-n003:10762] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2aef282be527]
+[lonsdale-n002:25130] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2aef282bef82]
+[lonsdale-n002:25130] [ 5] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b87f3188f08]
+[lonsdale-n003:10756] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b87f3189c49]
+[lonsdale-n003:10756] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b87f2bc0527]
+[lonsdale-n003:10756] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b87f2bc0f82]
+[lonsdale-n003:10756] [ 5] [lonsdale-n003:10763] [ 0] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2aef282e4841]
+[lonsdale-n002:25130] [ 6] par_refine[0x4013f6]
+[lonsdale-n002:25130] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x331b81ed5d]
+[lonsdale-n002:25130] [ 8] par_refine[0x400fa9]
+[lonsdale-n002:25130] *** End of error message ***
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b87f2be6841]
+[lonsdale-n003:10756] [ 6] par_refine[0x4013f6]
+[lonsdale-n003:10756] [ 7] [lonsdale-n002:25134] [ 0] /lib64/libpthread.so.0[0x331c00f7e0]
+[lonsdale-n002:25134] /lib64/libc.so.6(__libc_start_main+0xfd)[0x3c4901ed5d]
+[lonsdale-n003:10756] [ 8] par_refine[0x400fa9]
+[lonsdale-n003:10756] *** End of error message ***
+[ 1] /lib64/libpthread.so.0[0x3c4980f7e0]
+[lonsdale-n003:10763] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2ac83a5fcf08]
+[lonsdale-n002:25134] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b7db400df08]
+[lonsdale-n003:10763] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2ac83a5fdc49]
+[lonsdale-n002:25134] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b7db400ec49]
+[lonsdale-n003:10763] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2ac83a034527]
+/home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b7db3a45527]
+[lonsdale-n003:10763] [ 4] [lonsdale-n002:25134] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2ac83a034f82]
+[lonsdale-n002:25134] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b7db3a45f82]
+[lonsdale-n003:10763] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b7db3a6b841]
+[lonsdale-n003:10763] [ 6] par_refine[0x4013f6]
+[lonsdale-n003:10763] [lonsdale-n002:25133] [ 0] /lib64/libpthread.so.0[0x331c00f7e0]
+[lonsdale-n002:25133] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b8fadaa3f08]
+[lonsdale-n002:25133] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b8fadaa4c49]
+[lonsdale-n002:25133] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b8fad4db527]
+[lonsdale-n002:25133] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b8fad4dbf82]
+[lonsdale-n002:25133] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b8fad501841]
+[lonsdale-n002:25133] [ 6] par_refine[0x4013f6]
+[lonsdale-n002:25133] [ 7] [ 7] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2ac83a05a841]
+[lonsdale-n002:25134] [ 6] par_refine[0x4013f6]
+[lonsdale-n002:25134] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x3c4901ed5d]
+[lonsdale-n003:10763] [ 8] par_refine[0x400fa9]
+[lonsdale-n003:10763] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xfd)[0x331b81ed5d]
+[lonsdale-n002:25133] [ 8] par_refine[0x400fa9]
+[lonsdale-n002:25133] *** End of error message ***
+/lib64/libc.so.6(__libc_start_main+0xfd)[0x331b81ed5d]
+[lonsdale-n002:25134] [ 8] par_refine[0x400fa9]
+[lonsdale-n002:25134] *** End of error message ***
+[ 0] /lib64/libpthread.so.0[0x3c4980f7e0]
+[lonsdale-n003:10762] [ 1] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_int_malloc+0x1c8)[0x2b8eded4af08]
+[lonsdale-n003:10762] [ 2] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libopen-pal.so.6(opal_memory_ptmalloc2_malloc+0x99)[0x2b8eded4bc49]
+[lonsdale-n003:10762] [ 3] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_allocate+0x17)[0x2b8ede782527]
+[lonsdale-n003:10762] [ 4] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(ompi_group_incl_plist+0x22)[0x2b8ede782f82]
+[lonsdale-n003:10762] [ 5] /home/support/apps/cports/rhel-6.x86_64/gnu4.9.3/openmpi/1.8.6/lib/libmpi.so.1(MPI_Group_incl+0x101)[0x2b8ede7a8841]
+[lonsdale-n003:10762] [ 6] par_refine[0x4013f6]
+[lonsdale-n003:10762] [ 7] /lib64/libc.so.6(__libc_start_main+0xfd)[0x3c4901ed5d]
+[lonsdale-n003:10762] [ 8] par_refine[0x400fa9]
+[lonsdale-n003:10762] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 25 with PID 0 on node lonsdale-n004 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+
+
+###############################################################################
+TCHPC Cluster: lonsdale
+Job 233461 (diffusion) for User 'donaghek' in Account 'mschpc'
+Finished at: Mon Aug 29 03:30:08 IST 2016
+
+Job completion status:
+======================
+
+       JobID    JobName AllocCPUS NTasks NNodes     MaxRSS    MaxRSSNode  MaxDiskRead MaxDiskWrite    Elapsed      State ExitCode 
+------------ ---------- --------- ------ ------ ---------- ------------- ------------ ------------ ---------- ---------- -------- 
+233461        diffusion        32             4                                                      00:00:02     FAILED     11:0 
+233461.batch      batch         8      1      1          0 lonsdale-n001        0.00M        0.00M   00:00:02     FAILED     11:0 
+233461.0          orted         3      3      3          0 lonsdale-n004        0.00M        0.00M   00:00:02  COMPLETED      0:0 
+
+
+Job details:
+============
+
+JobId=233461 JobName=diffusion
+   UserId=donaghek(5753) GroupId=donaghek(9558)
+   Priority=10154533 Nice=0 Account=mschpc QOS=normal
+   JobState=COMPLETING Reason=NonZeroExitCode Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=139:0
+   DerivedExitCode=0:0
+   RunTime=00:00:02 TimeLimit=00:30:00 TimeMin=N/A
+   SubmitTime=2016-08-29T03:30:05 EligibleTime=2016-08-29T03:30:05
+   StartTime=2016-08-29T03:30:06 EndTime=2016-08-29T03:30:08
+   PreemptTime=None SuspendTime=None SecsPreSuspend=0
+   Partition=debug AllocNode:Sid=lonsdale-n032:16763
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=
+   BatchHost=lonsdale-n001
+   NumNodes=4 NumCPUs=32 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=32,mem=60000,node=4
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+     Nodes=lonsdale-n[001-004] CPU_IDs=0-7 Mem=15000
+   MinCPUsNode=1 MinMemoryNode=15000M MinTmpDiskNode=0
+   Features=(null) Gres=(null) Reservation=(null)
+   Shared=0 Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm.sh
+   WorkDir=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine
+   StdErr=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm-233461.out
+   StdIn=/dev/null
+   StdOut=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm-233461.out
+   Power= SICP=0
+
+
+Disk quota details:
+===================
+
+Quota Type           Name  Filesystem     Usage in MB     Limit in MB    % Used
+-------------------------------------------------------------------------------
+USER             donaghek       /home              29          51,200     0.06%
+
+GROUP              mschpc   /projects          23,731          51,200    46.35%
+
+
+SLURM Bank Statement:
+=====================
+
+User           Usage |        Account     Usage | Account Limit Available (CPU hrs)
+---------- --------- + -------------- --------- + ------------- ---------
+aocurran          76 |         MSCHPC     5,045 |       400,000   394,955
+dalyso             0 |         MSCHPC     5,045 |       400,000   394,955
+donaghek         394 |         MSCHPC     5,045 |       400,000   394,955
+donnelj1           0 |         MSCHPC     5,045 |       400,000   394,955
+hannigs            0 |         MSCHPC     5,045 |       400,000   394,955
+holtonmi           0 |         MSCHPC     5,045 |       400,000   394,955
+howardrj           0 |         MSCHPC     5,045 |       400,000   394,955
+jabehan            0 |         MSCHPC     5,045 |       400,000   394,955
+jbulava            0 |         MSCHPC     5,045 |       400,000   394,955
+jfagan         1,307 |         MSCHPC     5,045 |       400,000   394,955
+jose               0 |         MSCHPC     5,045 |       400,000   394,955
+kcleary            0 |         MSCHPC     5,045 |       400,000   394,955
+liul1              0 |         MSCHPC     5,045 |       400,000   394,955
+lomalle            0 |         MSCHPC     5,045 |       400,000   394,955
+makirby            0 |         MSCHPC     5,045 |       400,000   394,955
+manninmi           0 |         MSCHPC     5,045 |       400,000   394,955
+mooneykn          23 |         MSCHPC     5,045 |       400,000   394,955
+morahanl           0 |         MSCHPC     5,045 |       400,000   394,955
+opwonyal           0 |         MSCHPC     5,045 |       400,000   394,955
+osullm40           0 |         MSCHPC     5,045 |       400,000   394,955
+phalpin            0 |         MSCHPC     5,045 |       400,000   394,955
+pharnett           0 |         MSCHPC     5,045 |       400,000   394,955
+pommee             0 |         MSCHPC     5,045 |       400,000   394,955
+poneill9           0 |         MSCHPC     5,045 |       400,000   394,955
+purdyd             0 |         MSCHPC     5,045 |       400,000   394,955
+rooneydt           0 |         MSCHPC     5,045 |       400,000   394,955
+sharding           0 |         MSCHPC     5,045 |       400,000   394,955
+sikelleh           0 |         MSCHPC     5,045 |       400,000   394,955
+simpsoao           0 |         MSCHPC     5,045 |       400,000   394,955
+smurray4           0 |         MSCHPC     5,045 |       400,000   394,955
+spellacl          81 |         MSCHPC     5,045 |       400,000   394,955
+tiernemi           0 |         MSCHPC     5,045 |       400,000   394,955
+walsheki           0 |         MSCHPC     5,045 |       400,000   394,955
+xihu           3,163 |         MSCHPC     5,045 |       400,000   394,955
+zhuang             0 |         MSCHPC     5,045 |       400,000   394,955
+
+
+Acknowledgements:
+=================
+
+Note that usage of TCHPC Resources *must* be acknowledged in all publications.
+
+Please see this page for details relevant to this cluster:
+
+http://www.tchpc.tcd.ie/resources/acknowledgementpolicy
+
+################################################################################

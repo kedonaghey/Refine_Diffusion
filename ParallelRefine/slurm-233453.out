@@ -1,0 +1,111 @@
+slurmstepd: *** JOB 233453 ON lonsdale-n001 CANCELLED AT 2016-08-29T03:03:34 ***
+
+
+###############################################################################
+TCHPC Cluster: lonsdale
+Job 233453 (diffusion) for User 'donaghek' in Account 'mschpc'
+Finished at: Mon Aug 29 03:03:34 IST 2016
+
+Job completion status:
+======================
+
+       JobID    JobName AllocCPUS NTasks NNodes     MaxRSS    MaxRSSNode  MaxDiskRead MaxDiskWrite    Elapsed      State ExitCode 
+------------ ---------- --------- ------ ------ ---------- ------------- ------------ ------------ ---------- ---------- -------- 
+233453        diffusion        32             4                                                      00:03:17 CANCELLED+      0:0 
+233453.0          orted         3      3      3                                                      00:03:16  CANCELLED      0:0 
+
+
+Job details:
+============
+
+JobId=233453 JobName=diffusion
+   UserId=donaghek(5753) GroupId=donaghek(9558)
+   Priority=10154656 Nice=0 Account=mschpc QOS=normal
+   JobState=COMPLETING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:03:17 TimeLimit=00:30:00 TimeMin=N/A
+   SubmitTime=2016-08-29T03:00:17 EligibleTime=2016-08-29T03:00:17
+   StartTime=2016-08-29T03:00:17 EndTime=2016-08-29T03:03:34
+   PreemptTime=None SuspendTime=None SecsPreSuspend=0
+   Partition=debug AllocNode:Sid=lonsdale-n032:16763
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=lonsdale-n[001-004]
+   BatchHost=lonsdale-n001
+   NumNodes=4 NumCPUs=32 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=32,mem=60000,node=4
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+     Nodes=lonsdale-n[001-004] CPU_IDs=0-7 Mem=15000
+   MinCPUsNode=1 MinMemoryNode=15000M MinTmpDiskNode=0
+   Features=(null) Gres=(null) Reservation=(null)
+   Shared=0 Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm.sh
+   WorkDir=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine
+   StdErr=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm-233453.out
+   StdIn=/dev/null
+   StdOut=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm-233453.out
+   Power= SICP=0
+
+
+Disk quota details:
+===================
+
+Quota Type           Name  Filesystem     Usage in MB     Limit in MB    % Used
+-------------------------------------------------------------------------------
+USER             donaghek       /home              28          51,200     0.06%
+
+GROUP              mschpc   /projects          23,731          51,200    46.35%
+
+
+SLURM Bank Statement:
+=====================
+
+User           Usage |        Account     Usage | Account Limit Available (CPU hrs)
+---------- --------- + -------------- --------- + ------------- ---------
+aocurran          76 |         MSCHPC     4,997 |       400,000   395,003
+dalyso             0 |         MSCHPC     4,997 |       400,000   395,003
+donaghek         385 |         MSCHPC     4,997 |       400,000   395,003
+donnelj1           0 |         MSCHPC     4,997 |       400,000   395,003
+hannigs            0 |         MSCHPC     4,997 |       400,000   395,003
+holtonmi           0 |         MSCHPC     4,997 |       400,000   395,003
+howardrj           0 |         MSCHPC     4,997 |       400,000   395,003
+jabehan            0 |         MSCHPC     4,997 |       400,000   395,003
+jbulava            0 |         MSCHPC     4,997 |       400,000   395,003
+jfagan         1,265 |         MSCHPC     4,997 |       400,000   395,003
+jose               0 |         MSCHPC     4,997 |       400,000   395,003
+kcleary            0 |         MSCHPC     4,997 |       400,000   395,003
+liul1              0 |         MSCHPC     4,997 |       400,000   395,003
+lomalle            0 |         MSCHPC     4,997 |       400,000   395,003
+makirby            0 |         MSCHPC     4,997 |       400,000   395,003
+manninmi           0 |         MSCHPC     4,997 |       400,000   395,003
+mooneykn          23 |         MSCHPC     4,997 |       400,000   395,003
+morahanl           0 |         MSCHPC     4,997 |       400,000   395,003
+opwonyal           0 |         MSCHPC     4,997 |       400,000   395,003
+osullm40           0 |         MSCHPC     4,997 |       400,000   395,003
+phalpin            0 |         MSCHPC     4,997 |       400,000   395,003
+pharnett           0 |         MSCHPC     4,997 |       400,000   395,003
+pommee             0 |         MSCHPC     4,997 |       400,000   395,003
+poneill9           0 |         MSCHPC     4,997 |       400,000   395,003
+purdyd             0 |         MSCHPC     4,997 |       400,000   395,003
+rooneydt           0 |         MSCHPC     4,997 |       400,000   395,003
+sharding           0 |         MSCHPC     4,997 |       400,000   395,003
+sikelleh           0 |         MSCHPC     4,997 |       400,000   395,003
+simpsoao           0 |         MSCHPC     4,997 |       400,000   395,003
+smurray4           0 |         MSCHPC     4,997 |       400,000   395,003
+spellacl          81 |         MSCHPC     4,997 |       400,000   395,003
+tiernemi           0 |         MSCHPC     4,997 |       400,000   395,003
+walsheki           0 |         MSCHPC     4,997 |       400,000   395,003
+xihu           3,166 |         MSCHPC     4,997 |       400,000   395,003
+zhuang             0 |         MSCHPC     4,997 |       400,000   395,003
+
+
+Acknowledgements:
+=================
+
+Note that usage of TCHPC Resources *must* be acknowledged in all publications.
+
+Please see this page for details relevant to this cluster:
+
+http://www.tchpc.tcd.ie/resources/acknowledgementpolicy
+
+################################################################################

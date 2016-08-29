@@ -41,25 +41,25 @@ void initFineGrid(double** mat, int nrows, int ncols)
   // bottom rows initial conditions
   if(rcrds[0] == P-1)
     {
-      if(rcrds[1]%2 == 1 || ncols%2 == 0) {
+      if(rcrds[1]%2 != 1 || ncols%2 == 0) {
 	for ( i = 1; i < ncols - 1; i+=2)
 	  {
-	    mat[nrows-3][i] = bottom;
+	    mat[nrows-3][i] = bottom/2;
 	  }
 	for (i = 2; i < ncols - 1; i+=2)
 	  {
-	    mat[nrows-3][i] = bottom/2;
+	    mat[nrows-3][i] = bottom;
 	  }
       }
       else
 	{
 	  for ( i = 1; i < ncols - 1; i+=2)
 	    {
-	      mat[nrows-3][i] = bottom/2;
+	      mat[nrows-3][i] = bottom;
 	    }
 	  for (i = 2; i < ncols - 1; i+=2)
 	    {
-	      mat[nrows-3][i] = bottom;
+	      mat[nrows-3][i] = bottom/2;
 	    }
 	}
     } 
@@ -120,7 +120,7 @@ void printGrid(double** mat, int nrows, int ncols)
       printf("\nRank %d:\n", rank);
       for (i = 0; i < nrows; i++) {
         for (j = 0; j < ncols; j++) {
-          printf("%lf ", mat[i][j]);
+          printf("%.15lf ", mat[i][j]);
         }
         printf("\n");
       }

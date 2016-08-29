@@ -1,0 +1,127 @@
+Coarse:
+0
+1
+3
+Refine:
+2
+4
+5
+6
+[lonsdale-n001:23228] *** An error occurred in MPI_Cart_create
+[lonsdale-n001:23228] *** reported by process [4281860097,5]
+[lonsdale-n001:23228] *** on communicator MPI_COMM_WORLD
+[lonsdale-n001:23228] *** MPI_ERR_COMM: invalid communicator
+[lonsdale-n001:23228] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[lonsdale-n001:23228] ***    and potentially your MPI job)
+[lonsdale-n001.cluster:23221] 4 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal
+[lonsdale-n001.cluster:23221] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+
+###############################################################################
+TCHPC Cluster: lonsdale
+Job 233386 (diffusion) for User 'donaghek' in Account 'mschpc'
+Finished at: Sat Aug 27 23:33:57 IST 2016
+
+Job completion status:
+======================
+
+       JobID    JobName AllocCPUS NTasks NNodes     MaxRSS    MaxRSSNode  MaxDiskRead MaxDiskWrite    Elapsed      State ExitCode 
+------------ ---------- --------- ------ ------ ---------- ------------- ------------ ------------ ---------- ---------- -------- 
+233386        diffusion         8             1                                                      00:00:03     FAILED      5:0 
+233386.batch      batch         8      1      1          0 lonsdale-n001        0.00M        0.00M   00:00:03     FAILED      5:0 
+
+
+Job details:
+============
+
+JobId=233386 JobName=diffusion
+   UserId=donaghek(5753) GroupId=donaghek(9558)
+   Priority=10066406 Nice=0 Account=mschpc QOS=normal
+   JobState=COMPLETING Reason=NonZeroExitCode Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=5:0
+   DerivedExitCode=0:0
+   RunTime=00:00:03 TimeLimit=00:30:00 TimeMin=N/A
+   SubmitTime=2016-08-27T23:33:54 EligibleTime=2016-08-27T23:33:54
+   StartTime=2016-08-27T23:33:54 EndTime=2016-08-27T23:33:57
+   PreemptTime=None SuspendTime=None SecsPreSuspend=0
+   Partition=debug AllocNode:Sid=lonsdale01:15642
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=
+   BatchHost=lonsdale-n001
+   NumNodes=1 NumCPUs=8 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=8,mem=15000,node=1
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+     Nodes=lonsdale-n001 CPU_IDs=0-7 Mem=15000
+   MinCPUsNode=1 MinMemoryNode=15000M MinTmpDiskNode=0
+   Features=(null) Gres=(null) Reservation=(null)
+   Shared=0 Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm.sh
+   WorkDir=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine
+   StdErr=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm-233386.out
+   StdIn=/dev/null
+   StdOut=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm-233386.out
+   Power= SICP=0
+
+
+Disk quota details:
+===================
+
+Quota Type           Name  Filesystem     Usage in MB     Limit in MB    % Used
+-------------------------------------------------------------------------------
+USER             donaghek       /home              27          51,200     0.05%
+
+GROUP              mschpc   /projects          23,731          51,200    46.35%
+
+
+SLURM Bank Statement:
+=====================
+
+User           Usage |        Account     Usage | Account Limit Available (CPU hrs)
+---------- --------- + -------------- --------- + ------------- ---------
+aocurran           0 |         MSCHPC     3,702 |       400,000   396,298
+dalyso             0 |         MSCHPC     3,702 |       400,000   396,298
+donaghek         220 |         MSCHPC     3,702 |       400,000   396,298
+donnelj1           0 |         MSCHPC     3,702 |       400,000   396,298
+hannigs            0 |         MSCHPC     3,702 |       400,000   396,298
+holtonmi           0 |         MSCHPC     3,702 |       400,000   396,298
+howardrj           0 |         MSCHPC     3,702 |       400,000   396,298
+jabehan            0 |         MSCHPC     3,702 |       400,000   396,298
+jbulava            0 |         MSCHPC     3,702 |       400,000   396,298
+jfagan            20 |         MSCHPC     3,702 |       400,000   396,298
+jose               0 |         MSCHPC     3,702 |       400,000   396,298
+kcleary            0 |         MSCHPC     3,702 |       400,000   396,298
+liul1              0 |         MSCHPC     3,702 |       400,000   396,298
+lomalle            0 |         MSCHPC     3,702 |       400,000   396,298
+makirby            0 |         MSCHPC     3,702 |       400,000   396,298
+manninmi           0 |         MSCHPC     3,702 |       400,000   396,298
+mooneykn          24 |         MSCHPC     3,702 |       400,000   396,298
+morahanl           0 |         MSCHPC     3,702 |       400,000   396,298
+opwonyal           0 |         MSCHPC     3,702 |       400,000   396,298
+osullm40           0 |         MSCHPC     3,702 |       400,000   396,298
+phalpin            0 |         MSCHPC     3,702 |       400,000   396,298
+pharnett           0 |         MSCHPC     3,702 |       400,000   396,298
+pommee             0 |         MSCHPC     3,702 |       400,000   396,298
+poneill9           0 |         MSCHPC     3,702 |       400,000   396,298
+purdyd             0 |         MSCHPC     3,702 |       400,000   396,298
+rooneydt           0 |         MSCHPC     3,702 |       400,000   396,298
+sharding           0 |         MSCHPC     3,702 |       400,000   396,298
+sikelleh           0 |         MSCHPC     3,702 |       400,000   396,298
+simpsoao           0 |         MSCHPC     3,702 |       400,000   396,298
+smurray4           0 |         MSCHPC     3,702 |       400,000   396,298
+spellacl          86 |         MSCHPC     3,702 |       400,000   396,298
+tiernemi           0 |         MSCHPC     3,702 |       400,000   396,298
+walsheki           0 |         MSCHPC     3,702 |       400,000   396,298
+xihu           3,351 |         MSCHPC     3,702 |       400,000   396,298
+zhuang             0 |         MSCHPC     3,702 |       400,000   396,298
+
+
+Acknowledgements:
+=================
+
+Note that usage of TCHPC Resources *must* be acknowledged in all publications.
+
+Please see this page for details relevant to this cluster:
+
+http://www.tchpc.tcd.ie/resources/acknowledgementpolicy
+
+################################################################################
