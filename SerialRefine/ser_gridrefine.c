@@ -23,10 +23,11 @@ int main(int argc, char *argv[])
   double **mat1, **mat2;
   double **mat1_refine, **mat2_refine;
   //size of grid
-  int nrows = 10, ncols = 10;
+  clock_t start, end;
+  int nrows = 1000, ncols = 1000;
   double dx = 0, dy= 0, dt, time;
   double converge = 0;
-  int iter, max_iter = 190;
+  int iter, max_iter = 10000;
 
   while ((c = getopt (argc, argv, "r:i:")) != -1)
   {
@@ -50,7 +51,7 @@ int main(int argc, char *argv[])
   dx = 1 /(double)(nrows - 1);
   dy = 1 /(double)(ncols - 1);
 
-  dt = .001;
+  dt = .000001;
   mat1 = calloc(nrows, sizeof(double *));
   for (i = 0; i < nrows; i++)
     mat1[i] = calloc(ncols, sizeof(double));
@@ -119,7 +120,7 @@ int main(int argc, char *argv[])
   double wxy = k * dt/(dx*dx);
   int refinement = 2;
   double sxy = (double)dx/refinement;
-  
+  start = clock();
   for(iter = 0; iter < max_iter; iter++)
   {
       time = time + dt;
@@ -134,12 +135,13 @@ int main(int argc, char *argv[])
       update(&mat1, &mat2, nrows, ncols);
       update(&mat1_refine, &mat2_refine, refrows, refcols);
     }
-
-  printGrid(mat1_refine,refrows,refcols);
-  printf("\n");
-  printGrid(mat1,nrows,ncols);
-
-  printf("num of iterations: %d\n", iter);
+  end = clock();
+  //printGrid(mat1_refine,refrows,refcols);
+  //printf("\n");
+  //printGrid(mat1,nrows,ncols);
+  printf("Total time: %f seconds\n", (((double) end ) - start)/CLOCKS_PER_SEC);
+  //printf("%.15lf\n", mat1_refine[refrows-1][1]);
+  //printf("num of iterations: %d\n", iter);
 
   return 0;
 }

@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS = -g -Og -Wall
+CFLAGS = -pg -g -O2 -Wall
 LFLAGS=-lm
 
 EXECS=ser_refine
