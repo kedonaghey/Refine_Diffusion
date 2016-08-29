@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH -N 2        # 8 cores = 1 node on lonsdale
-#SBATCH -p debug
-#SBATCH -t 0:30:00 
+#SBATCH -N 1
+#SBATCH -p compute
+#SBATCH -t 6:00:00 
 #SBATCH -U mschpc
 #SBATCH -J diffusion
 
@@ -13,4 +13,9 @@ source /etc/profile.d/modules.sh
 module load cports gcc/4.9.3-gnu openmpi/1.8.6-gnu4.9.3 
 
 # run it
-mpirun -n 14 par_refine -r 20 -i 1000
+
+for size in 1000 2000 3000 4000 5000
+do
+    # program outputs one line : " nproc   time  "
+    mpirun -n 7 par_refine -r $size -i 10000 >> "refined_timing${size}.dat" 
+done

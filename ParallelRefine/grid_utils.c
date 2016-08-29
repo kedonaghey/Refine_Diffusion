@@ -39,7 +39,7 @@ void initFineGrid(double** mat, int nrows, int ncols)
     }
 
   // bottom rows initial conditions
-  if(rcrds[0] == P-1)
+  if(rcrds[0] == Q-1)
     {
       if(rcrds[1]%2 != 1 || ncols%2 == 0) {
 	for ( i = 1; i < ncols - 1; i+=2)
@@ -75,7 +75,7 @@ void initFineGrid(double** mat, int nrows, int ncols)
 void initGrid(double** mat, int nrows, int ncols)
 {
   int i;
-  if (rank!= 2){
+  //if (rank!= 2){
   //left and right rows initial conditions
   if(crds[1] == 0)
     {
@@ -108,7 +108,7 @@ void initGrid(double** mat, int nrows, int ncols)
 	}
     }
 
-  }
+  //}
 }
 
 void printGrid(double** mat, int nrows, int ncols)
