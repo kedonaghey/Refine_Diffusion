@@ -21,9 +21,9 @@ void computeCornerTimestep(double* buffer, double** mat1, double** mat2, double 
     }
 }
 
-void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2, int par_ref_rows, int ncols, double wxy, double dx, int refcols)
+void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2, int par_ref_rows, int ncols, double wxy, double dx, int par_ref_cols)
 {
-  int j = par_ref_rows - 2, i;
+  int j = par_ref_cols - 2, i;
 
   int u,d;
   double upval=0.0, downval=0.0;
@@ -163,7 +163,7 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
 	{
 	  leftval = mat1[i][start-2];
 	  rightval = mat1[i][par_ref_cols-1];
-
+//change back to -3
 	  MPI_Send(&mat1[i][par_ref_cols-3], 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2);
 	  MPI_Send(&mat1[i][2],              1, MPI_DOUBLE, l, 0, MPI_COMM_CART2);
 	}
@@ -174,8 +174,10 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
   mat2[i][start] = /*previous interface point*/ mat1[i][start] + /*prev interface point*/ mat1[i][start] * wxy * (dx/2) + wxy * (4/3) *
     (-/*prev interface point*/ 4*mat1[i][start] +/*coarse*/ mat1[i-1][start]  +/*coarse*/ .5 * mat1[i][start+2]
      +/*coarse*/ .5 * leftval +/*refine*/ .5 * mat1[i+1][start-1] +/*refine*/ mat1[i+1][start] +/*refine*/ .5 * mat1[i+1][start+1]);
-
-  
+  if (rank == 5){
+     printf("\nmatrixupdate %lf matrix %lf, up: %lf, left %lf, right %lf, downright %lf, down %lf, downleft %lf\n",mat2[i][start], mat1[i][start], mat1[i-1][start], leftval, mat1[i][start+1],
+     mat1[i+1][start-1], mat1[i+1][start], mat1[i+1][start+1]);  
+  }
   // calculate intermediary interface points
   for (j = start+2; j < par_ref_cols - 2; j+=2)
     {

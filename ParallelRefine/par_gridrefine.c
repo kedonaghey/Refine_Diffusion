@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
   double **mat1, **mat2;
 
   //size of grid
-  int nrows = 10, ncols = 10;
+  int nrows = 20, ncols = 20;
 
   //2x2 for mesh in a 4x4 array
   double dx = 0, dy= 0, dt, time;
@@ -48,10 +48,10 @@ int main(int argc, char *argv[])
   MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
   //dimensions of ranks on coarse/fine grid
-  Q = 4;
+  Q = 2;
   P = 2;
 
-  while ((c = getopt (argc, argv, "r:i:")) != -1)
+  while ((c = getopt (argc, argv, "r:i:q:p:")) != -1)
     {
       switch(c)
   	{
@@ -59,6 +59,10 @@ int main(int argc, char *argv[])
   	  nrows = ncols = atoi(optarg); break;
   	case 'i':
   	  max_iter = atoi(optarg); break;
+	case 'q':
+	  Q = atoi(optarg); break;
+        case 'p':
+	  P = atoi(optarg); break;
   	default:
   	  fprintf(stderr, "Invalid option\n");
   	  return -1;
@@ -264,7 +268,7 @@ int main(int argc, char *argv[])
 	  	//  if( rank == size-1) printf("interface top refine\n");  
       	  computeInterfaceTopTimestep(bfr_top_refine_pts, mat1, mat2, par_rows, par_ref_cols, wxy, dx);
 	  	//  if( rank == size-1) printf("interface right refine\n");  
-      	  computeInterfaceRightTimestep(bfr_right_refine_pts, mat1, mat2, par_ref_rows, ncols, wxy, dx, refcols);
+      	  computeInterfaceRightTimestep(bfr_right_refine_pts, mat1, mat2, par_ref_rows, ncols, wxy, dx, par_ref_cols);
 	  	//  if( rank == size-1) printf("interface corner refine\n");  
        	  computeCornerTimestep(bfr_right_refine_pts, mat1, mat2, wxy, par_ref_cols);
       	}
@@ -292,18 +296,18 @@ int main(int argc, char *argv[])
       update(&mat1, &mat2);
 
     }
-/*   
+   
   if(!in_refine)
     {
-      printGrid(mat1, par_rows, par_cols);
+      printGrid(mat2, par_rows, par_cols);
     }
   else
     {
-      printGrid(mat1, par_ref_rows, par_ref_cols);
+      printGrid(mat2, par_ref_rows, par_ref_cols);
     }
-*/
-  if(rank == 12)
-  printf("%.15lf\n", mat1[par_ref_rows-4][3]);
+
+  //if(rank == 10)
+  //printf("%.15lf\n", mat1[par_ref_rows-4][3]);
   /* if(rank%2) */
   /*   printf(":)\n"); */
   /* else */
