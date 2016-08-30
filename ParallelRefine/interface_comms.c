@@ -202,7 +202,8 @@ void sendTopInterfacePoints(double** mat, double* buffer, int par_ref_rows, int 
    if(rcrds[0] == 0) 
      {
        int start;
-       if (rcrds[1]%2 == 0 || par_ref_rows%2 == 0)
+       //changed to cols
+       if (rcrds[1]%2 == 0 || par_ref_cols%2 == 0)
 	 {
 	   start = 2;
 	 }

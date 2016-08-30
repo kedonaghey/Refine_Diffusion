@@ -1,0 +1,2112 @@
+
+matrixupdate 0.000000 matrix 0.000000, up: 0.000000, left 0.000000, right 0.000000, downright 0.000000, down 0.000000, downleft 0.000000
+
+matrixupdate 0.000261 matrix 0.000000, up: 0.000000, left 0.072200, right 0.000000, downright 0.000000, down 0.000000, downleft 0.000000
+
+matrixupdate 0.000781 matrix 0.000261, up: 0.001043, left 0.143892, right 0.000000, downright 0.000261, down 0.000000, downleft 0.000000
+
+matrixupdate 0.001560 matrix 0.000781, up: 0.003088, left 0.215076, right 0.000001, downright 0.000785, down 0.000004, downleft 0.000001
+
+matrixupdate 0.002597 matrix 0.001560, up: 0.006099, left 0.285749, right 0.000004, downright 0.001575, down 0.000015, downleft 0.000004
+
+matrixupdate 0.003890 matrix 0.002597, up: 0.010038, left 0.355912, right 0.000010, downright 0.002633, down 0.000037, downleft 0.000009
+
+matrixupdate 0.005437 matrix 0.003890, up: 0.014869, left 0.425563, right 0.000019, downright 0.003961, down 0.000074, downleft 0.000019
+
+matrixupdate 0.007236 matrix 0.005437, up: 0.020560, left 0.494703, right 0.000034, downright 0.005559, down 0.000129, downleft 0.000033
+
+matrixupdate 0.009286 matrix 0.007236, up: 0.027076, left 0.563331, right 0.000054, downright 0.007430, down 0.000205, downleft 0.000053
+
+matrixupdate 0.011585 matrix 0.009286, up: 0.034387, left 0.631448, right 0.000082, downright 0.009573, down 0.000305, downleft 0.000079
+
+matrixupdate 0.014130 matrix 0.011585, up: 0.042461, left 0.699055, right 0.000118, downright 0.011989, down 0.000433, downleft 0.000113
+
+matrixupdate 0.016919 matrix 0.014130, up: 0.051270, left 0.766152, right 0.000162, downright 0.014678, down 0.000592, downleft 0.000155
+
+matrixupdate 0.019950 matrix 0.016919, up: 0.060784, left 0.832741, right 0.000217, downright 0.017639, down 0.000784, downleft 0.000206
+
+matrixupdate 0.023219 matrix 0.019950, up: 0.070977, left 0.898822, right 0.000283, downright 0.020873, down 0.001013, downleft 0.000268
+
+matrixupdate 0.026725 matrix 0.023219, up: 0.081821, left 0.964398, right 0.000362, downright 0.024378, down 0.001280, downleft 0.000341
+
+matrixupdate 0.030464 matrix 0.026725, up: 0.093292, left 1.029469, right 0.000454, downright 0.028153, down 0.001590, downleft 0.000425
+
+matrixupdate 0.034435 matrix 0.030464, up: 0.105365, left 1.094038, right 0.000560, downright 0.032198, down 0.001944, downleft 0.000523
+
+matrixupdate 0.038633 matrix 0.034435, up: 0.118016, left 1.158106, right 0.000681, downright 0.036511, down 0.002345, downleft 0.000634
+
+matrixupdate 0.043057 matrix 0.038633, up: 0.131223, left 1.221675, right 0.000818, downright 0.041090, down 0.002796, downleft 0.000760
+
+matrixupdate 0.047702 matrix 0.043057, up: 0.144963, left 1.284749, right 0.000973, downright 0.045934, down 0.003298, downleft 0.000901
+
+matrixupdate 0.052567 matrix 0.047702, up: 0.159214, left 1.347328, right 0.001146, downright 0.051041, down 0.003854, downleft 0.001058
+
+matrixupdate 0.057648 matrix 0.052567, up: 0.173957, left 1.409416, right 0.001339, downright 0.056409, down 0.004466, downleft 0.001233
+
+matrixupdate 0.062942 matrix 0.057648, up: 0.189171, left 1.471015, right 0.001551, downright 0.062036, down 0.005136, downleft 0.001425
+
+matrixupdate 0.068446 matrix 0.062942, up: 0.204838, left 1.532128, right 0.001785, downright 0.067918, down 0.005866, downleft 0.001636
+
+matrixupdate 0.074157 matrix 0.068446, up: 0.220939, left 1.592757, right 0.002040, downright 0.074055, down 0.006658, downleft 0.001866
+
+matrixupdate 0.080072 matrix 0.074157, up: 0.237456, left 1.652906, right 0.002319, downright 0.080444, down 0.007514, downleft 0.002116
+
+matrixupdate 0.086187 matrix 0.080072, up: 0.254372, left 1.712577, right 0.002621, downright 0.087082, down 0.008435, downleft 0.002387
+
+matrixupdate 0.092499 matrix 0.086187, up: 0.271670, left 1.771773, right 0.002947, downright 0.093965, down 0.009423, downleft 0.002680
+
+matrixupdate 0.099006 matrix 0.092499, up: 0.289334, left 1.830498, right 0.003299, downright 0.101093, down 0.010480, downleft 0.002995
+
+matrixupdate 0.105703 matrix 0.099006, up: 0.307350, left 1.888755, right 0.003677, downright 0.108461, down 0.011607, downleft 0.003333
+
+matrixupdate 0.112589 matrix 0.105703, up: 0.325701, left 1.946546, right 0.004082, downright 0.116066, down 0.012805, downleft 0.003695
+
+matrixupdate 0.119659 matrix 0.112589, up: 0.344373, left 2.003875, right 0.004515, downright 0.123907, down 0.014077, downleft 0.004081
+
+matrixupdate 0.126911 matrix 0.119659, up: 0.363353, left 2.060746, right 0.004976, downright 0.131979, down 0.015422, downleft 0.004492
+
+matrixupdate 0.134341 matrix 0.126911, up: 0.382627, left 2.117162, right 0.005466, downright 0.140280, down 0.016843, downleft 0.004929
+
+matrixupdate 0.141946 matrix 0.134341, up: 0.402183, left 2.173125, right 0.005985, downright 0.148806, down 0.018341, downleft 0.005392
+
+matrixupdate 0.149723 matrix 0.141946, up: 0.422006, left 2.228641, right 0.006536, downright 0.157555, down 0.019916, downleft 0.005882
+
+matrixupdate 0.157669 matrix 0.149723, up: 0.442087, left 2.283711, right 0.007117, downright 0.166522, down 0.021569, downleft 0.006399
+
+matrixupdate 0.165781 matrix 0.157669, up: 0.462412, left 2.338340, right 0.007729, downright 0.175706, down 0.023302, downleft 0.006945
+
+matrixupdate 0.174056 matrix 0.165781, up: 0.482970, left 2.392531, right 0.008374, downright 0.185102, down 0.025116, downleft 0.007519
+
+matrixupdate 0.182490 matrix 0.174056, up: 0.503752, left 2.446288, right 0.009052, downright 0.194707, down 0.027011, downleft 0.008123
+
+matrixupdate 0.191082 matrix 0.182490, up: 0.524745, left 2.499614, right 0.009763, downright 0.204519, down 0.028987, downleft 0.008756
+
+matrixupdate 0.199826 matrix 0.191082, up: 0.545940, left 2.552513, right 0.010508, downright 0.214533, down 0.031047, downleft 0.009420
+
+matrixupdate 0.208722 matrix 0.199826, up: 0.567327, left 2.604988, right 0.011288, downright 0.224746, down 0.033190, downleft 0.010114
+
+matrixupdate 0.217765 matrix 0.208722, up: 0.588897, left 2.657043, right 0.012102, downright 0.235156, down 0.035416, downleft 0.010840
+
+matrixupdate 0.226952 matrix 0.217765, up: 0.610641, left 2.708682, right 0.012951, downright 0.245758, down 0.037728, downleft 0.011597
+
+matrixupdate 0.236282 matrix 0.226952, up: 0.632549, left 2.759908, right 0.013836, downright 0.256549, down 0.040124, downleft 0.012387
+
+matrixupdate 0.245750 matrix 0.236282, up: 0.654613, left 2.810725, right 0.014758, downright 0.267527, down 0.042605, downleft 0.013209
+
+matrixupdate 0.255355 matrix 0.245750, up: 0.676825, left 2.861136, right 0.015715, downright 0.278687, down 0.045172, downleft 0.014064
+
+matrixupdate 0.265092 matrix 0.255355, up: 0.699177, left 2.911145, right 0.016710, downright 0.290026, down 0.047826, downleft 0.014953
+
+matrixupdate 0.274961 matrix 0.265092, up: 0.721661, left 2.960756, right 0.017742, downright 0.301542, down 0.050566, downleft 0.015875
+
+matrixupdate 0.284957 matrix 0.274961, up: 0.744270, left 3.009972, right 0.018811, downright 0.313230, down 0.053392, downleft 0.016832
+
+matrixupdate 0.295078 matrix 0.284957, up: 0.766997, left 3.058797, right 0.019919, downright 0.325087, down 0.056305, downleft 0.017824
+
+matrixupdate 0.305321 matrix 0.295078, up: 0.789834, left 3.107234, right 0.021064, downright 0.337111, down 0.059306, downleft 0.018851
+
+matrixupdate 0.315684 matrix 0.305321, up: 0.812775, left 3.155287, right 0.022248, downright 0.349298, down 0.062393, downleft 0.019913
+
+matrixupdate 0.326163 matrix 0.315684, up: 0.835813, left 3.202960, right 0.023471, downright 0.361644, down 0.065568, downleft 0.021010
+
+matrixupdate 0.336758 matrix 0.326163, up: 0.858943, left 3.250256, right 0.024733, downright 0.374147, down 0.068831, downleft 0.022144
+
+matrixupdate 0.347464 matrix 0.336758, up: 0.882158, left 3.297179, right 0.026034, downright 0.386804, down 0.072180, downleft 0.023314
+
+matrixupdate 0.358279 matrix 0.347464, up: 0.905452, left 3.343732, right 0.027374, downright 0.399610, down 0.075617, downleft 0.024521
+
+matrixupdate 0.369201 matrix 0.358279, up: 0.928821, left 3.389918, right 0.028754, downright 0.412563, down 0.079141, downleft 0.025764
+
+matrixupdate 0.380228 matrix 0.369201, up: 0.952257, left 3.435742, right 0.030173, downright 0.425660, down 0.082752, downleft 0.027045
+
+matrixupdate 0.391356 matrix 0.380228, up: 0.975757, left 3.481206, right 0.031633, downright 0.438898, down 0.086451, downleft 0.028363
+
+matrixupdate 0.402585 matrix 0.391356, up: 0.999314, left 3.526314, right 0.033133, downright 0.452274, down 0.090236, downleft 0.029719
+
+matrixupdate 0.413910 matrix 0.402585, up: 1.022925, left 3.571070, right 0.034672, downright 0.465784, down 0.094108, downleft 0.031113
+
+matrixupdate 0.425330 matrix 0.413910, up: 1.046584, left 3.615477, right 0.036252, downright 0.479426, down 0.098066, downleft 0.032545
+
+matrixupdate 0.436843 matrix 0.425330, up: 1.070287, left 3.659538, right 0.037873, downright 0.493197, down 0.102111, downleft 0.034015
+
+matrixupdate 0.448446 matrix 0.436843, up: 1.094029, left 3.703257, right 0.039534, downright 0.507094, down 0.106242, downleft 0.035524
+
+matrixupdate 0.460138 matrix 0.448446, up: 1.117807, left 3.746636, right 0.041235, downright 0.521113, down 0.110459, downleft 0.037071
+
+matrixupdate 0.471915 matrix 0.460138, up: 1.141616, left 3.789680, right 0.042977, downright 0.535253, down 0.114761, downleft 0.038658
+
+matrixupdate 0.483776 matrix 0.471915, up: 1.165451, left 3.832392, right 0.044760, downright 0.549510, down 0.119148, downleft 0.040283
+
+matrixupdate 0.495719 matrix 0.483776, up: 1.189310, left 3.874775, right 0.046583, downright 0.563881, down 0.123620, downleft 0.041948
+
+matrixupdate 0.507742 matrix 0.495719, up: 1.213189, left 3.916831, right 0.048447, downright 0.578363, down 0.128176, downleft 0.043652
+
+matrixupdate 0.519842 matrix 0.507742, up: 1.237084, left 3.958565, right 0.050352, downright 0.592955, down 0.132816, downleft 0.045395
+
+matrixupdate 0.532018 matrix 0.519842, up: 1.260991, left 3.999980, right 0.052297, downright 0.607653, down 0.137540, downleft 0.047178
+
+matrixupdate 0.544267 matrix 0.532018, up: 1.284908, left 4.041078, right 0.054284, downright 0.622454, down 0.142347, downleft 0.049001
+
+matrixupdate 0.556588 matrix 0.544267, up: 1.308830, left 4.081864, right 0.056310, downright 0.637356, down 0.147237, downleft 0.050863
+
+matrixupdate 0.568979 matrix 0.556588, up: 1.332756, left 4.122339, right 0.058378, downright 0.652356, down 0.152209, downleft 0.052766
+
+matrixupdate 0.581438 matrix 0.568979, up: 1.356681, left 4.162507, right 0.060486, downright 0.667452, down 0.157262, downleft 0.054708
+
+matrixupdate 0.593962 matrix 0.581438, up: 1.380604, left 4.202372, right 0.062634, downright 0.682642, down 0.162397, downleft 0.056690
+
+matrixupdate 0.606551 matrix 0.593962, up: 1.404521, left 4.241935, right 0.064823, downright 0.697922, down 0.167613, downleft 0.058713
+
+matrixupdate 0.619203 matrix 0.606551, up: 1.428430, left 4.281201, right 0.067053, downright 0.713290, down 0.172909, downleft 0.060775
+
+matrixupdate 0.631915 matrix 0.619203, up: 1.452328, left 4.320172, right 0.069322, downright 0.728744, down 0.178284, downleft 0.062878
+
+matrixupdate 0.644685 matrix 0.631915, up: 1.476213, left 4.358851, right 0.071632, downright 0.744281, down 0.183738, downleft 0.065021
+
+matrixupdate 0.657513 matrix 0.644685, up: 1.500081, left 4.397241, right 0.073982, downright 0.759900, down 0.189271, downleft 0.067204
+
+matrixupdate 0.670397 matrix 0.657513, up: 1.523932, left 4.435345, right 0.076372, downright 0.775597, down 0.194882, downleft 0.069427
+
+matrixupdate 0.683335 matrix 0.670397, up: 1.547763, left 4.473166, right 0.078802, downright 0.791370, down 0.200571, downleft 0.071691
+
+matrixupdate 0.696324 matrix 0.683335, up: 1.571571, left 4.510706, right 0.081271, downright 0.807218, down 0.206336, downleft 0.073995
+
+matrixupdate 0.709365 matrix 0.696324, up: 1.595354, left 4.547969, right 0.083780, downright 0.823138, down 0.212177, downleft 0.076339
+
+matrixupdate 0.722455 matrix 0.709365, up: 1.619111, left 4.584957, right 0.086329, downright 0.839128, down 0.218093, downleft 0.078724
+
+matrixupdate 0.735592 matrix 0.722455, up: 1.642840, left 4.621674, right 0.088917, downright 0.855185, down 0.224085, downleft 0.081149
+
+matrixupdate 0.748776 matrix 0.735592, up: 1.666538, left 4.658121, right 0.091544, downright 0.871308, down 0.230151, downleft 0.083614
+
+matrixupdate 0.762004 matrix 0.748776, up: 1.690204, left 4.694301, right 0.094210, downright 0.887495, down 0.236290, downleft 0.086119
+
+matrixupdate 0.775275 matrix 0.762004, up: 1.713837, left 4.730218, right 0.096915, downright 0.903743, down 0.242503, downleft 0.088664
+
+matrixupdate 0.788588 matrix 0.775275, up: 1.737434, left 4.765873, right 0.099659, downright 0.920050, down 0.248787, downleft 0.091249
+
+matrixupdate 0.801942 matrix 0.788588, up: 1.760994, left 4.801270, right 0.102442, downright 0.936415, down 0.255144, downleft 0.093874
+
+matrixupdate 0.815335 matrix 0.801942, up: 1.784516, left 4.836411, right 0.105262, downright 0.952836, down 0.261571, downleft 0.096540
+
+matrixupdate 0.828765 matrix 0.815335, up: 1.807998, left 4.871298, right 0.108121, downright 0.969310, down 0.268068, downleft 0.099245
+
+matrixupdate 0.842232 matrix 0.828765, up: 1.831439, left 4.905935, right 0.111018, downright 0.985835, down 0.274636, downleft 0.101990
+
+matrixupdate 0.855734 matrix 0.842232, up: 1.854836, left 4.940323, right 0.113952, downright 1.002411, down 0.281272, downleft 0.104775
+
+matrixupdate 0.869270 matrix 0.855734, up: 1.878190, left 4.974465, right 0.116924, downright 1.019035, down 0.287976, downleft 0.107599
+
+matrixupdate 0.882838 matrix 0.869270, up: 1.901499, left 5.008364, right 0.119934, downright 1.035705, down 0.294748, downleft 0.110463
+
+matrixupdate 0.896438 matrix 0.882838, up: 1.924761, left 5.042022, right 0.122980, downright 1.052419, down 0.301587, downleft 0.113366
+
+matrixupdate 0.910068 matrix 0.896438, up: 1.947976, left 5.075441, right 0.126064, downright 1.069177, down 0.308492, downleft 0.116309
+
+matrixupdate 0.923727 matrix 0.910068, up: 1.971142, left 5.108624, right 0.129184, downright 1.085975, down 0.315463, downleft 0.119291
+
+matrixupdate 0.937414 matrix 0.923727, up: 1.994258, left 5.141574, right 0.132341, downright 1.102813, down 0.322498, downleft 0.122312
+
+matrixupdate 0.951127 matrix 0.937414, up: 2.017324, left 5.174292, right 0.135534, downright 1.119689, down 0.329597, downleft 0.125372
+
+matrixupdate 0.964866 matrix 0.951127, up: 2.040337, left 5.206781, right 0.138763, downright 1.136601, down 0.336760, downleft 0.128471
+
+matrixupdate 0.978630 matrix 0.964866, up: 2.063299, left 5.239043, right 0.142029, downright 1.153547, down 0.343986, downleft 0.131609
+
+matrixupdate 0.992417 matrix 0.978630, up: 2.086206, left 5.271080, right 0.145329, downright 1.170527, down 0.351273, downleft 0.134786
+
+matrixupdate 1.006227 matrix 0.992417, up: 2.109060, left 5.302895, right 0.148665, downright 1.187538, down 0.358622, downleft 0.138001
+
+matrixupdate 1.020057 matrix 1.006227, up: 2.131858, left 5.334490, right 0.152037, downright 1.204580, down 0.366031, downleft 0.141254
+
+matrixupdate 1.033909 matrix 1.020057, up: 2.154600, left 5.365866, right 0.155443, downright 1.221650, down 0.373500, downleft 0.144545
+
+matrixupdate 1.047780 matrix 1.033909, up: 2.177286, left 5.397027, right 0.158884, downright 1.238747, down 0.381028, downleft 0.147875
+
+matrixupdate 1.061669 matrix 1.047780, up: 2.199914, left 5.427975, right 0.162359, downright 1.255870, down 0.388615, downleft 0.151243
+
+matrixupdate 1.075575 matrix 1.061669, up: 2.222485, left 5.458710, right 0.165868, downright 1.273017, down 0.396259, downleft 0.154648
+
+matrixupdate 1.089499 matrix 1.075575, up: 2.244996, left 5.489237, right 0.169412, downright 1.290188, down 0.403961, downleft 0.158091
+
+matrixupdate 1.103437 matrix 1.089499, up: 2.267449, left 5.519555, right 0.172989, downright 1.307380, down 0.411719, downleft 0.161571
+
+matrixupdate 1.117391 matrix 1.103437, up: 2.289841, left 5.549669, right 0.176599, downright 1.324592, down 0.419532, downleft 0.165089
+
+matrixupdate 1.131359 matrix 1.117391, up: 2.312173, left 5.579579, right 0.180243, downright 1.341824, down 0.427401, downleft 0.168644
+
+matrixupdate 1.145339 matrix 1.131359, up: 2.334444, left 5.609288, right 0.183920, downright 1.359073, down 0.435324, downleft 0.172236
+
+matrixupdate 1.159332 matrix 1.145339, up: 2.356654, left 5.638797, right 0.187629, downright 1.376339, down 0.443300, downleft 0.175864
+
+matrixupdate 1.173336 matrix 1.159332, up: 2.378801, left 5.668109, right 0.191371, downright 1.393621, down 0.451329, downleft 0.179529
+
+matrixupdate 1.187351 matrix 1.173336, up: 2.400887, left 5.697225, right 0.195145, downright 1.410917, down 0.459410, downleft 0.183231
+
+matrixupdate 1.201375 matrix 1.187351, up: 2.422910, left 5.726148, right 0.198951, downright 1.428225, down 0.467543, downleft 0.186968
+
+matrixupdate 1.215409 matrix 1.201375, up: 2.444869, left 5.754879, right 0.202789, downright 1.445546, down 0.475727, downleft 0.190742
+
+matrixupdate 1.229450 matrix 1.215409, up: 2.466765, left 5.783421, right 0.206658, downright 1.462878, down 0.483961, downleft 0.194552
+
+matrixupdate 1.243499 matrix 1.229450, up: 2.488597, left 5.811774, right 0.210558, downright 1.480219, down 0.492244, downleft 0.198397
+
+matrixupdate 1.257555 matrix 1.243499, up: 2.510365, left 5.839941, right 0.214490, downright 1.497569, down 0.500576, downleft 0.202278
+
+matrixupdate 1.271617 matrix 1.257555, up: 2.532069, left 5.867924, right 0.218451, downright 1.514926, down 0.508956, downleft 0.206194
+
+matrixupdate 1.285685 matrix 1.271617, up: 2.553707, left 5.895725, right 0.222444, downright 1.532290, down 0.517383, downleft 0.210145
+
+matrixupdate 1.299757 matrix 1.285685, up: 2.575281, left 5.923344, right 0.226466, downright 1.549660, down 0.525858, downleft 0.214131
+
+matrixupdate 1.313833 matrix 1.299757, up: 2.596789, left 5.950785, right 0.230518, downright 1.567034, down 0.534378, downleft 0.218152
+
+matrixupdate 1.327912 matrix 1.313833, up: 2.618232, left 5.978048, right 0.234600, downright 1.584412, down 0.542944, downleft 0.222207
+
+matrixupdate 1.341994 matrix 1.327912, up: 2.639609, left 6.005135, right 0.238711, downright 1.601792, down 0.551555, downleft 0.226297
+
+matrixupdate 1.356078 matrix 1.341994, up: 2.660920, left 6.032049, right 0.242852, downright 1.619174, down 0.560209, downleft 0.230421
+
+matrixupdate 1.370164 matrix 1.356078, up: 2.682165, left 6.058790, right 0.247021, downright 1.636557, down 0.568908, downleft 0.234578
+
+matrixupdate 1.384250 matrix 1.370164, up: 2.703344, left 6.085360, right 0.251218, downright 1.653940, down 0.577649, downleft 0.238769
+
+matrixupdate 1.398337 matrix 1.384250, up: 2.724456, left 6.111762, right 0.255445, downright 1.671322, down 0.586432, downleft 0.242994
+
+matrixupdate 1.412424 matrix 1.398337, up: 2.745502, left 6.137996, right 0.259699, downright 1.688702, down 0.595257, downleft 0.247251
+
+matrixupdate 1.426509 matrix 1.412424, up: 2.766481, left 6.164064, right 0.263981, downright 1.706079, down 0.604123, downleft 0.251542
+
+matrixupdate 1.440593 matrix 1.426509, up: 2.787393, left 6.189969, right 0.268290, downright 1.723453, down 0.613029, downleft 0.255866
+
+matrixupdate 1.454676 matrix 1.440593, up: 2.808238, left 6.215710, right 0.272627, downright 1.740823, down 0.621975, downleft 0.260222
+
+matrixupdate 1.468755 matrix 1.454676, up: 2.829017, left 6.241290, right 0.276991, downright 1.758188, down 0.630959, downleft 0.264611
+
+matrixupdate 1.482832 matrix 1.468755, up: 2.849729, left 6.266711, right 0.281381, downright 1.775546, down 0.639983, downleft 0.269031
+
+matrixupdate 1.496905 matrix 1.482832, up: 2.870373, left 6.291973, right 0.285798, downright 1.792899, down 0.649044, downleft 0.273484
+
+matrixupdate 1.510974 matrix 1.496905, up: 2.890950, left 6.317079, right 0.290242, downright 1.810244, down 0.658142, downleft 0.277968
+
+matrixupdate 1.525039 matrix 1.510974, up: 2.911461, left 6.342030, right 0.294711, downright 1.827580, down 0.667277, downleft 0.282484
+
+matrixupdate 1.539098 matrix 1.525039, up: 2.931904, left 6.366827, right 0.299206, downright 1.844909, down 0.676449, downleft 0.287031
+
+matrixupdate 1.553153 matrix 1.539098, up: 2.952280, left 6.391472, right 0.303727, downright 1.862227, down 0.685655, downleft 0.291610
+
+matrixupdate 1.567201 matrix 1.553153, up: 2.972589, left 6.415965, right 0.308273, downright 1.879536, down 0.694897, downleft 0.296219
+
+matrixupdate 1.581243 matrix 1.567201, up: 2.992831, left 6.440310, right 0.312844, downright 1.896834, down 0.704172, downleft 0.300858
+
+matrixupdate 1.595278 matrix 1.581243, up: 3.013006, left 6.464506, right 0.317440, downright 1.914120, down 0.713482, downleft 0.305529
+
+matrixupdate 1.609306 matrix 1.595278, up: 3.033113, left 6.488555, right 0.322060, downright 1.931395, down 0.722824, downleft 0.310229
+
+matrixupdate 1.623326 matrix 1.609306, up: 3.053154, left 6.512459, right 0.326704, downright 1.948656, down 0.732199, downleft 0.314959
+
+matrixupdate 1.637338 matrix 1.623326, up: 3.073128, left 6.536220, right 0.331373, downright 1.965905, down 0.741607, downleft 0.319719
+
+matrixupdate 1.651342 matrix 1.637338, up: 3.093035, left 6.559837, right 0.336065, downright 1.983140, down 0.751045, downleft 0.324508
+
+matrixupdate 1.665337 matrix 1.651342, up: 3.112875, left 6.583313, right 0.340781, downright 2.000360, down 0.760515, downleft 0.329327
+
+matrixupdate 1.679323 matrix 1.665337, up: 3.132648, left 6.606649, right 0.345520, downright 2.017565, down 0.770014, downleft 0.334174
+
+matrixupdate 1.693299 matrix 1.679323, up: 3.152355, left 6.629846, right 0.350282, downright 2.034755, down 0.779544, downleft 0.339051
+
+matrixupdate 1.707266 matrix 1.693299, up: 3.171995, left 6.652906, right 0.355067, downright 2.051929, down 0.789103, downleft 0.343956
+
+matrixupdate 1.721222 matrix 1.707266, up: 3.191569, left 6.675829, right 0.359875, downright 2.069086, down 0.798691, downleft 0.348889
+
+matrixupdate 1.735167 matrix 1.721222, up: 3.211076, left 6.698617, right 0.364704, downright 2.086227, down 0.808306, downleft 0.353851
+
+matrixupdate 1.749101 matrix 1.735167, up: 3.230517, left 6.721272, right 0.369556, downright 2.103349, down 0.817950, downleft 0.358840
+
+matrixupdate 1.763024 matrix 1.749101, up: 3.249892, left 6.743793, right 0.374430, downright 2.120454, down 0.827620, downleft 0.363858
+
+matrixupdate 1.776936 matrix 1.763024, up: 3.269201, left 6.766184, right 0.379326, downright 2.137540, down 0.837318, downleft 0.368902
+
+matrixupdate 1.790835 matrix 1.776936, up: 3.288444, left 6.788444, right 0.384242, downright 2.154607, down 0.847041, downleft 0.373974
+
+matrixupdate 1.804723 matrix 1.790835, up: 3.307622, left 6.810575, right 0.389180, downright 2.171654, down 0.856790, downleft 0.379073
+
+matrixupdate 1.818597 matrix 1.804723, up: 3.326734, left 6.832578, right 0.394139, downright 2.188682, down 0.866564, downleft 0.384199
+
+matrixupdate 1.832459 matrix 1.818597, up: 3.345780, left 6.854454, right 0.399119, downright 2.205689, down 0.876363, downleft 0.389351
+
+matrixupdate 1.846308 matrix 1.832459, up: 3.364761, left 6.876204, right 0.404119, downright 2.222675, down 0.886186, downleft 0.394529
+
+matrixupdate 1.860143 matrix 1.846308, up: 3.383677, left 6.897830, right 0.409139, downright 2.239641, down 0.896033, downleft 0.399734
+
+matrixupdate 1.873965 matrix 1.860143, up: 3.402528, left 6.919333, right 0.414179, downright 2.256585, down 0.905902, downleft 0.404964
+
+matrixupdate 1.887772 matrix 1.873965, up: 3.421314, left 6.940713, right 0.419239, downright 2.273506, down 0.915795, downleft 0.410221
+
+matrixupdate 1.901565 matrix 1.887772, up: 3.440035, left 6.961972, right 0.424319, downright 2.290406, down 0.925710, downleft 0.415502
+
+matrixupdate 1.915344 matrix 1.901565, up: 3.458692, left 6.983111, right 0.429418, downright 2.307283, down 0.935646, downleft 0.420809
+
+matrixupdate 1.929108 matrix 1.915344, up: 3.477285, left 7.004131, right 0.434536, downright 2.324136, down 0.945604, downleft 0.426141
+
+matrixupdate 1.942858 matrix 1.929108, up: 3.495814, left 7.025032, right 0.439673, downright 2.340967, down 0.955582, downleft 0.431497
+
+matrixupdate 1.956591 matrix 1.942858, up: 3.514278, left 7.045817, right 0.444829, downright 2.357773, down 0.965581, downleft 0.436879
+
+matrixupdate 1.970310 matrix 1.956591, up: 3.532679, left 7.066485, right 0.450003, downright 2.374556, down 0.975600, downleft 0.442284
+
+matrixupdate 1.984013 matrix 1.970310, up: 3.551017, left 7.087039, right 0.455195, downright 2.391314, down 0.985639, downleft 0.447714
+
+matrixupdate 1.997700 matrix 1.984013, up: 3.569291, left 7.107478, right 0.460406, downright 2.408047, down 0.995696, downleft 0.453167
+
+matrixupdate 2.011371 matrix 1.997700, up: 3.587502, left 7.127805, right 0.465634, downright 2.424756, down 1.005772, downleft 0.458644
+
+matrixupdate 2.025025 matrix 2.011371, up: 3.605650, left 7.148019, right 0.470880, downright 2.441439, down 1.015867, downleft 0.464145
+
+matrixupdate 2.038663 matrix 2.025025, up: 3.623735, left 7.168122, right 0.476143, downright 2.458096, down 1.025979, downleft 0.469668
+
+matrixupdate 2.052284 matrix 2.038663, up: 3.641757, left 7.188115, right 0.481424, downright 2.474727, down 1.036108, downleft 0.475215
+
+matrixupdate 2.065889 matrix 2.052284, up: 3.659718, left 7.207999, right 0.486721, downright 2.491332, down 1.046255, downleft 0.480785
+
+matrixupdate 2.079476 matrix 2.065889, up: 3.677616, left 7.227775, right 0.492036, downright 2.507911, down 1.056418, downleft 0.486377
+
+matrixupdate 2.093046 matrix 2.079476, up: 3.695452, left 7.247443, right 0.497367, downright 2.524463, down 1.066597, downleft 0.491991
+
+matrixupdate 2.106598 matrix 2.093046, up: 3.713227, left 7.267005, right 0.502714, downright 2.540988, down 1.076791, downleft 0.497628
+
+matrixupdate 2.120133 matrix 2.106598, up: 3.730940, left 7.286461, right 0.508078, downright 2.557486, down 1.087001, downleft 0.503287
+
+matrixupdate 2.133650 matrix 2.120133, up: 3.748592, left 7.305813, right 0.513457, downright 2.573957, down 1.097226, downleft 0.508967
+
+matrixupdate 2.147150 matrix 2.133650, up: 3.766183, left 7.325061, right 0.518853, downright 2.590399, down 1.107466, downleft 0.514669
+
+matrixupdate 2.160631 matrix 2.147150, up: 3.783713, left 7.344206, right 0.524264, downright 2.606814, down 1.117720, downleft 0.520392
+
+matrixupdate 2.174093 matrix 2.160631, up: 3.801183, left 7.363250, right 0.529690, downright 2.623201, down 1.127987, downleft 0.526136
+
+matrixupdate 2.187538 matrix 2.174093, up: 3.818592, left 7.382192, right 0.535132, downright 2.639559, down 1.138268, downleft 0.531901
+
+matrixupdate 2.200963 matrix 2.187538, up: 3.835941, left 7.401033, right 0.540588, downright 2.655889, down 1.148562, downleft 0.537687
+
+matrixupdate 2.214370 matrix 2.200963, up: 3.853230, left 7.419776, right 0.546060, downright 2.672190, down 1.158869, downleft 0.543493
+
+matrixupdate 2.227758 matrix 2.214370, up: 3.870459, left 7.438419, right 0.551546, downright 2.688462, down 1.169187, downleft 0.549319
+
+matrixupdate 2.241128 matrix 2.227758, up: 3.887629, left 7.456965, right 0.557047, downright 2.704705, down 1.179518, downleft 0.555166
+
+matrixupdate 2.254478 matrix 2.241128, up: 3.904740, left 7.475414, right 0.562562, downright 2.720918, down 1.189861, downleft 0.561032
+
+matrixupdate 2.267808 matrix 2.254478, up: 3.921792, left 7.493767, right 0.568091, downright 2.737103, down 1.200214, downleft 0.566918
+
+matrixupdate 2.281120 matrix 2.267808, up: 3.938785, left 7.512024, right 0.573634, downright 2.753257, down 1.210579, downleft 0.572823
+
+matrixupdate 2.294412 matrix 2.281120, up: 3.955720, left 7.530187, right 0.579191, downright 2.769382, down 1.220954, downleft 0.578748
+
+matrixupdate 2.307684 matrix 2.294412, up: 3.972597, left 7.548255, right 0.584761, downright 2.785476, down 1.231339, downleft 0.584691
+
+matrixupdate 2.320936 matrix 2.307684, up: 3.989415, left 7.566231, right 0.590345, downright 2.801541, down 1.241734, downleft 0.590654
+
+matrixupdate 2.334169 matrix 2.320936, up: 4.006176, left 7.584115, right 0.595942, downright 2.817575, down 1.252139, downleft 0.596635
+
+matrixupdate 2.347382 matrix 2.334169, up: 4.022879, left 7.601907, right 0.601552, downright 2.833579, down 1.262553, downleft 0.602634
+
+matrixupdate 2.360574 matrix 2.347382, up: 4.039525, left 7.619608, right 0.607175, downright 2.849553, down 1.272976, downleft 0.608652
+
+matrixupdate 2.373747 matrix 2.360574, up: 4.056113, left 7.637219, right 0.612811, downright 2.865495, down 1.283407, downleft 0.614688
+
+matrixupdate 2.386899 matrix 2.373747, up: 4.072645, left 7.654740, right 0.618459, downright 2.881407, down 1.293847, downleft 0.620741
+
+matrixupdate 2.400031 matrix 2.386899, up: 4.089121, left 7.672174, right 0.624119, downright 2.897288, down 1.304294, downleft 0.626812
+
+matrixupdate 2.413143 matrix 2.400031, up: 4.105540, left 7.689519, right 0.629792, downright 2.913138, down 1.314749, downleft 0.632901
+
+matrixupdate 2.426234 matrix 2.413143, up: 4.121903, left 7.706777, right 0.635477, downright 2.928956, down 1.325212, downleft 0.639007
+
+matrixupdate 2.439304 matrix 2.426234, up: 4.138210, left 7.723948, right 0.641173, downright 2.944744, down 1.335682, downleft 0.645130
+
+matrixupdate 2.452354 matrix 2.439304, up: 4.154461, left 7.741034, right 0.646882, downright 2.960500, down 1.346158, downleft 0.651269
+
+matrixupdate 2.465383 matrix 2.452354, up: 4.170658, left 7.758035, right 0.652601, downright 2.976224, down 1.356641, downleft 0.657426
+
+matrixupdate 2.478391 matrix 2.465383, up: 4.186799, left 7.774951, right 0.658333, downright 2.991917, down 1.367130, downleft 0.663599
+
+matrixupdate 2.491378 matrix 2.478391, up: 4.202885, left 7.791783, right 0.664075, downright 3.007578, down 1.377624, downleft 0.669788
+
+matrixupdate 2.504344 matrix 2.491378, up: 4.218917, left 7.808533, right 0.669829, downright 3.023208, down 1.388125, downleft 0.675993
+
+matrixupdate 2.517289 matrix 2.504344, up: 4.234894, left 7.825199, right 0.675593, downright 3.038805, down 1.398631, downleft 0.682215
+
+matrixupdate 2.530213 matrix 2.517289, up: 4.250817, left 7.841785, right 0.681369, downright 3.054371, down 1.409141, downleft 0.688452
+
+matrixupdate 2.543116 matrix 2.530213, up: 4.266686, left 7.858288, right 0.687154, downright 3.069905, down 1.419657, downleft 0.694704
+
+matrixupdate 2.555998 matrix 2.543116, up: 4.282502, left 7.874712, right 0.692951, downright 3.085406, down 1.430177, downleft 0.700972
+
+matrixupdate 2.568858 matrix 2.555998, up: 4.298264, left 7.891055, right 0.698757, downright 3.100876, down 1.440701, downleft 0.707255
+
+matrixupdate 2.581697 matrix 2.568858, up: 4.313973, left 7.907320, right 0.704574, downright 3.116313, down 1.451229, downleft 0.713554
+
+matrixupdate 2.594515 matrix 2.581697, up: 4.329629, left 7.923505, right 0.710401, downright 3.131718, down 1.461761, downleft 0.719867
+
+matrixupdate 2.607311 matrix 2.594515, up: 4.345232, left 7.939613, right 0.716238, downright 3.147091, down 1.472297, downleft 0.726194
+
+matrixupdate 2.620085 matrix 2.607311, up: 4.360783, left 7.955643, right 0.722084, downright 3.162431, down 1.482835, downleft 0.732536
+
+matrixupdate 2.632838 matrix 2.620085, up: 4.376282, left 7.971596, right 0.727940, downright 3.177739, down 1.493377, downleft 0.738893
+
+matrixupdate 2.645570 matrix 2.632838, up: 4.391729, left 7.987473, right 0.733806, downright 3.193014, down 1.503921, downleft 0.745264
+
+matrixupdate 2.658280 matrix 2.645570, up: 4.407124, left 8.003275, right 0.739680, downright 3.208257, down 1.514468, downleft 0.751648
+
+matrixupdate 2.670968 matrix 2.658280, up: 4.422468, left 8.019001, right 0.745564, downright 3.223467, down 1.525017, downleft 0.758046
+
+matrixupdate 2.683634 matrix 2.670968, up: 4.437760, left 8.034653, right 0.751457, downright 3.238645, down 1.535568, downleft 0.764458
+
+matrixupdate 2.696279 matrix 2.683634, up: 4.453002, left 8.050231, right 0.757359, downright 3.253790, down 1.546120, downleft 0.770884
+
+matrixupdate 2.708902 matrix 2.696279, up: 4.468192, left 8.065735, right 0.763270, downright 3.268903, down 1.556675, downleft 0.777322
+
+matrixupdate 2.721503 matrix 2.708902, up: 4.483332, left 8.081167, right 0.769189, downright 3.283982, down 1.567230, downleft 0.783774
+
+matrixupdate 2.734082 matrix 2.721503, up: 4.498422, left 8.096526, right 0.775116, downright 3.299029, down 1.577787, downleft 0.790239
+
+matrixupdate 2.746639 matrix 2.734082, up: 4.513462, left 8.111814, right 0.781052, downright 3.314043, down 1.588344, downleft 0.796716
+
+matrixupdate 2.759175 matrix 2.746639, up: 4.528452, left 8.127031, right 0.786997, downright 3.329025, down 1.598903, downleft 0.803206
+
+matrixupdate 2.771688 matrix 2.759175, up: 4.543393, left 8.142177, right 0.792949, downright 3.343973, down 1.609461, downleft 0.809709
+
+matrixupdate 2.784180 matrix 2.771688, up: 4.558284, left 8.157253, right 0.798909, downright 3.358889, down 1.620020, downleft 0.816224
+
+matrixupdate 2.796649 matrix 2.784180, up: 4.573126, left 8.172259, right 0.804877, downright 3.373772, down 1.630579, downleft 0.822751
+
+matrixupdate 2.809097 matrix 2.796649, up: 4.587920, left 8.187196, right 0.810853, downright 3.388622, down 1.641137, downleft 0.829290
+
+matrixupdate 2.821522 matrix 2.809097, up: 4.602664, left 8.202065, right 0.816837, downright 3.403439, down 1.651696, downleft 0.835840
+
+matrixupdate 2.833926 matrix 2.821522, up: 4.617361, left 8.216866, right 0.822828, downright 3.418223, down 1.662253, downleft 0.842403
+
+matrixupdate 2.846307 matrix 2.833926, up: 4.632009, left 8.231599, right 0.828826, downright 3.432975, down 1.672810, downleft 0.848976
+
+matrixupdate 2.858667 matrix 2.846307, up: 4.646609, left 8.246265, right 0.834831, downright 3.447694, down 1.683366, downleft 0.855562
+
+matrixupdate 2.871004 matrix 2.858667, up: 4.661162, left 8.260864, right 0.840844, downright 3.462379, down 1.693920, downleft 0.862158
+
+matrixupdate 2.883319 matrix 2.871004, up: 4.675667, left 8.275398, right 0.846863, downright 3.477032, down 1.704474, downleft 0.868765
+
+matrixupdate 2.895612 matrix 2.883319, up: 4.690125, left 8.289866, right 0.852890, downright 3.491652, down 1.715025, downleft 0.875383
+
+matrixupdate 2.907883 matrix 2.895612, up: 4.704536, left 8.304269, right 0.858923, downright 3.506239, down 1.725575, downleft 0.882012
+
+matrixupdate 2.920132 matrix 2.907883, up: 4.718900, left 8.318607, right 0.864963, downright 3.520794, down 1.736123, downleft 0.888652
+
+matrixupdate 2.932359 matrix 2.920132, up: 4.733218, left 8.332881, right 0.871009, downright 3.535315, down 1.746669, downleft 0.895302
+
+matrixupdate 2.944564 matrix 2.932359, up: 4.747489, left 8.347092, right 0.877062, downright 3.549804, down 1.757213, downleft 0.901962
+
+matrixupdate 2.956746 matrix 2.944564, up: 4.761714, left 8.361239, right 0.883121, downright 3.564260, down 1.767754, downleft 0.908632
+
+matrixupdate 2.968906 matrix 2.956746, up: 4.775894, left 8.375324, right 0.889186, downright 3.578683, down 1.778292, downleft 0.915312
+
+matrixupdate 2.981045 matrix 2.968906, up: 4.790028, left 8.389346, right 0.895258, downright 3.593073, down 1.788828, downleft 0.922002
+
+matrixupdate 2.993161 matrix 2.981045, up: 4.804116, left 8.403306, right 0.901335, downright 3.607430, down 1.799360, downleft 0.928702
+
+matrixupdate 3.005255 matrix 2.993161, up: 4.818160, left 8.417205, right 0.907418, downright 3.621755, down 1.809890, downleft 0.935411
+
+matrixupdate 3.017327 matrix 3.005255, up: 4.832158, left 8.431043, right 0.913507, downright 3.636047, down 1.820416, downleft 0.942130
+
+matrixupdate 3.029376 matrix 3.017327, up: 4.846112, left 8.444821, right 0.919602, downright 3.650306, down 1.830939, downleft 0.948858
+
+matrixupdate 3.041404 matrix 3.029376, up: 4.860021, left 8.458538, right 0.925702, downright 3.664533, down 1.841458, downleft 0.955595
+
+matrixupdate 3.053410 matrix 3.041404, up: 4.873885, left 8.472196, right 0.931807, downright 3.678727, down 1.851973, downleft 0.962341
+
+matrixupdate 3.065393 matrix 3.053410, up: 4.887706, left 8.485795, right 0.937918, downright 3.692888, down 1.862485, downleft 0.969096
+
+matrixupdate 3.077354 matrix 3.065393, up: 4.901483, left 8.499334, right 0.944034, downright 3.707017, down 1.872992, downleft 0.975859
+
+matrixupdate 3.089294 matrix 3.077354, up: 4.915216, left 8.512816, right 0.950156, downright 3.721113, down 1.883495, downleft 0.982631
+
+matrixupdate 3.101211 matrix 3.089294, up: 4.928906, left 8.526239, right 0.956282, downright 3.735177, down 1.893994, downleft 0.989412
+
+matrixupdate 3.113106 matrix 3.101211, up: 4.942553, left 8.539605, right 0.962413, downright 3.749208, down 1.904488, downleft 0.996201
+
+matrixupdate 3.124979 matrix 3.113106, up: 4.956157, left 8.552913, right 0.968549, downright 3.763207, down 1.914977, downleft 1.002998
+
+matrixupdate 3.136830 matrix 3.124979, up: 4.969717, left 8.566165, right 0.974690, downright 3.777173, down 1.925462, downleft 1.009803
+
+matrixupdate 3.148659 matrix 3.136830, up: 4.983236, left 8.579361, right 0.980836, downright 3.791107, down 1.935941, downleft 1.016615
+
+matrixupdate 3.160466 matrix 3.148659, up: 4.996712, left 8.592500, right 0.986986, downright 3.805009, down 1.946416, downleft 1.023436
+
+matrixupdate 3.172251 matrix 3.160466, up: 5.010146, left 8.605584, right 0.993140, downright 3.818878, down 1.956885, downleft 1.030264
+
+matrixupdate 3.184014 matrix 3.172251, up: 5.023538, left 8.618612, right 0.999299, downright 3.832715, down 1.967349, downleft 1.037100
+
+matrixupdate 3.195755 matrix 3.184014, up: 5.036888, left 8.631586, right 1.005462, downright 3.846520, down 1.977808, downleft 1.043943
+
+matrixupdate 3.207474 matrix 3.195755, up: 5.050197, left 8.644506, right 1.011630, downright 3.860292, down 1.988260, downleft 1.050794
+
+matrixupdate 3.219171 matrix 3.207474, up: 5.063464, left 8.657371, right 1.017801, downright 3.874033, down 1.998708, downleft 1.057651
+
+matrixupdate 3.230847 matrix 3.219171, up: 5.076690, left 8.670183, right 1.023977, downright 3.887741, down 2.009149, downleft 1.064516
+
+matrixupdate 3.242500 matrix 3.230847, up: 5.089876, left 8.682941, right 1.030156, downright 3.901418, down 2.019584, downleft 1.071387
+
+matrixupdate 3.254132 matrix 3.242500, up: 5.103021, left 8.695646, right 1.036339, downright 3.915062, down 2.030013, downleft 1.078266
+
+matrixupdate 3.265741 matrix 3.254132, up: 5.116125, left 8.708299, right 1.042526, downright 3.928675, down 2.040436, downleft 1.085150
+
+matrixupdate 3.277329 matrix 3.265741, up: 5.129189, left 8.720899, right 1.048717, downright 3.942255, down 2.050852, downleft 1.092042
+
+matrixupdate 3.288895 matrix 3.277329, up: 5.142213, left 8.733448, right 1.054911, downright 3.955804, down 2.061262, downleft 1.098940
+
+matrixupdate 3.300440 matrix 3.288895, up: 5.155197, left 8.745945, right 1.061109, downright 3.969321, down 2.071666, downleft 1.105844
+
+matrixupdate 3.311962 matrix 3.300440, up: 5.168142, left 8.758390, right 1.067310, downright 3.982806, down 2.082062, downleft 1.112754
+
+matrixupdate 3.323463 matrix 3.311962, up: 5.181047, left 8.770785, right 1.073515, downright 3.996260, down 2.092452, downleft 1.119670
+
+matrixupdate 3.334942 matrix 3.323463, up: 5.193912, left 8.783130, right 1.079723, downright 4.009682, down 2.102835, downleft 1.126592
+
+matrixupdate 3.346400 matrix 3.334942, up: 5.206739, left 8.795424, right 1.085934, downright 4.023073, down 2.113211, downleft 1.133520
+
+matrixupdate 3.357836 matrix 3.346400, up: 5.219527, left 8.807669, right 1.092148, downright 4.036431, down 2.123580, downleft 1.140454
+
+matrixupdate 3.369250 matrix 3.357836, up: 5.232276, left 8.819863, right 1.098365, downright 4.049759, down 2.133941, downleft 1.147393
+
+matrixupdate 3.380643 matrix 3.369250, up: 5.244986, left 8.832009, right 1.104585, downright 4.063055, down 2.144295, downleft 1.154338
+
+matrixupdate 3.392014 matrix 3.380643, up: 5.257659, left 8.844106, right 1.110808, downright 4.076320, down 2.154642, downleft 1.161288
+
+matrixupdate 3.403364 matrix 3.392014, up: 5.270293, left 8.856155, right 1.117034, downright 4.089553, down 2.164981, downleft 1.168244
+
+matrixupdate 3.414692 matrix 3.403364, up: 5.282889, left 8.868155, right 1.123262, downright 4.102756, down 2.175313, downleft 1.175204
+
+matrixupdate 3.425999 matrix 3.414692, up: 5.295448, left 8.880107, right 1.129493, downright 4.115927, down 2.185636, downleft 1.182170
+
+matrixupdate 3.437284 matrix 3.425999, up: 5.307969, left 8.892012, right 1.135727, downright 4.129067, down 2.195952, downleft 1.189141
+
+matrixupdate 3.448548 matrix 3.437284, up: 5.320452, left 8.903870, right 1.141963, downright 4.142176, down 2.206260, downleft 1.196116
+
+matrixupdate 3.459790 matrix 3.448548, up: 5.332899, left 8.915680, right 1.148201, downright 4.155254, down 2.216560, downleft 1.203096
+
+matrixupdate 3.471011 matrix 3.459790, up: 5.345308, left 8.927444, right 1.154442, downright 4.168301, down 2.226852, downleft 1.210081
+
+matrixupdate 3.482211 matrix 3.471011, up: 5.357681, left 8.939162, right 1.160686, downright 4.181317, down 2.237136, downleft 1.217070
+
+matrixupdate 3.493390 matrix 3.482211, up: 5.370017, left 8.950833, right 1.166931, downright 4.194303, down 2.247411, downleft 1.224064
+
+matrixupdate 3.504547 matrix 3.493390, up: 5.382317, left 8.962459, right 1.173178, downright 4.207258, down 2.257678, downleft 1.231062
+
+matrixupdate 3.515684 matrix 3.504547, up: 5.394581, left 8.974040, right 1.179428, downright 4.220182, down 2.267937, downleft 1.238064
+
+matrixupdate 3.526799 matrix 3.515684, up: 5.406808, left 8.985575, right 1.185680, downright 4.233076, down 2.278187, downleft 1.245070
+
+matrixupdate 3.537892 matrix 3.526799, up: 5.419000, left 8.997066, right 1.191933, downright 4.245939, down 2.288428, downleft 1.252081
+
+matrixupdate 3.548965 matrix 3.537892, up: 5.431156, left 9.008512, right 1.198189, downright 4.258772, down 2.298661, downleft 1.259095
+
+matrixupdate 3.560017 matrix 3.548965, up: 5.443276, left 9.019913, right 1.204446, downright 4.271574, down 2.308884, downleft 1.266113
+
+matrixupdate 3.571048 matrix 3.560017, up: 5.455362, left 9.031271, right 1.210705, downright 4.284346, down 2.319099, downleft 1.273135
+
+matrixupdate 3.582058 matrix 3.571048, up: 5.467412, left 9.042585, right 1.216966, downright 4.297088, down 2.329306, downleft 1.280160
+
+matrixupdate 3.593046 matrix 3.582058, up: 5.479427, left 9.053856, right 1.223228, downright 4.309799, down 2.339503, downleft 1.287189
+
+matrixupdate 3.604014 matrix 3.593046, up: 5.491407, left 9.065083, right 1.229492, downright 4.322481, down 2.349691, downleft 1.294221
+
+matrixupdate 3.614961 matrix 3.604014, up: 5.503352, left 9.076268, right 1.235757, downright 4.335133, down 2.359869, downleft 1.301257
+
+matrixupdate 3.625888 matrix 3.614961, up: 5.515264, left 9.087410, right 1.242024, downright 4.347754, down 2.370039, downleft 1.308296
+
+matrixupdate 3.636793 matrix 3.625888, up: 5.527141, left 9.098510, right 1.248292, downright 4.360346, down 2.380199, downleft 1.315338
+
+matrixupdate 3.647678 matrix 3.636793, up: 5.538983, left 9.109567, right 1.254562, downright 4.372908, down 2.390350, downleft 1.322383
+
+matrixupdate 3.658542 matrix 3.647678, up: 5.550792, left 9.120583, right 1.260832, downright 4.385440, down 2.400492, downleft 1.329432
+
+matrixupdate 3.669385 matrix 3.658542, up: 5.562567, left 9.131557, right 1.267104, downright 4.397942, down 2.410623, downleft 1.336483
+
+matrixupdate 3.680208 matrix 3.669385, up: 5.574309, left 9.142491, right 1.273377, downright 4.410415, down 2.420746, downleft 1.343536
+
+matrixupdate 3.691010 matrix 3.680208, up: 5.586017, left 9.153383, right 1.279652, downright 4.422859, down 2.430859, downleft 1.350593
+
+matrixupdate 3.701791 matrix 3.691010, up: 5.597692, left 9.164234, right 1.285927, downright 4.435272, down 2.440962, downleft 1.357652
+
+matrixupdate 3.712552 matrix 3.701791, up: 5.609334, left 9.175045, right 1.292203, downright 4.447657, down 2.451055, downleft 1.364714
+
+matrixupdate 3.723293 matrix 3.712552, up: 5.620943, left 9.185815, right 1.298480, downright 4.460012, down 2.461138, downleft 1.371778
+
+matrixupdate 3.734013 matrix 3.723293, up: 5.632519, left 9.196546, right 1.304758, downright 4.472338, down 2.471212, downleft 1.378845
+
+matrixupdate 3.744713 matrix 3.734013, up: 5.644062, left 9.207237, right 1.311037, downright 4.484635, down 2.481276, downleft 1.385913
+
+matrixupdate 3.755392 matrix 3.744713, up: 5.655573, left 9.217888, right 1.317316, downright 4.496903, down 2.491329, downleft 1.392984
+
+matrixupdate 3.766051 matrix 3.755392, up: 5.667052, left 9.228500, right 1.323596, downright 4.509142, down 2.501373, downleft 1.400057
+
+matrixupdate 3.776690 matrix 3.766051, up: 5.678499, left 9.239073, right 1.329877, downright 4.521351, down 2.511406, downleft 1.407133
+
+matrixupdate 3.787309 matrix 3.776690, up: 5.689914, left 9.249607, right 1.336158, downright 4.533532, down 2.521430, downleft 1.414210
+
+matrixupdate 3.797907 matrix 3.787309, up: 5.701297, left 9.260103, right 1.342440, downright 4.545684, down 2.531443, downleft 1.421289
+
+matrixupdate 3.808486 matrix 3.797907, up: 5.712648, left 9.270561, right 1.348723, downright 4.557808, down 2.541446, downleft 1.428370
+
+matrixupdate 3.819044 matrix 3.808486, up: 5.723968, left 9.280980, right 1.355006, downright 4.569903, down 2.551438, downleft 1.435452
+
+matrixupdate 3.829582 matrix 3.819044, up: 5.735257, left 9.291361, right 1.361289, downright 4.581969, down 2.561421, downleft 1.442536
+
+matrixupdate 3.840100 matrix 3.829582, up: 5.746514, left 9.301705, right 1.367573, downright 4.594007, down 2.571392, downleft 1.449622
+
+matrixupdate 3.850598 matrix 3.840100, up: 5.757740, left 9.312012, right 1.373857, downright 4.606016, down 2.581354, downleft 1.456709
+
+matrixupdate 3.861077 matrix 3.850598, up: 5.768936, left 9.322281, right 1.380141, downright 4.617997, down 2.591304, downleft 1.463798
+
+matrixupdate 3.871535 matrix 3.861077, up: 5.780101, left 9.332514, right 1.386425, downright 4.629950, down 2.601245, downleft 1.470887
+
+matrixupdate 3.881974 matrix 3.871535, up: 5.791235, left 9.342710, right 1.392710, downright 4.641875, down 2.611174, downleft 1.477979
+
+matrixupdate 3.892393 matrix 3.881974, up: 5.802339, left 9.352869, right 1.398994, downright 4.653771, down 2.621093, downleft 1.485071
+
+matrixupdate 3.902792 matrix 3.892393, up: 5.813413, left 9.362992, right 1.405279, downright 4.665640, down 2.631002, downleft 1.492164
+
+matrixupdate 3.913171 matrix 3.902792, up: 5.824457, left 9.373079, right 1.411564, downright 4.677480, down 2.640899, downleft 1.499259
+
+matrixupdate 3.923531 matrix 3.913171, up: 5.835471, left 9.383130, right 1.417848, downright 4.689293, down 2.650786, downleft 1.506354
+
+matrixupdate 3.933871 matrix 3.923531, up: 5.846455, left 9.393146, right 1.424133, downright 4.701078, down 2.660662, downleft 1.513451
+
+matrixupdate 3.944191 matrix 3.933871, up: 5.857409, left 9.403126, right 1.430417, downright 4.712835, down 2.670527, downleft 1.520548
+
+matrixupdate 3.954492 matrix 3.944191, up: 5.868334, left 9.413071, right 1.436702, downright 4.724565, down 2.680381, downleft 1.527646
+
+matrixupdate 3.964774 matrix 3.954492, up: 5.879229, left 9.422981, right 1.442986, downright 4.736267, down 2.690224, downleft 1.534744
+
+matrixupdate 3.975036 matrix 3.964774, up: 5.890096, left 9.432856, right 1.449270, downright 4.747941, down 2.700057, downleft 1.541844
+
+matrixupdate 3.985279 matrix 3.975036, up: 5.900933, left 9.442697, right 1.455553, downright 4.759588, down 2.709878, downleft 1.548943
+
+matrixupdate 3.995502 matrix 3.985279, up: 5.911741, left 9.452503, right 1.461836, downright 4.771208, down 2.719688, downleft 1.556044
+
+matrixupdate 4.005706 matrix 3.995502, up: 5.922521, left 9.462275, right 1.468119, downright 4.782800, down 2.729488, downleft 1.563144
+
+matrixupdate 4.015891 matrix 4.005706, up: 5.933272, left 9.472013, right 1.474402, downright 4.794366, down 2.739276, downleft 1.570245
+
+matrixupdate 4.026057 matrix 4.015891, up: 5.943995, left 9.481718, right 1.480684, downright 4.805904, down 2.749052, downleft 1.577347
+
+matrixupdate 4.036203 matrix 4.026057, up: 5.954689, left 9.491389, right 1.486965, downright 4.817415, down 2.758818, downleft 1.584448
+
+matrixupdate 4.046331 matrix 4.036203, up: 5.965355, left 9.501026, right 1.493246, downright 4.828899, down 2.768573, downleft 1.591550
+
+matrixupdate 4.056439 matrix 4.046331, up: 5.975993, left 9.510630, right 1.499527, downright 4.840357, down 2.778316, downleft 1.598651
+
+matrixupdate 4.066529 matrix 4.056439, up: 5.986603, left 9.520201, right 1.505807, downright 4.851787, down 2.788048, downleft 1.605753
+
+matrixupdate 4.076599 matrix 4.066529, up: 5.997185, left 9.529740, right 1.512086, downright 4.863191, down 2.797769, downleft 1.612855
+
+matrixupdate 4.086650 matrix 4.076599, up: 6.007740, left 9.539246, right 1.518364, downright 4.874568, down 2.807478, downleft 1.619957
+
+matrixupdate 4.096683 matrix 4.086650, up: 6.018267, left 9.548719, right 1.524642, downright 4.885919, down 2.817176, downleft 1.627058
+
+matrixupdate 4.106697 matrix 4.096683, up: 6.028766, left 9.558161, right 1.530919, downright 4.897243, down 2.826863, downleft 1.634159
+
+matrixupdate 4.116692 matrix 4.106697, up: 6.039239, left 9.567570, right 1.537195, downright 4.908541, down 2.836538, downleft 1.641260
+
+matrixupdate 4.126668 matrix 4.116692, up: 6.049684, left 9.576947, right 1.543471, downright 4.919813, down 2.846202, downleft 1.648361
+
+matrixupdate 4.136625 matrix 4.126668, up: 6.060103, left 9.586293, right 1.549745, downright 4.931058, down 2.855854, downleft 1.655461
+
+matrixupdate 4.146564 matrix 4.136625, up: 6.070494, left 9.595607, right 1.556019, downright 4.942277, down 2.865495, downleft 1.662561
+
+matrixupdate 4.156485 matrix 4.146564, up: 6.080859, left 9.604890, right 1.562292, downright 4.953470, down 2.875124, downleft 1.669660
+
+matrixupdate 4.166386 matrix 4.156485, up: 6.091197, left 9.614142, right 1.568564, downright 4.964637, down 2.884742, downleft 1.676759
+
+matrixupdate 4.176270 matrix 4.166386, up: 6.101509, left 9.623362, right 1.574834, downright 4.975778, down 2.894348, downleft 1.683857
+
+matrixupdate 4.186134 matrix 4.176270, up: 6.111795, left 9.632552, right 1.581104, downright 4.986893, down 2.903943, downleft 1.690954
+
+matrixupdate 4.195981 matrix 4.186134, up: 6.122054, left 9.641712, right 1.587373, downright 4.997982, down 2.913526, downleft 1.698051
+
+matrixupdate 4.205809 matrix 4.195981, up: 6.132287, left 9.650841, right 1.593640, downright 5.009046, down 2.923097, downleft 1.705147
+
+matrixupdate 4.215618 matrix 4.205809, up: 6.142494, left 9.659939, right 1.599907, downright 5.020084, down 2.932657, downleft 1.712242
+
+matrixupdate 4.225410 matrix 4.215618, up: 6.152676, left 9.669008, right 1.606172, downright 5.031096, down 2.942205, downleft 1.719336
+
+matrixupdate 4.235183 matrix 4.225410, up: 6.162832, left 9.678047, right 1.612436, downright 5.042083, down 2.951742, downleft 1.726429
+
+matrixupdate 4.244938 matrix 4.235183, up: 6.172962, left 9.687056, right 1.618699, downright 5.053045, down 2.961266, downleft 1.733521
+
+matrixupdate 4.254675 matrix 4.244938, up: 6.183067, left 9.696035, right 1.624961, downright 5.063981, down 2.970779, downleft 1.740612
+
+matrixupdate 4.264394 matrix 4.254675, up: 6.193147, left 9.704985, right 1.631221, downright 5.074892, down 2.980281, downleft 1.747702
+
+matrixupdate 4.274094 matrix 4.264394, up: 6.203201, left 9.713905, right 1.637480, downright 5.085778, down 2.989770, downleft 1.754791
+
+matrixupdate 4.283777 matrix 4.274094, up: 6.213230, left 9.722797, right 1.643738, downright 5.096639, down 2.999248, downleft 1.761879
+
+matrixupdate 4.293442 matrix 4.283777, up: 6.223235, left 9.731660, right 1.649995, downright 5.107474, down 3.008714, downleft 1.768965
+
+matrixupdate 4.303089 matrix 4.293442, up: 6.233214, left 9.740493, right 1.656250, downright 5.118285, down 3.018168, downleft 1.776050
+
+matrixupdate 4.312718 matrix 4.303089, up: 6.243169, left 9.749299, right 1.662503, downright 5.129071, down 3.027610, downleft 1.783133
+
+matrixupdate 4.322329 matrix 4.312718, up: 6.253099, left 9.758075, right 1.668755, downright 5.139832, down 3.037041, downleft 1.790216
+
+matrixupdate 4.331923 matrix 4.322329, up: 6.263005, left 9.766824, right 1.675006, downright 5.150569, down 3.046459, downleft 1.797296
+
+matrixupdate 4.341499 matrix 4.331923, up: 6.272887, left 9.775544, right 1.681255, downright 5.161280, down 3.055866, downleft 1.804376
+
+matrixupdate 4.351057 matrix 4.341499, up: 6.282744, left 9.784236, right 1.687503, downright 5.171967, down 3.065261, downleft 1.811453
+
+matrixupdate 4.360597 matrix 4.351057, up: 6.292577, left 9.792901, right 1.693749, downright 5.182630, down 3.074644, downleft 1.818529
+
+matrixupdate 4.370120 matrix 4.360597, up: 6.302386, left 9.801538, right 1.699993, downright 5.193268, down 3.084015, downleft 1.825604
+
+matrixupdate 4.379626 matrix 4.370120, up: 6.312172, left 9.810147, right 1.706236, downright 5.203882, down 3.093375, downleft 1.832677
+
+matrixupdate 4.389114 matrix 4.379626, up: 6.321933, left 9.818729, right 1.712477, downright 5.214472, down 3.102722, downleft 1.839748
+
+matrixupdate 4.398584 matrix 4.389114, up: 6.331671, left 9.827283, right 1.718717, downright 5.225038, down 3.112057, downleft 1.846817
+
+matrixupdate 4.408037 matrix 4.398584, up: 6.341386, left 9.835811, right 1.724955, downright 5.235579, down 3.121381, downleft 1.853884
+
+matrixupdate 4.417473 matrix 4.408037, up: 6.351077, left 9.844312, right 1.731191, downright 5.246096, down 3.130692, downleft 1.860950
+
+matrixupdate 4.426891 matrix 4.417473, up: 6.360744, left 9.852785, right 1.737425, downright 5.256590, down 3.139992, downleft 1.868013
+
+matrixupdate 4.436293 matrix 4.426891, up: 6.370389, left 9.861233, right 1.743658, downright 5.267059, down 3.149279, downleft 1.875075
+
+matrixupdate 4.445677 matrix 4.436293, up: 6.380010, left 9.869653, right 1.749889, downright 5.277505, down 3.158555, downleft 1.882135
+
+matrixupdate 4.455044 matrix 4.445677, up: 6.389609, left 9.878048, right 1.756118, downright 5.287927, down 3.167819, downleft 1.889192
+
+matrixupdate 4.464393 matrix 4.455044, up: 6.399184, left 9.886416, right 1.762345, downright 5.298325, down 3.177070, downleft 1.896248
+
+matrixupdate 4.473726 matrix 4.464393, up: 6.408737, left 9.894758, right 1.768571, downright 5.308700, down 3.186310, downleft 1.903301
+
+matrixupdate 4.483042 matrix 4.473726, up: 6.418267, left 9.903074, right 1.774794, downright 5.319051, down 3.195538, downleft 1.910353
+
+matrixupdate 4.492341 matrix 4.483042, up: 6.427775, left 9.911364, right 1.781016, downright 5.329378, down 3.204753, downleft 1.917402
+
+matrixupdate 4.501622 matrix 4.492341, up: 6.437260, left 9.919629, right 1.787235, downright 5.339683, down 3.213957, downleft 1.924448
+
+matrixupdate 4.510887 matrix 4.501622, up: 6.446723, left 9.927868, right 1.793453, downright 5.349964, down 3.223149, downleft 1.931493
+
+matrixupdate 4.520136 matrix 4.510887, up: 6.456164, left 9.936081, right 1.799669, downright 5.360222, down 3.232328, downleft 1.938535
+
+matrixupdate 4.529367 matrix 4.520136, up: 6.465582, left 9.944270, right 1.805883, downright 5.370456, down 3.241496, downleft 1.945575
+
+matrixupdate 4.538581 matrix 4.529367, up: 6.474979, left 9.952433, right 1.812095, downright 5.380668, down 3.250652, downleft 1.952612
+
+matrixupdate 4.547779 matrix 4.538581, up: 6.484353, left 9.960571, right 1.818304, downright 5.390856, down 3.259795, downleft 1.959647
+
+matrixupdate 4.556961 matrix 4.547779, up: 6.493706, left 9.968685, right 1.824512, downright 5.401022, down 3.268927, downleft 1.966680
+
+matrixupdate 4.566125 matrix 4.556961, up: 6.503038, left 9.976774, right 1.830718, downright 5.411165, down 3.278046, downleft 1.973710
+
+matrixupdate 4.575273 matrix 4.566125, up: 6.512347, left 9.984838, right 1.836922, downright 5.421285, down 3.287154, downleft 1.980737
+
+matrixupdate 4.584405 matrix 4.575273, up: 6.521635, left 9.992877, right 1.843123, downright 5.431382, down 3.296249, downleft 1.987762
+
+matrixupdate 4.593520 matrix 4.584405, up: 6.530902, left 10.000893, right 1.849323, downright 5.441456, down 3.305333, downleft 1.994784
+
+matrixupdate 4.602619 matrix 4.593520, up: 6.540148, left 10.008884, right 1.855520, downright 5.451508, down 3.314404, downleft 2.001804
+
+matrixupdate 4.611701 matrix 4.602619, up: 6.549372, left 10.016851, right 1.861715, downright 5.461538, down 3.323463, downleft 2.008821
+
+matrixupdate 4.620767 matrix 4.611701, up: 6.558575, left 10.024794, right 1.867908, downright 5.471545, down 3.332510, downleft 2.015835
+
+matrixupdate 4.629817 matrix 4.620767, up: 6.567757, left 10.032713, right 1.874099, downright 5.481530, down 3.341546, downleft 2.022846
+
+matrixupdate 4.638850 matrix 4.629817, up: 6.576919, left 10.040608, right 1.880287, downright 5.491492, down 3.350569, downleft 2.029855
+
+matrixupdate 4.647868 matrix 4.638850, up: 6.586059, left 10.048480, right 1.886473, downright 5.501432, down 3.359580, downleft 2.036861
+
+matrixupdate 4.656869 matrix 4.647868, up: 6.595179, left 10.056329, right 1.892657, downright 5.511350, down 3.368579, downleft 2.043863
+
+matrixupdate 4.665854 matrix 4.656869, up: 6.604279, left 10.064154, right 1.898839, downright 5.521246, down 3.377566, downleft 2.050863
+
+matrixupdate 4.674823 matrix 4.665854, up: 6.613357, left 10.071955, right 1.905019, downright 5.531120, down 3.386541, downleft 2.057861
+
+matrixupdate 4.683776 matrix 4.674823, up: 6.622416, left 10.079734, right 1.911196, downright 5.540972, down 3.395504, downleft 2.064855
+
+matrixupdate 4.692713 matrix 4.683776, up: 6.631454, left 10.087490, right 1.917371, downright 5.550802, down 3.404455, downleft 2.071846
+
+matrixupdate 4.701634 matrix 4.692713, up: 6.640472, left 10.095223, right 1.923543, downright 5.560611, down 3.413394, downleft 2.078834
+
+matrixupdate 4.710539 matrix 4.701634, up: 6.649470, left 10.102933, right 1.929714, downright 5.570397, down 3.422321, downleft 2.085819
+
+matrixupdate 4.719429 matrix 4.710539, up: 6.658448, left 10.110620, right 1.935881, downright 5.580162, down 3.431236, downleft 2.092801
+
+matrixupdate 4.728302 matrix 4.719429, up: 6.667405, left 10.118285, right 1.942047, downright 5.589906, down 3.440139, downleft 2.099780
+
+matrixupdate 4.737160 matrix 4.728302, up: 6.676343, left 10.125928, right 1.948210, downright 5.599628, down 3.449030, downleft 2.106756
+
+matrixupdate 4.746003 matrix 4.737160, up: 6.685262, left 10.133548, right 1.954371, downright 5.609328, down 3.457908, downleft 2.113728
+
+matrixupdate 4.754829 matrix 4.746003, up: 6.694160, left 10.141146, right 1.960529, downright 5.619007, down 3.466775, downleft 2.120697
+
+matrixupdate 4.763640 matrix 4.754829, up: 6.703040, left 10.148722, right 1.966685, downright 5.628665, down 3.475630, downleft 2.127664
+
+matrixupdate 4.772435 matrix 4.763640, up: 6.711899, left 10.156276, right 1.972838, downright 5.638301, down 3.484473, downleft 2.134626
+
+matrixupdate 4.781215 matrix 4.772435, up: 6.720739, left 10.163808, right 1.978989, downright 5.647916, down 3.493304, downleft 2.141586
+
+matrixupdate 4.789979 matrix 4.781215, up: 6.729560, left 10.171318, right 1.985137, downright 5.657511, down 3.502123, downleft 2.148542
+
+matrixupdate 4.798728 matrix 4.789979, up: 6.738362, left 10.178807, right 1.991283, downright 5.667084, down 3.510929, downleft 2.155495
+
+matrixupdate 4.807462 matrix 4.798728, up: 6.747145, left 10.186274, right 1.997426, downright 5.676636, down 3.519724, downleft 2.162445
+
+matrixupdate 4.816180 matrix 4.807462, up: 6.755909, left 10.193720, right 2.003567, downright 5.686167, down 3.528507, downleft 2.169391
+
+matrixupdate 4.824883 matrix 4.816180, up: 6.764653, left 10.201145, right 2.009706, downright 5.695677, down 3.537278, downleft 2.176334
+
+matrixupdate 4.833571 matrix 4.824883, up: 6.773379, left 10.208548, right 2.015841, downright 5.705167, down 3.546037, downleft 2.183273
+
+matrixupdate 4.842243 matrix 4.833571, up: 6.782086, left 10.215930, right 2.021975, downright 5.714636, down 3.554784, downleft 2.190209
+
+matrixupdate 4.850900 matrix 4.842243, up: 6.790775, left 10.223292, right 2.028105, downright 5.724084, down 3.563519, downleft 2.197141
+
+matrixupdate 4.859542 matrix 4.850900, up: 6.799445, left 10.230632, right 2.034233, downright 5.733512, down 3.572242, downleft 2.204070
+
+matrixupdate 4.868169 matrix 4.859542, up: 6.808096, left 10.237951, right 2.040359, downright 5.742919, down 3.580953, downleft 2.210995
+
+matrixupdate 4.876781 matrix 4.868169, up: 6.816729, left 10.245250, right 2.046482, downright 5.752306, down 3.589653, downleft 2.217917
+
+matrixupdate 4.885378 matrix 4.876781, up: 6.825344, left 10.252529, right 2.052602, downright 5.761672, down 3.598340, downleft 2.224835
+
+matrixupdate 4.893960 matrix 4.885378, up: 6.833940, left 10.259786, right 2.058719, downright 5.771018, down 3.607015, downleft 2.231749
+
+matrixupdate 4.902527 matrix 4.893960, up: 6.842518, left 10.267024, right 2.064834, downright 5.780344, down 3.615679, downleft 2.238660
+
+matrixupdate 4.911079 matrix 4.902527, up: 6.851079, left 10.274241, right 2.070947, downright 5.789649, down 3.624331, downleft 2.245567
+
+matrixupdate 4.919617 matrix 4.911079, up: 6.859621, left 10.281438, right 2.077056, downright 5.798935, down 3.632970, downleft 2.252470
+
+matrixupdate 4.928139 matrix 4.919617, up: 6.868145, left 10.288615, right 2.083163, downright 5.808200, down 3.641598, downleft 2.259370
+
+matrixupdate 4.936647 matrix 4.928139, up: 6.876652, left 10.295772, right 2.089267, downright 5.817445, down 3.650214, downleft 2.266266
+
+matrixupdate 4.945140 matrix 4.936647, up: 6.885140, left 10.302909, right 2.095369, downright 5.826671, down 3.658818, downleft 2.273158
+
+matrixupdate 4.953619 matrix 4.945140, up: 6.893611, left 10.310026, right 2.101468, downright 5.835877, down 3.667411, downleft 2.280047
+
+matrixupdate 4.962083 matrix 4.953619, up: 6.902065, left 10.317124, right 2.107564, downright 5.845062, down 3.675991, downleft 2.286931
+
+matrixupdate 4.970532 matrix 4.962083, up: 6.910501, left 10.324202, right 2.113657, downright 5.854228, down 3.684560, downleft 2.293812
+
+matrixupdate 4.978967 matrix 4.970532, up: 6.918919, left 10.331260, right 2.119748, downright 5.863375, down 3.693117, downleft 2.300689
+
+matrixupdate 4.987387 matrix 4.978967, up: 6.927320, left 10.338300, right 2.125836, downright 5.872502, down 3.701662, downleft 2.307562
+
+matrixupdate 4.995793 matrix 4.987387, up: 6.935704, left 10.345319, right 2.131921, downright 5.881609, down 3.710195, downleft 2.314431
+
+matrixupdate 5.004184 matrix 4.995793, up: 6.944071, left 10.352320, right 2.138003, downright 5.890697, down 3.718716, downleft 2.321296
+
+matrixupdate 5.012561 matrix 5.004184, up: 6.952420, left 10.359301, right 2.144083, downright 5.899765, down 3.727226, downleft 2.328158
+
+matrixupdate 5.020924 matrix 5.012561, up: 6.960753, left 10.366264, right 2.150159, downright 5.908814, down 3.735724, downleft 2.335015
+
+matrixupdate 5.029272 matrix 5.020924, up: 6.969068, left 10.373207, right 2.156233, downright 5.917844, down 3.744210, downleft 2.341869
+
+matrixupdate 5.037606 matrix 5.029272, up: 6.977367, left 10.380132, right 2.162305, downright 5.926854, down 3.752684, downleft 2.348718
+
+matrixupdate 5.045926 matrix 5.037606, up: 6.985649, left 10.387038, right 2.168373, downright 5.935846, down 3.761147, downleft 2.355563
+
+matrixupdate 5.054232 matrix 5.045926, up: 6.993914, left 10.393925, right 2.174438, downright 5.944818, down 3.769598, downleft 2.362405
+
+matrixupdate 5.062524 matrix 5.054232, up: 7.002162, left 10.400794, right 2.180501, downright 5.953771, down 3.778037, downleft 2.369242
+
+matrixupdate 5.070801 matrix 5.062524, up: 7.010394, left 10.407644, right 2.186561, downright 5.962705, down 3.786465, downleft 2.376075
+
+matrixupdate 5.079065 matrix 5.070801, up: 7.018610, left 10.414475, right 2.192618, downright 5.971621, down 3.794880, downleft 2.382905
+
+matrixupdate 5.087315 matrix 5.079065, up: 7.026809, left 10.421289, right 2.198672, downright 5.980517, down 3.803285, downleft 2.389730
+
+matrixupdate 5.095550 matrix 5.087315, up: 7.034991, left 10.428084, right 2.204723, downright 5.989395, down 3.811677, downleft 2.396551
+
+matrixupdate 5.103772 matrix 5.095550, up: 7.043157, left 10.434861, right 2.210772, downright 5.998254, down 3.820058, downleft 2.403368
+
+matrixupdate 5.111980 matrix 5.103772, up: 7.051307, left 10.441620, right 2.216817, downright 6.007094, down 3.828427, downleft 2.410180
+
+matrixupdate 5.120174 matrix 5.111980, up: 7.059441, left 10.448361, right 2.222860, downright 6.015915, down 3.836785, downleft 2.416989
+
+matrixupdate 5.128354 matrix 5.120174, up: 7.067559, left 10.455084, right 2.228899, downright 6.024718, down 3.845131, downleft 2.423793
+
+matrixupdate 5.136520 matrix 5.128354, up: 7.075661, left 10.461789, right 2.234936, downright 6.033503, down 3.853465, downleft 2.430593
+
+matrixupdate 5.144673 matrix 5.136520, up: 7.083747, left 10.468477, right 2.240970, downright 6.042269, down 3.861788, downleft 2.437389
+
+matrixupdate 5.152812 matrix 5.144673, up: 7.091817, left 10.475147, right 2.247001, downright 6.051017, down 3.870099, downleft 2.444181
+
+matrixupdate 5.160937 matrix 5.152812, up: 7.099871, left 10.481799, right 2.253029, downright 6.059746, down 3.878399, downleft 2.450968
+
+matrixupdate 5.169049 matrix 5.160937, up: 7.107910, left 10.488434, right 2.259054, downright 6.068457, down 3.886687, downleft 2.457751
+
+matrixupdate 5.177147 matrix 5.169049, up: 7.115933, left 10.495052, right 2.265076, downright 6.077150, down 3.894964, downleft 2.464530
+
+matrixupdate 5.185232 matrix 5.177147, up: 7.123940, left 10.501652, right 2.271095, downright 6.085825, down 3.903229, downleft 2.471305
+
+matrixupdate 5.193303 matrix 5.185232, up: 7.131932, left 10.508235, right 2.277111, downright 6.094481, down 3.911483, downleft 2.478075
+
+matrixupdate 5.201361 matrix 5.193303, up: 7.139908, left 10.514801, right 2.283125, downright 6.103120, down 3.919725, downleft 2.484841
+
+matrixupdate 5.209405 matrix 5.201361, up: 7.147869, left 10.521349, right 2.289135, downright 6.111741, down 3.927956, downleft 2.491603
+
+matrixupdate 5.217436 matrix 5.209405, up: 7.155814, left 10.527881, right 2.295142, downright 6.120344, down 3.936175, downleft 2.498360
+
+matrixupdate 5.225454 matrix 5.217436, up: 7.163745, left 10.534396, right 2.301147, downright 6.128928, down 3.944383, downleft 2.505113
+
+matrixupdate 5.233458 matrix 5.225454, up: 7.171660, left 10.540894, right 2.307148, downright 6.137496, down 3.952579, downleft 2.511861
+
+matrixupdate 5.241449 matrix 5.233458, up: 7.179560, left 10.547375, right 2.313147, downright 6.146045, down 3.960764, downleft 2.518606
+
+matrixupdate 5.249427 matrix 5.241449, up: 7.187445, left 10.553840, right 2.319142, downright 6.154577, down 3.968937, downleft 2.525345
+
+matrixupdate 5.257392 matrix 5.249427, up: 7.195315, left 10.560288, right 2.325134, downright 6.163091, down 3.977099, downleft 2.532080
+
+matrixupdate 5.265343 matrix 5.257392, up: 7.203170, left 10.566719, right 2.331124, downright 6.171587, down 3.985250, downleft 2.538811
+
+matrixupdate 5.273282 matrix 5.265343, up: 7.211011, left 10.573134, right 2.337110, downright 6.180066, down 3.993390, downleft 2.545538
+
+matrixupdate 5.281207 matrix 5.273282, up: 7.218836, left 10.579533, right 2.343093, downright 6.188528, down 4.001518, downleft 2.552260
+
+matrixupdate 5.289120 matrix 5.281207, up: 7.226647, left 10.585915, right 2.349074, downright 6.196972, down 4.009635, downleft 2.558977
+
+matrixupdate 5.297019 matrix 5.289120, up: 7.234443, left 10.592281, right 2.355051, downright 6.205399, down 4.017740, downleft 2.565690
+
+matrixupdate 5.304905 matrix 5.297019, up: 7.242225, left 10.598631, right 2.361025, downright 6.213808, down 4.025834, downleft 2.572399
+
+matrixupdate 5.312779 matrix 5.304905, up: 7.249992, left 10.604965, right 2.366997, downright 6.222200, down 4.033917, downleft 2.579102
+
+matrixupdate 5.320640 matrix 5.312779, up: 7.257744, left 10.611283, right 2.372965, downright 6.230575, down 4.041989, downleft 2.585802
+
+matrixupdate 5.328488 matrix 5.320640, up: 7.265482, left 10.617584, right 2.378930, downright 6.238933, down 4.050049, downleft 2.592497
+
+matrixupdate 5.336323 matrix 5.328488, up: 7.273206, left 10.623871, right 2.384892, downright 6.247274, down 4.058098, downleft 2.599187
+
+matrixupdate 5.344145 matrix 5.336323, up: 7.280916, left 10.630141, right 2.390851, downright 6.255598, down 4.066136, downleft 2.605873
+
+matrixupdate 5.351955 matrix 5.344145, up: 7.288611, left 10.636395, right 2.396807, downright 6.263905, down 4.074163, downleft 2.612554
+
+matrixupdate 5.359751 matrix 5.351955, up: 7.296292, left 10.642634, right 2.402760, downright 6.272195, down 4.082178, downleft 2.619231
+
+matrixupdate 5.367536 matrix 5.359751, up: 7.303959, left 10.648857, right 2.408710, downright 6.280468, down 4.090183, downleft 2.625903
+
+matrixupdate 5.375307 matrix 5.367536, up: 7.311612, left 10.655065, right 2.414657, downright 6.288725, down 4.098176, downleft 2.632570
+
+matrixupdate 5.383066 matrix 5.375307, up: 7.319251, left 10.661257, right 2.420600, downright 6.296964, down 4.106158, downleft 2.639233
+
+matrixupdate 5.390813 matrix 5.383066, up: 7.326876, left 10.667434, right 2.426541, downright 6.305187, down 4.114129, downleft 2.645892
+
+matrixupdate 5.398547 matrix 5.390813, up: 7.334487, left 10.673596, right 2.432479, downright 6.313394, down 4.122089, downleft 2.652545
+
+matrixupdate 5.406268 matrix 5.398547, up: 7.342085, left 10.679742, right 2.438413, downright 6.321583, down 4.130038, downleft 2.659194
+
+matrixupdate 5.413978 matrix 5.406268, up: 7.349669, left 10.685874, right 2.444344, downright 6.329756, down 4.137976, downleft 2.665838
+
+matrixupdate 5.421674 matrix 5.413978, up: 7.357239, left 10.691990, right 2.450273, downright 6.337913, down 4.145902, downleft 2.672478
+
+matrixupdate 5.429359 matrix 5.421674, up: 7.364795, left 10.698091, right 2.456198, downright 6.346054, down 4.153818, downleft 2.679113
+
+matrixupdate 5.437031 matrix 5.429359, up: 7.372338, left 10.704177, right 2.462120, downright 6.354177, down 4.161723, downleft 2.685743
+
+matrixupdate 5.444691 matrix 5.437031, up: 7.379867, left 10.710248, right 2.468039, downright 6.362285, down 4.169616, downleft 2.692369
+
+matrixupdate 5.452338 matrix 5.444691, up: 7.387383, left 10.716305, right 2.473955, downright 6.370376, down 4.177499, downleft 2.698990
+
+matrixupdate 5.459973 matrix 5.452338, up: 7.394885, left 10.722346, right 2.479868, downright 6.378452, down 4.185371, downleft 2.705606
+
+matrixupdate 5.467597 matrix 5.459973, up: 7.402375, left 10.728373, right 2.485777, downright 6.386511, down 4.193231, downleft 2.712218
+
+matrixupdate 5.475208 matrix 5.467597, up: 7.409850, left 10.734385, right 2.491684, downright 6.394553, down 4.201081, downleft 2.718825
+
+matrixupdate 5.482806 matrix 5.475208, up: 7.417313, left 10.740383, right 2.497587, downright 6.402580, down 4.208920, downleft 2.725427
+
+matrixupdate 5.490393 matrix 5.482806, up: 7.424762, left 10.746366, right 2.503488, downright 6.410591, down 4.216748, downleft 2.732024
+
+matrixupdate 5.497968 matrix 5.490393, up: 7.432199, left 10.752335, right 2.509385, downright 6.418586, down 4.224565, downleft 2.738617
+
+matrixupdate 5.505531 matrix 5.497968, up: 7.439622, left 10.758289, right 2.515279, downright 6.426565, down 4.232371, downleft 2.745205
+
+matrixupdate 5.513082 matrix 5.505531, up: 7.447032, left 10.764229, right 2.521170, downright 6.434528, down 4.240167, downleft 2.751788
+
+matrixupdate 5.520620 matrix 5.513082, up: 7.454430, left 10.770155, right 2.527058, downright 6.442475, down 4.247951, downleft 2.758366
+
+matrixupdate 5.528147 matrix 5.520620, up: 7.461814, left 10.776067, right 2.532942, downright 6.450407, down 4.255725, downleft 2.764940
+
+matrixupdate 5.535662 matrix 5.528147, up: 7.469186, left 10.781964, right 2.538824, downright 6.458322, down 4.263488, downleft 2.771508
+
+matrixupdate 5.543166 matrix 5.535662, up: 7.476544, left 10.787848, right 2.544702, downright 6.466223, down 4.271240, downleft 2.778072
+
+matrixupdate 5.550657 matrix 5.543166, up: 7.483890, left 10.793717, right 2.550578, downright 6.474107, down 4.278982, downleft 2.784632
+
+matrixupdate 5.558137 matrix 5.550657, up: 7.491224, left 10.799572, right 2.556450, downright 6.481976, down 4.286712, downleft 2.791186
+
+matrixupdate 5.565605 matrix 5.558137, up: 7.498544, left 10.805414, right 2.562319, downright 6.489830, down 4.294432, downleft 2.797736
+
+matrixupdate 5.573061 matrix 5.565605, up: 7.505853, left 10.811241, right 2.568185, downright 6.497668, down 4.302142, downleft 2.804281
+
+matrixupdate 5.580506 matrix 5.573061, up: 7.513148, left 10.817055, right 2.574048, downright 6.505490, down 4.309840, downleft 2.810821
+
+matrixupdate 5.587939 matrix 5.580506, up: 7.520431, left 10.822855, right 2.579907, downright 6.513298, down 4.317528, downleft 2.817356
+
+matrixupdate 5.595360 matrix 5.587939, up: 7.527702, left 10.828642, right 2.585764, downright 6.521090, down 4.325205, downleft 2.823886
+
+matrixupdate 5.602770 matrix 5.595360, up: 7.534960, left 10.834415, right 2.591617, downright 6.528866, down 4.332872, downleft 2.830412
+
+matrixupdate 5.610168 matrix 5.602770, up: 7.542206, left 10.840174, right 2.597467, downright 6.536628, down 4.340528, downleft 2.836932
+
+matrixupdate 5.617555 matrix 5.610168, up: 7.549440, left 10.845920, right 2.603314, downright 6.544374, down 4.348174, downleft 2.843448
+
+matrixupdate 5.624930 matrix 5.617555, up: 7.556662, left 10.851653, right 2.609158, downright 6.552105, down 4.355808, downleft 2.849959
+
+matrixupdate 5.632294 matrix 5.624930, up: 7.563871, left 10.857372, right 2.614999, downright 6.559822, down 4.363433, downleft 2.856465
+
+matrixupdate 5.639647 matrix 5.632294, up: 7.571068, left 10.863078, right 2.620836, downright 6.567523, down 4.371046, downleft 2.862966
+
+matrixupdate 5.646988 matrix 5.639647, up: 7.578253, left 10.868770, right 2.626671, downright 6.575209, down 4.378650, downleft 2.869463
+
+matrixupdate 5.654318 matrix 5.646988, up: 7.585426, left 10.874449, right 2.632502, downright 6.582880, down 4.386242, downleft 2.875954
+
+matrixupdate 5.661636 matrix 5.654318, up: 7.592587, left 10.880116, right 2.638330, downright 6.590536, down 4.393825, downleft 2.882441
+
+matrixupdate 5.668944 matrix 5.661636, up: 7.599737, left 10.885769, right 2.644155, downright 6.598178, down 4.401396, downleft 2.888922
+
+matrixupdate 5.676240 matrix 5.668944, up: 7.606874, left 10.891409, right 2.649976, downright 6.605805, down 4.408958, downleft 2.895399
+
+matrixupdate 5.683525 matrix 5.676240, up: 7.613999, left 10.897036, right 2.655795, downright 6.613417, down 4.416509, downleft 2.901871
+
+matrixupdate 5.690798 matrix 5.683525, up: 7.621113, left 10.902650, right 2.661610, downright 6.621014, down 4.424049, downleft 2.908338
+
+matrixupdate 5.698061 matrix 5.690798, up: 7.628215, left 10.908251, right 2.667423, downright 6.628597, down 4.431579, downleft 2.914801
+
+matrixupdate 5.705312 matrix 5.698061, up: 7.635305, left 10.913840, right 2.673232, downright 6.636165, down 4.439099, downleft 2.921258
+
+matrixupdate 5.712553 matrix 5.705312, up: 7.642384, left 10.919416, right 2.679038, downright 6.643718, down 4.446608, downleft 2.927710
+
+matrixupdate 5.719782 matrix 5.712553, up: 7.649451, left 10.924979, right 2.684841, downright 6.651257, down 4.454107, downleft 2.934158
+
+matrixupdate 5.727000 matrix 5.719782, up: 7.656507, left 10.930529, right 2.690640, downright 6.658782, down 4.461596, downleft 2.940600
+
+matrixupdate 5.734208 matrix 5.727000, up: 7.663551, left 10.936067, right 2.696437, downright 6.666292, down 4.469074, downleft 2.947038
+
+matrixupdate 5.741404 matrix 5.734208, up: 7.670583, left 10.941592, right 2.702230, downright 6.673788, down 4.476542, downleft 2.953470
+
+matrixupdate 5.748590 matrix 5.741404, up: 7.677604, left 10.947105, right 2.708020, downright 6.681269, down 4.484000, downleft 2.959898
+
+matrixupdate 5.755764 matrix 5.748590, up: 7.684614, left 10.952605, right 2.713807, downright 6.688736, down 4.491448, downleft 2.966321
+
+matrixupdate 5.762928 matrix 5.755764, up: 7.691613, left 10.958093, right 2.719591, downright 6.696189, down 4.498885, downleft 2.972739
+
+matrixupdate 5.770081 matrix 5.762928, up: 7.698600, left 10.963569, right 2.725371, downright 6.703628, down 4.506312, downleft 2.979152
+
+matrixupdate 5.777223 matrix 5.770081, up: 7.705576, left 10.969032, right 2.731149, downright 6.711052, down 4.513729, downleft 2.985560
+
+matrixupdate 5.784355 matrix 5.777223, up: 7.712541, left 10.974483, right 2.736923, downright 6.718463, down 4.521136, downleft 2.991963
+
+matrixupdate 5.791475 matrix 5.784355, up: 7.719494, left 10.979922, right 2.742694, downright 6.725859, down 4.528532, downleft 2.998361
+
+matrixupdate 5.798585 matrix 5.791475, up: 7.726437, left 10.985349, right 2.748462, downright 6.733242, down 4.535919, downleft 3.004754
+
+matrixupdate 5.805685 matrix 5.798585, up: 7.733368, left 10.990763, right 2.754227, downright 6.740610, down 4.543295, downleft 3.011142
+
+matrixupdate 5.812773 matrix 5.805685, up: 7.740289, left 10.996166, right 2.759988, downright 6.747965, down 4.550661, downleft 3.017526
+
+matrixupdate 5.819852 matrix 5.812773, up: 7.747198, left 11.001557, right 2.765747, downright 6.755305, down 4.558018, downleft 3.023904
+
+matrixupdate 5.826919 matrix 5.819852, up: 7.754097, left 11.006935, right 2.771502, downright 6.762632, down 4.565364, downleft 3.030277
+
+matrixupdate 5.833976 matrix 5.826919, up: 7.760985, left 11.012302, right 2.777254, downright 6.769945, down 4.572700, downleft 3.036646
+
+matrixupdate 5.841023 matrix 5.833976, up: 7.767862, left 11.017657, right 2.783003, downright 6.777244, down 4.580026, downleft 3.043009
+
+matrixupdate 5.848059 matrix 5.841023, up: 7.774728, left 11.023000, right 2.788749, downright 6.784530, down 4.587342, downleft 3.049368
+
+matrixupdate 5.855084 matrix 5.848059, up: 7.781583, left 11.028331, right 2.794492, downright 6.791802, down 4.594648, downleft 3.055721
+
+matrixupdate 5.862099 matrix 5.855084, up: 7.788428, left 11.033651, right 2.800231, downright 6.799060, down 4.601944, downleft 3.062070
+
+matrixupdate 5.869104 matrix 5.862099, up: 7.795262, left 11.038959, right 2.805967, downright 6.806305, down 4.609230, downleft 3.068413
+
+matrixupdate 5.876098 matrix 5.869104, up: 7.802085, left 11.044256, right 2.811700, downright 6.813536, down 4.616506, downleft 3.074752
+
+matrixupdate 5.883082 matrix 5.876098, up: 7.808898, left 11.049541, right 2.817430, downright 6.820753, down 4.623772, downleft 3.081086
+
+matrixupdate 5.890056 matrix 5.883082, up: 7.815700, left 11.054814, right 2.823157, downright 6.827958, down 4.631029, downleft 3.087414
+
+matrixupdate 5.897019 matrix 5.890056, up: 7.822492, left 11.060076, right 2.828881, downright 6.835148, down 4.638275, downleft 3.093738
+
+matrixupdate 5.903973 matrix 5.897019, up: 7.829273, left 11.065326, right 2.834601, downright 6.842326, down 4.645512, downleft 3.100057
+
+matrixupdate 5.910916 matrix 5.903973, up: 7.836044, left 11.070565, right 2.840318, downright 6.849490, down 4.652739, downleft 3.106370
+
+matrixupdate 5.917848 matrix 5.910916, up: 7.842805, left 11.075793, right 2.846033, downright 6.856641, down 4.659956, downleft 3.112679
+
+matrixupdate 5.924771 matrix 5.917848, up: 7.849555, left 11.081010, right 2.851744, downright 6.863778, down 4.667163, downleft 3.118983
+
+matrixupdate 5.931684 matrix 5.924771, up: 7.856295, left 11.086215, right 2.857451, downright 6.870902, down 4.674360, downleft 3.125282
+
+matrixupdate 5.938586 matrix 5.931684, up: 7.863024, left 11.091409, right 2.863156, downright 6.878014, down 4.681548, downleft 3.131576
+
+matrixupdate 5.945478 matrix 5.938586, up: 7.869744, left 11.096592, right 2.868858, downright 6.885112, down 4.688726, downleft 3.137865
+
+matrixupdate 5.952361 matrix 5.945478, up: 7.876453, left 11.101764, right 2.874556, downright 6.892197, down 4.695894, downleft 3.144148
+
+matrixupdate 5.959233 matrix 5.952361, up: 7.883152, left 11.106925, right 2.880251, downright 6.899268, down 4.703053, downleft 3.150427
+
+matrixupdate 5.966095 matrix 5.959233, up: 7.889841, left 11.112075, right 2.885943, downright 6.906327, down 4.710201, downleft 3.156701
+
+matrixupdate 5.972948 matrix 5.966095, up: 7.896520, left 11.117213, right 2.891632, downright 6.913373, down 4.717341, downleft 3.162970
+
+matrixupdate 5.979790 matrix 5.972948, up: 7.903188, left 11.122341, right 2.897318, downright 6.920406, down 4.724470, downleft 3.169234
+
+matrixupdate 5.986622 matrix 5.979790, up: 7.909847, left 11.127458, right 2.903000, downright 6.927426, down 4.731590, downleft 3.175493
+
+matrixupdate 5.993445 matrix 5.986622, up: 7.916496, left 11.132565, right 2.908680, downright 6.934434, down 4.738700, downleft 3.181747
+
+matrixupdate 6.000258 matrix 5.993445, up: 7.923135, left 11.137660, right 2.914356, downright 6.941428, down 4.745801, downleft 3.187996
+
+matrixupdate 6.007061 matrix 6.000258, up: 7.929764, left 11.142745, right 2.920029, downright 6.948410, down 4.752892, downleft 3.194240
+
+matrixupdate 6.013854 matrix 6.007061, up: 7.936383, left 11.147818, right 2.925699, downright 6.955379, down 4.759973, downleft 3.200479
+
+matrixupdate 6.020637 matrix 6.013854, up: 7.942993, left 11.152882, right 2.931366, downright 6.962335, down 4.767045, downleft 3.206713
+
+matrixupdate 6.027411 matrix 6.020637, up: 7.949593, left 11.157934, right 2.937030, downright 6.969279, down 4.774108, downleft 3.212942
+
+matrixupdate 6.034175 matrix 6.027411, up: 7.956183, left 11.162976, right 2.942690, downright 6.976210, down 4.781161, downleft 3.219166
+
+matrixupdate 6.040929 matrix 6.034175, up: 7.962763, left 11.168008, right 2.948348, downright 6.983128, down 4.788204, downleft 3.225385
+
+matrixupdate 6.047674 matrix 6.040929, up: 7.969333, left 11.173029, right 2.954002, downright 6.990034, down 4.795238, downleft 3.231599
+
+matrixupdate 6.054409 matrix 6.047674, up: 7.975894, left 11.178039, right 2.959653, downright 6.996928, down 4.802263, downleft 3.237808
+
+matrixupdate 6.061134 matrix 6.054409, up: 7.982446, left 11.183040, right 2.965301, downright 7.003809, down 4.809278, downleft 3.244013
+
+matrixupdate 6.067850 matrix 6.061134, up: 7.988988, left 11.188029, right 2.970946, downright 7.010677, down 4.816284, downleft 3.250212
+
+matrixupdate 6.074556 matrix 6.067850, up: 7.995520, left 11.193009, right 2.976588, downright 7.017534, down 4.823280, downleft 3.256406
+
+matrixupdate 6.081253 matrix 6.074556, up: 8.002043, left 11.197978, right 2.982227, downright 7.024377, down 4.830267, downleft 3.262595
+
+matrixupdate 6.087940 matrix 6.081253, up: 8.008556, left 11.202937, right 2.987862, downright 7.031209, down 4.837245, downleft 3.268779
+
+matrixupdate 6.094618 matrix 6.087940, up: 8.015060, left 11.207885, right 2.993494, downright 7.038028, down 4.844213, downleft 3.274958
+
+matrixupdate 6.101287 matrix 6.094618, up: 8.021555, left 11.212824, right 2.999124, downright 7.044835, down 4.851172, downleft 3.281133
+
+matrixupdate 6.107946 matrix 6.101287, up: 8.028040, left 11.217752, right 3.004750, downright 7.051630, down 4.858121, downleft 3.287302
+
+matrixupdate 6.114595 matrix 6.107946, up: 8.034516, left 11.222670, right 3.010373, downright 7.058413, down 4.865062, downleft 3.293466
+
+matrixupdate 6.121235 matrix 6.114595, up: 8.040983, left 11.227578, right 3.015993, downright 7.065184, down 4.871993, downleft 3.299626
+
+matrixupdate 6.127866 matrix 6.121235, up: 8.047441, left 11.232477, right 3.021609, downright 7.071942, down 4.878915, downleft 3.305780
+
+matrixupdate 6.134488 matrix 6.127866, up: 8.053889, left 11.237365, right 3.027223, downright 7.078689, down 4.885828, downleft 3.311929
+
+matrixupdate 6.141100 matrix 6.134488, up: 8.060328, left 11.242243, right 3.032833, downright 7.085423, down 4.892731, downleft 3.318074
+
+matrixupdate 6.147703 matrix 6.141100, up: 8.066758, left 11.247111, right 3.038441, downright 7.092146, down 4.899625, downleft 3.324213
+
+matrixupdate 6.154297 matrix 6.147703, up: 8.073179, left 11.251970, right 3.044045, downright 7.098856, down 4.906511, downleft 3.330348
+
+matrixupdate 6.160881 matrix 6.154297, up: 8.079591, left 11.256818, right 3.049646, downright 7.105555, down 4.913387, downleft 3.336477
+
+matrixupdate 6.167457 matrix 6.160881, up: 8.085994, left 11.261657, right 3.055244, downright 7.112242, down 4.920253, downleft 3.342602
+
+matrixupdate 6.174023 matrix 6.167457, up: 8.092387, left 11.266486, right 3.060839, downright 7.118917, down 4.927111, downleft 3.348721
+
+matrixupdate 6.180580 matrix 6.174023, up: 8.098772, left 11.271305, right 3.066431, downright 7.125580, down 4.933960, downleft 3.354836
+
+matrixupdate 6.187128 matrix 6.180580, up: 8.105148, left 11.276115, right 3.072020, downright 7.132232, down 4.940800, downleft 3.360946
+
+matrixupdate 6.193667 matrix 6.187128, up: 8.111515, left 11.280915, right 3.077605, downright 7.138871, down 4.947630, downleft 3.367050
+
+matrixupdate 6.200197 matrix 6.193667, up: 8.117873, left 11.285705, right 3.083188, downright 7.145499, down 4.954452, downleft 3.373150
+
+matrixupdate 6.206718 matrix 6.200197, up: 8.124223, left 11.290486, right 3.088767, downright 7.152116, down 4.961264, downleft 3.379245
+
+matrixupdate 6.213230 matrix 6.206718, up: 8.130563, left 11.295258, right 3.094344, downright 7.158721, down 4.968068, downleft 3.385335
+
+matrixupdate 6.219733 matrix 6.213230, up: 8.136895, left 11.300019, right 3.099917, downright 7.165314, down 4.974862, downleft 3.391420
+
+matrixupdate 6.226227 matrix 6.219733, up: 8.143218, left 11.304772, right 3.105487, downright 7.171896, down 4.981648, downleft 3.397500
+
+matrixupdate 6.232712 matrix 6.226227, up: 8.149532, left 11.309515, right 3.111054, downright 7.178466, down 4.988424, downleft 3.403575
+
+matrixupdate 6.239188 matrix 6.232712, up: 8.155838, left 11.314248, right 3.116618, downright 7.185024, down 4.995192, downleft 3.409645
+
+matrixupdate 6.245655 matrix 6.239188, up: 8.162134, left 11.318972, right 3.122179, downright 7.191572, down 5.001951, downleft 3.415710
+
+matrixupdate 6.252114 matrix 6.245655, up: 8.168423, left 11.323687, right 3.127737, downright 7.198108, down 5.008701, downleft 3.421770
+
+matrixupdate 6.258563 matrix 6.252114, up: 8.174702, left 11.328393, right 3.133291, downright 7.204632, down 5.015442, downleft 3.427825
+
+matrixupdate 6.265004 matrix 6.258563, up: 8.180974, left 11.333089, right 3.138843, downright 7.211145, down 5.022174, downleft 3.433876
+
+matrixupdate 6.271436 matrix 6.265004, up: 8.187236, left 11.337776, right 3.144391, downright 7.217647, down 5.028897, downleft 3.439921
+
+matrixupdate 6.277859 matrix 6.271436, up: 8.193490, left 11.342454, right 3.149937, downright 7.224138, down 5.035612, downleft 3.445962
+
+matrixupdate 6.284273 matrix 6.277859, up: 8.199736, left 11.347123, right 3.155479, downright 7.230617, down 5.042317, downleft 3.451997
+
+matrixupdate 6.290679 matrix 6.284273, up: 8.205973, left 11.351782, right 3.161019, downright 7.237085, down 5.049014, downleft 3.458028
+
+matrixupdate 6.297076 matrix 6.290679, up: 8.212202, left 11.356433, right 3.166555, downright 7.243543, down 5.055703, downleft 3.464053
+
+matrixupdate 6.303465 matrix 6.297076, up: 8.218422, left 11.361074, right 3.172088, downright 7.249988, down 5.062382, downleft 3.470074
+
+matrixupdate 6.309845 matrix 6.303465, up: 8.224634, left 11.365707, right 3.177618, downright 7.256423, down 5.069053, downleft 3.476090
+
+matrixupdate 6.316216 matrix 6.309845, up: 8.230838, left 11.370330, right 3.183145, downright 7.262847, down 5.075715, downleft 3.482101
+
+matrixupdate 6.322578 matrix 6.316216, up: 8.237033, left 11.374945, right 3.188669, downright 7.269260, down 5.082368, downleft 3.488107
+
+matrixupdate 6.328932 matrix 6.322578, up: 8.243221, left 11.379550, right 3.194190, downright 7.275661, down 5.089013, downleft 3.494108
+
+matrixupdate 6.335278 matrix 6.328932, up: 8.249399, left 11.384147, right 3.199708, downright 7.282052, down 5.095649, downleft 3.500104
+
+matrixupdate 6.341615 matrix 6.335278, up: 8.255570, left 11.388735, right 3.205223, downright 7.288432, down 5.102276, downleft 3.506095
+
+matrixupdate 6.347943 matrix 6.341615, up: 8.261733, left 11.393314, right 3.210735, downright 7.294801, down 5.108895, downleft 3.512082
+
+matrixupdate 6.354263 matrix 6.347943, up: 8.267887, left 11.397884, right 3.216243, downright 7.301159, down 5.115505, downleft 3.518063
+
+matrixupdate 6.360575 matrix 6.354263, up: 8.274033, left 11.402446, right 3.221749, downright 7.307506, down 5.122107, downleft 3.524040
+
+matrixupdate 6.366878 matrix 6.360575, up: 8.280172, left 11.406999, right 3.227252, downright 7.313843, down 5.128700, downleft 3.530012
+
+matrixupdate 6.373173 matrix 6.366878, up: 8.286302, left 11.411543, right 3.232751, downright 7.320168, down 5.135284, downleft 3.535979
+
+matrixupdate 6.379459 matrix 6.373173, up: 8.292424, left 11.416078, right 3.238248, downright 7.326483, down 5.141860, downleft 3.541940
+
+matrixupdate 6.385737 matrix 6.379459, up: 8.298538, left 11.420605, right 3.243741, downright 7.332787, down 5.148427, downleft 3.547898
+
+matrixupdate 6.392007 matrix 6.385737, up: 8.304644, left 11.425123, right 3.249232, downright 7.339081, down 5.154986, downleft 3.553850
+
+matrixupdate 6.398268 matrix 6.392007, up: 8.310742, left 11.429633, right 3.254719, downright 7.345364, down 5.161537, downleft 3.559797
+
+matrixupdate 6.404521 matrix 6.398268, up: 8.316832, left 11.434134, right 3.260204, downright 7.351636, down 5.168079, downleft 3.565740
+
+matrixupdate 6.410766 matrix 6.404521, up: 8.322914, left 11.438627, right 3.265685, downright 7.357898, down 5.174612, downleft 3.571677
+
+matrixupdate 6.417002 matrix 6.410766, up: 8.328989, left 11.443111, right 3.271164, downright 7.364149, down 5.181137, downleft 3.577610
+
+matrixupdate 6.423231 matrix 6.417002, up: 8.335055, left 11.447587, right 3.276639, downright 7.370389, down 5.187654, downleft 3.583538
+
+matrixupdate 6.429451 matrix 6.423231, up: 8.341114, left 11.452054, right 3.282111, downright 7.376619, down 5.194162, downleft 3.589461
+
+matrixupdate 6.435663 matrix 6.429451, up: 8.347165, left 11.456513, right 3.287581, downright 7.382839, down 5.200662, downleft 3.595379
+
+matrixupdate 6.441866 matrix 6.435663, up: 8.353208, left 11.460964, right 3.293047, downright 7.389048, down 5.207154, downleft 3.601292
+
+matrixupdate 6.448062 matrix 6.441866, up: 8.359244, left 11.465406, right 3.298510, downright 7.395247, down 5.213637, downleft 3.607200
+
+matrixupdate 6.454249 matrix 6.448062, up: 8.365271, left 11.469840, right 3.303970, downright 7.401436, down 5.220112, downleft 3.613104
+
+matrixupdate 6.460429 matrix 6.454249, up: 8.371291, left 11.474266, right 3.309428, downright 7.407614, down 5.226579, downleft 3.619003
+
+matrixupdate 6.466600 matrix 6.460429, up: 8.377304, left 11.478684, right 3.314882, downright 7.413782, down 5.233037, downleft 3.624897
+
+matrixupdate 6.472764 matrix 6.466600, up: 8.383308, left 11.483093, right 3.320333, downright 7.419939, down 5.239488, downleft 3.630786
+
+matrixupdate 6.478919 matrix 6.472764, up: 8.389305, left 11.487494, right 3.325781, downright 7.426087, down 5.245929, downleft 3.636670
+
+matrixupdate 6.485066 matrix 6.478919, up: 8.395295, left 11.491887, right 3.331227, downright 7.432224, down 5.252363, downleft 3.642550
+
+matrixupdate 6.491205 matrix 6.485066, up: 8.401277, left 11.496272, right 3.336669, downright 7.438351, down 5.258789, downleft 3.648424
+
+matrixupdate 6.497337 matrix 6.491205, up: 8.407251, left 11.500649, right 3.342108, downright 7.444467, down 5.265206, downleft 3.654294
+
+matrixupdate 6.503460 matrix 6.497337, up: 8.413218, left 11.505018, right 3.347545, downright 7.450574, down 5.271615, downleft 3.660159
+
+matrixupdate 6.509576 matrix 6.503460, up: 8.419177, left 11.509379, right 3.352978, downright 7.456671, down 5.278016, downleft 3.666019
+
+matrixupdate 6.515683 matrix 6.509576, up: 8.425129, left 11.513731, right 3.358408, downright 7.462757, down 5.284409, downleft 3.671874
+
+matrixupdate 6.521783 matrix 6.515683, up: 8.431074, left 11.518076, right 3.363835, downright 7.468834, down 5.290793, downleft 3.677725
+
+matrixupdate 6.527875 matrix 6.521783, up: 8.437011, left 11.522413, right 3.369260, downright 7.474900, down 5.297170, downleft 3.683571
+
+matrixupdate 6.533959 matrix 6.527875, up: 8.442941, left 11.526742, right 3.374681, downright 7.480956, down 5.303538, downleft 3.689412
+
+matrixupdate 6.540035 matrix 6.533959, up: 8.448863, left 11.531063, right 3.380100, downright 7.487003, down 5.309899, downleft 3.695248
+
+matrixupdate 6.546103 matrix 6.540035, up: 8.454778, left 11.535376, right 3.385515, downright 7.493040, down 5.316251, downleft 3.701079
+
+matrixupdate 6.552164 matrix 6.546103, up: 8.460685, left 11.539682, right 3.390928, downright 7.499066, down 5.322595, downleft 3.706906
+
+matrixupdate 6.558217 matrix 6.552164, up: 8.466586, left 11.543979, right 3.396337, downright 7.505083, down 5.328932, downleft 3.712728
+
+matrixupdate 6.564262 matrix 6.558217, up: 8.472479, left 11.548269, right 3.401744, downright 7.511090, down 5.335260, downleft 3.718545
+
+matrixupdate 6.570300 matrix 6.564262, up: 8.478365, left 11.552551, right 3.407147, downright 7.517088, down 5.341580, downleft 3.724357
+
+matrixupdate 6.576329 matrix 6.570300, up: 8.484243, left 11.556826, right 3.412548, downright 7.523075, down 5.347892, downleft 3.730165
+
+matrixupdate 6.582351 matrix 6.576329, up: 8.490115, left 11.561092, right 3.417945, downright 7.529053, down 5.354197, downleft 3.735967
+
+matrixupdate 6.588366 matrix 6.582351, up: 8.495979, left 11.565351, right 3.423340, downright 7.535021, down 5.360493, downleft 3.741765
+
+matrixupdate 6.594373 matrix 6.588366, up: 8.501836, left 11.569603, right 3.428732, downright 7.540979, down 5.366782, downleft 3.747559
+
+matrixupdate 6.600372 matrix 6.594373, up: 8.507686, left 11.573846, right 3.434121, downright 7.546928, down 5.373062, downleft 3.753347
+
+matrixupdate 6.606363 matrix 6.600372, up: 8.513529, left 11.578083, right 3.439507, downright 7.552867, down 5.379335, downleft 3.759131
+
+matrixupdate 6.612347 matrix 6.606363, up: 8.519364, left 11.582311, right 3.444890, downright 7.558796, down 5.385600, downleft 3.764910
+
+matrixupdate 6.618324 matrix 6.612347, up: 8.525193, left 11.586532, right 3.450270, downright 7.564716, down 5.391857, downleft 3.770684
+
+matrixupdate 6.624293 matrix 6.618324, up: 8.531015, left 11.590746, right 3.455647, downright 7.570626, down 5.398106, downleft 3.776454
+
+matrixupdate 6.630254 matrix 6.624293, up: 8.536829, left 11.594952, right 3.461021, downright 7.576527, down 5.404347, downleft 3.782219
+
+matrixupdate 6.636208 matrix 6.630254, up: 8.542637, left 11.599151, right 3.466392, downright 7.582418, down 5.410581, downleft 3.787979
+
+matrixupdate 6.642155 matrix 6.636208, up: 8.548437, left 11.603342, right 3.471760, downright 7.588300, down 5.416806, downleft 3.793734
+
+matrixupdate 6.648094 matrix 6.642155, up: 8.554231, left 11.607526, right 3.477126, downright 7.594172, down 5.423024, downleft 3.799485
+
+matrixupdate 6.654026 matrix 6.648094, up: 8.560018, left 11.611702, right 3.482488, downright 7.600035, down 5.429235, downleft 3.805231
+
+matrixupdate 6.659950 matrix 6.654026, up: 8.565798, left 11.615871, right 3.487848, downright 7.605889, down 5.435437, downleft 3.810972
+
+matrixupdate 6.665867 matrix 6.659950, up: 8.571571, left 11.620033, right 3.493204, downright 7.611733, down 5.441632, downleft 3.816709
+
+matrixupdate 6.671776 matrix 6.665867, up: 8.577337, left 11.624187, right 3.498558, downright 7.617568, down 5.447819, downleft 3.822440
+
+matrixupdate 6.677678 matrix 6.671776, up: 8.583096, left 11.628335, right 3.503909, downright 7.623394, down 5.453998, downleft 3.828168
+
+matrixupdate 6.683573 matrix 6.677678, up: 8.588848, left 11.632475, right 3.509257, downright 7.629210, down 5.460170, downleft 3.833890
+
+matrixupdate 6.689460 matrix 6.683573, up: 8.594594, left 11.636607, right 3.514601, downright 7.635017, down 5.466334, downleft 3.839608
+
+matrixupdate 6.695341 matrix 6.689460, up: 8.600333, left 11.640733, right 3.519944, downright 7.640815, down 5.472490, downleft 3.845321
+
+matrixupdate 6.701213 matrix 6.695341, up: 8.606065, left 11.644851, right 3.525283, downright 7.646603, down 5.478639, downleft 3.851029
+
+matrixupdate 6.707079 matrix 6.701213, up: 8.611790, left 11.648962, right 3.530619, downright 7.652383, down 5.484780, downleft 3.856733
+
+matrixupdate 6.712937 matrix 6.707079, up: 8.617509, left 11.653066, right 3.535952, downright 7.658153, down 5.490914, downleft 3.862432
+
+matrixupdate 6.718789 matrix 6.712937, up: 8.623221, left 11.657163, right 3.541283, downright 7.663914, down 5.497040, downleft 3.868127
+
+matrixupdate 6.724633 matrix 6.718789, up: 8.628926, left 11.661253, right 3.546610, downright 7.669666, down 5.503158, downleft 3.873817
+
+matrixupdate 6.730469 matrix 6.724633, up: 8.634624, left 11.665336, right 3.551935, downright 7.675409, down 5.509269, downleft 3.879502
+
+matrixupdate 6.736299 matrix 6.730469, up: 8.640316, left 11.669412, right 3.557257, downright 7.681143, down 5.515372, downleft 3.885182
+
+matrixupdate 6.742121 matrix 6.736299, up: 8.646002, left 11.673481, right 3.562576, downright 7.686868, down 5.521468, downleft 3.890858
+
+matrixupdate 6.747937 matrix 6.742121, up: 8.651680, left 11.677542, right 3.567892, downright 7.692584, down 5.527557, downleft 3.896529
+
+matrixupdate 6.753745 matrix 6.747937, up: 8.657353, left 11.681597, right 3.573205, downright 7.698291, down 5.533638, downleft 3.902196
+
+matrixupdate 6.759546 matrix 6.753745, up: 8.663018, left 11.685645, right 3.578515, downright 7.703989, down 5.539711, downleft 3.907858
+
+matrixupdate 6.765340 matrix 6.759546, up: 8.668677, left 11.689686, right 3.583823, downright 7.709678, down 5.545777, downleft 3.913515
+
+matrixupdate 6.771127 matrix 6.765340, up: 8.674330, left 11.693720, right 3.589128, downright 7.715358, down 5.551836, downleft 3.919168
+
+matrixupdate 6.776907 matrix 6.771127, up: 8.679976, left 11.697748, right 3.594429, downright 7.721030, down 5.557887, downleft 3.924816
+
+matrixupdate 6.782680 matrix 6.776907, up: 8.685615, left 11.701768, right 3.599728, downright 7.726692, down 5.563930, downleft 3.930460
+
+matrixupdate 6.788446 matrix 6.782680, up: 8.691248, left 11.705781, right 3.605024, downright 7.732346, down 5.569967, downleft 3.936099
+
+matrixupdate 6.794205 matrix 6.788446, up: 8.696875, left 11.709788, right 3.610317, downright 7.737991, down 5.575996, downleft 3.941733
+
+matrixupdate 6.799957 matrix 6.794205, up: 8.702495, left 11.713788, right 3.615608, downright 7.743627, down 5.582017, downleft 3.947363
+
+matrixupdate 6.805702 matrix 6.799957, up: 8.708109, left 11.717781, right 3.620895, downright 7.749255, down 5.588032, downleft 3.952988
+
+matrixupdate 6.811440 matrix 6.805702, up: 8.713717, left 11.721768, right 3.626180, downright 7.754873, down 5.594039, downleft 3.958609
+
+matrixupdate 6.817172 matrix 6.811440, up: 8.719318, left 11.725748, right 3.631461, downright 7.760483, down 5.600038, downleft 3.964225
+
+matrixupdate 6.822896 matrix 6.817172, up: 8.724913, left 11.729721, right 3.636740, downright 7.766085, down 5.606031, downleft 3.969836
+
+matrixupdate 6.828614 matrix 6.822896, up: 8.730501, left 11.733687, right 3.642016, downright 7.771677, down 5.612016, downleft 3.975443
+
+matrixupdate 6.834324 matrix 6.828614, up: 8.736083, left 11.737647, right 3.647290, downright 7.777261, down 5.617994, downleft 3.981045
+
+matrixupdate 6.840028 matrix 6.834324, up: 8.741659, left 11.741600, right 3.652560, downright 7.782837, down 5.623965, downleft 3.986643
+
+matrixupdate 6.845725 matrix 6.840028, up: 8.747229, left 11.745547, right 3.657828, downright 7.788404, down 5.629928, downleft 3.992236
+
+matrixupdate 6.851415 matrix 6.845725, up: 8.752792, left 11.749487, right 3.663093, downright 7.793962, down 5.635884, downleft 3.997825
+
+matrixupdate 6.857098 matrix 6.851415, up: 8.758349, left 11.753420, right 3.668355, downright 7.799512, down 5.641833, downleft 4.003409
+
+matrixupdate 6.862775 matrix 6.857098, up: 8.763900, left 11.757347, right 3.673614, downright 7.805053, down 5.647775, downleft 4.008989
+
+matrixupdate 6.868445 matrix 6.862775, up: 8.769445, left 11.761268, right 3.678870, downright 7.810586, down 5.653710, downleft 4.014564
+
+matrixupdate 6.874108 matrix 6.868445, up: 8.774983, left 11.765182, right 3.684123, downright 7.816111, down 5.659637, downleft 4.020134
+
+matrixupdate 6.879764 matrix 6.874108, up: 8.780516, left 11.769089, right 3.689374, downright 7.821627, down 5.665558, downleft 4.025700
+
+matrixupdate 6.885414 matrix 6.879764, up: 8.786042, left 11.772990, right 3.694622, downright 7.827134, down 5.671471, downleft 4.031262
+
+matrixupdate 6.891057 matrix 6.885414, up: 8.791562, left 11.776885, right 3.699867, downright 7.832634, down 5.677377, downleft 4.036819
+
+matrixupdate 6.896693 matrix 6.891057, up: 8.797076, left 11.780773, right 3.705109, downright 7.838125, down 5.683276, downleft 4.042371
+
+matrixupdate 6.902323 matrix 6.896693, up: 8.802584, left 11.784655, right 3.710349, downright 7.843607, down 5.689168, downleft 4.047919
+
+matrixupdate 6.907946 matrix 6.902323, up: 8.808086, left 11.788530, right 3.715586, downright 7.849081, down 5.695053, downleft 4.053463
+
+matrixupdate 6.913563 matrix 6.907946, up: 8.813581, left 11.792399, right 3.720819, downright 7.854547, down 5.700931, downleft 4.059002
+
+matrixupdate 6.919172 matrix 6.913563, up: 8.819071, left 11.796262, right 3.726051, downright 7.860005, down 5.706802, downleft 4.064536
+
+matrixupdate 6.924776 matrix 6.919172, up: 8.824555, left 11.800118, right 3.731279, downright 7.865454, down 5.712666, downleft 4.070066
+
+matrixupdate 6.930372 matrix 6.924776, up: 8.830033, left 11.803968, right 3.736504, downright 7.870896, down 5.718523, downleft 4.075592
+
+matrixupdate 6.935962 matrix 6.930372, up: 8.835504, left 11.807812, right 3.741727, downright 7.876329, down 5.724372, downleft 4.081113
+
+matrixupdate 6.941546 matrix 6.935962, up: 8.840970, left 11.811650, right 3.746947, downright 7.881753, down 5.730215, downleft 4.086630
+
+matrixupdate 6.947123 matrix 6.941546, up: 8.846430, left 11.815481, right 3.752164, downright 7.887170, down 5.736051, downleft 4.092142
+
+matrixupdate 6.952694 matrix 6.947123, up: 8.851884, left 11.819307, right 3.757379, downright 7.892579, down 5.741880, downleft 4.097650
+
+matrixupdate 6.958258 matrix 6.952694, up: 8.857332, left 11.823126, right 3.762590, downright 7.897979, down 5.747703, downleft 4.103153
+
+matrixupdate 6.963815 matrix 6.958258, up: 8.862774, left 11.826939, right 3.767799, downright 7.903372, down 5.753518, downleft 4.108652
+
+matrixupdate 6.969367 matrix 6.963815, up: 8.868210, left 11.830745, right 3.773005, downright 7.908756, down 5.759326, downleft 4.114146
+
+matrixupdate 6.974911 matrix 6.969367, up: 8.873641, left 11.834546, right 3.778209, downright 7.914132, down 5.765127, downleft 4.119636
+
+matrixupdate 6.980450 matrix 6.974911, up: 8.879065, left 11.838341, right 3.783409, downright 7.919500, down 5.770922, downleft 4.125122
+
+matrixupdate 6.985982 matrix 6.980450, up: 8.884484, left 11.842129, right 3.788607, downright 7.924861, down 5.776710, downleft 4.130603
+
+matrixupdate 6.991507 matrix 6.985982, up: 8.889897, left 11.845911, right 3.793802, downright 7.930213, down 5.782491, downleft 4.136080
+
+matrixupdate 6.997026 matrix 6.991507, up: 8.895304, left 11.849688, right 3.798994, downright 7.935557, down 5.788265, downleft 4.141552
+
+matrixupdate 7.002539 matrix 6.997026, up: 8.900705, left 11.853458, right 3.804184, downright 7.940894, down 5.794032, downleft 4.147020
+
+matrixupdate 7.008045 matrix 7.002539, up: 8.906101, left 11.857222, right 3.809371, downright 7.946222, down 5.799793, downleft 4.152483
+
+matrixupdate 7.013546 matrix 7.008045, up: 8.911490, left 11.860981, right 3.814555, downright 7.951543, down 5.805546, downleft 4.157942
+
+matrixupdate 7.019039 matrix 7.013546, up: 8.916874, left 11.864733, right 3.819736, downright 7.956856, down 5.811293, downleft 4.163397
+
+matrixupdate 7.024527 matrix 7.019039, up: 8.922253, left 11.868480, right 3.824915, downright 7.962161, down 5.817033, downleft 4.168848
+
+matrixupdate 7.030008 matrix 7.024527, up: 8.927625, left 11.872220, right 3.830091, downright 7.967458, down 5.822767, downleft 4.174293
+
+matrixupdate 7.035483 matrix 7.030008, up: 8.932992, left 11.875955, right 3.835264, downright 7.972747, down 5.828494, downleft 4.179735
+
+matrixupdate 7.040952 matrix 7.035483, up: 8.938353, left 11.879683, right 3.840434, downright 7.978029, down 5.834214, downleft 4.185172
+
+matrixupdate 7.046414 matrix 7.040952, up: 8.943709, left 11.883406, right 3.845602, downright 7.983303, down 5.839927, downleft 4.190605
+
+matrixupdate 7.051870 matrix 7.046414, up: 8.949059, left 11.887123, right 3.850767, downright 7.988569, down 5.845634, downleft 4.196034
+
+matrixupdate 7.057320 matrix 7.051870, up: 8.954403, left 11.890834, right 3.855929, downright 7.993827, down 5.851334, downleft 4.201458
+
+matrixupdate 7.062764 matrix 7.057320, up: 8.959742, left 11.894539, right 3.861089, downright 7.999078, down 5.857027, downleft 4.206878
+
+matrixupdate 7.068202 matrix 7.062764, up: 8.965075, left 11.898239, right 3.866245, downright 8.004321, down 5.862714, downleft 4.212293
+
+matrixupdate 7.073634 matrix 7.068202, up: 8.970402, left 11.901933, right 3.871400, downright 8.009556, down 5.868394, downleft 4.217704
+
+matrixupdate 7.079059 matrix 7.073634, up: 8.975724, left 11.905621, right 3.876551, downright 8.014784, down 5.874068, downleft 4.223111
+
+matrixupdate 7.084478 matrix 7.079059, up: 8.981041, left 11.909303, right 3.881700, downright 8.020004, down 5.879734, downleft 4.228514
+
+matrixupdate 7.089891 matrix 7.084478, up: 8.986352, left 11.912979, right 3.886846, downright 8.025216, down 5.885395, downleft 4.233912
+
+matrixupdate 7.095298 matrix 7.089891, up: 8.991657, left 11.916650, right 3.891989, downright 8.030421, down 5.891049, downleft 4.239306
+
+matrixupdate 7.100699 matrix 7.095298, up: 8.996957, left 11.920315, right 3.897130, downright 8.035618, down 5.896696, downleft 4.244695
+
+matrixupdate 7.106094 matrix 7.100699, up: 9.002251, left 11.923974, right 3.902267, downright 8.040808, down 5.902337, downleft 4.250080
+
+matrixupdate 7.111483 matrix 7.106094, up: 9.007540, left 11.927628, right 3.907403, downright 8.045991, down 5.907971, downleft 4.255461
+
+matrixupdate 7.116866 matrix 7.111483, up: 9.012824, left 11.931276, right 3.912535, downright 8.051165, down 5.913598, downleft 4.260838
+
+matrixupdate 7.122243 matrix 7.116866, up: 9.018101, left 11.934919, right 3.917665, downright 8.056333, down 5.919220, downleft 4.266210
+
+matrixupdate 7.127613 matrix 7.122243, up: 9.023374, left 11.938556, right 3.922792, downright 8.061493, down 5.924834, downleft 4.271578
+
+matrixupdate 7.132978 matrix 7.127613, up: 9.028641, left 11.942187, right 3.927917, downright 8.066645, down 5.930443, downleft 4.276942
+
+matrixupdate 7.138337 matrix 7.132978, up: 9.033903, left 11.945813, right 3.933038, downright 8.071790, down 5.936045, downleft 4.282302
+
+matrixupdate 7.143690 matrix 7.138337, up: 9.039159, left 11.949433, right 3.938157, downright 8.076928, down 5.941640, downleft 4.287657
+
+matrixupdate 7.149037 matrix 7.143690, up: 9.044410, left 11.953048, right 3.943274, downright 8.082059, down 5.947229, downleft 4.293008
+
+matrixupdate 7.154378 matrix 7.149037, up: 9.049656, left 11.956657, right 3.948388, downright 8.087182, down 5.952811, downleft 4.298355
+
+matrixupdate 7.159713 matrix 7.154378, up: 9.054896, left 11.960260, right 3.953499, downright 8.092297, down 5.958388, downleft 4.303697
+
+matrixupdate 7.165042 matrix 7.159713, up: 9.060131, left 11.963858, right 3.958607, downright 8.097406, down 5.963957, downleft 4.309036
+
+matrixupdate 7.170365 matrix 7.165042, up: 9.065360, left 11.967451, right 3.963713, downright 8.102507, down 5.969521, downleft 4.314370
+
+matrixupdate 7.175682 matrix 7.170365, up: 9.070585, left 11.971038, right 3.968816, downright 8.107601, down 5.975078, downleft 4.319699
+
+matrixupdate 7.180994 matrix 7.175682, up: 9.075804, left 11.974620, right 3.973916, downright 8.112687, down 5.980628, downleft 4.325025
+
+matrixupdate 7.186299 matrix 7.180994, up: 9.081017, left 11.978196, right 3.979014, downright 8.117766, down 5.986173, downleft 4.330346
+
+matrixupdate 7.191599 matrix 7.186299, up: 9.086226, left 11.981767, right 3.984109, downright 8.122839, down 5.991711, downleft 4.335664
+
+matrixupdate 7.196893 matrix 7.191599, up: 9.091429, left 11.985333, right 3.989202, downright 8.127904, down 5.997243, downleft 4.340976
+
+matrixupdate 7.202181 matrix 7.196893, up: 9.096627, left 11.988893, right 3.994292, downright 8.132961, down 6.002768, downleft 4.346285
+
+matrixupdate 7.207464 matrix 7.202181, up: 9.101820, left 11.992448, right 3.999379, downright 8.138012, down 6.008287, downleft 4.351590
+
+matrixupdate 7.212740 matrix 7.207464, up: 9.107007, left 11.995997, right 4.004464, downright 8.143055, down 6.013800, downleft 4.356890
+
+matrixupdate 7.218011 matrix 7.212740, up: 9.112189, left 11.999542, right 4.009545, downright 8.148092, down 6.019307, downleft 4.362186
+
+matrixupdate 7.223276 matrix 7.218011, up: 9.117367, left 12.003081, right 4.014625, downright 8.153121, down 6.024807, downleft 4.367478
+
+matrixupdate 7.228535 matrix 7.223276, up: 9.122539, left 12.006614, right 4.019701, downright 8.158143, down 6.030302, downleft 4.372766
+
+matrixupdate 7.233789 matrix 7.228535, up: 9.127705, left 12.010142, right 4.024775, downright 8.163158, down 6.035790, downleft 4.378050
+
+matrixupdate 7.239037 matrix 7.233789, up: 9.132867, left 12.013666, right 4.029847, downright 8.168167, down 6.041272, downleft 4.383329
+
+matrixupdate 7.244279 matrix 7.239037, up: 9.138024, left 12.017183, right 4.034916, downright 8.173168, down 6.046747, downleft 4.388604
+
+matrixupdate 7.249515 matrix 7.244279, up: 9.143175, left 12.020696, right 4.039982, downright 8.178162, down 6.052217, downleft 4.393876
+
+matrixupdate 7.254746 matrix 7.249515, up: 9.148321, left 12.024203, right 4.045045, downright 8.183149, down 6.057680, downleft 4.399143
+
+matrixupdate 7.259971 matrix 7.254746, up: 9.153462, left 12.027706, right 4.050106, downright 8.188129, down 6.063137, downleft 4.404405
+
+matrixupdate 7.265191 matrix 7.259971, up: 9.158599, left 12.031203, right 4.055165, downright 8.193102, down 6.068588, downleft 4.409664
+
+matrixupdate 7.270405 matrix 7.265191, up: 9.163730, left 12.034695, right 4.060220, downright 8.198068, down 6.074033, downleft 4.414919
+
+matrixupdate 7.275613 matrix 7.270405, up: 9.168856, left 12.038181, right 4.065274, downright 8.203028, down 6.079472, downleft 4.420169
+
+matrixupdate 7.280816 matrix 7.275613, up: 9.173977, left 12.041663, right 4.070324, downright 8.207980, down 6.084905, downleft 4.425416
+
+matrixupdate 7.286013 matrix 7.280816, up: 9.179093, left 12.045139, right 4.075372, downright 8.212926, down 6.090332, downleft 4.430658
+
+matrixupdate 7.291204 matrix 7.286013, up: 9.184203, left 12.048611, right 4.080417, downright 8.217865, down 6.095752, downleft 4.435896
+
+matrixupdate 7.296390 matrix 7.291204, up: 9.189309, left 12.052077, right 4.085460, downright 8.222797, down 6.101167, downleft 4.441130
+
+matrixupdate 7.301570 matrix 7.296390, up: 9.194410, left 12.055538, right 4.090500, downright 8.227722, down 6.106575, downleft 4.446360
+
+matrixupdate 7.306745 matrix 7.301570, up: 9.199506, left 12.058994, right 4.095538, downright 8.232640, down 6.111978, downleft 4.451586
+
+matrixupdate 7.311914 matrix 7.306745, up: 9.204597, left 12.062446, right 4.100573, downright 8.237551, down 6.117374, downleft 4.456807
+
+matrixupdate 7.317078 matrix 7.311914, up: 9.209683, left 12.065892, right 4.105605, downright 8.242456, down 6.122765, downleft 4.462025
+
+matrixupdate 7.322236 matrix 7.317078, up: 9.214764, left 12.069333, right 4.110635, downright 8.247354, down 6.128149, downleft 4.467239
+
+matrixupdate 7.327389 matrix 7.322236, up: 9.219840, left 12.072769, right 4.115662, downright 8.252245, down 6.133528, downleft 4.472448
+
+matrixupdate 7.332536 matrix 7.327389, up: 9.224912, left 12.076200, right 4.120687, downright 8.257130, down 6.138900, downleft 4.477653
+
+matrixupdate 7.337678 matrix 7.332536, up: 9.229978, left 12.079626, right 4.125709, downright 8.262008, down 6.144267, downleft 4.482855
+
+matrixupdate 7.342814 matrix 7.337678, up: 9.235039, left 12.083047, right 4.130728, downright 8.266879, down 6.149628, downleft 4.488052
+
+matrixupdate 7.347945 matrix 7.342814, up: 9.240096, left 12.086464, right 4.135745, downright 8.271743, down 6.154982, downleft 4.493245
+
+matrixupdate 7.353071 matrix 7.347945, up: 9.245148, left 12.089875, right 4.140759, downright 8.276601, down 6.160331, downleft 4.498435
+
+matrixupdate 7.358191 matrix 7.353071, up: 9.250194, left 12.093281, right 4.145771, downright 8.281452, down 6.165674, downleft 4.503620
+
+matrixupdate 7.363305 matrix 7.358191, up: 9.255236, left 12.096683, right 4.150780, downright 8.286297, down 6.171011, downleft 4.508801
+
+matrixupdate 7.368415 matrix 7.363305, up: 9.260273, left 12.100079, right 4.155787, downright 8.291135, down 6.176342, downleft 4.513978
+
+matrixupdate 7.373519 matrix 7.368415, up: 9.265306, left 12.103471, right 4.160791, downright 8.295967, down 6.181668, downleft 4.519151
+
+matrixupdate 7.378617 matrix 7.373519, up: 9.270333, left 12.106858, right 4.165793, downright 8.300791, down 6.186987, downleft 4.524320
+
+matrixupdate 7.383710 matrix 7.378617, up: 9.275356, left 12.110240, right 4.170792, downright 8.305610, down 6.192301, downleft 4.529485
+
+matrixupdate 7.388798 matrix 7.383710, up: 9.280374, left 12.113618, right 4.175788, downright 8.310422, down 6.197608, downleft 4.534646
+
+matrixupdate 7.393881 matrix 7.388798, up: 9.285387, left 12.116990, right 4.180782, downright 8.315227, down 6.202910, downleft 4.539803
+
+matrixupdate 7.398958 matrix 7.393881, up: 9.290395, left 12.120358, right 4.185773, downright 8.320026, down 6.208206, downleft 4.544956
+
+matrixupdate 7.404030 matrix 7.398958, up: 9.295399, left 12.123721, right 4.190762, downright 8.324818, down 6.213497, downleft 4.550105
+
+matrixupdate 7.409096 matrix 7.404030, up: 9.300398, left 12.127079, right 4.195748, downright 8.329604, down 6.218781, downleft 4.555251
+
+matrixupdate 7.414158 matrix 7.409096, up: 9.305392, left 12.130432, right 4.200732, downright 8.334384, down 6.224060, downleft 4.560392
+
+matrixupdate 7.419214 matrix 7.414158, up: 9.310381, left 12.133781, right 4.205713, downright 8.339157, down 6.229333, downleft 4.565529
+
+matrixupdate 7.424264 matrix 7.419214, up: 9.315366, left 12.137125, right 4.210692, downright 8.343923, down 6.234601, downleft 4.570662
+
+matrixupdate 7.429310 matrix 7.424264, up: 9.320346, left 12.140464, right 4.215668, downright 8.348684, down 6.239862, downleft 4.575791
+
+matrixupdate 7.434350 matrix 7.429310, up: 9.325321, left 12.143798, right 4.220642, downright 8.353437, down 6.245118, downleft 4.580916
+
+matrixupdate 7.439385 matrix 7.434350, up: 9.330292, left 12.147128, right 4.225613, downright 8.358185, down 6.250368, downleft 4.586038
+
+matrixupdate 7.444415 matrix 7.439385, up: 9.335257, left 12.150453, right 4.230582, downright 8.362926, down 6.255613, downleft 4.591155
+
+matrixupdate 7.449440 matrix 7.444415, up: 9.340219, left 12.153774, right 4.235548, downright 8.367661, down 6.260852, downleft 4.596268
+
+matrixupdate 7.454459 matrix 7.449440, up: 9.345175, left 12.157090, right 4.240511, downright 8.372390, down 6.266085, downleft 4.601378
+
+matrixupdate 7.459474 matrix 7.454459, up: 9.350127, left 12.160401, right 4.245472, downright 8.377112, down 6.271312, downleft 4.606483
+
+matrixupdate 7.464483 matrix 7.459474, up: 9.355075, left 12.163707, right 4.250431, downright 8.381828, down 6.276534, downleft 4.611585
+
+matrixupdate 7.469487 matrix 7.464483, up: 9.360017, left 12.167009, right 4.255387, downright 8.386538, down 6.281750, downleft 4.616683
+
+matrixupdate 7.474486 matrix 7.469487, up: 9.364956, left 12.170307, right 4.260340, downright 8.391241, down 6.286961, downleft 4.621777
+
+matrixupdate 7.479480 matrix 7.474486, up: 9.369889, left 12.173600, right 4.265291, downright 8.395938, down 6.292166, downleft 4.626866
+
+matrixupdate 7.484468 matrix 7.479480, up: 9.374818, left 12.176888, right 4.270240, downright 8.400629, down 6.297365, downleft 4.631952
+
+matrixupdate 7.489452 matrix 7.484468, up: 9.379743, left 12.180172, right 4.275186, downright 8.405314, down 6.302559, downleft 4.637034
+
+matrixupdate 7.494430 matrix 7.489452, up: 9.384662, left 12.183451, right 4.280130, downright 8.409993, down 6.307747, downleft 4.642113
+
+matrixupdate 7.499404 matrix 7.494430, up: 9.389578, left 12.186725, right 4.285071, downright 8.414665, down 6.312930, downleft 4.647187
+
+matrixupdate 7.504372 matrix 7.499404, up: 9.394488, left 12.189995, right 4.290009, downright 8.419332, down 6.318107, downleft 4.652257
+
+matrixupdate 7.509335 matrix 7.504372, up: 9.399395, left 12.193261, right 4.294945, downright 8.423992, down 6.323279, downleft 4.657324
+
+matrixupdate 7.514293 matrix 7.509335, up: 9.404296, left 12.196522, right 4.299879, downright 8.428646, down 6.328445, downleft 4.662387
+
+matrixupdate 7.519247 matrix 7.514293, up: 9.409193, left 12.199779, right 4.304810, downright 8.433294, down 6.333605, downleft 4.667445
+
+matrixupdate 7.524195 matrix 7.519247, up: 9.414086, left 12.203031, right 4.309739, downright 8.437936, down 6.338760, downleft 4.672500
+
+matrixupdate 7.529138 matrix 7.524195, up: 9.418974, left 12.206279, right 4.314665, downright 8.442572, down 6.343910, downleft 4.677551
+
+matrixupdate 7.534076 matrix 7.529138, up: 9.423858, left 12.209522, right 4.319588, downright 8.447202, down 6.349054, downleft 4.682599
+
+matrixupdate 7.539009 matrix 7.534076, up: 9.428737, left 12.212761, right 4.324510, downright 8.451825, down 6.354192, downleft 4.687642
+
+matrixupdate 7.543937 matrix 7.539009, up: 9.433612, left 12.215995, right 4.329428, downright 8.456443, down 6.359325, downleft 4.692682
+
+matrixupdate 7.548860 matrix 7.543937, up: 9.438482, left 12.219225, right 4.334345, downright 8.461055, down 6.364453, downleft 4.697717
+
+matrixupdate 7.553779 matrix 7.548860, up: 9.443348, left 12.222451, right 4.339258, downright 8.465661, down 6.369575, downleft 4.702749
+
+matrixupdate 7.558692 matrix 7.553779, up: 9.448210, left 12.225672, right 4.344170, downright 8.470260, down 6.374692, downleft 4.707777
+
+matrixupdate 7.563600 matrix 7.558692, up: 9.453067, left 12.228889, right 4.349079, downright 8.474854, down 6.379803, downleft 4.712802
+
+matrixupdate 7.568504 matrix 7.563600, up: 9.457919, left 12.232102, right 4.353985, downright 8.479442, down 6.384909, downleft 4.717822
+
+matrixupdate 7.573402 matrix 7.568504, up: 9.462768, left 12.235310, right 4.358889, downright 8.484024, down 6.390010, downleft 4.722839
+
+matrixupdate 7.578296 matrix 7.573402, up: 9.467611, left 12.238514, right 4.363791, downright 8.488600, down 6.395105, downleft 4.727852
+
+matrixupdate 7.583185 matrix 7.578296, up: 9.472451, left 12.241713, right 4.368690, downright 8.493170, down 6.400195, downleft 4.732861
+
+matrixupdate 7.588068 matrix 7.583185, up: 9.477286, left 12.244909, right 4.373586, downright 8.497734, down 6.405279, downleft 4.737866
+
+matrixupdate 7.592947 matrix 7.588068, up: 9.482117, left 12.248100, right 4.378481, downright 8.502292, down 6.410359, downleft 4.742867
+
+matrixupdate 7.597822 matrix 7.592947, up: 9.486943, left 12.251286, right 4.383372, downright 8.506845, down 6.415432, downleft 4.747865
+
+matrixupdate 7.602691 matrix 7.597822, up: 9.491765, left 12.254469, right 4.388262, downright 8.511391, down 6.420501, downleft 4.752859
+
+matrixupdate 7.607555 matrix 7.602691, up: 9.496583, left 12.257647, right 4.393149, downright 8.515932, down 6.425564, downleft 4.757849
+
+matrixupdate 7.612415 matrix 7.607555, up: 9.501396, left 12.260821, right 4.398033, downright 8.520467, down 6.430622, downleft 4.762835
+
+matrixupdate 7.617270 matrix 7.612415, up: 9.506205, left 12.263991, right 4.402915, downright 8.524996, down 6.435674, downleft 4.767818
+
+matrixupdate 7.622120 matrix 7.617270, up: 9.511010, left 12.267156, right 4.407795, downright 8.529520, down 6.440722, downleft 4.772797
+
+matrixupdate 7.626965 matrix 7.622120, up: 9.515810, left 12.270317, right 4.412672, downright 8.534037, down 6.445763, downleft 4.777772
+
+matrixupdate 7.631805 matrix 7.626965, up: 9.520606, left 12.273474, right 4.417546, downright 8.538549, down 6.450800, downleft 4.782743
+
+matrixupdate 7.636641 matrix 7.631805, up: 9.525398, left 12.276627, right 4.422419, downright 8.543055, down 6.455832, downleft 4.787711
+
+matrixupdate 7.641472 matrix 7.636641, up: 9.530186, left 12.279776, right 4.427289, downright 8.547555, down 6.460858, downleft 4.792675
+
+matrixupdate 7.646298 matrix 7.641472, up: 9.534969, left 12.282920, right 4.432156, downright 8.552050, down 6.465879, downleft 4.797635
+
+matrixupdate 7.651119 matrix 7.646298, up: 9.539748, left 12.286061, right 4.437021, downright 8.556539, down 6.470895, downleft 4.802592
+
+matrixupdate 7.655936 matrix 7.651119, up: 9.544523, left 12.289197, right 4.441884, downright 8.561022, down 6.475905, downleft 4.807544
+
+matrixupdate 7.660748 matrix 7.655936, up: 9.549294, left 12.292329, right 4.446744, downright 8.565500, down 6.480911, downleft 4.812494
+
+matrixupdate 7.665555 matrix 7.660748, up: 9.554060, left 12.295457, right 4.451602, downright 8.569972, down 6.485911, downleft 4.817439
+
+matrixupdate 7.670357 matrix 7.665555, up: 9.558822, left 12.298581, right 4.456457, downright 8.574438, down 6.490906, downleft 4.822381
+
+matrixupdate 7.675155 matrix 7.670357, up: 9.563580, left 12.301701, right 4.461310, downright 8.578898, down 6.495896, downleft 4.827318
+
+matrixupdate 7.679948 matrix 7.675155, up: 9.568334, left 12.304816, right 4.466161, downright 8.583353, down 6.500880, downleft 4.832253
+
+matrixupdate 7.684736 matrix 7.679948, up: 9.573083, left 12.307928, right 4.471009, downright 8.587803, down 6.505860, downleft 4.837183
+
+matrixupdate 7.689520 matrix 7.684736, up: 9.577829, left 12.311036, right 4.475855, downright 8.592247, down 6.510834, downleft 4.842110
+
+matrixupdate 7.694299 matrix 7.689520, up: 9.582570, left 12.314139, right 4.480698, downright 8.596685, down 6.515804, downleft 4.847033
+
+matrixupdate 7.699074 matrix 7.694299, up: 9.587307, left 12.317238, right 4.485539, downright 8.601118, down 6.520768, downleft 4.851953
+
+matrixupdate 7.703844 matrix 7.699074, up: 9.592040, left 12.320334, right 4.490378, downright 8.605545, down 6.525727, downleft 4.856869
+
+matrixupdate 7.708609 matrix 7.703844, up: 9.596769, left 12.323425, right 4.495214, downright 8.609966, down 6.530681, downleft 4.861781
+
+matrixupdate 7.713369 matrix 7.708609, up: 9.601493, left 12.326513, right 4.500048, downright 8.614382, down 6.535630, downleft 4.866690
+
+matrixupdate 7.718125 matrix 7.713369, up: 9.606214, left 12.329596, right 4.504880, downright 8.618793, down 6.540574, downleft 4.871595
+
+matrixupdate 7.722877 matrix 7.718125, up: 9.610930, left 12.332675, right 4.509709, downright 8.623198, down 6.545512, downleft 4.876496
+
+matrixupdate 7.727624 matrix 7.722877, up: 9.615642, left 12.335751, right 4.514536, downright 8.627598, down 6.550446, downleft 4.881394
+
+matrixupdate 7.732366 matrix 7.727624, up: 9.620351, left 12.338822, right 4.519360, downright 8.631992, down 6.555375, downleft 4.886288
+
+matrixupdate 7.737104 matrix 7.732366, up: 9.625055, left 12.341890, right 4.524182, downright 8.636380, down 6.560298, downleft 4.891178
+
+matrixupdate 7.741837 matrix 7.737104, up: 9.629755, left 12.344953, right 4.529002, downright 8.640764, down 6.565217, downleft 4.896065
+
+matrixupdate 7.746565 matrix 7.741837, up: 9.634451, left 12.348013, right 4.533819, downright 8.645141, down 6.570131, downleft 4.900948
+
+matrixupdate 7.751289 matrix 7.746565, up: 9.639142, left 12.351069, right 4.538634, downright 8.649514, down 6.575039, downleft 4.905827
+
+matrixupdate 7.756009 matrix 7.751289, up: 9.643830, left 12.354120, right 4.543446, downright 8.653881, down 6.579943, downleft 4.910703
+
+matrixupdate 7.760724 matrix 7.756009, up: 9.648514, left 12.357168, right 4.548257, downright 8.658242, down 6.584842, downleft 4.915576
+
+matrixupdate 7.765434 matrix 7.760724, up: 9.653193, left 12.360212, right 4.553064, downright 8.662598, down 6.589735, downleft 4.920444
+
+matrixupdate 7.770140 matrix 7.765434, up: 9.657869, left 12.363252, right 4.557870, downright 8.666949, down 6.594624, downleft 4.925310
+
+matrixupdate 7.774842 matrix 7.770140, up: 9.662541, left 12.366288, right 4.562673, downright 8.671295, down 6.599508, downleft 4.930171
+
+matrixupdate 7.779539 matrix 7.774842, up: 9.667208, left 12.369321, right 4.567474, downright 8.675635, down 6.604387, downleft 4.935029
+
+matrixupdate 7.784231 matrix 7.779539, up: 9.671872, left 12.372349, right 4.572272, downright 8.679970, down 6.609261, downleft 4.939884
+
+matrixupdate 7.788920 matrix 7.784231, up: 9.676531, left 12.375374, right 4.577068, downright 8.684299, down 6.614130, downleft 4.944734
+
+matrixupdate 7.793603 matrix 7.788920, up: 9.681187, left 12.378395, right 4.581862, downright 8.688624, down 6.618994, downleft 4.949582
+
+matrixupdate 7.798282 matrix 7.793603, up: 9.685839, left 12.381412, right 4.586653, downright 8.692942, down 6.623853, downleft 4.954425
+
+matrixupdate 7.802957 matrix 7.798282, up: 9.690486, left 12.384425, right 4.591442, downright 8.697256, down 6.628707, downleft 4.959265
+
+matrixupdate 7.807627 matrix 7.802957, up: 9.695130, left 12.387434, right 4.596229, downright 8.701565, down 6.633557, downleft 4.964102
+
+matrixupdate 7.812293 matrix 7.807627, up: 9.699769, left 12.390440, right 4.601013, downright 8.705868, down 6.638401, downleft 4.968935
+
+matrixupdate 7.816955 matrix 7.812293, up: 9.704405, left 12.393442, right 4.605795, downright 8.710166, down 6.643241, downleft 4.973765
+
+matrixupdate 7.821612 matrix 7.816955, up: 9.709037, left 12.396440, right 4.610575, downright 8.714458, down 6.648076, downleft 4.978591
+
+matrixupdate 7.826265 matrix 7.821612, up: 9.713665, left 12.399434, right 4.615352, downright 8.718746, down 6.652906, downleft 4.983413
+
+matrixupdate 7.830913 matrix 7.826265, up: 9.718288, left 12.402425, right 4.620127, downright 8.723028, down 6.657731, downleft 4.988232
+
+matrixupdate 7.835557 matrix 7.830913, up: 9.722908, left 12.405411, right 4.624900, downright 8.727305, down 6.662551, downleft 4.993047
+
+matrixupdate 7.840197 matrix 7.835557, up: 9.727524, left 12.408394, right 4.629671, downright 8.731577, down 6.667367, downleft 4.997859
+
+matrixupdate 7.844832 matrix 7.840197, up: 9.732137, left 12.411374, right 4.634439, downright 8.735844, down 6.672178, downleft 5.002668
+
+matrixupdate 7.849463 matrix 7.844832, up: 9.736745, left 12.414349, right 4.639204, downright 8.740106, down 6.676984, downleft 5.007473
+
+matrixupdate 7.854090 matrix 7.849463, up: 9.741349, left 12.417321, right 4.643968, downright 8.744362, down 6.681785, downleft 5.012274
+
+matrixupdate 7.858712 matrix 7.854090, up: 9.745949, left 12.420289, right 4.648729, downright 8.748613, down 6.686581, downleft 5.017072
+
+matrixupdate 7.863330 matrix 7.858712, up: 9.750546, left 12.423254, right 4.653488, downright 8.752860, down 6.691373, downleft 5.021866
+
+matrixupdate 7.867944 matrix 7.863330, up: 9.755139, left 12.426215, right 4.658244, downright 8.757101, down 6.696160, downleft 5.026657
+
+matrixupdate 7.872553 matrix 7.867944, up: 9.759727, left 12.429172, right 4.662998, downright 8.761337, down 6.700942, downleft 5.031445
+
+matrixupdate 7.877158 matrix 7.872553, up: 9.764312, left 12.432125, right 4.667750, downright 8.765568, down 6.705719, downleft 5.036229
+
+matrixupdate 7.881759 matrix 7.877158, up: 9.768894, left 12.435075, right 4.672500, downright 8.769794, down 6.710492, downleft 5.041009
+
+matrixupdate 7.886356 matrix 7.881759, up: 9.773471, left 12.438021, right 4.677247, downright 8.774015, down 6.715260, downleft 5.045786
+
+matrixupdate 7.890948 matrix 7.886356, up: 9.778044, left 12.440964, right 4.681992, downright 8.778231, down 6.720023, downleft 5.050560
+
+matrixupdate 7.895536 matrix 7.890948, up: 9.782614, left 12.443903, right 4.686735, downright 8.782442, down 6.724782, downleft 5.055330
+
+matrixupdate 7.900120 matrix 7.895536, up: 9.787180, left 12.446838, right 4.691475, downright 8.786647, down 6.729536, downleft 5.060096
+
+matrixupdate 7.904700 matrix 7.900120, up: 9.791741, left 12.449770, right 4.696214, downright 8.790848, down 6.734285, downleft 5.064860
+
+matrixupdate 7.909275 matrix 7.904700, up: 9.796300, left 12.452698, right 4.700949, downright 8.795044, down 6.739029, downleft 5.069619
+
+matrixupdate 7.913846 matrix 7.909275, up: 9.800854, left 12.455623, right 4.705683, downright 8.799235, down 6.743769, downleft 5.074376
+
+matrixupdate 7.918413 matrix 7.913846, up: 9.805404, left 12.458544, right 4.710414, downright 8.803421, down 6.748505, downleft 5.079129
+
+matrixupdate 7.922976 matrix 7.918413, up: 9.809951, left 12.461461, right 4.715143, downright 8.807602, down 6.753235, downleft 5.083878
+
+matrixupdate 7.927534 matrix 7.922976, up: 9.814494, left 12.464375, right 4.719870, downright 8.811778, down 6.757961, downleft 5.088624
+
+matrixupdate 7.932089 matrix 7.927534, up: 9.819033, left 12.467285, right 4.724594, downright 8.815949, down 6.762682, downleft 5.093367
+
+matrixupdate 7.936639 matrix 7.932089, up: 9.823569, left 12.470192, right 4.729316, downright 8.820115, down 6.767399, downleft 5.098106
+
+matrixupdate 7.941185 matrix 7.936639, up: 9.828101, left 12.473095, right 4.734036, downright 8.824276, down 6.772111, downleft 5.102842
+
+matrixupdate 7.945727 matrix 7.941185, up: 9.832629, left 12.475995, right 4.738754, downright 8.828432, down 6.776819, downleft 5.107574
+
+matrixupdate 7.950264 matrix 7.945727, up: 9.837153, left 12.478891, right 4.743469, downright 8.832584, down 6.781522, downleft 5.112303
+
+matrixupdate 7.954798 matrix 7.950264, up: 9.841673, left 12.481784, right 4.748182, downright 8.836731, down 6.786220, downleft 5.117029
+
+matrixupdate 7.959327 matrix 7.954798, up: 9.846190, left 12.484673, right 4.752893, downright 8.840872, down 6.790914, downleft 5.121751
+
+matrixupdate 7.963853 matrix 7.959327, up: 9.850703, left 12.487559, right 4.757602, downright 8.845009, down 6.795603, downleft 5.126470
+
+matrixupdate 7.968374 matrix 7.963853, up: 9.855212, left 12.490441, right 4.762308, downright 8.849141, down 6.800288, downleft 5.131186
+
+matrixupdate 7.972891 matrix 7.968374, up: 9.859718, left 12.493320, right 4.767012, downright 8.853268, down 6.804968, downleft 5.135898
+
+matrixupdate 7.977404 matrix 7.972891, up: 9.864220, left 12.496196, right 4.771714, downright 8.857391, down 6.809644, downleft 5.140607
+
+matrixupdate 7.981913 matrix 7.977404, up: 9.868718, left 12.499067, right 4.776413, downright 8.861508, down 6.814315, downleft 5.145312
+
+matrixupdate 7.986417 matrix 7.981913, up: 9.873212, left 12.501936, right 4.781110, downright 8.865621, down 6.818981, downleft 5.150014
+
+matrixupdate 7.990918 matrix 7.986417, up: 9.877703, left 12.504801, right 4.785805, downright 8.869729, down 6.823643, downleft 5.154713
+
+matrixupdate 7.995415 matrix 7.990918, up: 9.882190, left 12.507663, right 4.790498, downright 8.873832, down 6.828301, downleft 5.159408
+
+matrixupdate 7.999907 matrix 7.995415, up: 9.886674, left 12.510521, right 4.795189, downright 8.877931, down 6.832954, downleft 5.164100
+
+matrixupdate 8.004396 matrix 7.999907, up: 9.891154, left 12.513375, right 4.799877, downright 8.882024, down 6.837603, downleft 5.168789
+
+matrixupdate 8.008881 matrix 8.004396, up: 9.895630, left 12.516227, right 4.804563, downright 8.886113, down 6.842247, downleft 5.173474
+
+matrixupdate 8.013361 matrix 8.008881, up: 9.900102, left 12.519075, right 4.809247, downright 8.890198, down 6.846887, downleft 5.178156
+
+matrixupdate 8.017837 matrix 8.013361, up: 9.904571, left 12.521919, right 4.813928, downright 8.894277, down 6.851522, downleft 5.182835
+
+matrixupdate 8.022310 matrix 8.017837, up: 9.909036, left 12.524761, right 4.818608, downright 8.898352, down 6.856153, downleft 5.187510
+
+matrixupdate 8.026778 matrix 8.022310, up: 9.913498, left 12.527598, right 4.823285, downright 8.902422, down 6.860779, downleft 5.192182
+
+matrixupdate 8.031243 matrix 8.026778, up: 9.917956, left 12.530433, right 4.827960, downright 8.906488, down 6.865401, downleft 5.196851
+
+matrixupdate 8.035703 matrix 8.031243, up: 9.922410, left 12.533264, right 4.832632, downright 8.910548, down 6.870019, downleft 5.201516
+
+matrixupdate 8.040160 matrix 8.035703, up: 9.926861, left 12.536092, right 4.837303, downright 8.914604, down 6.874632, downleft 5.206179
+
+matrixupdate 8.044612 matrix 8.040160, up: 9.931308, left 12.538916, right 4.841971, downright 8.918656, down 6.879240, downleft 5.210837
+
+matrixupdate 8.049061 matrix 8.044612, up: 9.935752, left 12.541738, right 4.846637, downright 8.922703, down 6.883845, downleft 5.215493
+
+matrixupdate 8.053505 matrix 8.049061, up: 9.940192, left 12.544555, right 4.851300, downright 8.926745, down 6.888445, downleft 5.220145
+
+matrixupdate 8.057946 matrix 8.053505, up: 9.944628, left 12.547370, right 4.855962, downright 8.930783, down 6.893040, downleft 5.224794
+
+matrixupdate 8.062382 matrix 8.057946, up: 9.949061, left 12.550181, right 4.860621, downright 8.934815, down 6.897632, downleft 5.229440
+
+matrixupdate 8.066815 matrix 8.062382, up: 9.953490, left 12.552989, right 4.865278, downright 8.938844, down 6.902218, downleft 5.234082
+
+matrixupdate 8.071244 matrix 8.066815, up: 9.957916, left 12.555794, right 4.869933, downright 8.942868, down 6.906801, downleft 5.238722
+
+matrixupdate 8.075668 matrix 8.071244, up: 9.962338, left 12.558595, right 4.874586, downright 8.946887, down 6.911379, downleft 5.243357
+
+matrixupdate 8.080089 matrix 8.075668, up: 9.966757, left 12.561393, right 4.879236, downright 8.950901, down 6.915953, downleft 5.247990
+
+matrixupdate 8.084506 matrix 8.080089, up: 9.971172, left 12.564188, right 4.883885, downright 8.954912, down 6.920522, downleft 5.252620
+
+matrixupdate 8.088919 matrix 8.084506, up: 9.975583, left 12.566980, right 4.888531, downright 8.958917, down 6.925088, downleft 5.257246
+
+matrixupdate 8.093329 matrix 8.088919, up: 9.979991, left 12.569768, right 4.893174, downright 8.962918, down 6.929649, downleft 5.261869
+
+matrixupdate 8.097734 matrix 8.093329, up: 9.984396, left 12.572553, right 4.897816, downright 8.966915, down 6.934205, downleft 5.266488
+
+matrixupdate 8.102135 matrix 8.097734, up: 9.988796, left 12.575335, right 4.902455, downright 8.970906, down 6.938757, downleft 5.271105
+
+matrixupdate 8.106533 matrix 8.102135, up: 9.993194, left 12.578114, right 4.907093, downright 8.974894, down 6.943306, downleft 5.275718
+
+matrixupdate 8.110927 matrix 8.106533, up: 9.997588, left 12.580889, right 4.911728, downright 8.978877, down 6.947849, downleft 5.280328
+
+matrixupdate 8.115317 matrix 8.110927, up: 10.001978, left 12.583662, right 4.916361, downright 8.982855, down 6.952389, downleft 5.284935
+
+matrixupdate 8.119703 matrix 8.115317, up: 10.006365, left 12.586431, right 4.920991, downright 8.986829, down 6.956924, downleft 5.289538
+
+matrixupdate 8.124085 matrix 8.119703, up: 10.010748, left 12.589196, right 4.925620, downright 8.990799, down 6.961455, downleft 5.294139
+
+matrixupdate 8.128463 matrix 8.124085, up: 10.015128, left 12.591959, right 4.930246, downright 8.994764, down 6.965982, downleft 5.298736
+
+matrixupdate 8.132838 matrix 8.128463, up: 10.019505, left 12.594719, right 4.934870, downright 8.998725, down 6.970504, downleft 5.303330
+
+matrixupdate 8.137208 matrix 8.132838, up: 10.023878, left 12.597475, right 4.939492, downright 9.002681, down 6.975023, downleft 5.307920
+
+matrixupdate 8.141575 matrix 8.137208, up: 10.028247, left 12.600228, right 4.944112, downright 9.006633, down 6.979537, downleft 5.312508
+
+matrixupdate 8.145938 matrix 8.141575, up: 10.032613, left 12.602978, right 4.948729, downright 9.010580, down 6.984047, downleft 5.317092
+
+matrixupdate 8.150297 matrix 8.145938, up: 10.036976, left 12.605725, right 4.953345, downright 9.014523, down 6.988552, downleft 5.321674
+
+matrixupdate 8.154653 matrix 8.150297, up: 10.041335, left 12.608469, right 4.957958, downright 9.018462, down 6.993054, downleft 5.326252
+
+matrixupdate 8.159005 matrix 8.154653, up: 10.045691, left 12.611209, right 4.962569, downright 9.022396, down 6.997551, downleft 5.330826
+
+matrixupdate 8.163352 matrix 8.159005, up: 10.050043, left 12.613947, right 4.967178, downright 9.026326, down 7.002044, downleft 5.335398
+
+matrixupdate 8.167697 matrix 8.163352, up: 10.054392, left 12.616681, right 4.971784, downright 9.030251, down 7.006533, downleft 5.339966
+
+matrixupdate 8.172037 matrix 8.167697, up: 10.058737, left 12.619413, right 4.976389, downright 9.034172, down 7.011018, downleft 5.344532
+
+matrixupdate 8.176374 matrix 8.172037, up: 10.063079, left 12.622141, right 4.980991, downright 9.038089, down 7.015499, downleft 5.349094
+
+matrixupdate 8.180706 matrix 8.176374, up: 10.067417, left 12.624866, right 4.985592, downright 9.042001, down 7.019975, downleft 5.353653
+
+matrixupdate 8.185036 matrix 8.180706, up: 10.071753, left 12.627588, right 4.990190, downright 9.045909, down 7.024448, downleft 5.358209
+
+matrixupdate 8.189361 matrix 8.185036, up: 10.076084, left 12.630307, right 4.994786, downright 9.049813, down 7.028916, downleft 5.362762
+
+matrixupdate 8.193683 matrix 8.189361, up: 10.080413, left 12.633023, right 4.999379, downright 9.053713, down 7.033380, downleft 5.367311
+
+matrixupdate 8.198001 matrix 8.193683, up: 10.084738, left 12.635736, right 5.003971, downright 9.057608, down 7.037840, downleft 5.371858
+
+matrixupdate 8.202315 matrix 8.198001, up: 10.089059, left 12.638445, right 5.008560, downright 9.061499, down 7.042296, downleft 5.376401
+
+matrixupdate 8.206625 matrix 8.202315, up: 10.093377, left 12.641152, right 5.013147, downright 9.065385, down 7.046748, downleft 5.380941
+18.139421259045260
+
+
+###############################################################################
+TCHPC Cluster: lonsdale
+Job 233622 (diffusion) for User 'donaghek' in Account 'mschpc'
+Finished at: Tue Aug 30 08:57:42 IST 2016
+
+Job completion status:
+======================
+
+       JobID    JobName AllocCPUS NTasks NNodes     MaxRSS    MaxRSSNode  MaxDiskRead MaxDiskWrite    Elapsed      State ExitCode 
+------------ ---------- --------- ------ ------ ---------- ------------- ------------ ------------ ---------- ---------- -------- 
+233622       allocation         0             0                                                      00:00:00  COMPLETED      0:0 
+233622.batch      batch         8      1      1          0 lonsdale-n001        0.00M        0.00M   00:00:03  COMPLETED      0:0 
+233622.0          orted         1      1      1          0 lonsdale-n002        0.00M        0.00M   00:00:02  COMPLETED      0:0 
+
+
+Job details:
+============
+
+JobId=233622 JobName=diffusion
+   UserId=donaghek(5753) GroupId=donaghek(9558)
+   Priority=10077093 Nice=0 Account=mschpc QOS=normal
+   JobState=COMPLETING Reason=None Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   DerivedExitCode=0:0
+   RunTime=00:00:03 TimeLimit=00:01:00 TimeMin=N/A
+   SubmitTime=2016-08-30T08:57:39 EligibleTime=2016-08-30T08:57:39
+   StartTime=2016-08-30T08:57:39 EndTime=2016-08-30T08:57:42
+   PreemptTime=None SuspendTime=None SecsPreSuspend=0
+   Partition=debug AllocNode:Sid=lonsdale01:8146
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=
+   BatchHost=lonsdale-n001
+   NumNodes=2 NumCPUs=16 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   TRES=cpu=16,mem=30000,node=2
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+     Nodes=lonsdale-n[001-002] CPU_IDs=0-7 Mem=15000
+   MinCPUsNode=1 MinMemoryNode=15000M MinTmpDiskNode=0
+   Features=(null) Gres=(null) Reservation=(null)
+   Shared=0 Contiguous=0 Licenses=(null) Network=(null)
+   Command=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm.sh
+   WorkDir=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine
+   StdErr=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm-233622.out
+   StdIn=/dev/null
+   StdOut=/home/users/mschpc/2015/donaghek/ParDiffRefine/ParallelRefine/slurm-233622.out
+   Power= SICP=0
+
+
+Disk quota details:
+===================
+
+Quota Type           Name  Filesystem     Usage in MB     Limit in MB    % Used
+-------------------------------------------------------------------------------
+USER             donaghek       /home              31          51,200     0.06%
+
+GROUP              mschpc   /projects          23,731          51,200    46.35%
+
+
+SLURM Bank Statement:
+=====================
+
+User           Usage |        Account     Usage | Account Limit Available (CPU hrs)
+---------- --------- + -------------- --------- + ------------- ---------
+aocurran          71 |         MSCHPC     8,549 |       400,000   391,451
+dalyso             0 |         MSCHPC     8,549 |       400,000   391,451
+donaghek         394 |         MSCHPC     8,549 |       400,000   391,451
+donnelj1           0 |         MSCHPC     8,549 |       400,000   391,451
+hannigs            0 |         MSCHPC     8,549 |       400,000   391,451
+holtonmi           0 |         MSCHPC     8,549 |       400,000   391,451
+howardrj           0 |         MSCHPC     8,549 |       400,000   391,451
+jabehan            0 |         MSCHPC     8,549 |       400,000   391,451
+jbulava            0 |         MSCHPC     8,549 |       400,000   391,451
+jfagan         5,009 |         MSCHPC     8,549 |       400,000   391,451
+jose               0 |         MSCHPC     8,549 |       400,000   391,451
+kcleary            0 |         MSCHPC     8,549 |       400,000   391,451
+liul1              0 |         MSCHPC     8,549 |       400,000   391,451
+lomalle            0 |         MSCHPC     8,549 |       400,000   391,451
+makirby            0 |         MSCHPC     8,549 |       400,000   391,451
+manninmi           0 |         MSCHPC     8,549 |       400,000   391,451
+mooneykn          22 |         MSCHPC     8,549 |       400,000   391,451
+morahanl           0 |         MSCHPC     8,549 |       400,000   391,451
+opwonyal           0 |         MSCHPC     8,549 |       400,000   391,451
+osullm40           0 |         MSCHPC     8,549 |       400,000   391,451
+phalpin            0 |         MSCHPC     8,549 |       400,000   391,451
+pharnett           0 |         MSCHPC     8,549 |       400,000   391,451
+pommee             0 |         MSCHPC     8,549 |       400,000   391,451
+poneill9           0 |         MSCHPC     8,549 |       400,000   391,451
+purdyd             0 |         MSCHPC     8,549 |       400,000   391,451
+rooneydt           0 |         MSCHPC     8,549 |       400,000   391,451
+sharding           0 |         MSCHPC     8,549 |       400,000   391,451
+sikelleh           0 |         MSCHPC     8,549 |       400,000   391,451
+simpsoao           0 |         MSCHPC     8,549 |       400,000   391,451
+smurray4           0 |         MSCHPC     8,549 |       400,000   391,451
+spellacl          76 |         MSCHPC     8,549 |       400,000   391,451
+tiernemi           0 |         MSCHPC     8,549 |       400,000   391,451
+walsheki           0 |         MSCHPC     8,549 |       400,000   391,451
+xihu           2,977 |         MSCHPC     8,549 |       400,000   391,451
+zhuang             0 |         MSCHPC     8,549 |       400,000   391,451
+
+
+Acknowledgements:
+=================
+
+Note that usage of TCHPC Resources *must* be acknowledged in all publications.
+
+Please see this page for details relevant to this cluster:
+
+http://www.tchpc.tcd.ie/resources/acknowledgementpolicy
+
+################################################################################

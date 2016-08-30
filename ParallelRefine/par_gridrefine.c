@@ -296,7 +296,7 @@ int main(int argc, char *argv[])
       update(&mat1, &mat2);
 
     }
-   
+/*   
   if(!in_refine)
     {
       printGrid(mat2, par_rows, par_cols);
@@ -305,9 +305,9 @@ int main(int argc, char *argv[])
     {
       printGrid(mat2, par_ref_rows, par_ref_cols);
     }
-
-  //if(rank == 10)
-  //printf("%.15lf\n", mat1[par_ref_rows-4][3]);
+*/
+  if(rank == 10)
+  printf("%.15lf\n", mat1[par_ref_rows-4][3]);
   /* if(rank%2) */
   /*   printf(":)\n"); */
   /* else */
