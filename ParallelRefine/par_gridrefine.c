@@ -32,9 +32,11 @@ void update(double*** mat1_ptr, double*** mat2_ptr)
 
 int main(int argc, char *argv[])
 {
-  int i, j, c;
+  int i, j, c, n = 10;
   double **mat1, **mat2;
-
+  clock_t start, end;
+  //if(rank == 0)
+  //printf("hi");
   //size of grid
   int nrows = 20, ncols = 20;
 
@@ -51,7 +53,7 @@ int main(int argc, char *argv[])
   Q = 2;
   P = 2;
 
-  while ((c = getopt (argc, argv, "r:i:q:p:")) != -1)
+  while ((c = getopt (argc, argv, "r:i:q:p:n:")) != -1)
     {
       switch(c)
   	{
@@ -63,6 +65,8 @@ int main(int argc, char *argv[])
 	  Q = atoi(optarg); break;
         case 'p':
 	  P = atoi(optarg); break;
+ 	case 'n':
+	  n = atoi(optarg); break;
   	default:
   	  fprintf(stderr, "Invalid option\n");
   	  return -1;
@@ -70,7 +74,7 @@ int main(int argc, char *argv[])
     }
 
   // find out where all the ranks are going to go - needed for interface comms
-
+  start = clock();
   int *initial_coarse_ranks = calloc(P*Q, sizeof(int));	  
   coarse_ranks = calloc((3*P*Q)/4, sizeof(int));
   refine_ranks = calloc(P*Q, sizeof(int));
@@ -166,8 +170,8 @@ int main(int argc, char *argv[])
   dx = 1 /(double)(nrows - 1);
   dy = 1 /(double)(ncols - 1);
 
-  dt = .001;
-
+  dt = .0000001;
+  //dt = .001;
   //sets up matrices for refinement and not in refinement
   if(!in_refine)
     {
@@ -239,6 +243,7 @@ int main(int argc, char *argv[])
   //weight in y direction
   wy = k * dt/(dy*dy);
 
+  printf("wx = %lf, wy = %lf\n", wx, wy);
   //stability
   // wx + wy must be less than .5
   if ( wx + wy > .5)
@@ -251,7 +256,7 @@ int main(int argc, char *argv[])
   double wxy = k * dt/(dx*dx);
   int refinement = 2;
   double sxy = (double)dx/refinement;
-
+  double rxy = k * dt/(sxy*sxy);
 
   for(iter = 0; iter < max_iter; iter++)
     {
@@ -290,7 +295,7 @@ int main(int argc, char *argv[])
       else
       	{
       	       // 	  if( !rank) printf("refine timestep\n");
-      	  computeFineTimestep(mat1, mat2, par_ref_rows, par_ref_cols, wxy, sxy);
+      	  computeFineTimestep(mat1, mat2, par_ref_rows, par_ref_cols, rxy);
       	}
 
       update(&mat1, &mat2);
@@ -306,15 +311,22 @@ int main(int argc, char *argv[])
       printGrid(mat2, par_ref_rows, par_ref_cols);
     }
 */
-  if(rank == 10)
-  printf("%.15lf\n", mat1[par_ref_rows-4][3]);
+  ///if(rank == n)
+  //printf("%.15lf\n", mat1[par_ref_rows-4][3]);
   /* if(rank%2) */
   /*   printf(":)\n"); */
   /* else */
   /*   printf(":D\n");   */
+  end = clock();
+  double t = ((((double) end ) - start)/CLOCKS_PER_SEC);
+
+  double t_max;
+  MPI_Reduce(&t, &t_max, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
+
+  if (rank == 0)
+    printf("%d\t%lf\n", size, t_max);
 
   MPI_Finalize(); 
-
   return 0;
 }
 
