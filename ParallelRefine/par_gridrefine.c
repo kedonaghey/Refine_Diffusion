@@ -171,7 +171,6 @@ int main(int argc, char *argv[])
   dy = 1 /(double)(ncols - 1);
 
   dt = .0000001;
-  //dt = .001;
   //sets up matrices for refinement and not in refinement
   if(!in_refine)
     {
@@ -234,7 +233,6 @@ int main(int argc, char *argv[])
   //weight in y direction
   wy = k * dt/(dy*dy);
 
-  printf("wx = %lf, wy = %lf\n", wx, wy);
   //stability
   // wx + wy must be less than .5
   if ( wx + wy > .5)
@@ -248,7 +246,6 @@ int main(int argc, char *argv[])
   int refinement = 2;
   double sxy = (double)dx/refinement;
   double rxy = k * dt/(sxy*sxy);
-
   for(iter = 0; iter < max_iter; iter++)
     {
       time = time + dt;
@@ -292,18 +289,18 @@ int main(int argc, char *argv[])
       update(&mat1, &mat2);
 
     }
-/*   
+  /* 
   if(!in_refine)
     {
-      printGrid(mat2, par_rows, par_cols);
+      printGrid(mat1, par_rows, par_cols);
     }
   else
     {
-      printGrid(mat2, par_ref_rows, par_ref_cols);
+      printGrid(mat1, par_ref_rows, par_ref_cols);
     }
 */
-  ///if(rank == n)
-  //printf("%.15lf\n", mat1[par_ref_rows-4][3]);
+  if(rank == n)
+   printf("%.15lf\n", mat1[par_ref_rows-4][3]);
   /* if(rank%2) */
   /*   printf(":)\n"); */
   /* else */

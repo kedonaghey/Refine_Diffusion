@@ -50,12 +50,22 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
       
       // if coord odd
       // send to both up and down
-  
   if(rcrds[1] == P-1) {
-  if(par_ref_rows%2 == 0)
+    if(par_ref_rows%2 == 0) 
     {
-      downval = mat1[par_ref_rows-1][j];
-      MPI_Sendrecv(&mat1[par_ref_rows-3][j], 1, MPI_DOUBLE, d, 0, &upval, 1, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &stat[0]);
+      if(rcrds[0] == 0)
+        {
+	// need to do a sendrecv for consistency with other procs
+          MPI_Sendrecv(&mat1[par_ref_rows-3][j], 1, MPI_DOUBLE, d, 0, &upval, 1, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &stat[0]);
+	  
+	  upval = mat1[start-2][j]; // corner case - we have this value, don't recv it
+          downval = mat1[par_ref_rows-1][j];
+        }
+     else
+      {
+        downval = mat1[par_ref_rows-1][j];
+        MPI_Sendrecv(&mat1[par_ref_rows-3][j], 1, MPI_DOUBLE, d, 0, &upval, 1, MPI_DOUBLE, u, 0, MPI_COMM_CART2, &stat[0]);
+      } 
     }
   else
     {
@@ -79,14 +89,14 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
     }
 
   // calculate first interface point
-      mat2[start][j] =/*previous interface point*/ mat1[start][j] + /*previous interface point*/ mat1[start][j] * wxy * (dx/2) + wxy *
+      mat2[start][j] =/*previous interface point*/ mat1[start][j] + wxy * (upval - 2 * mat1[start][j] + mat1[start+2][j]) + wxy *
 	(4/3) * (/*previous interface point*/- 4*mat1[start][j] + /*coarse*/mat1[start][j+1]  + /*coarse*/ .5 * mat1[start+2][j]
 		 +/*coarse*/ .5 * upval +/*refine*/ .5 * mat1[start-1][j-1] +/*refine*/ mat1[start][j-1] +/*refine*/ .5
 		 * mat1[start+1][j-1]);
      
   for (i = start+2; i < par_ref_rows - 3; i+=2)
     {
-      mat2[i][j] =/*previous interface point*/ mat1[i][j] + /*previous interface point*/ mat1[i][j] * wxy * (dx/2) + wxy *
+      mat2[i][j] =/*previous interface point*/ mat1[i][j] + wxy * (mat1[i+2][j] - 2 * mat1[i][j] + mat1[i-2][j]) + wxy *
   	(4/3) * (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+2][j]
   		 +/*coarse*/ .5 * mat1[i-2][j] +/*refine*/ .5 * mat1[i-1][j-1] +/*refine*/ mat1[i][j-1] +/*refine*/ .5
   		 * mat1[i+1][j-1]);
@@ -97,15 +107,15 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
     {
       if ((par_ref_rows-start)%2 == 0) 
 	{
-	mat2[par_ref_rows-2][j] =/*previous interface point*/ mat1[par_ref_rows-2][j] + /*previous interface point*/ mat1[par_ref_rows-2][j]
-      * wxy * (dx/2) + wxy * (4/3) * (/*previous interface point*/- 4*mat1[par_ref_rows-2][j] + /*coarse*/mat1[par_ref_rows-2][j+1]
+	mat2[par_ref_rows-2][j] =/*previous interface point*/ mat1[par_ref_rows-2][j] + wxy * (mat1[par_ref_rows-4][j] -2 * mat1[par_ref_rows-2][j] + downval)
+      + wxy * (4/3) * (/*previous interface point*/- 4*mat1[par_ref_rows-2][j] + /*coarse*/mat1[par_ref_rows-2][j+1]
       + /*coarse*/ .5 * downval +/*coarse*/ .5 * mat1[par_ref_rows-4][j] +/*refine*/ .5 * mat1[par_ref_rows-3][j-1]
       +/*refine*/ mat1[par_ref_rows-2][j-1] +/*refine*/ .5 * mat1[par_ref_rows-1][j-1]);
 	}
       else
 	{
-	  mat2[par_ref_rows-3][j] =/*previous interface point*/ mat1[par_ref_rows-3][j] + /*previous interface point*/ mat1[par_ref_rows-3][j]
-      * wxy * (dx/2) + wxy * (4/3) * (/*previous interface point*/- 4*mat1[par_ref_rows-3][j] + /*coarse*/mat1[par_ref_rows-3][j+1]
+	  mat2[par_ref_rows-3][j] =/*previous interface point*/ mat1[par_ref_rows-3][j] + wxy * (mat1[par_ref_rows-5][j] -2 * mat1[par_ref_rows-3][j] + downval) 
+      + wxy * (4/3) * (/*previous interface point*/- 4*mat1[par_ref_rows-3][j] + /*coarse*/mat1[par_ref_rows-3][j+1]
       + /*coarse*/ .5 * downval +/*coarse*/ .5 * mat1[par_ref_rows-5][j] +/*refine*/ .5 * mat1[par_ref_rows-4][j-1]
       +/*refine*/ mat1[par_ref_rows-3][j-1] +/*refine*/ .5 * mat1[par_ref_rows-2][j-1]);
 	}
@@ -171,16 +181,14 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
 
   // calculate first interface point
 
-  mat2[i][start] = /*previous interface point*/ mat1[i][start] + /*prev interface point*/ mat1[i][start] * wxy * (dx/2) + wxy * (4/3) *
+  mat2[i][start] = /*previous interface point*/ mat1[i][start] + wxy * (leftval - 2 * mat1[i][start] + mat1[i][start+2]) + wxy * (4/3) *
     (-/*prev interface point*/ 4*mat1[i][start] +/*coarse*/ mat1[i-1][start]  +/*coarse*/ .5 * mat1[i][start+2]
      +/*coarse*/ .5 * leftval +/*refine*/ .5 * mat1[i+1][start-1] +/*refine*/ mat1[i+1][start] +/*refine*/ .5 * mat1[i+1][start+1]);
-  //if (rank == 5){
-     //printf("\nmatrixupdate %lf matrix %lf, up: %lf, left %lf, right %lf, downright %lf, down %lf, downleft %lf\n",mat2[i][start], mat1[i][start], mat1[i-1][start], leftval, mat1[i][start+2], mat1[i+1][start-1], mat1[i+1][start], mat1[i+1][start+1]);  
-  //}
+
   // calculate intermediary interface points
   for (j = start+2; j < par_ref_cols - 2; j+=2)
     {
-        mat2[i][j] = /*previous interface point*/ mat1[i][j] + /*prev interface point*/ mat1[i][j] * wxy * (dx/2) + wxy * (4/3) *
+        mat2[i][j] = /*previous interface point*/ mat1[i][j] + wxy * (mat1[i][j-2] -2 * mat1[i][j] + mat1[i][j+2]) + wxy * (4/3) *
   	(-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1[i][j+2]
   	 +/*coarse*/ .5 * mat1[i][j-2] +/*refine*/ .5 * mat1[i+1][j-1] +/*refine*/ mat1[i+1][j] +/*refine*/ .5 * mat1[i+1][j+1]);
     }
@@ -189,8 +197,8 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
 
   if(rcrds[1] != P-1 && (par_ref_cols-start)%2 == 0 ) {
     // calcuate last interface point
-    mat2[i][par_ref_cols-2] = /*previous interface point*/ mat1[i][par_ref_cols-2] + /*prev interface point*/ mat1[i][par_ref_cols-2]
-    * wxy * (dx/2) + wxy * (4/3) * (-/*prev interface point*/ 4*mat1[i][par_ref_cols-2] +/*coarse*/ mat1[i-1][par_ref_cols-2]
+    mat2[i][par_ref_cols-2] = /*previous interface point*/ mat1[i][par_ref_cols-2] + wxy * (mat1[i][par_ref_cols-4] -2 * mat1[i][par_ref_cols-2] + rightval)
+    + wxy * (4/3) * (-/*prev interface point*/ 4*mat1[i][par_ref_cols-2] +/*coarse*/ mat1[i-1][par_ref_cols-2]
     +/*coarse*/ .5 * rightval +/*coarse*/ .5 * mat1[i][par_ref_cols-4] +/*refine*/ .5 * mat1[i+1][par_ref_cols-3]
     +/*refine*/ mat1[i+1][par_ref_cols-2] +/*refine*/ .5 * mat1[i+1][par_ref_cols-1]);
   }
@@ -401,7 +409,8 @@ void computeTimestep(double** mat1, double** mat2, int par_rows, int par_cols, d
     {
       for(j = 2; j < par_cols - 1; j++)
 	{
-	  mat2[par_rows-2][j] = mat1[par_rows-2][j] + wx * (mat1[par_rows-2+1][j] - 2*mat1[par_rows-2][j] + mat1[par_rows-2-1][j]) + wy * (mat1[par_rows -2][j+1] - 2 * mat1[par_rows-2][j] + mat1[par_rows-2][j-1]);
+	  mat2[par_rows-2][j] = mat1[par_rows-2][j] + wx * (mat1[par_rows-2+1][j] - 2*mat1[par_rows-2][j] + mat1[par_rows-2-1][j]) 
+          + wy * (mat1[par_rows -2][j+1] - 2 * mat1[par_rows-2][j] + mat1[par_rows-2][j-1]);
 	}
     }
   
