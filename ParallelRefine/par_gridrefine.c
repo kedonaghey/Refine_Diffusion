@@ -207,16 +207,7 @@ int main(int argc, char *argv[])
       initFineGrid(mat1, par_ref_rows, par_ref_cols);
       initFineGrid(mat2, par_ref_rows, par_ref_cols);
     }
-/*
-  if(!in_refine)
-    {
-      printGrid(mat1, par_rows, par_cols);
-    }
-  else
-    {
-      printGrid(mat1, par_ref_rows, par_ref_cols);
-    }
-*/
+
   //buffers to send data
   double *bfr_right_refine_pts, *bfr_top_refine_pts;
   bfr_right_refine_pts = calloc(par_ref_rows, sizeof(double));
@@ -251,7 +242,7 @@ int main(int argc, char *argv[])
   double wxy = k * dt/(dx*dx);
   int refinement = 2;
   double sxy = (double)dx/refinement;
-
+  double rxy = k * dt/(sxy*sxy);
 
   for(iter = 0; iter < max_iter; iter++)
     {
@@ -290,7 +281,7 @@ int main(int argc, char *argv[])
       else
       	{
       	       // 	  if( !rank) printf("refine timestep\n");
-      	  computeFineTimestep(mat1, mat2, par_ref_rows, par_ref_cols, wxy, sxy);
+      	  computeFineTimestep(mat1, mat2, par_ref_rows, par_ref_cols, rxy);
       	}
 
       update(&mat1, &mat2);
