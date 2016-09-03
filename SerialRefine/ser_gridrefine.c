@@ -24,10 +24,10 @@ int main(int argc, char *argv[])
   double **mat1_refine, **mat2_refine;
   //size of grid
   clock_t start, end;
-  int nrows = 1000, ncols = 1000;
+  int nrows = 5000, ncols = 5000;
   double dx = 0, dy= 0, dt, time;
   double converge = 0;
-  int iter, max_iter = 10000;
+  int iter, max_iter = 100;
 
   while ((c = getopt (argc, argv, "r:i:")) != -1)
   {
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
   dx = 1 /(double)(nrows - 1);
   dy = 1 /(double)(ncols - 1);
 
-  dt = .000001;
+  dt = .001;
   mat1 = calloc(nrows, sizeof(double *));
   for (i = 0; i < nrows; i++)
     mat1[i] = calloc(ncols, sizeof(double));
@@ -120,12 +120,15 @@ int main(int argc, char *argv[])
   double wxy = k * dt/(dx*dx);
   int refinement = 2;
   double sxy = (double)dx/refinement;
-  start = clock();
+  double rxy = k * dt/(sxy*sxy);
+
+  //start = clock();
+  printf("rxy: %lf\n",rxy);
   for(iter = 0; iter < max_iter; iter++)
   {
       time = time + dt;
       computeTimestep(mat1, mat2, nrows, ncols, wx, wy);
-      computeFineTimestep(mat1_refine, mat2_refine, refrows, refcols, wxy, sxy);
+      computeFineTimestep(mat1_refine, mat2_refine, refrows, refcols, rxy);
       //Compute Interfaces
       computeInterfaceRightTimestep(rightarray, mat1_refine, mat1, nrows, ncols, crse_clms_cutoff, fi_crnr, wxy, dx, crse_rows_cutoff, refcols, refrows);
       computeInterfaceTopTimestep(toparray, mat1_refine, mat1, nrows, ncols, crse_rows_cutoff, fj_crnr, wxy, dx, crse_clms_cutoff);
@@ -135,12 +138,12 @@ int main(int argc, char *argv[])
       update(&mat1, &mat2, nrows, ncols);
       update(&mat1_refine, &mat2_refine, refrows, refcols);
     }
-  end = clock();
-  //printGrid(mat1_refine,refrows,refcols);
+  //end = clock();
+  printGrid(mat1_refine,refrows,refcols);
   //printf("\n");
-  //printGrid(mat1,nrows,ncols);
-  printf("Total time: %f seconds\n", (((double) end ) - start)/CLOCKS_PER_SEC);
-  //printf("%.15lf\n", mat1_refine[refrows-1][1]);
+  printGrid(mat1,nrows,ncols);
+  //printf("Total time: %f seconds\n", (((double) end ) - start)/CLOCKS_PER_SEC);
+  //printf("%.15lf\n", mat1_refine[refrows-2][1]);
   //printf("num of iterations: %d\n", iter);
 
   return 0;
