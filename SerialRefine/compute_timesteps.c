@@ -1,7 +1,7 @@
 #include "compute_timesteps.h"
 
 
-void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, int ncols, double wxy, double sxy)
+void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, int ncols, double wxy)
 {
 
   int i,j;
@@ -13,27 +13,24 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int nrows, 
       //calculates cases on boundaries by interface and divides two closest boundary points
       if (i==1 && j == ncols-2)
         {
-         mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1] \
-         + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * ( .5 * (mat1_refine[i+1][j+1]
-         + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+         mat2_refine[i][j] = mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1] + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] 
+         + mat1_refine[i+1][j]) + wxy * ( .5 * (mat1_refine[i+1][j+1] + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
 
         }
       else if (i == 1 && j%2 == 1)
         {
-          mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1] \
-         + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j] \
-         + mat1_refine[i][j+1]);
+          mat2_refine[i][j] = mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i-1][j+1] + mat1_refine[i-1][j-1]) -2 * mat1_refine[i][j] 
+          + mat1_refine[i+1][j]) + wxy * (mat1_refine[i][j-1] -2 * mat1_refine[i][j] + mat1_refine[i][j+1]);
         }
       else if (j == ncols-2 && i%2 == 1)
         {
-         mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]
-         + mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j]\
-         + mat1_refine[i-1][j]);
+         mat2_refine[i][j] = mat1_refine[i][j] + wxy * ( .5 * (mat1_refine[i+1][j+1]+ mat1_refine[i-1][j+1]) -2 * mat1_refine[i][j] + 
+         mat1_refine[i][j-1]) + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j] + mat1_refine[i-1][j]);
         }
       else
         {
-         mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]\
-         -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+         mat2_refine[i][j] = mat1_refine[i][j] + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) 
+         + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
         }
     }
   }
