@@ -211,16 +211,7 @@ int main(int argc, char *argv[])
       initFineGrid(mat1, par_ref_rows, par_ref_cols);
       initFineGrid(mat2, par_ref_rows, par_ref_cols);
     }
-/*
-  if(!in_refine)
-    {
-      printGrid(mat1, par_rows, par_cols);
-    }
-  else
-    {
-      printGrid(mat1, par_ref_rows, par_ref_cols);
-    }
-*/
+
   //buffers to send data
   double *bfr_right_refine_pts, *bfr_top_refine_pts;
   bfr_right_refine_pts = calloc(par_ref_rows, sizeof(double));

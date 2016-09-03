@@ -198,7 +198,7 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
   }
 }
 
-void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref_rows, int par_ref_cols, double wxy, double sxy)
+void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref_rows, int par_ref_cols, double wxy)
 {
   int i,j;
 
@@ -232,8 +232,8 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref
       i = 1;
       for (j = startcol; j < endcol; j++)
   	{
-  	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
-  	     -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+  	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) 
+	      + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
   	}
     }
 
@@ -244,8 +244,8 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref
       i = par_ref_rows - 2;
       for (j = startcol; j < endcol; j++)
   	{
-  	  mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
-	          -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+  	  mat2_refine[i][j] = mat1_refine[i][j] + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) 
+          + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
   	}
     }
 
@@ -254,8 +254,8 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref
       j = 1;
       for (i = startrow; i < endrow; i++)
   	{
-  	  mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
-     -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+  	  mat2_refine[i][j] = mat1_refine[i][j] + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) 
+          + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
   	}
     }
 
@@ -265,8 +265,8 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref
       j = par_ref_cols - 2;
       for (i = startrow; i < endrow; i++)
   	{
-  	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
-  	   -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+  	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) 
+              + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
   	}
     }
 
@@ -286,8 +286,8 @@ void computeFineTimestep(double** mat1_refine, double** mat2_refine, int par_ref
     {
       for (j = startcol; j < endcol; j++)
   	{
-  	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * sxy * sxy * mat1_refine[i][j] + wxy * (mat1_refine[i+1][j]
-  	     -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
+  	      mat2_refine[i][j] = mat1_refine[i][j] + wxy * (mat1_refine[i+1][j] -2 * mat1_refine[i][j] + mat1_refine[i-1][j]) 
+              + wxy * (mat1_refine[i][j+1] - 2 * mat1_refine[i][j] + mat1_refine[i][j-1]);
   	}
     }
 
