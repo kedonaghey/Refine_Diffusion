@@ -1,5 +1,5 @@
 *~
 *.txt
-*.dat
 par_refine
 *.o
+*.out

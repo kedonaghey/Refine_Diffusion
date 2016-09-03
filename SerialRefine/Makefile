@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS = -pg -g -O2 -Wall
-LFLAGS=-lm
+CFLAGS = -O2 -Wall
+LDFLAGS=-lm
 
 EXECS=ser_refine
 OBJS = ser_gridrefine.o compute_timesteps.o ser_grid_utils.o interface_funcs.o
@@ -13,7 +13,7 @@ ser_grid_utils.c: ser_grid_utils.h
 interface_funcs.c: interface_funcs.h
 
 ser_refine: ${OBJS}
-	gcc ${LFLAGS} -o ser_refine ${OBJS} -lm
+	gcc ${LDFLAGS} -o ser_refine ${OBJS}
 
 clean:
 	${RM} ${OBJS} ${EXECS}

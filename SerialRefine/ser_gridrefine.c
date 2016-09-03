@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
   clock_t start, end;
   int nrows = 5000, ncols = 5000;
   double dx = 0, dy= 0, dt, time;
-  double converge = 0;
   int iter, max_iter = 100;
 
   while ((c = getopt (argc, argv, "r:i:")) != -1)
@@ -123,7 +122,7 @@ int main(int argc, char *argv[])
   double sxy = (double)dx/refinement;
   double rxy = k * dt/(sxy*sxy);
 
-  //start = clock();
+  start = clock();
   for(iter = 0; iter < max_iter; iter++)
   {
       time = time + dt;
@@ -138,12 +137,12 @@ int main(int argc, char *argv[])
       update(&mat1, &mat2, nrows, ncols);
       update(&mat1_refine, &mat2_refine, refrows, refcols);
     }
-  //end = clock();
+  end = clock();
   //printGrid(mat1_refine,refrows,refcols);
   //printf("\n");
   //printGrid(mat1,nrows,ncols);
-  //printf("%d\t%lf\n", nrows, (((double) end ) - start)/CLOCKS_PER_SEC);
-  printf("%.15lf\n", mat1_refine[refrows-2][1]);
+  printf("%d\t%lf\n", nrows, (((double) end ) - start)/CLOCKS_PER_SEC);
+  //printf("%.15lf\n", mat1_refine[refrows-2][1]);
   //printf("num of iterations: %d\n", iter);
 
   return 0;

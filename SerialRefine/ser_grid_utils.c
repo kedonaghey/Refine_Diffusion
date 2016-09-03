@@ -60,21 +60,6 @@ void printGrid(double** mat, int nrows, int ncols)
 
 
 }
-/*
-void printGridToFile(double** mat, int nrows, int ncols, FILE *fp)
-{
-  int i, j;
-    for (i = 0; i < nrows; i++) {
-        for (j = 0; j < ncols; j++) {
-            fprintf(fp, "%8f ", mat[i][j]);
-        }
-        fprintf(fp, "\n");
-    }
-
-
-}
-*/
-
 
 
 

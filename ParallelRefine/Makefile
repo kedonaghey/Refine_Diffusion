@@ -1,5 +1,5 @@
 CC=mpicc
-CFLAGS=-g -Og -Wall
+CFLAGS=-O2 -Wall
 LFLAGS=-lm
 
 EXECS=par_refine 

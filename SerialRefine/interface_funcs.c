@@ -58,7 +58,7 @@ void computeInterfaceRightTimestep(double* rightarray, double** mat1_refine, dou
       rightarray[t] =/*previous interface point*/ mat1[i][j] + wxy * (mat1[i+1][j] -2 * mat1[i][j] + mat1[i-1][j]) + wxy *
       (4/3) * (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+1][j]\
       +/*coarse*/ .5 * mat1[i-1][j] +/*refine*/ .5 * mat1_refine[m-1][n-1] +/*refine*/ mat1_refine[m][n-1] +/*refine*/ .5\
-      * mat1_refine[m+1][n-1]);//changed one n to - different from the book
+      * mat1_refine[m+1][n-1]);
       m-=2;
       //iterates through right array
       t++;

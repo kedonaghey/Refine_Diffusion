@@ -32,11 +32,9 @@ void update(double*** mat1_ptr, double*** mat2_ptr)
 
 int main(int argc, char *argv[])
 {
-  int i, j, c, n = 10;
+  int i, j, c;
   double **mat1, **mat2;
   clock_t start, end;
-  //if(rank == 0)
-  //printf("hi");
   //size of grid
   int nrows = 20, ncols = 20;
 
@@ -53,7 +51,7 @@ int main(int argc, char *argv[])
   Q = 2;
   P = 2;
 
-  while ((c = getopt (argc, argv, "r:i:q:p:n:")) != -1)
+  while ((c = getopt (argc, argv, "r:i:q:p:")) != -1)
     {
       switch(c)
   	{
@@ -65,8 +63,6 @@ int main(int argc, char *argv[])
 	  Q = atoi(optarg); break;
         case 'p':
 	  P = atoi(optarg); break;
- 	case 'n':
-	  n = atoi(optarg); break;
   	default:
   	  fprintf(stderr, "Invalid option\n");
   	  return -1;
@@ -249,40 +245,29 @@ int main(int argc, char *argv[])
   for(iter = 0; iter < max_iter; iter++)
     {
       time = time + dt;
-            //if (!rank) printf("right to refine\n");  
       sendRightPoints(mat1, bfr_right_interface_pts, par_rows, par_cols);
-            //if( !rank) printf("top to refine\n");
       sendTopPoints(mat1, bfr_top_interface_pts, par_rows, par_cols);
 	 
       if(in_refine)
       	{
-	  	//  if( rank == size-1) printf("inject refine\n");  
       	  injectFinePoints(bfr_top_interface_pts, bfr_right_interface_pts, mat1, par_ref_rows, par_ref_cols);
-	  	//  if( rank == size-1) printf("interface top refine\n");  
       	  computeInterfaceTopTimestep(bfr_top_refine_pts, mat1, mat2, par_rows, par_ref_cols, wxy, dx);
-	  	//  if( rank == size-1) printf("interface right refine\n");  
       	  computeInterfaceRightTimestep(bfr_right_refine_pts, mat1, mat2, par_ref_rows, ncols, wxy, dx, par_ref_cols);
-	  	//  if( rank == size-1) printf("interface corner refine\n");  
        	  computeCornerTimestep(bfr_right_refine_pts, mat1, mat2, wxy, par_ref_cols);
       	}
 
-            //if( !rank) printf("refine to right\n");  
       sendRightInterfacePoints(mat1, bfr_right_refine_pts, par_ref_rows, par_ref_cols);
      
-           // if( !rank) printf("refine to top\n");
       sendTopInterfacePoints(mat1, bfr_top_refine_pts, par_ref_rows, par_ref_cols);
             
-           // if( !rank) printf("inject coarse\n");
       injectCoarsePoints(bfr_top_refine_pts, bfr_right_refine_pts, mat1, par_rows, par_cols);
                               
       if(!in_refine)
       	{
-      	     //   	  if( rank == size-1) printf("coarse timestep\n");
       	  computeTimestep(mat1, mat2, par_rows, par_cols, wx, wy);
       	}
       else
       	{
-      	       // 	  if( !rank) printf("refine timestep\n");
       	  computeFineTimestep(mat1, mat2, par_ref_rows, par_ref_cols, rxy);
       	}
 
@@ -299,8 +284,8 @@ int main(int argc, char *argv[])
       printGrid(mat1, par_ref_rows, par_ref_cols);
     }
 */
-  if(rank == n)
-   printf("%.15lf\n", mat1[par_ref_rows-4][3]);
+  //if(rank == n)
+  // printf("%.15lf\n", mat1[par_ref_rows-4][3]);
   /* if(rank%2) */
   /*   printf(":)\n"); */
   /* else */

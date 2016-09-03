@@ -93,7 +93,7 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
 	(4/3) * (/*previous interface point*/- 4*mat1[start][j] + /*coarse*/mat1[start][j+1]  + /*coarse*/ .5 * mat1[start+2][j]
 		 +/*coarse*/ .5 * upval +/*refine*/ .5 * mat1[start-1][j-1] +/*refine*/ mat1[start][j-1] +/*refine*/ .5
 		 * mat1[start+1][j-1]);
-     
+  //calculate intermediary interface points   
   for (i = start+2; i < par_ref_rows - 3; i+=2)
     {
       mat2[i][j] =/*previous interface point*/ mat1[i][j] + wxy * (mat1[i+2][j] - 2 * mat1[i][j] + mat1[i-2][j]) + wxy *
@@ -173,7 +173,6 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
 	{
 	  leftval = mat1[i][start-2];
 	  rightval = mat1[i][par_ref_cols-1];
-//change back to -3
 	  MPI_Send(&mat1[i][par_ref_cols-3], 1, MPI_DOUBLE, r, 0, MPI_COMM_CART2);
 	  MPI_Send(&mat1[i][2],              1, MPI_DOUBLE, l, 0, MPI_COMM_CART2);
 	}

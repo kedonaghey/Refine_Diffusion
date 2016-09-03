@@ -53,14 +53,6 @@ void injectFinePoints(double* topbuffer, double* rightbuffer, double** mat, int 
   if(par_ref_cols%2 == 0) 
     {
       start_top = 0;
-      /* if(rcrds[1]%2 == 0) */
-      /* 	{ */
-      /* 	  start_top = 0; */
-      /* 	} */
-      /* else */
-      /* 	{ */
-      /* 	  start_top = 2; */
-      /* 	} */
     }
 
   //top
@@ -141,8 +133,7 @@ void sendTopPoints(double** mat, double* buffer, int par_rows, int par_cols)
     MPI_Send(&mat[par_rows - 2][0], par_cols/2, MPI_DOUBLE, first_target, 0, MPI_COMM_WORLD);
     
     // send second half 
-    // CHECK THIS, CHANGED IN MY SLEEP -- before par_cols/2
-    MPI_Send(&mat[par_rows - 2][/**/(par_cols-1)/2/**/], par_cols/2, MPI_DOUBLE, second_target, 0, MPI_COMM_WORLD);
+    MPI_Send(&mat[par_rows - 2][(par_cols-1)/2], par_cols/2, MPI_DOUBLE, second_target, 0, MPI_COMM_WORLD);
   }
 
   if(rcrds[0] == 0) {
@@ -222,14 +213,14 @@ void sendTopInterfacePoints(double** mat, double* buffer, int par_ref_rows, int 
 
 
   if(rcrds[0] == 0)
-    {                                                           // P*( (Q/2) -1 ) + rcrds[1]/2
+    {                                                           
     MPI_Send(bfr, (par_ref_cols-1)/2, MPI_DOUBLE, coarse_ranks[P*( (Q/2) -1 ) + rcrds[1]/2], 0, MPI_COMM_WORLD);
   }
 
   if(crds[0] == Q/2 -1 && crds[1] < P/2) 
   {
-    int first_target =  refine_ranks[crds[1]*2]; // changed from crds[0] to crds[1]
-    int second_target = refine_ranks[(crds[1]*2)+1]; // same
+    int first_target =  refine_ranks[crds[1]*2]; 
+    int second_target = refine_ranks[(crds[1]*2)+1]; 
     
     MPI_Recv(buffer,                        (par_ref_cols-1)/2, MPI_DOUBLE, first_target,  0, MPI_COMM_WORLD, &stat[0]);
     MPI_Recv(buffer + (par_ref_cols - 2)/2, (par_ref_cols-1)/2, MPI_DOUBLE, second_target, 0, MPI_COMM_WORLD, &stat[1]);

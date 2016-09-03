@@ -97,7 +97,7 @@ void printGrid(double** mat, int nrows, int ncols)
       /* printf("%f\n ", mat[5][cols-2]); */
       for (i = 0; i < nrows; i++) {
         for (j = 0; j < ncols; j++) {
-          printf("%lf ", mat[i][j]);
+          printf("%.15lf ", mat[i][j]);
         }
         printf("\n");
       }
@@ -229,6 +229,7 @@ void computeInterfaceRightTimestep(double* buffer, double** mat1, double** mat2,
 	(4/3) * (/*previous interface point*/- 4*mat1[i][j] + /*coarse*/mat1[i][j+1]  + /*coarse*/ .5 * mat1[i+2][j]
 		 +/*coarse*/ .5 * mat1[i-2][j] +/*refine*/ .5 * mat1[i-1][j-1] +/*refine*/ mat1[i][j-1] +/*refine*/ .5
 		 * mat1[i+1][j-1]);
+
       m+=2;
       //iterates through right array
       t++;
@@ -247,6 +248,11 @@ void computeInterfaceTopTimestep(double* buffer, double** mat1, double** mat2, i
       mat2[i][j] = /*previous interface point*/ mat1[i][j] + /*prev interface point*/ mat1[i][j] * wxy * (dx/2) + wxy * (4/3) *
 	(-/*prev interface point*/ 4*mat1[i][j] +/*coarse*/ mat1[i-1][j]  +/*coarse*/ .5 * mat1[i][j+2]
 	 +/*coarse*/ .5 * mat1[i][j-2] +/*refine*/ .5 * mat1[i+1][j-1] +/*refine*/ mat1[i+1][j] +/*refine*/ .5 * mat1[i+1][j+1]);
+    if (j==5)
+     printf("\n\nupdated mat %lf matrix %lf, up: %lf, left %lf, right %lf, downright %lf, down %lf, downleft %lf\n",mat2[i][j], mat1[i][j], mat1[i-1][j], 
+     mat1[i][j-2], mat1[i][j+2], mat1[i+1][j-1], mat1[i+1][j], mat1[i+1][j+1]);
+
+
     }
 
 }
@@ -768,10 +774,10 @@ int main(int argc, char *argv[])
     }
 
   if(!in_refine)
-    printGrid(mat1, par_rows, par_cols);
+    printGrid(mat2, par_rows, par_cols);
   else
   {
-    printGrid(mat1, par_ref_rows, par_ref_cols);
+    printGrid(mat2, par_ref_rows, par_ref_cols);
   }
 
 
