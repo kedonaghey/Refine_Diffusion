@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
   dx = 1 /(double)(nrows - 1);
   dy = 1 /(double)(ncols - 1);
 
-  dt = .001;
+  dt = .0000001;
   mat1 = calloc(nrows, sizeof(double *));
   for (i = 0; i < nrows; i++)
     mat1[i] = calloc(ncols, sizeof(double));
@@ -139,11 +139,11 @@ int main(int argc, char *argv[])
       update(&mat1_refine, &mat2_refine, refrows, refcols);
     }
   //end = clock();
-  printGrid(mat1_refine,refrows,refcols);
+  //printGrid(mat1_refine,refrows,refcols);
   //printf("\n");
   //printGrid(mat1,nrows,ncols);
-  printf("%d\t%lf\n", nrows, (((double) end ) - start)/CLOCKS_PER_SEC);
-  //printf("%.15lf\n", mat1_refine[refrows-2][1]);
+  //printf("%d\t%lf\n", nrows, (((double) end ) - start)/CLOCKS_PER_SEC);
+  printf("%.15lf\n", mat1_refine[refrows-2][1]);
   //printf("num of iterations: %d\n", iter);
 
   return 0;
